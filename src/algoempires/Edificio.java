@@ -1,6 +1,6 @@
 package algoempires;
 
-public abstract class Edificio extends Entidad {
+public class Edificio extends Entidad{
 
 	private int turnosDeConstruccion;
 	private int tamanio;

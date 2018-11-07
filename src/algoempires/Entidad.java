@@ -1,6 +1,6 @@
 package algoempires;
 
-public class Entidad {
+public abstract class Entidad {
 
 	private int vida;
 	private int costo;
