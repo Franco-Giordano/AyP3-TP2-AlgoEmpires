@@ -1,6 +1,6 @@
 package main;
 
-public abstract class Edificio extends Unidad {
+public abstract class Edificio extends Entidad {
 
 	private int turnosDeConstruccion;
 	private int tamanio;
