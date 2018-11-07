@@ -1,7 +1,6 @@
 package cosasVarias;
 
-public class PlazaCentral extends Edificio{
-	
+public class PlazaCentral extends Edificio{	
 
 	private static int vidaDeLaPlaza=450;
 	private static int costoDeLaPlaza=100;
