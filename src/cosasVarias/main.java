@@ -9,7 +9,7 @@ public class main {
 		
 		PlazaCentral plazaCentral= new PlazaCentral();
 		
-		System.out.println("Jugador creado correctamente");
+		System.out.println("Que esperaban? Algo inteligente?");
 
 	}
 
