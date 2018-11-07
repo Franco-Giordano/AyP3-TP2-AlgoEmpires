@@ -10,12 +10,5 @@ public abstract class Edificio extends Entidad {
 		this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
 		this.tamanio = tamanioRecibido;
 	}
-
-	public int getTurnosDeConstruccion() {
-		return this.turnosDeConstruccion;
-	}
-
-	public int getTamanio() {
-		return this.tamanio;
-	}
+	
 }

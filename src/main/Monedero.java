@@ -11,7 +11,7 @@ public class Monedero {
 	public void sumarDinero(int dineroASumar) {
 		this.dinero += dineroASumar;
 	}
-
+	
 	public void restarDinero(int dineroARestar) {
 		if(quedaDinero(dineroARestar)) {
 			dinero -= dineroARestar;
