@@ -10,5 +10,16 @@ public class Edificio extends Entidad{
 		this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
 		this.tamanio = tamanioRecibido;
 	}
-	
+
+	//----------------------------------------------------------------------------------------------------------------//
+	//######################################### METODOS DE TESTEO ####################################################//
+	//----------------------------------------------------------------------------------------------------------------//
+
+	public int getTurnosDeConstruccion() {
+		return turnosDeConstruccion;
+	}
+
+	public int getTamanio() {
+		return tamanio;
+	}
 }

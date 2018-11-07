@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class AldeanoTest {
 
 	@Test
-	public void test01AldeanoSeCreaCorrectamente() {
+	public void test01UtilizandoMetodosQueNoSeUtilizanPorAhora() {
 		//Todavía no hay tests.
 		Aldeano aldeano = new Aldeano();
 

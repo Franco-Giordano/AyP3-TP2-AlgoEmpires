@@ -7,6 +7,7 @@ public class Parcela {
 
 	Parcela() {
 		ocupada = false;
+		entidadOcupante = null;
 	}
 
 	public void ocupar(Entidad entidadOcupanteRecibida) {
