@@ -10,7 +10,7 @@ public class Terreno {
 
 	}
 
-	boolean estaOcupada(int coordenadaHorizontal, int coordenadaVertical) {
+	public boolean estaOcupada(int coordenadaHorizontal, int coordenadaVertical) {
 
 		return parcelas[coordenadaHorizontal][coordenadaVertical].estaOcupada();
 

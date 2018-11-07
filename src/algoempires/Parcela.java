@@ -9,12 +9,12 @@ public class Parcela {
 		ocupada = false;
 	}
 
-	void ocupar(Entidad entidadOcupanteRecibida) {
+	public void ocupar(Entidad entidadOcupanteRecibida) {
 		this.entidadOcupante = entidadOcupanteRecibida;
 		ocupada = true;
 	}
 
-	boolean estaOcupada() {
+	public boolean estaOcupada() {
 		return ocupada;
 	}
 
