@@ -2,6 +2,10 @@ package algoempires;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+
 public class JugadorTest {
 
     @Test
@@ -15,6 +19,8 @@ public class JugadorTest {
         jugador.agregarEdificio(edificio);
 
         jugador.agregarUnidad(unidad);
+
+        assertEquals(jugador.getUnidades().get(0),unidad);
 
     }
 }
