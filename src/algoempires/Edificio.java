@@ -1,4 +1,4 @@
-package main;
+package algoempires;
 
 public abstract class Edificio extends Entidad {
 

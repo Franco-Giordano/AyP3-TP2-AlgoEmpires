@@ -1,4 +1,4 @@
-package main;
+package algoempires;
 
 import java.util.ArrayList;
 
