@@ -11,7 +11,7 @@ public class Entidad {
 	}
 
 	public void setVida(int nuevaVida) {
-		this.setVida(nuevaVida);
+		this.vida = nuevaVida;
 	}
 
 	public void setCosto(int nuevoCosto) {
