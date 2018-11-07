@@ -1,4 +1,4 @@
-package cosasVarias;
+package main;
 
 public class PlazaCentral extends Edificio{	
 

@@ -1,4 +1,4 @@
-package cosasVarias;
+package main;
 
 public abstract class Edificio extends Unidad {
 

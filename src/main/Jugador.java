@@ -1,4 +1,4 @@
-package cosasVarias;
+package main;
 
 import java.util.ArrayList;
 
