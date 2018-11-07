@@ -2,7 +2,7 @@ package algoempires;
 
 import org.junit.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class AldeanoTest {
 
