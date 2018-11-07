@@ -1,18 +1,16 @@
 package algoempires;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AldeanoTest {
 
-	public AldeanoTest(){
-
-	}
-
 	@Test
-	public void test01Aldeano() {
+	public void test01AldeanoSeCreaCorrectamente() {
 		//Todavía no hay tests.
 		Aldeano aldeano = new Aldeano();
 
