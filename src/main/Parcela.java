@@ -2,25 +2,20 @@ package main;
 
 public class Parcela {
 
-	private boolean ocupada; 
-	private Entidad entidadOcupante; 
-	
-	Parcela(){
-		
-		ocupada = false; 
-	
+	private boolean ocupada;
+	private Entidad entidadOcupante;
+
+	Parcela() {
+		ocupada = false;
 	}
-	
+
 	void ocupar(Entidad entidadOcupanteRecibida) {
-		
 		this.entidadOcupante = entidadOcupanteRecibida;
-		ocupada = true; 
+		ocupada = true;
 	}
-	
-	boolean estaOcupada(){
-		
+
+	boolean estaOcupada() {
 		return ocupada;
-		
 	}
-	
+
 }

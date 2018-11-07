@@ -13,12 +13,12 @@ public class Monedero {
 	}
 
 	public void restarDinero(int dineroARestar) {
-		if(!quedaDineroNegativo(dineroARestar)) {
+		if(quedaDinero(dineroARestar)) {
 			dinero -= dineroARestar;
 		}
 	}
 	
-	public boolean quedaDineroNegativo(int dineroARestar) {
-		return dinero-dineroARestar<0;
+	public boolean quedaDinero(int dineroARestar) {
+		return dinero-dineroARestar>=0;
 	}
 }

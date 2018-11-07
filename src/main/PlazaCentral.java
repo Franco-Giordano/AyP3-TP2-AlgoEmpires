@@ -7,10 +7,8 @@ public class PlazaCentral extends Edificio{
 	private static int turnosDeConstruccion=4;
 	private static int tamanio=4; 
 	
-	public PlazaCentral() {
-		
+	public PlazaCentral() {	
 		super(vidaDeLaPlaza, costoDeLaPlaza, turnosDeConstruccion, tamanio);
-		
 	}
 	
 	public Aldeano crearUnidad() {
