@@ -14,7 +14,7 @@ Ver el enunciado completo [aqui](https://docs.google.com/document/d/1OnD7ZRBIIZv
 - [X] Repositorio con la estructura básica del proyecto con los scripts de Ant y la herramienta de integración contínua configurada. Se podrá utilizar el proyecto base provisto por la cátedra como referencia.
 Solamente un miembro del grupo (cualquiera) deberá subir el enlace del repositorio mediante el botón “Agregar entrega” del campus virtual.
 
-**_Entrega 1 (Semana del 12 de noviembre)_**
+[**_Entrega 1 (Semana del 12 de noviembre)_**](https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires/projects/1)
 - [ ] Pruebas del Mapa
   - [ ] Tamaño
   - [ ] Colocar unidades y edificios
