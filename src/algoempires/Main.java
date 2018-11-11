@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Scanner scanner= new Scanner(System.in); // esto es para leer la verga que ingresan los usuarios estupidos
+		Scanner scanner= new Scanner(System.in); 
 		System.out.println("Por ahora, todo bien.");
 		
 		Aldeano aldeano= new Aldeano();
