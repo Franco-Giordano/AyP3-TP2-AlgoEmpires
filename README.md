@@ -9,6 +9,11 @@ Videojuego desarrollado en el marco del trabajo practico 2 de la materia Algorit
 ### Enunciado
 Ver el enunciado completo [aqui](https://docs.google.com/document/d/1OnD7ZRBIIZvv1snlR64WYj33abb-G3OODbTMaystsU8/edit)
 
+### [Informe (Overleaf)](https://www.overleaf.com/project/5be7cd2ef28c1123449a00fd)
+Cuenta Overleaf: carlosmccarlos@armyspy.com
+
+Contraseña: _< la peor app de la tierra >_
+
 ### Entregas
 **_Entrega 0 (8 de noviembre)_**
 - [X] Repositorio con la estructura básica del proyecto con los scripts de Ant y la herramienta de integración contínua configurada. Se podrá utilizar el proyecto base provisto por la cátedra como referencia.
