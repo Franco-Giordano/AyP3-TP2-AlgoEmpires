@@ -1,12 +1,20 @@
 package algoempires;
 
+
 public class Terreno {
 
 	private Parcela[][] parcelas;
 
-	Terreno(int tamanioHorizontal, int tamanioVertical) {
+	public Terreno(int tamanioHorizontal, int tamanioVertical) {
 
 		parcelas = new Parcela[tamanioHorizontal][tamanioVertical];
+		
+		for (int i = 0; i < tamanioHorizontal; i++) {
+			for (int j = 0; j < tamanioVertical; j++) {
+				Parcela parcela= new Parcela();
+				parcelas[i][j]= parcela;
+			}
+		}
 
 	}
 
@@ -14,6 +22,11 @@ public class Terreno {
 
 		return parcelas[coordenadaHorizontal][coordenadaVertical].estaOcupada();
 
+	}
+	
+	public void ocuparParcela(int coordenadaHorizontal, int coordenadaVertical, Entidad entidadAAgregar) {
+		
+		parcelas[coordenadaHorizontal][coordenadaVertical].ocupar(entidadAAgregar);
 	}
 	
 }

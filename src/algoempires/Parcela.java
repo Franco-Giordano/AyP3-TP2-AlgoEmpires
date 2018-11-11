@@ -5,7 +5,7 @@ public class Parcela {
 	private boolean ocupada;
 	private Entidad entidadOcupante;
 
-	Parcela() {
+	public Parcela() {
 		ocupada = false;
 		entidadOcupante = null;
 	}
