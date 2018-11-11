@@ -1,6 +1,8 @@
-package algoempires;
+package algoempires.entidad.unidad.guerrero;
 
-public class Guerrero extends Unidad {
+import algoempires.entidad.unidad.Unidad;
+
+public abstract class Guerrero extends Unidad {
 
 	private int rangoDelGuerrero;
 	

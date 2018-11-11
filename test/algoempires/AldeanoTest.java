@@ -1,5 +1,7 @@
 package algoempires;
 
+import algoempires.entidad.unidad.utilero.Aldeano;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

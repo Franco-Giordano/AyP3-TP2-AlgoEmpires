@@ -1,11 +1,14 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.unidad.Unidad;
+
 import java.util.ArrayList;
 
 public class Jugador {
 
 	private ArrayList<Unidad> unidades;
-	private ArrayList<Edificio> edificios; 
+	private ArrayList<Edificio> edificios;
 
 	public Jugador() {
 		this.unidades = new ArrayList<Unidad>();

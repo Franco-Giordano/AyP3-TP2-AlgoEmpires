@@ -1,6 +1,7 @@
-package algoempires;
+package algoempires.entidad;
 
 
+import algoempires.Parcela;
 
 public abstract class Entidad {
 
@@ -9,7 +10,7 @@ public abstract class Entidad {
 	private Parcela parcelaQueOcupo;
 
 
-	Entidad(int vidaRecibida, int costoRecibido){
+	public Entidad(int vidaRecibida, int costoRecibido){
 		this.vida = vidaRecibida; 
 		this.costo = costoRecibido; 
 		this.parcelaQueOcupo= null;

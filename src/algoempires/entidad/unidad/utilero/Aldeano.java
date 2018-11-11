@@ -1,4 +1,6 @@
-package algoempires;
+package algoempires.entidad.unidad.utilero;
+
+import algoempires.entidad.unidad.utilero.Utilero;
 
 public class Aldeano extends Utilero {
 

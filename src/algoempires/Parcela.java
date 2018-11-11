@@ -2,7 +2,7 @@ package algoempires;
 
 
 
-import org.omg.PortableServer.AdapterActivator;
+import algoempires.entidad.Entidad;
 
 public class Parcela {
 

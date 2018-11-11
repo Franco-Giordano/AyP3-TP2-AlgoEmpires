@@ -1,8 +1,8 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Edificio;
 import org.junit.Test;
-
-import java.util.ArrayList;
+import algoempires.entidad.unidad.Unidad;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,6 +1,8 @@
-package algoempires;
+package algoempires.entidad.edificio;
 
-public class Edificio extends Entidad{
+import algoempires.entidad.Entidad;
+
+public class Edificio extends Entidad {
 
 	private int turnosDeConstruccion;
 	private int tamanio;

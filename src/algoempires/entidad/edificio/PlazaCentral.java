@@ -1,6 +1,8 @@
-package algoempires;
+package algoempires.entidad.edificio;
 
-public class PlazaCentral extends Edificio{	
+import algoempires.entidad.unidad.utilero.Aldeano;
+
+public class PlazaCentral extends Edificio {
 
 	private static int vidaDeLaPlaza=450;
 	private static int costoDeLaPlaza=100;

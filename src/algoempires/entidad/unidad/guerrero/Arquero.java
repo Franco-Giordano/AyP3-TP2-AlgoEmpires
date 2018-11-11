@@ -1,6 +1,8 @@
-package algoempires;
+package algoempires.entidad.unidad.guerrero;
 
-public class Arquero extends Guerrero{
+import algoempires.entidad.unidad.guerrero.Guerrero;
+
+public class Arquero extends Guerrero {
 	
 	private static int vidaDelArquero= 75;
 	private static int costoDelArquero= 75;

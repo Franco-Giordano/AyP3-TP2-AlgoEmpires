@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Edificio;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

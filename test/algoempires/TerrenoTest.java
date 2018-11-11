@@ -2,6 +2,8 @@ package algoempires;
 
 import static org.junit.Assert.assertTrue;
 
+import algoempires.entidad.unidad.utilero.Aldeano;
+
 import org.junit.Test;
 
 public class TerrenoTest {
@@ -15,7 +17,7 @@ public class TerrenoTest {
 		
 		int coordenadaHorizontal=3;
 	
-		int coordenadaVertical=2;		
+		int coordenadaVertical=2;
 		
 		terreno.ocuparParcela(coordenadaHorizontal, coordenadaVertical, aldeano);
 		
