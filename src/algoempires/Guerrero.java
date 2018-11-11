@@ -9,4 +9,10 @@ public class Guerrero extends Unidad {
 		this.rangoDelGuerrero= rangoRecibido;
 	}
 	
+	
+	public boolean tieneRangoSuficiente(int coordenadaHorizontalDeAtaque, int coordenadaVerticalDeAtaque) {
+		
+		return this.getParcelaQueOcupo().estasAUnaDistanciaMenorQue(coordenadaHorizontalDeAtaque, coordenadaVerticalDeAtaque, rangoDelGuerrero);
+	}
+	
 }

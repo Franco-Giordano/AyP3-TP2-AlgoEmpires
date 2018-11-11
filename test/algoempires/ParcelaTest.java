@@ -3,6 +3,7 @@ package algoempires;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class ParcelaTest {
@@ -10,13 +11,13 @@ public class ParcelaTest {
     @Test
     public void test01UtilizandoMetodosQueNoSeUtilizanPorAhora() {
 
-        Unidad unidad = new Unidad(10,10);
+        Aldeano aldeano= new Aldeano();
 
         Parcela parcela = new Parcela();
 
-        parcela.ocupar(unidad);
+        parcela.ocupar(aldeano);
 
-        assertEquals(parcela.estaOcupada(),true);
+        assertTrue(parcela.estaOcupada());
 
     }
 }

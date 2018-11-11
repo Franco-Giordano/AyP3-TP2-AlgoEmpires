@@ -12,6 +12,8 @@ public class Terreno {
 		for (int i = 0; i < tamanioHorizontal; i++) {
 			for (int j = 0; j < tamanioVertical; j++) {
 				Parcela parcela= new Parcela();
+				parcela.setCoordenadaHorizontal(i);
+				parcela.setCoordenadaVertical(j);
 				parcelas[i][j]= parcela;
 			}
 		}
