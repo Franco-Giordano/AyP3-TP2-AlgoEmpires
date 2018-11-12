@@ -24,10 +24,10 @@ public class Region {
 
     public void ocuparCentro(Unidad unidadOcupante) {
 
-        int centroHorizontal = parcelasEnRegion.length / 2;
-        int centroVertical = parcelasEnRegion[0].length / 2;
+        int centroVertical = parcelasEnRegion.length / 2;
+        int centroHorizontal = parcelasEnRegion[0].length / 2;
 
-        parcelasEnRegion[centroHorizontal][centroVertical].ocupar(unidadOcupante);
+        parcelasEnRegion[centroVertical][centroHorizontal].ocupar(unidadOcupante);
     }
 
 }

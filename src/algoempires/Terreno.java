@@ -52,10 +52,8 @@ public class Terreno {
 
         int corrimientoHorizontal = coordenadaSupIzq.getCoordenadaHorizontal();
 
-        this.tamVertical = parcelasEnRegion.length;
-        for (int i = 0; i < this.tamVertical; i++) {
-            this.tamHorizontal = parcelasEnRegion[0].length;
-            for (int j = 0; j < this.tamHorizontal; j++) {
+        for (int i = 0; i < tamVertical; i++) {
+            for (int j = 0; j < tamHorizontal; j++) {
 
                 if (this.parEnRango(i + corrimientoVertical,j + corrimientoHorizontal)) {
                     parcelasEnRegion[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
