@@ -57,21 +57,26 @@ public class Terreno {
             this.tamHorizontal = parcelasEnRegion[0].length;
             for (int j = 0; j < this.tamHorizontal; j++) {
 
-                parcelasEnRegion[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
-
+                if (this.parEnRango(i + corrimientoVertical,j + corrimientoHorizontal)) {
+                    parcelasEnRegion[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
+                }
             }
         }
 
         return new Region(parcelasEnRegion);
     }
 
-
-    public void esMovimientoValido(int posVertical, int posHorizontal) throws MovimientoInvalidoException {
-
+    private boolean parEnRango(int posVertical, int posHorizontal) {
         boolean estaEnRangoVertical = 0 <= posVertical && posVertical < tamVertical;
         boolean estaEnRangoHorizontal = 0 <= posHorizontal && posHorizontal < tamHorizontal;
 
-        if (!estaEnRangoHorizontal || !estaEnRangoVertical || parcelas[posVertical][posHorizontal].estaOcupada()){
+        return estaEnRangoHorizontal && estaEnRangoVertical;
+    }
+
+
+    public void esMovimientoValido(int posVertical, int posHorizontal) throws MovimientoInvalidoException {
+
+        if (!this.parEnRango(posVertical, posHorizontal) || parcelas[posVertical][posHorizontal].estaOcupada()){
             throw new MovimientoInvalidoException(posVertical, posHorizontal);
         }
 
