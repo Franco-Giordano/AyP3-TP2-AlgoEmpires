@@ -11,11 +11,5 @@ public abstract class Guerrero extends Unidad {
 		super(vidaRecibida, costoRecibido, coordenada);
 		this.rangoDelGuerrero= rangoRecibido;
 	}
-	
-	
-	public boolean tieneRangoSuficiente(int coordenadaHorizontalDeAtaque, int coordenadaVerticalDeAtaque) {
-		
-		return this.getParcelaQueOcupo().estasAUnaDistanciaMenorQue(coordenadaHorizontalDeAtaque, coordenadaVerticalDeAtaque, rangoDelGuerrero);
-	}
-	
+
 }

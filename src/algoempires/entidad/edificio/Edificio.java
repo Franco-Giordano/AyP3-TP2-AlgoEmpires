@@ -1,27 +1,19 @@
 package algoempires.entidad.edificio;
 
+import algoempires.Region;
 import algoempires.entidad.Entidad;
 
 public class Edificio extends Entidad {
 
-	private int turnosDeConstruccion;
-	private int tamanio;
+    private int turnosDeConstruccion;
+    private Region espacioQueOcupa;
 
-	public Edificio(int vidaRecibida, int costoRecibido, int turnosDeConstruccionRecibidos, int tamanioRecibido) {
-		super(vidaRecibida, costoRecibido);
-		this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
-		this.tamanio = tamanioRecibido;
-	}
+    public Edificio(int vidaRecibida, int costoRecibido, int turnosDeConstruccionRecibidos, Region espacioQueOcupaRecibido) {
+        super(vidaRecibida, costoRecibido);
+        this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
+        this.espacioQueOcupa = espacioQueOcupaRecibido;
+        espacioQueOcupa.ocupar(this);
+    }
 
-	//----------------------------------------------------------------------------------------------------------------//
-	//######################################### METODOS DE TESTEO ####################################################//
-	//----------------------------------------------------------------------------------------------------------------//
 
-	public int getTurnosDeConstruccion() {
-		return turnosDeConstruccion;
-	}
-
-	public int getTamanio() {
-		return tamanio;
-	}
 }

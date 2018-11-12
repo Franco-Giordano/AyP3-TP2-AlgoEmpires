@@ -20,7 +20,7 @@ public class Coordenada {
 
     }
 
-    public void mover(Direccion direccion){
+    public void mover(Direccion direccion) {
 
         this.coordenadaVertical += direccion.getVertical();
         this.coordenadaHorizontal += direccion.getHorizontal();
@@ -41,6 +41,8 @@ public class Coordenada {
     }
 
     public Region generarRegion() {
+
         return terreno.obtenerAdyacentesA(this);
+
     }
 }

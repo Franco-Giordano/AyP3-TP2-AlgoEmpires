@@ -1,6 +1,7 @@
 package algoempires;
 
 import algoempires.direccion.Direccion;
+import algoempires.entidad.unidad.Unidad;
 
 public class Posicion {
 
@@ -21,6 +22,10 @@ public class Posicion {
 
         return (this.coordenada.getCoordenadaHorizontal() == coordenada.getCoordenadaHorizontal() &&
                 this.coordenada.getCoordenadaVertical() == coordenada.getCoordenadaVertical());
+    }
+
+    public void ocupar(Unidad unidadOcupante){
+        areaDeMovimiento.ocuparCentro(unidadOcupante);
     }
 
 }

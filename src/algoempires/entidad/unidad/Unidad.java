@@ -6,19 +6,19 @@ import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
 
 
-
-//TODO Hacer abstracta?
-public class Unidad extends Entidad {
+public abstract class Unidad extends Entidad {
 
 	private Posicion posicion;
 
 	public Unidad(int vidaRecibida, int costoRecibido, Coordenada coordenada) {
 		super(vidaRecibida, costoRecibido);
 		this.posicion = new Posicion(coordenada);
+		this.posicion.ocupar(this);
 	}
 
 	public void desplazarHacia(Direccion direccion) {
 		posicion.desplazarHacia(direccion);
+
 	}
 
     public boolean estaEnCoordenada(Coordenada coordenada) {
