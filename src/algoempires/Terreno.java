@@ -31,7 +31,7 @@ public class Terreno {
 
     }
 
-    public Region obtenerAdyacentesA(Coordenada coordenada){
+    public Region obtenerAdyacentesA(Coordenada coordenada) {
 
         Coordenada coordSuperiorIzquierda = coordenada.generarMovimientoHacia(new DireccionArribaIzquierda());
 
@@ -55,7 +55,7 @@ public class Terreno {
         for (int i = 0; i < tamVertical; i++) {
             for (int j = 0; j < tamHorizontal; j++) {
 
-                if (this.parEnRango(i + corrimientoVertical,j + corrimientoHorizontal)) {
+                if (this.parEnRango(i + corrimientoVertical, j + corrimientoHorizontal)) {
                     parcelasEnRegion[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
                 }
             }
@@ -74,7 +74,7 @@ public class Terreno {
 
     public void esMovimientoValido(int posVertical, int posHorizontal) throws MovimientoInvalidoException {
 
-        if (!this.parEnRango(posVertical, posHorizontal) || parcelas[posVertical][posHorizontal].estaOcupada()){
+        if (!this.parEnRango(posVertical, posHorizontal) || parcelas[posVertical][posHorizontal].estaOcupada()) {
             throw new MovimientoInvalidoException(posVertical, posHorizontal);
         }
 

@@ -25,7 +25,7 @@ public class Posicion {
                 this.coordenada.getCoordenadaVertical() == coordenada.getCoordenadaVertical());
     }
 
-    public void ocupar(Unidad unidadOcupante){
+    public void ocupar(Unidad unidadOcupante) {
         areaDeMovimiento.ocuparCentro(unidadOcupante);
     }
 

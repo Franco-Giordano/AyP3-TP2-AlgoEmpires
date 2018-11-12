@@ -13,9 +13,9 @@ public class AldeanoTest {
     @Test
     public void test01MuevoUnAldeanoAbajo() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -23,16 +23,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3,2,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3, 2, terreno)));
 
     }
 
     @Test
     public void test02MuevoUnAldeanoArriba() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -40,16 +40,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1,2,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1, 2, terreno)));
 
     }
 
     @Test
     public void test03MuevoUnAldeanoIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -57,16 +57,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(2,1,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(2, 1, terreno)));
 
     }
 
     @Test
     public void test04MuevoUnAldeanoDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -74,16 +74,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(2,3,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(2, 3, terreno)));
 
     }
 
     @Test
     public void test05MuevoUnAldeanoArribaIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -91,16 +91,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1,1,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1, 1, terreno)));
 
     }
 
     @Test
     public void test06MuevoUnAldeanoArribaDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -108,16 +108,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1,3,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(1, 3, terreno)));
 
     }
 
     @Test
     public void test07MuevoUnAldeanoAbajoIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -125,16 +125,16 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3,1,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3, 1, terreno)));
 
     }
 
     @Test
     public void test08MuevoUnAldeanoAbajoDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
@@ -142,34 +142,32 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3,3,terreno)));
+        TestCase.assertTrue(aldeano.estaEnCoordenada(new Coordenada(3, 3, terreno)));
 
     }
-
-
 
     @Test
     public void test09ElAldeanoOcupaElEspacioCorrespondienteEnTerreno() {
 
         Terreno terreno = new Terreno(5, 5);
 
-        Coordenada coordenada = new Coordenada(1,1,terreno);
+        Coordenada coordenada = new Coordenada(1, 1, terreno);
 
         Aldeano aldeano = new Aldeano(coordenada);
 
-        assertTrue(terreno.estaOcupada(1,1));
+        assertTrue(terreno.estaOcupada(1, 1));
     }
 
     @Test(expected = MovimientoInvalidoException.class)
-	public void test010AldeanoNoPuedeMoverseFueraDeRango() throws MovimientoInvalidoException {
+    public void test010AldeanoNoPuedeMoverseFueraDeRango() throws MovimientoInvalidoException {
 
-		Terreno terreno = new Terreno(5, 5);
+        Terreno terreno = new Terreno(5, 5);
 
-		Coordenada coordenada = new Coordenada(0,1,terreno);
+        Coordenada coordenada = new Coordenada(0, 0, terreno);
 
-		Aldeano aldeano = new Aldeano(coordenada);
+        Aldeano aldeano = new Aldeano(coordenada);
 
-		aldeano.desplazarHacia(new DireccionArriba());
-	}
+        aldeano.desplazarHacia(new DireccionArriba());
+    }
 
 }

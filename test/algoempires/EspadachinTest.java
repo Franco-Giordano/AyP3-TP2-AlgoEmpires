@@ -12,9 +12,9 @@ public class EspadachinTest {
 
     public void test01MuevoUnEspadachinAbajo() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -22,16 +22,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3,2,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 2, terreno)));
 
     }
 
     @Test
     public void test02MuevoUnEspadachinArriba() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -39,16 +39,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1,2,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 2, terreno)));
 
     }
 
     @Test
     public void test03MuevoUnEspadachinIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -56,16 +56,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2,1,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2, 1, terreno)));
 
     }
 
     @Test
     public void test04MuevoUnEspadachinDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -73,16 +73,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2,3,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2, 3, terreno)));
 
     }
 
     @Test
     public void test05MuevoUnEspadachinArribaIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -90,16 +90,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1,1,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 1, terreno)));
 
     }
 
     @Test
     public void test06MuevoUnEspadachinArribaDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -107,16 +107,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1,3,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 3, terreno)));
 
     }
 
     @Test
     public void test07MuevoUnEspadachinAbajoIzquierda() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -124,16 +124,16 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3,1,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 1, terreno)));
 
     }
 
     @Test
     public void test08MuevoUnEspadachinAbajoDerecha() throws MovimientoInvalidoException {
 
-        Terreno terreno  = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2,2, terreno);
+        Coordenada coordenada = new Coordenada(2, 2, terreno);
 
         Espadachin espadachin = new Espadachin(coordenada);
 
@@ -141,7 +141,7 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3,3,terreno)));
+        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 3, terreno)));
 
     }
 }

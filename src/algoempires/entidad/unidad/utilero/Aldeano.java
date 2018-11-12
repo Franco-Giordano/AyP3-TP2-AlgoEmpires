@@ -4,13 +4,13 @@ import algoempires.Coordenada;
 
 public class Aldeano extends Utilero {
 
-	private static int vidaDeAldeano = 50;
-	private static int costoDeAldeano = 25;
+    private static int vidaDeAldeano = 50;
+    private static int costoDeAldeano = 25;
 
-	public Aldeano(Coordenada coordenada) {
+    public Aldeano(Coordenada coordenada) {
 
-		super(vidaDeAldeano, costoDeAldeano, coordenada);
+        super(vidaDeAldeano, costoDeAldeano, coordenada);
 
-	}
+    }
 
 }

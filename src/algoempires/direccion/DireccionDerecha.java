@@ -2,7 +2,7 @@ package algoempires.direccion;
 
 public class DireccionDerecha extends Direccion {
 
-    public DireccionDerecha (){
+    public DireccionDerecha() {
 
         this.direccionHorizontal = 1;
 

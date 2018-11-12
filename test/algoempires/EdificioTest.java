@@ -10,17 +10,17 @@ public class EdificioTest {
     @Test
     public void test01CreoUnEdificio() {
 
-        Terreno terreno = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(5,5, terreno);
+        Coordenada coordenada = new Coordenada(5, 5, terreno);
 
-        Region tamanio =  terreno.obtenerAdyacentesA(coordenada);
+        Region tamanio = terreno.obtenerAdyacentesA(coordenada);
 
-        Edificio edificio = new Edificio(10,10,1, tamanio);
+        Edificio edificio = new Edificio(10, 10, 1, tamanio);
 
-        assertTrue(terreno.estaOcupada(4,4));
-        assertTrue(terreno.estaOcupada(5,5));
-        assertTrue(terreno.estaOcupada(6,6));
+        assertTrue(terreno.estaOcupada(4, 4));
+        assertTrue(terreno.estaOcupada(5, 5));
+        assertTrue(terreno.estaOcupada(6, 6));
 
     }
 }

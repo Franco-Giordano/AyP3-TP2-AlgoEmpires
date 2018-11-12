@@ -6,11 +6,11 @@ public abstract class Direccion {
 
     protected int direccionVertical;
 
-    public int getHorizontal () {
+    public int getHorizontal() {
         return this.direccionHorizontal;
     }
 
-    public int getVertical(){
+    public int getVertical() {
         return this.direccionVertical;
     }
 }

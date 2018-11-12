@@ -7,28 +7,28 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-	private ArrayList<Unidad> unidades;
-	private ArrayList<Edificio> edificios;
+    private ArrayList<Unidad> unidades;
+    private ArrayList<Edificio> edificios;
 
-	public Jugador() {
-		this.unidades = new ArrayList<Unidad>();
-		this.edificios = new ArrayList<Edificio>();
-	}
-	
-	public void agregarEdificio(Edificio edificioAAgregar) {
-		edificios.add(edificioAAgregar);
-	}
+    public Jugador() {
+        this.unidades = new ArrayList<Unidad>();
+        this.edificios = new ArrayList<Edificio>();
+    }
 
-	public void agregarUnidad(Unidad unidadAAgregar) {
-		unidades.add(unidadAAgregar);
-	}
+    public void agregarEdificio(Edificio edificioAAgregar) {
+        edificios.add(edificioAAgregar);
+    }
 
-	//----------------------------------------------------------------------------------------------------------------//
-	//######################################### METODOS DE TESTEO ####################################################//
-	//----------------------------------------------------------------------------------------------------------------//
+    public void agregarUnidad(Unidad unidadAAgregar) {
+        unidades.add(unidadAAgregar);
+    }
 
-	public ArrayList<Unidad> getUnidades(){
-		return this.unidades;
-	}
+    //----------------------------------------------------------------------------------------------------------------//
+    //######################################### METODOS DE TESTEO ####################################################//
+    //----------------------------------------------------------------------------------------------------------------//
+
+    public ArrayList<Unidad> getUnidades() {
+        return this.unidades;
+    }
 
 }
