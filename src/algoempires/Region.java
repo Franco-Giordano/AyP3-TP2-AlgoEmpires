@@ -24,8 +24,8 @@ public class Region {
 
     public void ocuparCentro(Unidad unidadOcupante) {
 
-        int centroHorizontal = (int) Math.floor(parcelasEnRegion.length / 2);
-        int centroVertical = (int) Math.floor(parcelasEnRegion[0].length / 2);
+        int centroHorizontal = parcelasEnRegion.length / 2;
+        int centroVertical = parcelasEnRegion[0].length / 2;
 
         parcelasEnRegion[centroHorizontal][centroVertical].ocupar(unidadOcupante);
     }

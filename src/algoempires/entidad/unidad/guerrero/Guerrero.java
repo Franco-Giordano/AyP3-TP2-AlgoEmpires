@@ -5,11 +5,17 @@ import algoempires.entidad.unidad.Unidad;
 
 public abstract class Guerrero extends Unidad {
 
-	private int rangoDelGuerrero;
-	
-	public Guerrero(int vidaRecibida, int costoRecibido, int rangoRecibido, Coordenada coordenada) {
+	private int rango;
+	private int danioAUnidades;
+	private int danioAEdificios;
+
+	public Guerrero(int vidaRecibida, int costoRecibido, int rangoRecibido,
+                    int danioAUnidadesRecibido, int danioAEdificiosRecibido, Coordenada coordenada) {
+
 		super(vidaRecibida, costoRecibido, coordenada);
-		this.rangoDelGuerrero= rangoRecibido;
+		this.rango= rangoRecibido;
+		this.danioAUnidades = danioAUnidadesRecibido;
+		this.danioAEdificios = danioAEdificiosRecibido;
 	}
 
 }

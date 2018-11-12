@@ -46,4 +46,16 @@ public class Terreno {
         return new Region(adyacentes);
 
     }
+
+    //METODOS DE PRUEBAS
+
+    public int getTamanioHorizontal(){
+
+        return parcelas.length;
+    }
+
+    public int getTamanioVertical(){
+
+        return parcelas[0].length;
+    }
 }
