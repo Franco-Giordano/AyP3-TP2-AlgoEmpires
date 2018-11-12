@@ -2,8 +2,6 @@ package algoempires;
 
 import algoempires.direccion.Direccion;
 
-import java.util.HashMap;
-
 public class Posicion {
 
     private Region areaDeMovimiento;
@@ -13,8 +11,6 @@ public class Posicion {
         this.areaDeMovimiento = coordenadaActual.generarRegion();
         this.coordenada = coordenadaActual;
     }
-
-
 
     public void desplazarHacia(Direccion direccion) {
         coordenada.mover(direccion);
@@ -27,7 +23,4 @@ public class Posicion {
                 this.coordenada.getCoordenadaVertical() == coordenada.getCoordenadaVertical());
     }
 
-    public String obtenerCoordenadas(){
-        return "Estoy en: " + this.coordenada.getCoordenadaVertical() + "en vertical, y " + this.coordenada.getCoordenadaHorizontal() + "en horizontal.";
-    }
 }

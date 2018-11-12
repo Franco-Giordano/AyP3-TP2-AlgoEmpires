@@ -6,7 +6,6 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AldeanoTest {
@@ -20,13 +19,9 @@ public class AldeanoTest {
 
 	    Aldeano aldeano = new Aldeano(coordenada);
 
-        aldeano.imprimirPosicion();
-
         Direccion direccion = new DireccionAbajo();
 
 	    aldeano.desplazarHacia(direccion);
-
-	    aldeano.imprimirPosicion();
 
 	    assertTrue(aldeano.estaEnCoordenada(new Coordenada(1,2,terreno)));
 

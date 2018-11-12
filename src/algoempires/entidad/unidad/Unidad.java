@@ -2,7 +2,6 @@ package algoempires.entidad.unidad;
 
 import algoempires.Coordenada;
 import algoempires.Posicion;
-import algoempires.Region;
 import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
 
@@ -26,8 +25,4 @@ public class Unidad extends Entidad {
 	    return this.posicion.estaEn(coordenada);
     }
 
-    public void imprimirPosicion() {
-
-	    System.out.println(this.posicion.obtenerCoordenadas());
-    }
 }

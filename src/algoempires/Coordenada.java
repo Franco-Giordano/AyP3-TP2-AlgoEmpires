@@ -4,18 +4,17 @@ import algoempires.direccion.Direccion;
 
 public class Coordenada {
 
-    private int coordenadaHorizontal;
-
     private int coordenadaVertical;
+
+    private int coordenadaHorizontal;
 
     private Terreno terreno;
 
 
-    public Coordenada(int coordenadaHorizontal, int coordenadaVertical, Terreno terreno) {
-
-        this.coordenadaHorizontal = coordenadaHorizontal;
+    public Coordenada(int coordenadaVertical, int coordenadaHorizontal, Terreno terreno) {
 
         this.coordenadaVertical = coordenadaVertical;
+        this.coordenadaHorizontal = coordenadaHorizontal;
 
         this.terreno = terreno;
 
@@ -23,21 +22,25 @@ public class Coordenada {
 
     public void mover(Direccion direccion){
 
-        this.coordenadaHorizontal += direccion.getHorizontal();
         this.coordenadaVertical += direccion.getVertical();
+        this.coordenadaHorizontal += direccion.getHorizontal();
 
     }
 
-    public int getCoordenadaHorizontal(){
+    public Coordenada generarMovidaHacia(Direccion direccion) {
+        return new Coordenada(coordenadaVertical + direccion.getVertical(),
+                coordenadaHorizontal + direccion.getHorizontal(), terreno);
+    }
+
+    public int getCoordenadaHorizontal() {
         return this.coordenadaHorizontal;
     }
 
-    public int getCoordenadaVertical(){
+    public int getCoordenadaVertical() {
         return this.coordenadaVertical;
     }
 
     public Region generarRegion() {
-
         return terreno.obtenerAdyacentesA(this);
     }
 }
