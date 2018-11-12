@@ -1,56 +1,33 @@
 package algoempires;
 
+import algoempires.direccion.Direccion;
+
 import java.util.HashMap;
 
 public class Posicion {
 
+    private Region areaDeMovimiento;
+    private Coordenada coordenada;
 
-    private Region region;
-    private Parcela parcelaActual;
-    private HashMap<String, Parcela> parcelasAdyacentes;
-    private String[] direccionesPosibles = {"superiorIzquierda", "superior", "superiorDerecha",
-                                            "izquierda",                     "derecha",
-                                            "inferiorIzquierda", "inferior", "inferiorDerecha"};
-
-    public Posicion(Region region) {
-        this.centrarPosicionEn(region);
-    }
-
-    private void centrarPosicionEn(Region region) {
-        this.parcelaActual = region.getParcelaCentral();
-        this.parcelasAdyacentes = region.calcularMapaAdyacentes(direccionesPosibles);
+    public Posicion(Coordenada coordenadaActual) {
+        this.areaDeMovimiento = coordenadaActual.generarRegion();
+        this.coordenada = coordenadaActual;
     }
 
 
-    public void desplazarHaciaArribaIzquierda() {
-        //region.moverANuevoCentro(parcelasAdyacentes["superiorIzquierda"]);
+
+    public void desplazarHacia(Direccion direccion) {
+        coordenada.mover(direccion);
+        areaDeMovimiento = coordenada.generarRegion();
     }
 
-    public void desplazarHaciaArribaDerecha() {
+    public boolean estaEn(Coordenada coordenada) {
 
+        return (this.coordenada.getCoordenadaHorizontal() == coordenada.getCoordenadaHorizontal() &&
+                this.coordenada.getCoordenadaVertical() == coordenada.getCoordenadaVertical());
     }
 
-    public void desplazarHaciaArriba() {
-
-    }
-
-    public void desplazarHaciaIzquierda() {
-
-    }
-
-    public void desplazarHaciaDerecha() {
-
-    }
-
-    public void desplazarHaciaAbajoIzquierda() {
-
-    }
-
-    public void desplazarHaciaAbajoDerecha() {
-
-    }
-
-    public void desplazarHaciaAbajo() {
-
+    public String obtenerCoordenadas(){
+        return "Estoy en: " + this.coordenada.getCoordenadaVertical() + "en vertical, y " + this.coordenada.getCoordenadaHorizontal() + "en horizontal.";
     }
 }

@@ -1,5 +1,6 @@
 package algoempires.entidad.unidad.guerrero;
 
+import algoempires.Coordenada;
 import algoempires.entidad.unidad.guerrero.Guerrero;
 
 public class Arquero extends Guerrero {
@@ -8,8 +9,8 @@ public class Arquero extends Guerrero {
 	private static int costoDelArquero= 75;
 	private static int rangoDelArquero= 3;
 	
-	public Arquero() {
-		super(vidaDelArquero, costoDelArquero, rangoDelArquero);
+	public Arquero(Coordenada coordenada) {
+		super(vidaDelArquero, costoDelArquero, rangoDelArquero, coordenada);
 	}
 
 }

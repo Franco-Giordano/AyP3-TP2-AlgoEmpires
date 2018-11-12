@@ -1,7 +1,9 @@
 package algoempires.entidad.unidad;
 
+import algoempires.Coordenada;
 import algoempires.Posicion;
 import algoempires.Region;
+import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
 
 
@@ -11,46 +13,21 @@ public class Unidad extends Entidad {
 
 	private Posicion posicion;
 
-	//TODO Constructor extraño, remover
-	public Unidad(int vidaRecibida, int costoRecibido) {
+	public Unidad(int vidaRecibida, int costoRecibido, Coordenada coordenada) {
 		super(vidaRecibida, costoRecibido);
-		this.posicion = null;
+		this.posicion = new Posicion(coordenada);
 	}
 
-	public Unidad(int vidaRecibida, int costoRecibido, Region region) {
-		super(vidaRecibida, costoRecibido);
-		this.posicion = new Posicion(region);
+	public void desplazarHacia(Direccion direccion) {
+		posicion.desplazarHacia(direccion);
 	}
 
-	public void desplazarHaciaArribaIzquierda() {
-		posicion.desplazarHaciaArribaIzquierda();
-	}
+    public boolean estaEnCoordenada(Coordenada coordenada) {
+	    return this.posicion.estaEn(coordenada);
+    }
 
-	public void desplazarHaciaArribaDerecha() {
+    public void imprimirPosicion() {
 
-	}
-
-	public void desplazarHaciaArriba() {
-
-	}
-
-	public void desplazarHaciaIzquierda() {
-
-	}
-
-	public void desplazarHaciaDerecha() {
-
-	}
-
-	public void desplazarHaciaAbajoIzquierda() {
-
-	}
-
-	public void desplazarHaciaAbajoDerecha() {
-
-	}
-
-	public void desplazarHaciaAbajo() {
-
-	}
+	    System.out.println(this.posicion.obtenerCoordenadas());
+    }
 }

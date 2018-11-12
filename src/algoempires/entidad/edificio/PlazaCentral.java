@@ -12,9 +12,5 @@ public class PlazaCentral extends Edificio {
 	public PlazaCentral() {	
 		super(vidaDeLaPlaza, costoDeLaPlaza, turnosDeConstruccion, tamanio);
 	}
-	
-	public Aldeano crearUnidad() {
-		Aldeano aldeano= new Aldeano();
-		return aldeano;
-	}
+
 }

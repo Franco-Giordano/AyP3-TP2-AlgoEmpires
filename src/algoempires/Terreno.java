@@ -1,6 +1,8 @@
 package algoempires;
 
 
+import algoempires.direccion.Direccion;
+import algoempires.direccion.DireccionArribaIzquierda;
 import algoempires.entidad.Entidad;
 
 
@@ -35,6 +37,32 @@ public class Terreno {
 		parcelas[coordenadaHorizontal][coordenadaVertical].ocupar(entidadAAgregar);
 	}
 
+	public Region obtenerAdyacentesA(Coordenada coordenada){
+
+	    Parcela[][] adyacentes = new Parcela[3][3];
+
+        DireccionArribaIzquierda direccion = new DireccionArribaIzquierda();
+
+        coordenada.mover(direccion);
+
+	    Coordenada coordenadaSuperiorIzquierda = coordenada;
+
+        int corrimientoVertical = coordenadaSuperiorIzquierda.getCoordenadaVertical();
+
+        int corrimientoHorizontal = coordenadaSuperiorIzquierda.getCoordenadaHorizontal();
+
+        for (int i = corrimientoVertical; i < adyacentes.length + corrimientoVertical; i ++){
+	        for (int j = corrimientoHorizontal; j < adyacentes[0].length + corrimientoHorizontal; j ++){
+
+	            adyacentes[i - corrimientoVertical][j - corrimientoHorizontal] = this.parcelas[i][j];
+
+            }
+        }
+
+        return new Region(adyacentes);
+
+    }
+
 	/*
 
 	public Region generarRegionCentradaEn(Parcela parcelaActual) {
@@ -45,7 +73,7 @@ public class Terreno {
 
 
 
-	//TODO esto capaz se puede evitar con un objeto Coordenada, que lo tendria unidad/entidad/etc
+	//TODO esto capaz se puede evitar con un objeto algoempires.Coordenada, que lo tendria unidad/entidad/etc
 	private int[] encontrarCoordenadasParcela(Parcela parcelaActual) {
 		int[] coordenadas = new int[2];
 
