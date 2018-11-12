@@ -13,7 +13,8 @@ public class Posicion {
         this.coordenada = coordenadaActual;
     }
 
-    public void desplazarHacia(Direccion direccion) {
+    public void desplazarHacia(Direccion direccion) throws MovimientoInvalidoException {
+
         coordenada.mover(direccion);
         areaDeMovimiento = coordenada.generarRegion();
     }

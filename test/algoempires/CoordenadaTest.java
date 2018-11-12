@@ -13,7 +13,8 @@ public class CoordenadaTest {
 	
 	@Test
 	public void test01CoordenadaSeCreaCorrectamente() {
-		Coordenada coordenada= new Coordenada(7, 5, null);
+		Terreno terreno = new Terreno(10,10);
+		Coordenada coordenada= new Coordenada(7, 5, terreno);
 		
 		assertEquals(coordenada.getCoordenadaVertical(), 7);
 		assertEquals(coordenada.getCoordenadaHorizontal(), 5);
@@ -21,9 +22,11 @@ public class CoordenadaTest {
 	}
 	
 	@Test
-	public void test02CoordenadaSeModificaCorrectamenteAlMover() {
-		
-		Coordenada coordenada= new Coordenada(7, 5, null);
+	public void test02CoordenadaSeModificaCorrectamenteAlMover() throws MovimientoInvalidoException {
+
+		Terreno terreno = new Terreno(10,10);
+
+		Coordenada coordenada= new Coordenada(7, 5, terreno);
 		
 		Direccion direccionArriba= new DireccionArriba();
 		
@@ -36,12 +39,14 @@ public class CoordenadaTest {
 	
 	@Test
 	public void test03SeGeneraMovidaCorrectamenteHaciaLaDireccion() {
-		
-		Coordenada coordenada= new Coordenada(7, 5, null);
+
+		Terreno terreno = new Terreno(10,10);
+
+		Coordenada coordenada= new Coordenada(7, 5, terreno);
 		
 		Direccion direccionArriba= new DireccionArriba();
 		
-		coordenada= coordenada.generarMovidaHacia(direccionArriba);
+		coordenada= coordenada.generarMovimientoHacia(direccionArriba);
 		
 		assertEquals(coordenada.getCoordenadaVertical(), 6);
 		assertEquals(coordenada.getCoordenadaHorizontal(), 5);

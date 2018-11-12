@@ -2,6 +2,7 @@ package algoempires;
 
 import algoempires.direccion.Direccion;
 import algoempires.direccion.DireccionAbajo;
+import algoempires.direccion.DireccionArriba;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 public class AldeanoTest {
 
 	@Test
-	public void test01MuevoUnAldeano() {
+	public void test01MuevoUnAldeano() throws MovimientoInvalidoException {
 
 	    Terreno terreno  = new Terreno(10,10);
 
@@ -37,5 +38,17 @@ public class AldeanoTest {
 
         assertTrue(terreno.estaOcupada(1,1));
     }
+
+    @Test(expected = MovimientoInvalidoException.class)
+	public void test03AldeanoNoPuedeMoverseFueraDeRango() throws MovimientoInvalidoException {
+
+		Terreno terreno = new Terreno(5, 5);
+
+		Coordenada coordenada = new Coordenada(0,1,terreno);
+
+		Aldeano aldeano = new Aldeano(coordenada);
+
+		aldeano.desplazarHacia(new DireccionArriba());
+	}
 
 }

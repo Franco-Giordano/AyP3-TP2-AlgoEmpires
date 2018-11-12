@@ -1,12 +1,18 @@
 package algoempires;
 
+import algoempires.direccion.DireccionAbajoDerecha;
 import algoempires.direccion.DireccionArribaIzquierda;
 
 public class Terreno {
 
     private Parcela[][] parcelas;
+    private int tamVertical;
+    private int tamHorizontal;
 
     public Terreno(int tamanioVertical, int tamanioHorizontal) {
+
+        this.tamHorizontal = tamanioHorizontal;
+        this.tamVertical = tamanioVertical;
 
         parcelas = new Parcela[tamanioVertical][tamanioHorizontal];
 
@@ -27,35 +33,57 @@ public class Terreno {
 
     public Region obtenerAdyacentesA(Coordenada coordenada){
 
-        Parcela[][] adyacentes = new Parcela[3][3];
+        Coordenada coordSuperiorIzquierda = coordenada.generarMovimientoHacia(new DireccionArribaIzquierda());
 
-        Coordenada coordenadaSuperiorIzquierda = coordenada.generarMovidaHacia(new DireccionArribaIzquierda());
+        Coordenada coordInferiorDerecha = coordenada.generarMovimientoHacia(new DireccionAbajoDerecha());
 
-        int corrimientoVertical = coordenadaSuperiorIzquierda.getCoordenadaVertical();
+        return obtenerRegionDelimitadaPor(coordSuperiorIzquierda, coordInferiorDerecha);
 
-        int corrimientoHorizontal = coordenadaSuperiorIzquierda.getCoordenadaHorizontal();
+    }
 
-        for (int i = 0; i < adyacentes.length; i++) {
-            for (int j = 0; j < adyacentes[0].length; j++) {
+    public Region obtenerRegionDelimitadaPor(Coordenada coordenadaSupIzq, Coordenada coordenadaInfDer) {
 
-                adyacentes[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
+        int tamVertical = Coordenada.distanciaVertical(coordenadaSupIzq, coordenadaInfDer) + 1;
+        int tamHorizontal = Coordenada.distanciaHorizontal(coordenadaSupIzq, coordenadaInfDer) + 1;
+
+        Parcela[][] parcelasEnRegion = new Parcela[tamVertical][tamHorizontal];
+
+        int corrimientoVertical = coordenadaSupIzq.getCoordenadaVertical();
+
+        int corrimientoHorizontal = coordenadaSupIzq.getCoordenadaHorizontal();
+
+        this.tamVertical = parcelasEnRegion.length;
+        for (int i = 0; i < this.tamVertical; i++) {
+            this.tamHorizontal = parcelasEnRegion[0].length;
+            for (int j = 0; j < this.tamHorizontal; j++) {
+
+                parcelasEnRegion[i][j] = this.parcelas[i + corrimientoVertical][j + corrimientoHorizontal];
 
             }
         }
 
-        return new Region(adyacentes);
+        return new Region(parcelasEnRegion);
+    }
+
+
+    public void esMovimientoValido(int posVertical, int posHorizontal) throws MovimientoInvalidoException {
+
+        boolean estaEnRangoVertical = 0 <= posVertical && posVertical < tamVertical;
+        boolean estaEnRangoHorizontal = 0 <= posHorizontal && posHorizontal < tamHorizontal;
+
+        if (!estaEnRangoHorizontal || !estaEnRangoVertical || parcelas[posVertical][posHorizontal].estaOcupada()){
+            throw new MovimientoInvalidoException(posVertical, posHorizontal);
+        }
 
     }
 
-    //METODOS DE PRUEBAS
 
-    public int getTamanioHorizontal(){
-
-        return parcelas.length;
+    //METODOS DE TESTEO
+    public int getTamHorizontal() {
+        return tamHorizontal;
     }
 
-    public int getTamanioVertical(){
-
-        return parcelas[0].length;
+    public int getTamVertical() {
+        return tamVertical;
     }
 }

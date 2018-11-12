@@ -20,14 +20,31 @@ public class Coordenada {
 
     }
 
-    public void mover(Direccion direccion) {
+    public static int distanciaVertical(Coordenada coordenadaA, Coordenada coordenadaB) {
+        return Math.abs(coordenadaB.coordenadaVertical - coordenadaA.coordenadaVertical);
+    }
+
+    public static int distanciaHorizontal(Coordenada coordenadaA, Coordenada coordenadaB) {
+        return Math.abs(coordenadaB.coordenadaHorizontal - coordenadaA.coordenadaHorizontal);
+    }
+
+    public void mover(Direccion direccion) throws MovimientoInvalidoException {
+
+        this.esDireccionValida(direccion);
 
         this.coordenadaVertical += direccion.getVertical();
         this.coordenadaHorizontal += direccion.getHorizontal();
 
     }
 
-    public Coordenada generarMovidaHacia(Direccion direccion) {
+    private void esDireccionValida(Direccion direccion) throws MovimientoInvalidoException {
+
+        Coordenada nuevaCoordenada = this.generarMovimientoHacia(direccion);
+
+        terreno.esMovimientoValido(nuevaCoordenada.coordenadaVertical, nuevaCoordenada.coordenadaHorizontal);
+    }
+
+    public Coordenada generarMovimientoHacia(Direccion direccion) {
         return new Coordenada(coordenadaVertical + direccion.getVertical(),
                 coordenadaHorizontal + direccion.getHorizontal(), terreno);
     }

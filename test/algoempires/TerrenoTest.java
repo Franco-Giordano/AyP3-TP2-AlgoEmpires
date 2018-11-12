@@ -11,8 +11,8 @@ public class TerrenoTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        assertEquals(terreno.getTamanioHorizontal(), 10);
-        assertEquals(terreno.getTamanioVertical(), 10);
+        assertEquals(terreno.getTamHorizontal(), 10);
+        assertEquals(terreno.getTamVertical(), 10);
 
     }
 
