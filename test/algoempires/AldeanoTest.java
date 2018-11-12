@@ -23,7 +23,7 @@ public class AldeanoTest {
 
 	    aldeano.desplazarHacia(direccion);
 
-	    assertTrue(aldeano.estaEnCoordenada(new Coordenada(1,2,terreno)));
+	    assertTrue(aldeano.estaEnCoordenada(new Coordenada(2,1,terreno)));
 
 	}
 
