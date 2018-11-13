@@ -23,8 +23,8 @@ public abstract class Unidad extends Entidad {
 
     }
 
-    public boolean estaEnCoordenada(Coordenada coordenada) {
-        return this.posicion.estaEn(coordenada);
+    public boolean estaEnCoordenada(Casillero casillero) {
+        return this.posicion.estaEn(casillero);
     }
 
 }

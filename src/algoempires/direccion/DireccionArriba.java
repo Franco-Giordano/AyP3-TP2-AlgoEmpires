@@ -6,6 +6,6 @@ public class DireccionArriba extends Direccion {
 
         this.direccionHorizontal = 0;
 
-        this.direccionVertical = -1;
+        this.direccionVertical = 1;
     }
 }

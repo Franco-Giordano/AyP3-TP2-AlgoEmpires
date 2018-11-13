@@ -5,7 +5,6 @@ import algoempires.entidad.unidad.Unidad;
 
 public class Posicion {
 
-    private Region areaDeMovimiento;
     private Casillero casilleroQueOcupo;
 
     public Posicion(Casillero casillero) {

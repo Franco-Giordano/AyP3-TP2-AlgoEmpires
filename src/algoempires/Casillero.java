@@ -34,6 +34,17 @@ public class Casillero {
 
     }
 
-    public Region generarRegion() {
+
+    @Override public boolean equals(Object otro) {
+        boolean result = false;
+        if (otro instanceof Casillero) {
+            Casillero that = (Casillero) otro;
+            result = (this.posHorizontal == that.getHorizontal() && this.posVertical == that.getVertical());
+        }
+        return result;
+    }
+
+    @Override public int hashCode() {
+        return (41 * (41 + posHorizontal) + posVertical);
     }
 }

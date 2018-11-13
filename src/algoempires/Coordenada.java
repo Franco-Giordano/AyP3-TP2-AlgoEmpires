@@ -10,7 +10,6 @@ public class Coordenada {
 
     private Terreno terreno;
 
-
     public Coordenada(int coordenadaVertical, int coordenadaHorizontal, Terreno terreno) {
 
         this.coordenadaVertical = coordenadaVertical;

@@ -17,17 +17,19 @@ public class Terreno {
 
         mapa = new HashMap<Casillero, Entidad>();
 
-        mapa.put(limiteInfIzq, null);
-        mapa.put(limiteSupDer, null);
-
         for (int i = 1; i <= tamanioHorizontal; i++) {
             for (int j = 1; j <= tamanioVertical; j++) {
 
-                if (!(i == 1 && j== 1) && !(i == tamanioHorizontal && j== tamanioVertical)) {
-                    Casillero casillero = new Casillero(i,j);
-                    mapa.put(casillero, null);
+                Casillero casillero = new Casillero(i,j);
+                mapa.put(casillero, null);
+
+                if (i == 1 && j== 1) {
+                    this.limiteInfIzq = casillero;
                 }
 
+                if (i == tamanioHorizontal && j== tamanioVertical) {
+                    this.limiteSupDer = casillero;
+                }
             }
         }
 

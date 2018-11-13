@@ -7,8 +7,6 @@ public abstract class Entidad {
 
     private int vida;
     private int costo;
-    private Parcela parcelaQueOcupo;
-
 
     public Entidad(int vidaRecibida, int costoRecibido) {
         this.vida = vidaRecibida;
