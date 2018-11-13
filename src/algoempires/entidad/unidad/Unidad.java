@@ -1,7 +1,8 @@
 package algoempires.entidad.unidad;
 
+import algoempires.Casillero;
 import algoempires.Coordenada;
-import algoempires.MovimientoInvalidoException;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Posicion;
 import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
@@ -11,13 +12,13 @@ public abstract class Unidad extends Entidad {
 
     private Posicion posicion;
 
-    public Unidad(int vidaRecibida, int costoRecibido, Coordenada coordenada) {
+    public Unidad(int vidaRecibida, int costoRecibido, Casillero casillero) {
         super(vidaRecibida, costoRecibido);
-        this.posicion = new Posicion(coordenada);
+        this.posicion = new Posicion(casillero);
         this.posicion.ocupar(this);
     }
 
-    public void desplazarHacia(Direccion direccion) throws MovimientoInvalidoException {
+    public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException {
         posicion.desplazarHacia(direccion);
 
     }

@@ -22,7 +22,7 @@ public class CoordenadaTest {
     }
 
     @Test
-    public void test02CoordenadaSeModificaCorrectamenteAlMover() throws MovimientoInvalidoException {
+    public void test02CoordenadaSeModificaCorrectamenteAlMover() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 

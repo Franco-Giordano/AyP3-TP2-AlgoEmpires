@@ -1,35 +1,45 @@
 package algoempires;
 
-import algoempires.direccion.DireccionAbajoDerecha;
-import algoempires.direccion.DireccionArribaIzquierda;
+import algoempires.entidad.Entidad;
+
+import java.util.HashMap;
 
 public class Terreno {
 
-    private Parcela[][] parcelas;
-    private int tamVertical;
-    private int tamHorizontal;
+    private HashMap<Casillero, Entidad> mapa;
+    private Casillero limiteInfIzq;
+    private Casillero limiteSupDer;
 
-    public Terreno(int tamanioVertical, int tamanioHorizontal) {
+    public Terreno(int tamanioHorizontal, int tamanioVertical) {
 
-        this.tamHorizontal = tamanioHorizontal;
-        this.tamVertical = tamanioVertical;
+        this.limiteInfIzq = new Casillero(1,1);
+        this.limiteSupDer = new Casillero(tamanioHorizontal, tamanioVertical);
 
-        parcelas = new Parcela[tamanioVertical][tamanioHorizontal];
+        mapa = new HashMap<Casillero, Entidad>();
 
-        for (int i = 0; i < tamanioVertical; i++) {
-            for (int j = 0; j < tamanioHorizontal; j++) {
-                Parcela parcela = new Parcela();
-                parcelas[i][j] = parcela;
+        mapa.put(limiteInfIzq, null);
+        mapa.put(limiteSupDer, null);
+
+        for (int i = 1; i <= tamanioHorizontal; i++) {
+            for (int j = 1; j <= tamanioVertical; j++) {
+
+                if (!(i == 1 && j== 1) && !(i == tamanioHorizontal && j== tamanioVertical)) {
+                    Casillero casillero = new Casillero(i,j);
+                    mapa.put(casillero, null);
+                }
+
             }
         }
 
     }
 
-    public boolean estaOcupada(int coordenadaVertical, int coordenadaHorizontal) {
+    public boolean estaOcupada(Casillero casillero) {
 
-        return parcelas[coordenadaVertical][coordenadaHorizontal].estaOcupada();
+        return mapa.get(casillero) != null;
 
     }
+
+    /*
 
     public Region obtenerAdyacentesA(Coordenada coordenada) {
 
@@ -62,20 +72,18 @@ public class Terreno {
         }
 
         return new Region(parcelasEnRegion);
+    } */
+
+    private boolean casilleroEnRango(Casillero casillero) {
+
+        return casillero.pertenzcoAlRango(limiteInfIzq, limiteSupDer);
     }
 
-    private boolean parEnRango(int posVertical, int posHorizontal) {
-        boolean estaEnRangoVertical = 0 <= posVertical && posVertical < tamVertical;
-        boolean estaEnRangoHorizontal = 0 <= posHorizontal && posHorizontal < tamHorizontal;
 
-        return estaEnRangoHorizontal && estaEnRangoVertical;
-    }
+    public void esCasilleroValido(Casillero casillero) throws CasilleroInvalidoException {
 
-
-    public void esMovimientoValido(int posVertical, int posHorizontal) throws MovimientoInvalidoException {
-
-        if (!this.parEnRango(posVertical, posHorizontal) || parcelas[posVertical][posHorizontal].estaOcupada()) {
-            throw new MovimientoInvalidoException(posVertical, posHorizontal);
+        if (!this.casilleroEnRango(casillero) || this.estaOcupada(casillero)) {
+            throw new CasilleroInvalidoException(casillero);
         }
 
     }
@@ -83,10 +91,10 @@ public class Terreno {
 
     //METODOS DE TESTEO
     public int getTamHorizontal() {
-        return tamHorizontal;
+        return limiteSupDer.getHorizontal();
     }
 
     public int getTamVertical() {
-        return tamVertical;
+        return limiteSupDer.getVertical();
     }
 }

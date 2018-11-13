@@ -6,14 +6,14 @@ import algoempires.entidad.unidad.Unidad;
 public class Posicion {
 
     private Region areaDeMovimiento;
-    private Coordenada coordenada;
+    private Casillero casilleroQueOcupo;
 
-    public Posicion(Coordenada coordenadaActual) {
-        this.areaDeMovimiento = coordenadaActual.generarRegion();
-        this.coordenada = coordenadaActual;
+    public Posicion(Casillero casillero) {
+        this.areaDeMovimiento = casillero.generarRegion();
+        this.casilleroQueOcupo= casillero;
     }
 
-    public void desplazarHacia(Direccion direccion) throws MovimientoInvalidoException {
+    public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException {
 
         coordenada.mover(direccion);
         areaDeMovimiento = coordenada.generarRegion();

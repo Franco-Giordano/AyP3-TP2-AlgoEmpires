@@ -28,7 +28,7 @@ public class Coordenada {
         return Math.abs(coordenadaB.coordenadaHorizontal - coordenadaA.coordenadaHorizontal);
     }
 
-    public void mover(Direccion direccion) throws MovimientoInvalidoException {
+    public void mover(Direccion direccion) throws CasilleroInvalidoException {
 
         this.esDireccionValida(direccion);
 
@@ -37,11 +37,11 @@ public class Coordenada {
 
     }
 
-    private void esDireccionValida(Direccion direccion) throws MovimientoInvalidoException {
+    private void esDireccionValida(Direccion direccion) throws CasilleroInvalidoException {
 
         Coordenada nuevaCoordenada = this.generarMovimientoHacia(direccion);
 
-        terreno.esMovimientoValido(nuevaCoordenada.coordenadaVertical, nuevaCoordenada.coordenadaHorizontal);
+        terreno.esCasilleroValido(nuevaCoordenada.coordenadaVertical, nuevaCoordenada.coordenadaHorizontal);
     }
 
     public Coordenada generarMovimientoHacia(Direccion direccion) {

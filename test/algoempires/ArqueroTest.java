@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 public class ArqueroTest {
 
     @Test
-    public void test01MuevoUnArqueroAbajo() throws MovimientoInvalidoException {
+    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -26,7 +26,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test02MuevoUnArqueroArriba() throws MovimientoInvalidoException {
+    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -43,7 +43,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test03MuevoUnArqueroIzquierda() throws MovimientoInvalidoException {
+    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -60,7 +60,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test04MuevoUnArqueroDerecha() throws MovimientoInvalidoException {
+    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -77,7 +77,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test05MuevoUnArqueroArribaIzquierda() throws MovimientoInvalidoException {
+    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -94,7 +94,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test06MuevoUnArqueroArribaDerecha() throws MovimientoInvalidoException {
+    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -111,7 +111,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test07MuevoUnArqueroAbajoIzquierda() throws MovimientoInvalidoException {
+    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -128,7 +128,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test08MuevoUnArqueroAbajoDerecha() throws MovimientoInvalidoException {
+    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 

@@ -10,7 +10,7 @@ public class EspadachinTest {
 
     @Test
 
-    public void test01MuevoUnEspadachinAbajo() throws MovimientoInvalidoException {
+    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -27,7 +27,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test02MuevoUnEspadachinArriba() throws MovimientoInvalidoException {
+    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -44,7 +44,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test03MuevoUnEspadachinIzquierda() throws MovimientoInvalidoException {
+    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -61,7 +61,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test04MuevoUnEspadachinDerecha() throws MovimientoInvalidoException {
+    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -78,7 +78,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test05MuevoUnEspadachinArribaIzquierda() throws MovimientoInvalidoException {
+    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -95,7 +95,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test06MuevoUnEspadachinArribaDerecha() throws MovimientoInvalidoException {
+    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -112,7 +112,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test07MuevoUnEspadachinAbajoIzquierda() throws MovimientoInvalidoException {
+    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -129,7 +129,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test08MuevoUnEspadachinAbajoDerecha() throws MovimientoInvalidoException {
+    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 

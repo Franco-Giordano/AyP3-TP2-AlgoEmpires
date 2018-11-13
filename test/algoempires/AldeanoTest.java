@@ -11,7 +11,7 @@ public class AldeanoTest {
 
 
     @Test
-    public void test01MuevoUnAldeanoAbajo() throws MovimientoInvalidoException {
+    public void test01MuevoUnAldeanoAbajo() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -28,7 +28,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test02MuevoUnAldeanoArriba() throws MovimientoInvalidoException {
+    public void test02MuevoUnAldeanoArriba() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -45,7 +45,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test03MuevoUnAldeanoIzquierda() throws MovimientoInvalidoException {
+    public void test03MuevoUnAldeanoIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -62,7 +62,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test04MuevoUnAldeanoDerecha() throws MovimientoInvalidoException {
+    public void test04MuevoUnAldeanoDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -79,7 +79,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test05MuevoUnAldeanoArribaIzquierda() throws MovimientoInvalidoException {
+    public void test05MuevoUnAldeanoArribaIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -96,7 +96,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test06MuevoUnAldeanoArribaDerecha() throws MovimientoInvalidoException {
+    public void test06MuevoUnAldeanoArribaDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -113,7 +113,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test07MuevoUnAldeanoAbajoIzquierda() throws MovimientoInvalidoException {
+    public void test07MuevoUnAldeanoAbajoIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -130,7 +130,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test08MuevoUnAldeanoAbajoDerecha() throws MovimientoInvalidoException {
+    public void test08MuevoUnAldeanoAbajoDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -158,8 +158,8 @@ public class AldeanoTest {
         assertTrue(terreno.estaOcupada(1, 1));
     }
 
-    @Test(expected = MovimientoInvalidoException.class)
-    public void test010AldeanoNoPuedeMoverseFueraDeRango() throws MovimientoInvalidoException {
+    @Test(expected = CasilleroInvalidoException.class)
+    public void test010AldeanoNoPuedeMoverseFueraDeRango() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(5, 5);
 
