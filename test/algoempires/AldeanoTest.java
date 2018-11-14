@@ -26,8 +26,7 @@ public class AldeanoTest {
 
         Aldeano aldeano = new Aldeano(terreno,casillero);
 
-        
-
+        aldeano.tieneEstasCaracteristicas(50,20,false);
     }
 
     @Test
@@ -77,7 +76,6 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
 
-        //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
         assertTrue(aldeano.estaEnCasillero(new Casillero(1, 2)));
 
     }

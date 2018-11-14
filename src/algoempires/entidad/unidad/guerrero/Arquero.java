@@ -40,4 +40,9 @@ public class Arquero extends Guerrero {
     protected int getDanioAEdificios() {
         return DANIO_A_EDIFICIOS;
     }
+
+    public boolean tieneEstasCaracteristicas(int vida, int rango, int danioUnidades, int danioEdificios) {
+        return ((this.getVidaInicial() == vida) && (this.getRangoAtaque() == rango)
+                && (this.getDanioAEdificios() == danioEdificios) && (this.getDanioAUnidades() == danioUnidades));
+    }
 }

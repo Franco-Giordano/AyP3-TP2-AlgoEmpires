@@ -16,6 +16,17 @@ import static org.junit.Assert.assertTrue;
 public class ArmaDeAsedioTest {
 
     @Test
+    public void testArmaDeAsedioSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casillero = new Casillero(2,2);
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno,casillero);
+
+        armaDeAsedio.tieneEstasCaracteristicas(150,5,1, 75, false);
+    }
+
+    @Test
     public void testMuevoUnArmaDeAsedioAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);

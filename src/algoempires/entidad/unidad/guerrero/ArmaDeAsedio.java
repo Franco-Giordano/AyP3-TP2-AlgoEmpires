@@ -33,9 +33,9 @@ public class ArmaDeAsedio extends Guerrero {
         estaMontada = true;
     }
 
-    public void desmontar() {
+    /*public void desmontar() {
         estaMontada = false;
-    }
+    }*/
 
     @Override
     public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
@@ -66,6 +66,12 @@ public class ArmaDeAsedio extends Guerrero {
     @Override
     protected int getDanioAEdificios() {
         return DANIO_A_EDIFICIOS;
+    }
+
+    public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {
+        return ((this.getVidaInicial() == vida) && (this.getDanioAEdificios() == danioAEdficios)
+                && (this.estaMontada == estaMontada) && (this.getRangoAtaque()==rangoAtaque)
+                && (this.turnosDeConstruccion == turnosDeConstruccion) && (this.getDanioAUnidades() == 0));
     }
 }
 
