@@ -26,7 +26,7 @@ public class AldeanoTest {
 
         Aldeano aldeano = new Aldeano(terreno,casillero);
 
-        aldeano.tieneEstasCaracteristicas(50,20,false);
+        assertTrue(aldeano.tieneEstasCaracteristicas(50,20,false));
     }
 
     @Test

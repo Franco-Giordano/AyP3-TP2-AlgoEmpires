@@ -23,7 +23,7 @@ public class ArmaDeAsedioTest {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno,casillero);
 
-        armaDeAsedio.tieneEstasCaracteristicas(150,5,1, 75, false);
+        assertTrue(armaDeAsedio.tieneEstasCaracteristicas(150,5,1, 75, false));
     }
 
     @Test

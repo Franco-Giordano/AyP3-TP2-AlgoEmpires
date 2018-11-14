@@ -23,7 +23,7 @@ public class ArqueroTest {
 
         Arquero arquero = new Arquero(terreno,casillero);
 
-        arquero.tieneEstasCaracteristicas(75,3,15,10);
+        assertTrue(arquero.tieneEstasCaracteristicas(75,3,15,10));
 
     }
 
