@@ -2,6 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
 import algoempires.CasilleroInvalidoException;
+import algoempires.Jugador;
 import algoempires.Terreno;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
@@ -50,19 +51,16 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    protected int getCosto() {
-        return COSTO;
-    }
-
-    @Override
     protected int getVelocidadDeReparacion() {
         return VELOCIDAD_DE_REPARACION;
     }
 
-    //metodo unicamente de testeo
-
     public int getVida() {
         return vida;
+    }
+
+    @Override
+    public void actualizarEntreTurnos(Jugador jugador) {
     }
 }
 

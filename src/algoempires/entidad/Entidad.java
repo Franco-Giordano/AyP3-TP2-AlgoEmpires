@@ -1,5 +1,6 @@
 package algoempires.entidad;
 
+import algoempires.Jugador;
 import algoempires.Terreno;
 
 public abstract class Entidad {
@@ -13,6 +14,5 @@ public abstract class Entidad {
 
     protected abstract int getVidaInicial();
 
-    protected abstract int getCosto();
-
+    public abstract void actualizarEntreTurnos(Jugador jugador);
 }

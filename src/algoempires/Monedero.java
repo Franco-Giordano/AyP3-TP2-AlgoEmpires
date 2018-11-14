@@ -2,23 +2,29 @@ package algoempires;
 
 public class Monedero {
 
-    private int dinero;
+    private int cantidadOro;
 
     public Monedero() {
-        this.dinero = 0;
+        this.cantidadOro = 0;
     }
 
-    public void sumarDinero(int dineroASumar) {
-        this.dinero += dineroASumar;
+    public void sumarOro(int oroASumar) {
+        this.cantidadOro += oroASumar;
     }
 
-    public void restarDinero(int dineroARestar) {
-        if (puedoDebitarElValor(dineroARestar)) {
-            dinero -= dineroARestar;
+    public void restarDinero(int oroASumar) {
+        if (puedoDebitarElValor(oroASumar)) {
+            cantidadOro -= oroASumar;
         }
     }
 
-    public boolean puedoDebitarElValor(int dineroARestar) {
-        return dinero - dineroARestar >= 0;
+    public boolean puedoDebitarElValor(int oroASumar) {
+        return cantidadOro - oroASumar >= 0;
+    }
+
+
+    //METODO DE TESTEO
+    public int getOro() {
+        return cantidadOro;
     }
 }

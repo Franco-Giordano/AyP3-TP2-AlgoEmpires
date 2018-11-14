@@ -2,6 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
 import algoempires.CasilleroInvalidoException;
+import algoempires.Jugador;
 import algoempires.Terreno;
 import algoempires.entidad.unidad.utilero.Aldeano;
 
@@ -45,13 +46,12 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    protected int getCosto() {
-        return COSTO;
+    protected int getVelocidadDeReparacion() {
+        return VELOCIDAD_DE_REPARACION;
     }
 
     @Override
-    protected int getVelocidadDeReparacion() {
-        return VELOCIDAD_DE_REPARACION;
+    public void actualizarEntreTurnos(Jugador jugador) {
     }
 
 }

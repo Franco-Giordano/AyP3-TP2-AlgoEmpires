@@ -2,6 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
 import algoempires.CasilleroInvalidoException;
+import algoempires.Jugador;
 import algoempires.Terreno;
 import algoempires.entidad.unidad.maquina.ArmaDeAsedio;
 
@@ -44,12 +45,11 @@ public class Castillo extends Edificio {
     }
 
     @Override
-    protected int getCosto() {
-        return 0;
+    protected int getVelocidadDeReparacion() {
+        return VELOCIDAD_DE_REPARACION;
     }
 
     @Override
-    protected int getVelocidadDeReparacion() {
-        return VELOCIDAD_DE_REPARACION;
+    public void actualizarEntreTurnos(Jugador jugador) {
     }
 }

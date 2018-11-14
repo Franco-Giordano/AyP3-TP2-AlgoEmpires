@@ -1,34 +1,38 @@
 package algoempires;
 
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.Entidad;
 
 import java.util.ArrayList;
 
 public class Jugador {
 
-    private ArrayList<Unidad> unidades;
-    private ArrayList<Edificio> edificios;
+    private ArrayList<Entidad> entidadesPropias;
+    private Terreno terrenoDeJuego;
+    private Jugador jugadorContrincante;
+    private Monedero monedero;
 
-    public Jugador() {
-        this.unidades = new ArrayList<Unidad>();
-        this.edificios = new ArrayList<Edificio>();
+    public Jugador(Terreno terrenoDeJuego) {
+        this.entidadesPropias = new ArrayList<>();
+        this.terrenoDeJuego = terrenoDeJuego;
+        this.monedero = new Monedero();
     }
 
-    public void agregarEdificio(Edificio edificioAAgregar) {
-        edificios.add(edificioAAgregar);
+    public void setContrincante(Jugador jugador) {
+        jugadorContrincante = jugador;
     }
 
-    public void agregarUnidad(Unidad unidadAAgregar) {
-        unidades.add(unidadAAgregar);
+    public void jugarTurno() {
+
+
     }
 
-    //----------------------------------------------------------------------------------------------------------------//
-    //######################################### METODOS DE TESTEO ####################################################//
-    //----------------------------------------------------------------------------------------------------------------//
-
-    public ArrayList<Unidad> getUnidades() {
-        return this.unidades;
+    public void sumarOro(int oro) {
+        monedero.sumarOro(oro);
     }
 
+
+    //METODO DE TESTEO
+    public int getOro() {
+        return monedero.getOro();
+    }
 }
