@@ -1,6 +1,9 @@
 package algoempires.jugador;
 
 import algoempires.entidad.Entidad;
+import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 
 import java.util.ArrayList;
@@ -35,5 +38,9 @@ public class Jugador {
     //METODO DE TESTEO
     public int getOro() {
         return monedero.getOro();
+    }
+
+    public void asignarAlJugador(Entidad entidad){
+        entidadesPropias.add(entidad);
     }
 }
