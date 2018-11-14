@@ -9,11 +9,16 @@ public class Monedero {
     }
 
     public void sumarOro(int oroASumar) {
-        this.cantidadOro += oroASumar;
+
+        if (oroASumar > 0) {
+            this.cantidadOro += oroASumar;
+        }
+
     }
 
-    public void restarDinero(int oroASumar) {
-        if (puedoDebitarElValor(oroASumar)) {
+    public void restarOro(int oroASumar) {
+
+        if (puedoDebitarElValor(oroASumar) && oroASumar > 0) {
             cantidadOro -= oroASumar;
         }
     }
