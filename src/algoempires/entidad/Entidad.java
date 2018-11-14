@@ -6,26 +6,13 @@ import algoempires.Terreno;
 
 public abstract class Entidad {
 
-    private int vida;
-    private int costo;
     protected Terreno terrenoDeJuego;
+    protected int vida;
 
-    public Entidad(int vidaRecibida, int costoRecibido, Terreno terreno) {
-        this.vida = vidaRecibida;
-        this.costo = costoRecibido;
+    public Entidad(Terreno terreno) {
         this.terrenoDeJuego = terreno;
-
-    }
-    
-    //----------------------------------------------------------------------------------------------------------------//
-    //######################################### METODOS DE TESTEO ####################################################//
-    //----------------------------------------------------------------------------------------------------------------//
-    public int getVida() {
-        return this.vida;
     }
 
-    public int getCosto() {
-        return this.costo;
-    }
-
+    protected abstract int getVidaInicial();
+    protected abstract int getCosto();
 }

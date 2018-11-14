@@ -10,10 +10,10 @@ public abstract class Guerrero extends Unidad {
     private int danioAUnidades;
     private int danioAEdificios;
 
-    public Guerrero(int vidaRecibida, int costoRecibido, int rangoRecibido, Terreno terreno,
+    public Guerrero(int rangoRecibido, Terreno terreno,
                     int danioAUnidadesRecibido, int danioAEdificiosRecibido, Casillero casilleroRecibido) {
 
-        super(vidaRecibida, costoRecibido,terreno,  casilleroRecibido);
+        super(terreno,  casilleroRecibido);
         this.rango = rangoRecibido;
         this.danioAUnidades = danioAUnidadesRecibido;
         this.danioAEdificios = danioAEdificiosRecibido;

@@ -6,7 +6,7 @@ import algoempires.entidad.unidad.Unidad;
 
 public abstract class Utilero extends Unidad {
 
-    public Utilero(int vidaRecibida, int costoRecibido, Terreno terreno, Casillero casillero) {
-        super(vidaRecibida, costoRecibido, terreno,casillero);
+    public Utilero(Terreno terreno, Casillero casillero) {
+        super(terreno,casillero);
     }
 }

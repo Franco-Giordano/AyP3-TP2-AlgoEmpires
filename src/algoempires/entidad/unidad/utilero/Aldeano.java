@@ -7,15 +7,24 @@ import algoempires.entidad.edificio.Edificio;
 
 public class Aldeano extends Utilero {
 
-    private static int vidaDeAldeano = 50;
-    private static int costoDeAldeano = 25;
+    final int VIDA = 50;
+    final int COSTO= 25;
     private static Edificio construccionPendiente;
 
     public Aldeano(Terreno terreno, Casillero casillero) {
 
-        super(vidaDeAldeano, costoDeAldeano, terreno,casillero);
+        super(terreno,casillero);
         this.construccionPendiente = null;
 
     }
 
+    @Override
+    protected int getVidaInicial() {
+        return VIDA;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
+    }
 }

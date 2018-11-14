@@ -5,8 +5,9 @@ import algoempires.Terreno;
 
 public class ArmaDeAsedio extends Maquina {
 
-    private static int vida = 150;
-    private static int costo = 200;
+    final static int VIDA = 150;
+    final static int COSTO = 200;
+
     private static int rango = 5;
     private static int turnosDeConstruccion = 1;
     private static int danioAEdificios = 75;
@@ -18,4 +19,15 @@ public class ArmaDeAsedio extends Maquina {
         super(vidaRecibida, costoRecibido, terreno, rangoRecibido, turnosDeConstruccionRecibidos, danioAEdificiosRecibido, casilleroRecibido);
 
     }
+
+    @Override
+    protected int getVidaInicial(){
+        return VIDA;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
+    }
 }
+

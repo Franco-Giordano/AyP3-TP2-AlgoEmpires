@@ -1,14 +1,46 @@
 package algoempires.entidad.edificio;
 
+import algoempires.Casillero;
 import algoempires.Parcela;
+import algoempires.Terreno;
 
 public class Cuartel extends Edificio {
 
-    private static int vida = 250;
-    private static int costo = 50;
-    private static int turnosDeConstruccion = 3;
+    final int TAMANIO_HORIZONTAL = 2;
+    final int TAMANIO_VERTICAL = 2;
+    final int COSTO = 50;
+    final int VIDA= 250;
+    final int TURNOS_DE_CONSTRUCCION= 3;
 
-    public Cuartel(){
-        super(vida,costo,null,turnosDeConstruccion);
+    public Cuartel(Terreno terreno, Casillero casillero){
+        super(terreno,casillero);
+        this.vida = getVidaInicial();
+        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
+    }
+
+    @Override
+    protected int getTamanioHorizontal(){
+        return TAMANIO_HORIZONTAL;
+    }
+
+    @Override
+    protected int getTamanioVertical(){
+        return TAMANIO_VERTICAL;
+    }
+
+    @Override
+    protected int getVidaInicial(){
+        return VIDA;
+    }
+
+    @Override
+    protected int getTurnosDeContruccionIniciales(){
+        return TURNOS_DE_CONSTRUCCION;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
     }
 }
+

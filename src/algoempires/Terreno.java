@@ -2,8 +2,10 @@ package algoempires;
 
 import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Terreno {
@@ -116,7 +118,16 @@ public class Terreno {
 
 
     //TODO chequear casillero valido (no ocupado por ej)
-    public void ocupar(Casillero casillero, Unidad unidad) {
-        mapa.put(casillero, unidad);
+    public void ocupar(Casillero casillero, Entidad entidad) {
+        mapa.put(casillero, entidad);
     }
+
+    public void ocupar(Region region, Edificio edificio){
+
+        ArrayList<Casillero> casillerosAOcupar = region.generarCasillerosContenidos();
+
+        casillerosAOcupar.forEach((each)->this.ocupar(each,edificio));
+    }
+
 }
+

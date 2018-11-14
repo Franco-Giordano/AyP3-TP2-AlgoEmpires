@@ -14,7 +14,7 @@ public abstract class Maquina extends Unidad {
                    int rangoRecibido, int turnosDeConstruccionRecibidos,
                    int danioAEdificiosRecibido, Casillero casilleroRecibido) {
 
-        super(vidaRecibida, costoRecibido, terreno, casilleroRecibido);
+        super(terreno, casilleroRecibido);
         this.rango = rangoRecibido;
         this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
         this.danioAEdificios = danioAEdificiosRecibido;
