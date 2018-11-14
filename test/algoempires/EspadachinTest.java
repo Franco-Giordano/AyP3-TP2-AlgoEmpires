@@ -9,20 +9,19 @@ import static junit.framework.TestCase.assertTrue;
 public class EspadachinTest {
 
     @Test
-
     public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionAbajo();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 2, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(2,1)));
 
     }
 
@@ -31,15 +30,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionArriba();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 2, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(2,3)));
 
     }
 
@@ -48,15 +47,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionIzquierda();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2, 1, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(1, 2)));
 
     }
 
@@ -65,15 +64,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionDerecha();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(2, 3, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(3, 2)));
 
     }
 
@@ -82,15 +81,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 1, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(1, 3)));
 
     }
 
@@ -99,15 +98,16 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
+
 
         Direccion direccion = new DireccionArribaDerecha();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(1, 3, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(3, 3)));
 
     }
 
@@ -116,15 +116,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 1, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(1, 1)));
 
     }
 
@@ -133,15 +133,15 @@ public class EspadachinTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero casillero = new Casillero(2,2);
 
-        Espadachin espadachin = new Espadachin(coordenada);
+        Espadachin espadachin = new Espadachin(terreno,casillero);
 
         Direccion direccion = new DireccionAbajoDerecha();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCoordenada(new Coordenada(3, 3, terreno)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(1, 3)));
 
     }
 }

@@ -86,6 +86,8 @@ public class Terreno {
 
         mapa.put(casilleroQueQuieroOcupar,unidadDesplazada);
 
+        mapa.replace(casilleroRecibido, null);
+
     }
 
     private boolean casilleroEnRango(Casillero casillero) {
@@ -110,5 +112,11 @@ public class Terreno {
 
     public int getTamVertical() {
         return limiteSupDer.getVertical();
+    }
+
+
+    //TODO chequear casillero valido (no ocupado por ej)
+    public void ocupar(Casillero casillero, Unidad unidad) {
+        mapa.put(casillero, unidad);
     }
 }

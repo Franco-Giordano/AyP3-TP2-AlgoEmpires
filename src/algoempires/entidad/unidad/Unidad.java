@@ -14,10 +14,13 @@ public abstract class Unidad extends Entidad {
     public Unidad(int vidaRecibida, int costoRecibido,  Terreno terreno, Casillero casillero) {
         super(vidaRecibida, costoRecibido, terreno);
         this.casilleroQueOcupo = casillero;
+        this.terrenoDeJuego.ocupar(casilleroQueOcupo, this);
     }
 
     public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException {
         terrenoDeJuego.moverUnidad(casilleroQueOcupo, direccion);
+        this.casilleroQueOcupo = casilleroQueOcupo.generarMovimientoHacia(direccion);
+
     }
 
     public boolean estaEnCasillero(Casillero casillero) {
