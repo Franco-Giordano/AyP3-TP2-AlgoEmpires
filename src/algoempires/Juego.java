@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 public class Juego {
 
-    private Jugador jugador1;
-    private Jugador jugador2;
+    private ArrayList<Jugador> jugadores;
 
     public Juego() {
+        int numeroDeJugadores = 2;
 
-            jugador1 = new Jugador();
-            jugador2 = new Jugador();
-
-
-
+        for (int i = 0; i <= numeroDeJugadores; i++) {
+            Jugador nuevoJugador = new Jugador();
+            jugadores.add(nuevoJugador);
         }
     }
 
 
-
+}

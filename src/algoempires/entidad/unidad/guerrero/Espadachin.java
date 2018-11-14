@@ -1,7 +1,6 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 
 public class Espadachin extends Guerrero {
@@ -12,9 +11,9 @@ public class Espadachin extends Guerrero {
     private static int danioAUnidades = 25;
     private static int danioAEdificios = 15;
 
-    public Espadachin(Terreno terreno, Casillero casilleroRecibido) throws CasilleroInvalidoException {
+    public Espadachin(Terreno terreno, Casillero casilleroRecibido) {
 
-        super(rango, terreno,danioAUnidades, danioAEdificios, casilleroRecibido);
+        super(rango, terreno, danioAUnidades, danioAEdificios, casilleroRecibido);
 
     }
 
@@ -24,7 +23,7 @@ public class Espadachin extends Guerrero {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 }

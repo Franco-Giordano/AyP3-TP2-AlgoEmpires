@@ -4,52 +4,52 @@ import algoempires.direccion.*;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 public class EspadachinTest {
 
     @Test
-    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionAbajo();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCasillero(new Casillero(2,1)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(2, 1)));
 
     }
 
     @Test
-    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionArriba();
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCasillero(new Casillero(2,3)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(2, 3)));
 
     }
 
     @Test
-    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionIzquierda();
 
@@ -61,13 +61,13 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionDerecha();
 
@@ -78,13 +78,13 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
@@ -95,13 +95,13 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
 
         Direccion direccion = new DireccionArribaDerecha();
@@ -113,13 +113,13 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
@@ -130,13 +130,13 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2,2);
+        Casillero casillero = new Casillero(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno,casillero);
+        Espadachin espadachin = new Espadachin(terreno, casillero);
 
         Direccion direccion = new DireccionAbajoDerecha();
 

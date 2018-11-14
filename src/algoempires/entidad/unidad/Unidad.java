@@ -11,7 +11,7 @@ public abstract class Unidad extends Entidad {
 
     private Casillero casilleroQueOcupo;
 
-    public Unidad(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
+    public Unidad(Terreno terreno, Casillero casillero) {
         super(terreno);
         this.casilleroQueOcupo = casillero;
         this.terrenoDeJuego.ocupar(casilleroQueOcupo, this);

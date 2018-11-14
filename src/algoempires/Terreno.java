@@ -14,13 +14,9 @@ public class Terreno {
     private Casillero limiteInfIzq;
     private Casillero limiteSupDer;
 
-    public Terreno(int tamanioHorizontal, int tamanioVertical) throws DimensionesInvalidasError {
+    public Terreno(int tamanioHorizontal, int tamanioVertical) {
 
-        if (tamanioHorizontal <= 0 || tamanioVertical <= 0) {
-            throw new DimensionesInvalidasError(tamanioHorizontal, tamanioVertical);
-        }
-
-        this.limiteInfIzq = new Casillero(1,1);
+        this.limiteInfIzq = new Casillero(1, 1);
         this.limiteSupDer = new Casillero(tamanioHorizontal, tamanioVertical);
 
         mapa = new HashMap<Casillero, Entidad>();
@@ -28,14 +24,14 @@ public class Terreno {
         for (int i = 1; i <= tamanioHorizontal; i++) {
             for (int j = 1; j <= tamanioVertical; j++) {
 
-                Casillero casillero = new Casillero(i,j);
+                Casillero casillero = new Casillero(i, j);
                 mapa.put(casillero, null);
 
-                if (i == 1 && j== 1) {
+                if (i == 1 && j == 1) {
                     this.limiteInfIzq = casillero;
                 }
 
-                if (i == tamanioHorizontal && j== tamanioVertical) {
+                if (i == tamanioHorizontal && j == tamanioVertical) {
                     this.limiteSupDer = casillero;
                 }
             }
@@ -47,6 +43,13 @@ public class Terreno {
 
         return mapa.get(casillero) != null;
 
+    }
+
+    public void reparar(Casillero casillero) {
+
+        Edificio edificioAReparar = (Edificio) (mapa.get(casillero));
+
+        edificioAReparar.reparar();
     }
 
     /*
@@ -84,13 +87,13 @@ public class Terreno {
         return new Region(parcelasEnRegion);
     } */
 
-    public void moverUnidad(Casillero casilleroRecibido, Direccion direccionRecibida) throws CasilleroInvalidoException {
+    public void moverUnidad(Casillero casilleroRecibido, Direccion direccionRecibida) {
 
         Casillero casilleroQueQuieroOcupar = casilleroRecibido.generarMovimientoHacia(direccionRecibida);
 
         Unidad unidadDesplazada = (Unidad) mapa.get(casilleroRecibido);
 
-        this.ocupar(casilleroQueQuieroOcupar, unidadDesplazada);
+        mapa.put(casilleroQueQuieroOcupar, unidadDesplazada);
 
         mapa.replace(casilleroRecibido, null);
 
@@ -99,6 +102,15 @@ public class Terreno {
     private boolean casilleroEnRango(Casillero casillero) {
 
         return casillero.pertenzcoAlRango(limiteInfIzq, limiteSupDer);
+    }
+
+
+    public void esCasilleroValido(Casillero casillero) throws CasilleroInvalidoException {
+
+        if (!this.casilleroEnRango(casillero) || this.estaOcupada(casillero)) {
+            throw new CasilleroInvalidoException(casillero);
+        }
+
     }
 
 
@@ -113,22 +125,20 @@ public class Terreno {
 
 
     //TODO chequear casillero valido (no ocupado por ej)
-    public void ocupar(Casillero casillero, Entidad entidad) throws CasilleroInvalidoException {
-
-        if (!casilleroEnRango(casillero) || (estaOcupada(casillero))) {
-            throw new CasilleroInvalidoException(casillero);
-        }
-
+    public void ocupar(Casillero casillero, Entidad entidad) {
         mapa.put(casillero, entidad);
     }
 
-    public void ocupar(Region region, Edificio edificio) throws CasilleroInvalidoException {
+    public void ocupar(Region region, Edificio edificio) {
 
         ArrayList<Casillero> casillerosAOcupar = region.generarCasillerosContenidos();
 
-        for (Casillero each : casillerosAOcupar) {
-            this.ocupar(each, edificio);
-        }
+        casillerosAOcupar.forEach((each) -> this.ocupar(each, edificio));
+    }
+
+    //METODO UNIAMENTE DE TESTEO
+    public HashMap<Casillero, Entidad> getMapa() {
+        return this.mapa;
     }
 
 }

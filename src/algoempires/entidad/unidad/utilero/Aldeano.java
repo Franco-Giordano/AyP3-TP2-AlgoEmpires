@@ -1,21 +1,35 @@
 package algoempires.entidad.unidad.utilero;
 
 import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 import algoempires.entidad.edificio.Cuartel;
-import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.edificio.PlazaCentral;
 
 public class Aldeano extends Utilero {
 
     final int VIDA = 50;
-    final int COSTO= 25;
-    private static Edificio construccionPendiente;
+    final int COSTO = 25;
 
-    public Aldeano(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
+    public Aldeano(Terreno terreno, Casillero casillero) {
 
-        super(terreno,casillero);
-        this.construccionPendiente = null;
+        super(terreno, casillero);
+    }
+
+    public void construirPlazaCentral(Casillero casillero) {
+
+        new PlazaCentral(terrenoDeJuego, casillero);
+
+    }
+
+    public void construirCuartel(Casillero casillero) {
+
+        new Cuartel(terrenoDeJuego, casillero);
+
+    }
+
+    public void reparar(Casillero casillero) {
+
+        terrenoDeJuego.reparar(casillero);
 
     }
 
@@ -25,7 +39,8 @@ public class Aldeano extends Utilero {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
+
         return COSTO;
     }
 }

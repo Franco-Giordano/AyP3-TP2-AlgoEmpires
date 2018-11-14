@@ -23,14 +23,12 @@ public class Casillero {
         return posVertical;
     }
 
-
-
     public boolean pertenzcoAlRango(Casillero limiteInfIzq, Casillero limiteSupDer) {
 
         boolean estaEnRangoVertical = limiteInfIzq.getVertical() <= posVertical &&
-                                        posVertical <= limiteSupDer.getVertical();
+                posVertical <= limiteSupDer.getVertical();
         boolean estaEnRangoHorizontal = limiteInfIzq.getHorizontal() <= posHorizontal &&
-                                        posHorizontal <= limiteSupDer.getHorizontal();
+                posHorizontal < limiteSupDer.getHorizontal();
 
         return estaEnRangoHorizontal && estaEnRangoVertical;
 
@@ -47,14 +45,16 @@ public class Casillero {
         return result;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return (41 * (41 + posHorizontal) + posVertical);
     }
 
     public Casillero generarMovimientoHacia(Direccion direccionRecibida) {
 
         return new Casillero(posHorizontal + direccionRecibida.getHorizontal(),
-             posVertical + direccionRecibida.getVertical());
+                posVertical + direccionRecibida.getVertical());
 
     }
+
 }
