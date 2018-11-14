@@ -52,4 +52,10 @@ public class Aldeano extends Unidad {
             jugador.sumarOro(ORO_GENERADO);
         }
     }
+
+    //METODO DE TESTEO UNICAMENTE
+    public boolean tieneEstasCaracteristicas(int vida, int oroGenerado, boolean estaTrabajando){
+        return (vida == this.getVidaInicial() && this.ORO_GENERADO == oroGenerado && this.estaTrabajando == estaTrabajando);
+    }
+
 }

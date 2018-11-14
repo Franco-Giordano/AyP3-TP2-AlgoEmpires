@@ -35,7 +35,7 @@ public class CastilloTest {
 
         Casillero casillero = new Casillero(3, 3);
 
-        Castillo castillo = new Castillo(terreno, casillero);
+       new Castillo(terreno, casillero);
 
     }
 

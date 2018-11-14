@@ -15,6 +15,19 @@ import static org.junit.Assert.assertTrue;
 public class ArqueroTest {
 
     @Test
+    public void testArqueroSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casillero = new Casillero(2,2);
+
+        Arquero arquero = new Arquero(terreno,casillero);
+
+        assertTrue(arquero.tieneEstasCaracteristicas(75,3,15,10));
+
+    }
+
+    @Test
     public void testMuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
