@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.Casillero;
+import algoempires.Terreno;
 
 public class Espadachin extends Guerrero {
 
@@ -10,9 +11,9 @@ public class Espadachin extends Guerrero {
     private static int danioAUnidades = 25;
     private static int danioAEdificios = 15;
 
-    public Espadachin(Casillero casilleroRecibido) {
+    public Espadachin(Terreno terreno, Casillero casilleroRecibido) {
 
-        super(vida, costo, rango, danioAUnidades, danioAEdificios, casilleroRecibido);
+        super(vida, costo, rango, terreno,danioAUnidades, danioAEdificios, casilleroRecibido);
 
     }
 

@@ -11,7 +11,7 @@ public class PlazaCentral extends Edificio {
     private static Region tamanio = new Region(new Parcela[2][2]);
 
     public PlazaCentral() {
-        super(vida, costo, turnosDeConstruccion, tamanio);
+        super(vida, costo, null,turnosDeConstruccion, tamanio);
     }
 
 }

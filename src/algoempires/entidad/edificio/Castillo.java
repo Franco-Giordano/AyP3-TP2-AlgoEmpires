@@ -10,7 +10,7 @@ public class Castillo extends Edificio{
 
     /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
     public Castillo(){
-        super(vida,0,0,tamanio);
+        super(vida,0,null,0,tamanio);
     }
 
 

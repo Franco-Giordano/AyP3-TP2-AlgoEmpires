@@ -10,10 +10,9 @@ import algoempires.entidad.Entidad;
 public abstract class Unidad extends Entidad {
 
     private Casillero casilleroQueOcupo;
-    private Terreno terrenoDeJuego;
 
-    public Unidad(int vidaRecibida, int costoRecibido, Casillero casillero) {
-        super(vidaRecibida, costoRecibido);
+    public Unidad(int vidaRecibida, int costoRecibido,  Terreno terreno, Casillero casillero) {
+        super(vidaRecibida, costoRecibido, terreno);
         this.casilleroQueOcupo = casillero;
     }
 

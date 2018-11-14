@@ -11,6 +11,6 @@ public class Cuartel extends Edificio {
     private static Region tamanio = new Region(new Parcela[2][2]);
 
     public Cuartel(){
-        super(vida,costo,turnosDeConstruccion,tamanio);
+        super(vida,costo,null,turnosDeConstruccion,tamanio);
     }
 }
