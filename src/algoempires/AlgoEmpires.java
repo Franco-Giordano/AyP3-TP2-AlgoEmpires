@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class AlgoEmpires {
 
-    Jugador jugadorActual;
+    private Jugador jugadorActual;
 
     public AlgoEmpires(int tamHorizontal, int tamVertical) throws DimensionesInvalidasError {
 
