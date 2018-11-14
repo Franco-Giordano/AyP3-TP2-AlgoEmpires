@@ -20,16 +20,14 @@ public class Region {
 
     private Casillero calcularExtremo(int tamanioHorizontal, int tamanioVertical) {
 
-        Casillero extremo = new Casillero(this.infIzquierdo.getVertical() + tamanioVertical - 1,
-                this.infIzquierdo.getHorizontal() + tamanioHorizontal - 1);
-
-        return extremo;
+        return new Casillero(this.infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
+                this.infIzquierdo.getVertical()+ tamanioVertical - 1);
     }
 
 
     public ArrayList<Casillero> generarCasillerosContenidos() {
 
-        ArrayList<Casillero> casillerosContenidos = new ArrayList<Casillero>();
+        ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
 
         for (int i = 0; i < tamanioHorizontal; i++) {
             for (int j = 0; j < tamanioVertical; j++) {

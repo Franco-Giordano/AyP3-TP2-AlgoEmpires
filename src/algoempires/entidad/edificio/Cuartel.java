@@ -1,30 +1,31 @@
 package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 
 public class Cuartel extends Edificio {
 
-    final int TAMANIO_HORIZONTAL = 2;
-    final int TAMANIO_VERTICAL = 2;
-    final int COSTO = 50;
-    final int VIDA = 250;
-    final int TURNOS_DE_CONSTRUCCION = 3;
-    final int VELOCIDAD_DE_REPARACION = 50;
+    private final int TAMANIO_HORIZONTAL = 2;
+    private final int TAMANIO_VERTICAL = 2;
+    private final int COSTO = 50;
+    private final int VIDA = 250;
+    private final int TURNOS_DE_CONSTRUCCION = 3;
+    private final int VELOCIDAD_DE_REPARACION = 50;
 
-    public Cuartel(Terreno terreno, Casillero casillero) {
+    public Cuartel(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno, casillero);
         this.vida = getVidaInicial();
         this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
-    public void crearEspadachin(Casillero casillero) {
+    public void crearEspadachin(Casillero casillero) throws CasilleroInvalidoException {
         new Espadachin(terrenoDeJuego, casillero);
     }
 
-    public void crearArquero(Casillero casillero) {
+    public void crearArquero(Casillero casillero) throws CasilleroInvalidoException {
         new Arquero(terrenoDeJuego, casillero);
     }
 

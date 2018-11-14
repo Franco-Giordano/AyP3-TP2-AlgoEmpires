@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class ArqueroTest {
 
     @Test
-    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException {
+    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -26,7 +26,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException {
+    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -43,7 +43,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException {
+    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -61,7 +61,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException {
+    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -78,7 +78,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException {
+    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -95,7 +95,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException {
+    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -113,7 +113,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException {
+    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -130,7 +130,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException {
+    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
