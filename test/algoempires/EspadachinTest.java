@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 public class EspadachinTest {
 
     @Test
-    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException {
+    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -26,7 +26,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException {
+    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -43,7 +43,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException {
+    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -61,7 +61,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException {
+    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -78,7 +78,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException {
+    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -95,7 +95,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException {
+    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -113,7 +113,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException {
+    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -130,7 +130,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException {
+    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(10, 10);
 

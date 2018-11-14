@@ -1,7 +1,6 @@
 package algoempires.entidad;
 
 
-import algoempires.Parcela;
 import algoempires.Terreno;
 
 public abstract class Entidad {

@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad.maquina;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 
 public class ArmaDeAsedio extends Maquina {
@@ -14,7 +15,7 @@ public class ArmaDeAsedio extends Maquina {
 
     public ArmaDeAsedio(int vidaRecibida, int costoRecibido, Terreno terreno,
                         int rangoRecibido,
-                        int turnosDeConstruccionRecibidos, int danioAEdificiosRecibido, Casillero casilleroRecibido) {
+                        int turnosDeConstruccionRecibidos, int danioAEdificiosRecibido, Casillero casilleroRecibido) throws CasilleroInvalidoException {
 
         super(vidaRecibida, costoRecibido, terreno, rangoRecibido, turnosDeConstruccionRecibidos, danioAEdificiosRecibido, casilleroRecibido);
 

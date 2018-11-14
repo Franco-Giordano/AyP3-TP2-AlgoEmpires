@@ -1,6 +1,7 @@
 package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 
 public class PlazaCentral extends Edificio {
@@ -11,7 +12,7 @@ public class PlazaCentral extends Edificio {
     final int VIDA= 450;
     final int TURNOS_DE_CONSTRUCCION= 3;
 
-    public PlazaCentral(Terreno terreno, Casillero casillero) {
+    public PlazaCentral(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno,casillero);
         this.vida = getVidaInicial();
         this.turnosDeConstruccion = getTurnosDeContruccionIniciales();

@@ -1,6 +1,7 @@
 package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 
 public class Castillo extends Edificio{
@@ -10,10 +11,8 @@ public class Castillo extends Edificio{
     final int VIDA= 450;
 
     /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
-    public Castillo(Terreno terreno, Casillero casillero){
+    public Castillo(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno,casillero);
-        this.vida = getVidaInicial();
-        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
     @Override

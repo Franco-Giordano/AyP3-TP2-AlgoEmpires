@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad.maquina;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 import algoempires.entidad.unidad.Unidad;
 
@@ -12,7 +13,7 @@ public abstract class Maquina extends Unidad {
 
     public Maquina(int vidaRecibida, int costoRecibido, Terreno terreno,
                    int rangoRecibido, int turnosDeConstruccionRecibidos,
-                   int danioAEdificiosRecibido, Casillero casilleroRecibido) {
+                   int danioAEdificiosRecibido, Casillero casilleroRecibido) throws CasilleroInvalidoException {
 
         super(terreno, casilleroRecibido);
         this.rango = rangoRecibido;

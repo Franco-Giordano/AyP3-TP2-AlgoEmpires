@@ -30,7 +30,7 @@ public class Casillero {
         boolean estaEnRangoVertical = limiteInfIzq.getVertical() <= posVertical &&
                                         posVertical <= limiteSupDer.getVertical();
         boolean estaEnRangoHorizontal = limiteInfIzq.getHorizontal() <= posHorizontal &&
-                                        posHorizontal < limiteSupDer.getHorizontal();
+                                        posHorizontal <= limiteSupDer.getHorizontal();
 
         return estaEnRangoHorizontal && estaEnRangoVertical;
 

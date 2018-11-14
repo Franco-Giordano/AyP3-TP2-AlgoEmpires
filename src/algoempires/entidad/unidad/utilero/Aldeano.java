@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad.utilero;
 
 import algoempires.Casillero;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
@@ -11,7 +12,7 @@ public class Aldeano extends Utilero {
     final int COSTO= 25;
     private static Edificio construccionPendiente;
 
-    public Aldeano(Terreno terreno, Casillero casillero) {
+    public Aldeano(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
 
         super(terreno,casillero);
         this.construccionPendiente = null;

@@ -1,7 +1,7 @@
 package algoempires.entidad.edificio;
 
 import algoempires.Casillero;
-import algoempires.Parcela;
+import algoempires.CasilleroInvalidoException;
 import algoempires.Terreno;
 
 public class Cuartel extends Edificio {
@@ -12,10 +12,8 @@ public class Cuartel extends Edificio {
     final int VIDA= 250;
     final int TURNOS_DE_CONSTRUCCION= 3;
 
-    public Cuartel(Terreno terreno, Casillero casillero){
+    public Cuartel(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno,casillero);
-        this.vida = getVidaInicial();
-        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
     @Override

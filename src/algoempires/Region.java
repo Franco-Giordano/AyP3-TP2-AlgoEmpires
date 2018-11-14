@@ -23,8 +23,8 @@ public class Region {
 
     private Casillero calcularExtremo(int tamanioHorizontal, int tamanioVertical){
 
-        Casillero extremo = new Casillero(this.infIzquierdo.getVertical() + tamanioVertical - 1,
-                                            this.supDerecho.getHorizontal() + tamanioHorizontal - 1);
+        Casillero extremo = new Casillero(this.infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
+                                            this.infIzquierdo.getVertical()+ tamanioVertical- 1);
 
         return extremo;
     }
