@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Casillero;
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
 public class TerrenoTest {
 
     @Test
-    public void test01TerrenoAsignaBienElTamanio() throws DimensionesInvalidasError {
+    public void testTerrenoAsignaBienElTamanio() throws DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(5, 4);
 
@@ -21,16 +22,15 @@ public class TerrenoTest {
         assertEquals(terreno.getTamVertical(), 4);
     }
 
-/*
     @Test(expected = DimensionesInvalidasError.class)
-    public void test02TerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasError {
+    public void testTerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasError {
 
         Terreno terreno = new Terreno(-1,4);
 
-    }*/
+    }
 
     @Test
-    public void test03ColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, CasilleroInvalidoException {
         Terreno terreno = new Terreno(2, 2);
 
         Aldeano aldeano = new Aldeano(terreno, new Casillero(2, 2));
@@ -44,7 +44,7 @@ public class TerrenoTest {
     }
 
     @Test
-    public void test04ColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(3, 3);
 
@@ -60,6 +60,22 @@ public class TerrenoTest {
         assertFalse(terreno.estaOcupada(new Casillero(1, 2)));
         assertFalse(terreno.estaOcupada(new Casillero(1, 3)));
         assertFalse(terreno.estaOcupada(new Casillero(3, 1)));
+
+    }
+
+    @Test(expected = CasilleroInvalidoException.class)
+    public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws DimensionesInvalidasError, CasilleroInvalidoException {
+        Terreno terreno = new Terreno(5, 2);
+
+        Aldeano aldeano = new Aldeano(terreno, new Casillero(3, 3));
+
+    }
+
+    @Test(expected = CasilleroInvalidoException.class)
+    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws CasilleroInvalidoException, DimensionesInvalidasError {
+        Terreno terreno = new Terreno(3, 20);
+
+        Castillo castillo = new Castillo(terreno, new Casillero(1, 5));
 
     }
 
