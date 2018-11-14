@@ -24,7 +24,8 @@ public abstract class Unidad extends Entidad {
     }
 
     public boolean estaEnCasillero(Casillero casillero) {
-        return (this.casilleroQueOcupo == casillero);
+        return (this.casilleroQueOcupo.getHorizontal() == casillero.getHorizontal()
+                && this.casilleroQueOcupo.getVertical() == casillero.getVertical());
     }
 
 }

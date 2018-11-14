@@ -55,6 +55,7 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
+        //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
         assertTrue(espadachin.estaEnCasillero(new Casillero(1, 2)));
 
     }
@@ -141,7 +142,7 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
 
-        assertTrue(espadachin.estaEnCasillero(new Casillero(1, 3)));
+        assertTrue(espadachin.estaEnCasillero(new Casillero(3, 1)));
 
     }
 }
