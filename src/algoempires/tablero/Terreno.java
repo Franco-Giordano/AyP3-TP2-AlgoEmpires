@@ -103,9 +103,9 @@ public class Terreno {
     }
 
     //METODO UNIAMENTE DE TESTEO
-    public HashMap<Casillero, Entidad> getMapa() {
-        return this.mapa;
-    }
+    public boolean compararVidaDe(Casillero casilleroAConstruir, int vidaAComparar) {
+        return mapa.get(casilleroAConstruir).tieneEstaVida(vidaAComparar);
 
+    }
 }
 

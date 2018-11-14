@@ -15,4 +15,9 @@ public abstract class Entidad {
     protected abstract int getVidaInicial();
 
     public abstract void actualizarEntreTurnos(Jugador jugador);
+
+    //Metodo de testeo
+    public boolean tieneEstaVida(int vidaRecibida){
+        return this.vida == vidaRecibida;
+    }
 }

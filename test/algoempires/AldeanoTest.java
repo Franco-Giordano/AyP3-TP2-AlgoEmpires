@@ -17,6 +17,18 @@ import static org.junit.Assert.assertTrue;
 
 public class AldeanoTest {
 
+    @Test
+    public void testAldeanoSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casillero = new Casillero(2,2);
+
+        Aldeano aldeano = new Aldeano(terreno,casillero);
+
+        
+
+    }
 
     @Test
     public void testMuevoUnAldeanoAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
@@ -207,9 +219,7 @@ public class AldeanoTest {
 
         aldeano.reparar(casilleroAConstruir);
 
-        Cuartel cuartelAConsultar = (Cuartel) terreno.getMapa().get(casilleroAConstruir);
-
-        assertEquals(cuartelAConsultar.getVidaActual(), 300);
+        assertTrue(terreno.compararVidaDe(casilleroAConstruir, 300));
     }
 
     @Test
@@ -265,5 +275,6 @@ public class AldeanoTest {
 
         aldeano.desplazarHacia(direccion);
     }
+
 
 }
