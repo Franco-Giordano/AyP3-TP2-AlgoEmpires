@@ -28,4 +28,21 @@ public class CuartelTest {
         assertTrue(terreno.estaOcupada(casilleroACrearEspadachin));
 
     }
+
+    @Test
+    public void test02creaArqueroCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException{
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Casillero casillero = new Casillero(3, 3);
+
+        Casillero casilleroACrearArquero = new Casillero(5, 4);
+
+        Cuartel cuartel = new Cuartel(terreno, casillero);
+
+        cuartel.crearArquero(casilleroACrearArquero);
+
+        assertTrue(terreno.estaOcupada(casilleroACrearArquero));
+
+    }
 }

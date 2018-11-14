@@ -53,7 +53,5 @@ public class ArmaDeAsedio extends Unidad {
     @Override
     public void actualizarEntreTurnos(Jugador jugador) {
     }
-
-
 }
 
