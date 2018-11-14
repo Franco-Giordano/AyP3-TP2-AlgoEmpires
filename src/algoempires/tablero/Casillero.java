@@ -1,6 +1,6 @@
-package algoempires;
+package algoempires.tablero;
 
-import algoempires.direccion.Direccion;
+import algoempires.tablero.direccion.Direccion;
 
 public class Casillero {
 
@@ -35,6 +35,14 @@ public class Casillero {
     }
 
 
+    public Casillero generarMovimientoHacia(Direccion direccionRecibida) {
+
+        return new Casillero(posHorizontal + direccionRecibida.getHorizontal(),
+                posVertical + direccionRecibida.getVertical());
+
+    }
+
+
     @Override
     public boolean equals(Object otro) {
         boolean result = false;
@@ -50,11 +58,5 @@ public class Casillero {
         return (41 * (41 + posHorizontal) + posVertical);
     }
 
-    public Casillero generarMovimientoHacia(Direccion direccionRecibida) {
-
-        return new Casillero(posHorizontal + direccionRecibida.getHorizontal(),
-                posVertical + direccionRecibida.getVertical());
-
-    }
 
 }

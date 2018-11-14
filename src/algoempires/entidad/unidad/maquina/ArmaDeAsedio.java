@@ -1,22 +1,48 @@
 package algoempires.entidad.unidad.maquina;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Terreno;
+import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.Direccion;
 
-public class ArmaDeAsedio extends Maquina {
+public class ArmaDeAsedio extends Unidad {
 
-    private final static int VIDA = 150;
-    private final static int COSTO = 200;
-    private final static int RANGO = 5;
-    private final static int DANIO_A_EDIFICIOS = 75;
+    private final int VIDA = 150;
+    private final int RANGO = 5;
+    private final int DANIO_A_EDIFICIOS = 75;
+    private final int TURNOS_DE_CONSTRUCCION_INICIAL = 1;
 
-    private static int turnosDeConstruccion = 1;
+
+    private int turnosDeConstruccion;
+
+    private boolean estaMontada;
 
     public ArmaDeAsedio(Terreno terreno, Casillero casilleroRecibido) throws CasilleroInvalidoException {
 
-        super(terreno, turnosDeConstruccion, casilleroRecibido);
+        super(terreno, casilleroRecibido);
 
+        this.turnosDeConstruccion = TURNOS_DE_CONSTRUCCION_INICIAL;
+
+        this.estaMontada = false;
+
+    }
+
+    public void montar() {
+        estaMontada = true;
+    }
+
+    public void desmontar() {
+        estaMontada = false;
+    }
+
+    @Override
+    public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+        if (!estaMontada) {
+            super.desplazarHacia(direccion);
+        }
     }
 
     @Override
@@ -25,8 +51,9 @@ public class ArmaDeAsedio extends Maquina {
     }
 
     @Override
-    protected int getCosto() {
-        return COSTO;
+    public void actualizarEntreTurnos(Jugador jugador) {
     }
+
+
 }
 

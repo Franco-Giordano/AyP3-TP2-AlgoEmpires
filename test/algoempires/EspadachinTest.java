@@ -1,7 +1,12 @@
 package algoempires;
 
-import algoempires.direccion.*;
+import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.DimensionesInvalidasError;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -9,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class EspadachinTest {
 
     @Test
-    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -26,7 +31,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -43,7 +48,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -61,7 +66,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -78,7 +83,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -95,7 +100,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -113,7 +118,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -130,7 +135,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 

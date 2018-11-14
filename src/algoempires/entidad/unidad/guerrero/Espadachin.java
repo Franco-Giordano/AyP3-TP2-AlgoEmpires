@@ -1,30 +1,46 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Terreno;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
 
 public class Espadachin extends Guerrero {
 
-    private final static int VIDA = 100;
-    private final static int COSTO = 50;
-    private static int rango = 1;
-    private static int danioAUnidades = 25;
-    private static int danioAEdificios = 15;
+    private final int VIDA_INICIAL = 100;
+    private final int RANGO_ATAQUE = 1;
+    private final int DANIO_A_UNIDADES = 25;
+    private final int DANIO_A_EDIFICIOS = 15;
 
     public Espadachin(Terreno terreno, Casillero casilleroRecibido) throws CasilleroInvalidoException {
 
-        super(rango, terreno, danioAUnidades, danioAEdificios, casilleroRecibido);
+        super(terreno, casilleroRecibido);
 
     }
 
     @Override
     protected int getVidaInicial() {
-        return VIDA;
+        return VIDA_INICIAL;
     }
 
     @Override
-    protected int getCosto() {
-        return COSTO;
+    public void actualizarEntreTurnos(Jugador jugador) {
+
     }
+
+    @Override
+    protected int getRangoAtaque() {
+        return RANGO_ATAQUE;
+    }
+
+    @Override
+    protected int getDanioAUnidades() {
+        return DANIO_A_UNIDADES;
+    }
+
+    @Override
+    protected int getDanioAEdificios() {
+        return DANIO_A_EDIFICIOS;
+    }
+
 }

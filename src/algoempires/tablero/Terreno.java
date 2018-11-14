@@ -1,9 +1,9 @@
-package algoempires;
+package algoempires.tablero;
 
-import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.tablero.direccion.Direccion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +84,6 @@ public class Terreno {
     }
 
 
-    //TODO chequear casillero valido (no ocupado por ej)
     public void ocupar(Casillero casillero, Entidad entidad) throws CasilleroInvalidoException {
 
         if (!casilleroEnRango(casillero) || (estaOcupada(casillero))) {

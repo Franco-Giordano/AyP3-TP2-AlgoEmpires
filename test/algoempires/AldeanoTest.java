@@ -1,8 +1,14 @@
 package algoempires;
 
-import algoempires.direccion.*;
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.DimensionesInvalidasError;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,7 +19,7 @@ public class AldeanoTest {
 
 
     @Test
-    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -30,7 +36,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -47,7 +53,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -65,7 +71,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -82,7 +88,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -99,7 +105,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -117,7 +123,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -134,7 +140,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -203,6 +209,46 @@ public class AldeanoTest {
 
         Cuartel cuartelAConsultar = (Cuartel) terreno.getMapa().get(casilleroAConstruir);
 
-        assertEquals(cuartelAConsultar.getVida(), 300);
+        assertEquals(cuartelAConsultar.getVidaActual(), 300);
     }
+
+    @Test
+    public void test12AldeanoNoSumaOroMientrasRepara() throws DimensionesInvalidasError, CasilleroInvalidoException {
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Jugador jugador = new Jugador(terreno);
+
+        Casillero casilleroACrearAldeano = new Casillero(4, 5);
+
+        Casillero casilleroAConstruir = new Casillero(1, 3);
+
+        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+
+        aldeano.construirCuartel(casilleroAConstruir);
+
+        aldeano.reparar(casilleroAConstruir);
+
+        aldeano.actualizarEntreTurnos(jugador);
+
+        assertEquals(jugador.getOro(), 0);
+
+    }
+
+    @Test
+    public void test13AldeanoSumaOroSiNoEstaReparando() throws DimensionesInvalidasError, CasilleroInvalidoException {
+        Terreno terreno = new Terreno(10, 10);
+
+        Jugador jugador = new Jugador(terreno);
+
+        Casillero casilleroACrearAldeano = new Casillero(3, 5);
+
+        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+
+        aldeano.actualizarEntreTurnos(jugador);
+
+        assertEquals(jugador.getOro(), 20);
+    }
+
+
 }

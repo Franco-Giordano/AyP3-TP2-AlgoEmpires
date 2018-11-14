@@ -1,4 +1,4 @@
-package algoempires.direccion;
+package algoempires.tablero.direccion;
 
 public class DireccionAbajo extends Direccion {
 
