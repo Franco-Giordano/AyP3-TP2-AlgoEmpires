@@ -1,6 +1,6 @@
-package algoempires;
+package algoempires.tablero;
 
-import algoempires.direccion.Direccion;
+import algoempires.tablero.direccion.Direccion;
 
 public class Casillero {
 

@@ -1,13 +1,14 @@
 package algoempires.entidad.unidad.utilero;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Jugador;
-import algoempires.Terreno;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.unidad.Unidad;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
 
-public class Aldeano extends Utilero {
+public class Aldeano extends Unidad {
 
     private final int ORO_GENERADO = 20;
     private final int VIDA = 50;

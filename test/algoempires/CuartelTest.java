@@ -1,6 +1,10 @@
 package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.DimensionesInvalidasError;
+import algoempires.tablero.Terreno;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

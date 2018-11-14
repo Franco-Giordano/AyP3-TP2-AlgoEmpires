@@ -1,5 +1,9 @@
 package algoempires;
 
+import algoempires.jugador.Jugador;
+import algoempires.tablero.DimensionesInvalidasError;
+import algoempires.tablero.Terreno;
+
 import java.util.Random;
 
 public class AlgoEmpires {

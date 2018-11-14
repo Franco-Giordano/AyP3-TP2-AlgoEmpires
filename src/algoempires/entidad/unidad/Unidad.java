@@ -1,10 +1,10 @@
 package algoempires.entidad.unidad;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Terreno;
-import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.Direccion;
 
 
 public abstract class Unidad extends Entidad {

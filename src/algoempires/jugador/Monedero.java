@@ -1,4 +1,4 @@
-package algoempires;
+package algoempires.jugador;
 
 public class Monedero {
 
@@ -18,7 +18,7 @@ public class Monedero {
         }
     }
 
-    public boolean puedoDebitarElValor(int oroASumar) {
+    private boolean puedoDebitarElValor(int oroASumar) {
         return cantidadOro - oroASumar >= 0;
     }
 

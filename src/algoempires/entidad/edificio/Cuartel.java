@@ -1,11 +1,11 @@
 package algoempires.entidad.edificio;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Jugador;
-import algoempires.Terreno;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
 
 public class Cuartel extends Edificio {
 

@@ -1,10 +1,10 @@
 package algoempires.entidad.edificio;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Jugador;
-import algoempires.Terreno;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
 
 public class PlazaCentral extends Edificio {
 

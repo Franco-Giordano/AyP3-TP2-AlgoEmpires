@@ -1,9 +1,14 @@
 package algoempires;
 
-import algoempires.direccion.*;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.DimensionesInvalidasError;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

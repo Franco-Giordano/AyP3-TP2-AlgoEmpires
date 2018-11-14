@@ -1,7 +1,7 @@
 package algoempires.entidad;
 
-import algoempires.Jugador;
-import algoempires.Terreno;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Terreno;
 
 public abstract class Entidad {
 

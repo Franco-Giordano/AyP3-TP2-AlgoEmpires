@@ -1,6 +1,7 @@
-package algoempires;
+package algoempires.jugador;
 
 import algoempires.entidad.Entidad;
+import algoempires.tablero.Terreno;
 
 import java.util.ArrayList;
 

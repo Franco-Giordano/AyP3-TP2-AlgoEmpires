@@ -1,19 +1,19 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.Casillero;
-import algoempires.CasilleroInvalidoException;
-import algoempires.Jugador;
-import algoempires.Terreno;
+import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
+import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Terreno;
 
 public class Arquero extends Guerrero {
 
     private final int VIDA_INICIAL = 75;
-    private static int rangoDelArquero = 3;
-    private static int danioAUnidades = 15;
-    private static int danioAEdificios = 10;
+    private final int RANGO_ATAQUE = 3;
+    private final int DANIO_A_UNIDADES = 15;
+    private final int DANIO_A_EDIFICIOS = 10;
 
     public Arquero(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
-        super(rangoDelArquero, terreno, danioAUnidades, danioAEdificios, casillero);
+        super(terreno, casillero);
 
     }
 
@@ -27,4 +27,18 @@ public class Arquero extends Guerrero {
     public void actualizarEntreTurnos(Jugador jugador) {
     }
 
+    @Override
+    protected int getRangoAtaque() {
+        return RANGO_ATAQUE;
+    }
+
+    @Override
+    protected int getDanioAUnidades() {
+        return DANIO_A_UNIDADES;
+    }
+
+    @Override
+    protected int getDanioAEdificios() {
+        return DANIO_A_EDIFICIOS;
+    }
 }

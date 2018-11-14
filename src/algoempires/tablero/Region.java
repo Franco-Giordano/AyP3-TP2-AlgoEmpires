@@ -1,4 +1,4 @@
-package algoempires;
+package algoempires.tablero;
 
 import java.util.ArrayList;
 

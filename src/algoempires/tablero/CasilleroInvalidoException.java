@@ -1,4 +1,4 @@
-package algoempires;
+package algoempires.tablero;
 
 public class CasilleroInvalidoException extends Exception {
 
