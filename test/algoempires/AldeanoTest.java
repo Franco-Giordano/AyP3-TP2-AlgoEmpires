@@ -277,4 +277,33 @@ public class AldeanoTest {
     }
 
 
+    @Test
+    public void testAldeanoLasAccionesSeHacenEnElPropioTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException{
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casillero1 = new Casillero(3, 4);
+        Casillero casillero2 = new Casillero(6, 6);
+
+        Jugador jugador1= new Jugador(terreno);
+        Jugador jugador2= new Jugador(terreno);
+        jugador1.setContrincante(jugador2);
+        jugador2.setContrincante(jugador1);
+
+        Aldeano aldeano1= new Aldeano(terreno,casillero1);
+        Aldeano aldeano2= new Aldeano(terreno,casillero2);
+
+        aldeano1.actualizarEntreTurnos(jugador1);
+
+        assertEquals(jugador1.getOro(), 20);
+        assertEquals(jugador2.getOro(),0);
+
+        aldeano2.actualizarEntreTurnos(jugador2);
+
+        assertEquals(jugador1.getOro(), 20);
+        assertEquals(jugador2.getOro(),20);
+
+    }
+
+
 }
