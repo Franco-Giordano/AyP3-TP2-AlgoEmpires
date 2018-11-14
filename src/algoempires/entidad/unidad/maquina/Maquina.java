@@ -1,6 +1,6 @@
 package algoempires.entidad.unidad.maquina;
 
-import algoempires.Coordenada;
+import algoempires.Casillero;
 import algoempires.entidad.unidad.Unidad;
 
 public abstract class Maquina extends Unidad {
@@ -10,9 +10,9 @@ public abstract class Maquina extends Unidad {
     private int danioAEdificios;
 
     public Maquina(int vidaRecibida, int costoRecibido, int rangoRecibido, int turnosDeConstruccionRecibidos,
-                   int danioAEdificiosRecibido, Coordenada coordenadaRecibida) {
+                   int danioAEdificiosRecibido, Casillero casilleroRecibido) {
 
-        super(vidaRecibida, costoRecibido, coordenadaRecibida);
+        super(vidaRecibida, costoRecibido, casilleroRecibido);
         this.rango = rangoRecibido;
         this.turnosDeConstruccion = turnosDeConstruccionRecibidos;
         this.danioAEdificios = danioAEdificiosRecibido;

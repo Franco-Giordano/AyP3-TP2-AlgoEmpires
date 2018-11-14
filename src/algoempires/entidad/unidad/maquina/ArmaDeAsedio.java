@@ -1,6 +1,6 @@
 package algoempires.entidad.unidad.maquina;
 
-import algoempires.Coordenada;
+import algoempires.Casillero;
 
 public class ArmaDeAsedio extends Maquina {
 
@@ -11,9 +11,9 @@ public class ArmaDeAsedio extends Maquina {
     private static int danioAEdificios = 75;
 
     public ArmaDeAsedio(int vidaRecibida, int costoRecibido, int rangoRecibido,
-                        int turnosDeConstruccionRecibidos, int danioAEdificiosRecibido, Coordenada coordenadaRecibida) {
+                        int turnosDeConstruccionRecibidos, int danioAEdificiosRecibido, Casillero casilleroRecibido) {
 
-        super(vidaRecibida, costoRecibido, rangoRecibido, turnosDeConstruccionRecibidos, danioAEdificiosRecibido, coordenadaRecibida);
+        super(vidaRecibida, costoRecibido, rangoRecibido, turnosDeConstruccionRecibidos, danioAEdificiosRecibido, casilleroRecibido);
 
     }
 }

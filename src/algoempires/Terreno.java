@@ -1,6 +1,8 @@
 package algoempires;
 
+import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
+import algoempires.entidad.unidad.Unidad;
 
 import java.util.HashMap;
 
@@ -75,6 +77,16 @@ public class Terreno {
 
         return new Region(parcelasEnRegion);
     } */
+
+    public void moverUnidad(Casillero casilleroRecibido, Direccion direccionRecibida){
+
+        Casillero casilleroQueQuieroOcupar = casilleroRecibido.generarMovimientoHacia(direccionRecibida);
+
+        Unidad unidadDesplazada = (Unidad) mapa.get(casilleroRecibido);
+
+        mapa.put(casilleroQueQuieroOcupar,unidadDesplazada);
+
+    }
 
     private boolean casilleroEnRango(Casillero casillero) {
 

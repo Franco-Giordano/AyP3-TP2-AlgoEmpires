@@ -3,7 +3,7 @@ package algoempires.entidad.edificio;
 import algoempires.Region;
 import algoempires.entidad.Entidad;
 
-public class Edificio extends Entidad {
+public abstract class Edificio extends Entidad {
 
     private int turnosDeConstruccion;
     private Region espacioQueOcupa;
@@ -15,5 +15,12 @@ public class Edificio extends Entidad {
         espacioQueOcupa.ocupar(this);
     }
 
+    public int getTurnos(){
+        return this.turnosDeConstruccion;
+    }
+
+    public void setTurnosDeConstruccion(int turnosRecibidos){
+        this.turnosDeConstruccion = turnosRecibidos;
+    }
 
 }

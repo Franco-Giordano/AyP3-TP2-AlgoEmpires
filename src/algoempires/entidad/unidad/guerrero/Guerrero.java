@@ -1,6 +1,6 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.Coordenada;
+import algoempires.Casillero;
 import algoempires.entidad.unidad.Unidad;
 
 public abstract class Guerrero extends Unidad {
@@ -10,9 +10,9 @@ public abstract class Guerrero extends Unidad {
     private int danioAEdificios;
 
     public Guerrero(int vidaRecibida, int costoRecibido, int rangoRecibido,
-                    int danioAUnidadesRecibido, int danioAEdificiosRecibido, Coordenada coordenada) {
+                    int danioAUnidadesRecibido, int danioAEdificiosRecibido, Casillero casilleroRecibido) {
 
-        super(vidaRecibida, costoRecibido, coordenada);
+        super(vidaRecibida, costoRecibido, casilleroRecibido);
         this.rango = rangoRecibido;
         this.danioAUnidades = danioAUnidadesRecibido;
         this.danioAEdificios = danioAEdificiosRecibido;

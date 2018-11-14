@@ -1,30 +1,28 @@
 package algoempires.entidad.unidad;
 
 import algoempires.Casillero;
-import algoempires.Coordenada;
 import algoempires.CasilleroInvalidoException;
-import algoempires.Posicion;
+import algoempires.Terreno;
 import algoempires.direccion.Direccion;
 import algoempires.entidad.Entidad;
 
 
 public abstract class Unidad extends Entidad {
 
-    private Posicion posicion;
+    private Casillero casilleroQueOcupo;
+    private Terreno terrenoDeJuego;
 
     public Unidad(int vidaRecibida, int costoRecibido, Casillero casillero) {
         super(vidaRecibida, costoRecibido);
-        this.posicion = new Posicion(casillero);
-        this.posicion.ocupar(this);
+        this.casilleroQueOcupo = casillero;
     }
 
     public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException {
-        posicion.desplazarHacia(direccion);
-
+        terrenoDeJuego.moverUnidad(casilleroQueOcupo, direccion);
     }
 
-    public boolean estaEnCoordenada(Casillero casillero) {
-        return this.posicion.estaEn(casillero);
+    public boolean estaEnCasillero(Casillero casillero) {
+        return (this.casilleroQueOcupo == casillero);
     }
 
 }

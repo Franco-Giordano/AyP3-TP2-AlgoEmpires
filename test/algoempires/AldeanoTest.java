@@ -15,7 +15,7 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Coordenada coordenada = new Coordenada(2, 2, terreno);
+        Casillero coordenada = new Casillero(2, 2);
 
         Aldeano aldeano = new Aldeano(coordenada);
 

@@ -1,5 +1,7 @@
 package algoempires;
 
+import algoempires.direccion.Direccion;
+
 public class Casillero {
 
     private int posHorizontal;
@@ -46,5 +48,12 @@ public class Casillero {
 
     @Override public int hashCode() {
         return (41 * (41 + posHorizontal) + posVertical);
+    }
+
+    public Casillero generarMovimientoHacia(Direccion direccionRecibida) {
+
+        return new Casillero(posHorizontal + direccionRecibida.getHorizontal(),
+             posVertical + direccionRecibida.getVertical());
+
     }
 }

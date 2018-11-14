@@ -11,18 +11,9 @@ public abstract class Entidad {
     public Entidad(int vidaRecibida, int costoRecibido) {
         this.vida = vidaRecibida;
         this.costo = costoRecibido;
-        this.parcelaQueOcupo = null;
 
     }
-
-    public Parcela getParcelaQueOcupo() {
-        return this.parcelaQueOcupo;
-    }
-
-    public void setParcelaQueOcupo(Parcela nuevaParcelaOcupante) {
-        this.parcelaQueOcupo = nuevaParcelaOcupante;
-    }
-
+    
     //----------------------------------------------------------------------------------------------------------------//
     //######################################### METODOS DE TESTEO ####################################################//
     //----------------------------------------------------------------------------------------------------------------//
