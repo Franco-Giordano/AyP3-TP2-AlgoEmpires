@@ -14,7 +14,6 @@ public class Arquero extends Guerrero {
 
     public Arquero(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno, casillero);
-
     }
 
     @Override

@@ -10,6 +10,7 @@ public abstract class Entidad {
 
     public Entidad(Terreno terreno) {
         this.terrenoDeJuego = terreno;
+        this.vida = getVidaInicial();
     }
 
     protected abstract int getVidaInicial();
@@ -20,4 +21,5 @@ public abstract class Entidad {
     public boolean tieneEstaVida(int vidaRecibida){
         return this.vida == vidaRecibida;
     }
+
 }

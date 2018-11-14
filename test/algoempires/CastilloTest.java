@@ -27,4 +27,16 @@ public class CastilloTest {
         assertTrue(terreno.estaOcupada(casilleroACrearArmaDeAsedio));
     }
 
+    @Test
+    public void testCastilloAsignaCorrectamenteSusCaracteristicas() throws CasilleroInvalidoException, DimensionesInvalidasError {
+
+        //TODO terminar prueba
+        Terreno terreno = new Terreno(10, 10);
+
+        Casillero casillero = new Casillero(3, 3);
+
+        Castillo castillo = new Castillo(terreno, casillero);
+
+    }
+
 }

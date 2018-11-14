@@ -17,7 +17,6 @@ public class PlazaCentral extends Edificio {
     public PlazaCentral(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno, casillero);
         this.vida = getVidaInicial();
-        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
     public void crearAldeano(Casillero casillero) throws CasilleroInvalidoException {

@@ -18,7 +18,6 @@ public class Cuartel extends Edificio {
     public Cuartel(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno, casillero);
         this.vida = getVidaInicial();
-        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
     public void crearEspadachin(Casillero casillero) throws CasilleroInvalidoException {

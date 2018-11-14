@@ -1,6 +1,6 @@
 package algoempires.entidad.edificio;
 
-import algoempires.entidad.unidad.maquina.ArmaDeAsedio;
+import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.CasilleroInvalidoException;
@@ -17,7 +17,6 @@ public class Castillo extends Edificio {
     public Castillo(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
         super(terreno, casillero);
         this.vida = getVidaInicial();
-        this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
     }
 
     public void crearArmaDeAsedio(Casillero casillero) throws CasilleroInvalidoException {
