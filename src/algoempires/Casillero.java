@@ -37,7 +37,8 @@ public class Casillero {
     }
 
 
-    @Override public boolean equals(Object otro) {
+    @Override
+    public boolean equals(Object otro) {
         boolean result = false;
         if (otro instanceof Casillero) {
             Casillero that = (Casillero) otro;
