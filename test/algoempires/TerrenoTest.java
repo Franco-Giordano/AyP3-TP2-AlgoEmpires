@@ -25,7 +25,7 @@ public class TerrenoTest {
     @Test(expected = DimensionesInvalidasError.class)
     public void testTerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasError {
 
-        Terreno terreno = new Terreno(-1,4);
+        new Terreno(-1,4);
 
     }
 
@@ -33,7 +33,7 @@ public class TerrenoTest {
     public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, CasilleroInvalidoException {
         Terreno terreno = new Terreno(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, new Casillero(2, 2));
+        new Aldeano(terreno, new Casillero(2, 2));
 
         assertTrue(terreno.estaOcupada(new Casillero(2, 2)));
 
@@ -48,7 +48,7 @@ public class TerrenoTest {
 
         Terreno terreno = new Terreno(3, 3);
 
-        Cuartel cuartel = new Cuartel(terreno, new Casillero(2, 2));
+        new Cuartel(terreno, new Casillero(2, 2));
 
         assertTrue(terreno.estaOcupada(new Casillero(2, 2)));
         assertTrue(terreno.estaOcupada(new Casillero(3, 2)));
@@ -67,7 +67,7 @@ public class TerrenoTest {
     public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws DimensionesInvalidasError, CasilleroInvalidoException {
         Terreno terreno = new Terreno(5, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, new Casillero(3, 3));
+        new Aldeano(terreno, new Casillero(3, 3));
 
     }
 
@@ -75,7 +75,7 @@ public class TerrenoTest {
     public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws CasilleroInvalidoException, DimensionesInvalidasError {
         Terreno terreno = new Terreno(3, 20);
 
-        Castillo castillo = new Castillo(terreno, new Casillero(1, 5));
+        new Castillo(terreno, new Casillero(1, 5));
 
     }
 
