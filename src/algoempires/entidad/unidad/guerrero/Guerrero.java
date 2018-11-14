@@ -7,6 +7,8 @@ import algoempires.entidad.unidad.Unidad;
 
 public abstract class Guerrero extends Unidad {
 
+
+    //TODO Hacer metodos abstract para rango/danio/etc y exigir implementacion a hijos
     private int rango;
     private int danioAUnidades;
     private int danioAEdificios;

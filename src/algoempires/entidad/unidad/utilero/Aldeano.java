@@ -11,7 +11,6 @@ public class Aldeano extends Utilero {
 
     private final int ORO_GENERADO = 20;
     private final int VIDA = 50;
-    private final int COSTO = 25;
     private boolean estaTrabajando;
 
     public Aldeano(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {

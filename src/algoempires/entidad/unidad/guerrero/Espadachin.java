@@ -7,8 +7,7 @@ import algoempires.Terreno;
 
 public class Espadachin extends Guerrero {
 
-    private final int VIDA = 100;
-    private final int COSTO = 50;
+    private final int VIDA_INICIAL = 100;
     private static int rango = 1;
     private static int danioAUnidades = 25;
     private static int danioAEdificios = 15;
@@ -21,7 +20,7 @@ public class Espadachin extends Guerrero {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA;
+        return VIDA_INICIAL;
     }
 
     @Override

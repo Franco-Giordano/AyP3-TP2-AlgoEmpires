@@ -11,9 +11,8 @@ public class Cuartel extends Edificio {
 
     private final int TAMANIO_HORIZONTAL = 2;
     private final int TAMANIO_VERTICAL = 2;
-    private final int COSTO = 50;
-    private final int VIDA = 250;
-    private final int TURNOS_DE_CONSTRUCCION = 3;
+    private final int VIDA_INICIAL = 250;
+    private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
     private final int VELOCIDAD_DE_REPARACION = 50;
 
     public Cuartel(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
@@ -42,12 +41,12 @@ public class Cuartel extends Edificio {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA;
+        return VIDA_INICIAL;
     }
 
     @Override
     protected int getTurnosDeContruccionIniciales() {
-        return TURNOS_DE_CONSTRUCCION;
+        return TURNOS_DE_CONSTRUCCION_INICIAL;
     }
 
     @Override
@@ -55,12 +54,15 @@ public class Cuartel extends Edificio {
         return VELOCIDAD_DE_REPARACION;
     }
 
-    public int getVida() {
-        return vida;
-    }
 
     @Override
     public void actualizarEntreTurnos(Jugador jugador) {
+    }
+
+
+    //METODO DE TESTEO
+    public int getVidaActual() {
+        return vida;
     }
 }
 

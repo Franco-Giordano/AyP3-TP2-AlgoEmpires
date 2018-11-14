@@ -10,7 +10,6 @@ import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 public class ArmaDeAsedio extends Maquina {
 
     private final int VIDA = 150;
-    private final int COSTO = 200;
     private final int RANGO = 5;
     private final int DANIO_A_EDIFICIOS = 75;
 

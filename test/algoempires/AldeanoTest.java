@@ -204,7 +204,7 @@ public class AldeanoTest {
 
         Cuartel cuartelAConsultar = (Cuartel) terreno.getMapa().get(casilleroAConstruir);
 
-        assertEquals(cuartelAConsultar.getVida(), 300);
+        assertEquals(cuartelAConsultar.getVidaActual(), 300);
     }
 
     @Test

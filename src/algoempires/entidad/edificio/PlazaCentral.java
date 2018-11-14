@@ -10,9 +10,8 @@ public class PlazaCentral extends Edificio {
 
     private final int TAMANIO_HORIZONTAL = 2;
     private final int TAMANIO_VERTICAL = 2;
-    private final int COSTO = 100;
-    private final int VIDA = 450;
-    private final int TURNOS_DE_CONSTRUCCION = 3;
+    private final int VIDA_INICIAL = 450;
+    private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
     private final int VELOCIDAD_DE_REPARACION = 25;
 
     public PlazaCentral(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
@@ -37,12 +36,12 @@ public class PlazaCentral extends Edificio {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA;
+        return VIDA_INICIAL;
     }
 
     @Override
     protected int getTurnosDeContruccionIniciales() {
-        return TURNOS_DE_CONSTRUCCION;
+        return TURNOS_DE_CONSTRUCCION_INICIAL;
     }
 
     @Override
