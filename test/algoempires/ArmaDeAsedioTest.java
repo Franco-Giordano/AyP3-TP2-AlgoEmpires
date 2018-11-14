@@ -2,6 +2,7 @@ package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.maquina.ArmaDeAsedio;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class ArmaDeAsedioTest {
 
     @Test
-    public void test01MuevoUnArmaDeAsedioAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -32,7 +33,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test02MuevoUnArmaDeAsedioArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -49,7 +50,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test03MuevoUnArmaDeAsedioIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -67,7 +68,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test04MuevoUnArmaDeAsedioDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -84,7 +85,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test05MuevoUnArmaDeAsedioArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -101,7 +102,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test06MuevoUnArmaDeAsedioArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -119,7 +120,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test07MuevoUnArmaDeAsedioAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -136,7 +137,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void test08MuevoUnArmaDeAsedioAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -187,5 +188,23 @@ public class ArmaDeAsedioTest {
 
         assertTrue(armaDeAsedio.estaEnCasillero(new Casillero(3, 1)));
         assertFalse(armaDeAsedio.estaEnCasillero(new Casillero(2, 2)));
+    }
+
+    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
+    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Jugador jugador = new Jugador(terreno);
+
+        Casillero casilleroACrearArmaDeAsedio = new Casillero(3, 4);
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno,casilleroACrearArmaDeAsedio);
+
+        Direccion direccion = new DireccionArriba();
+
+        armaDeAsedio.desplazarHacia(direccion);
+
+        armaDeAsedio.desplazarHacia(direccion);
     }
 }

@@ -2,6 +2,7 @@ package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class EspadachinTest {
 
     @Test
-    public void test01MuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -31,7 +32,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test02MuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -48,7 +49,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test03MuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -66,7 +67,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test04MuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -83,7 +84,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test05MuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -100,7 +101,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test06MuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -118,7 +119,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test07MuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -135,7 +136,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void test08MuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -149,5 +150,21 @@ public class EspadachinTest {
 
         assertTrue(espadachin.estaEnCasillero(new Casillero(3, 1)));
 
+    }
+
+    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
+    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casilleroACrearEspadachin = new Casillero(3, 4);
+
+        Espadachin espadachin= new Espadachin(terreno,casilleroACrearEspadachin);
+
+        Direccion direccion = new DireccionArriba();
+
+        espadachin.desplazarHacia(direccion);
+
+        espadachin.desplazarHacia(direccion);
     }
 }

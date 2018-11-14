@@ -19,7 +19,7 @@ public class AldeanoTest {
 
 
     @Test
-    public void test01MuevoUnAldeanoAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -36,7 +36,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test02MuevoUnAldeanoArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -53,7 +53,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test03MuevoUnAldeanoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -71,7 +71,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test04MuevoUnAldeanoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -88,7 +88,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test05MuevoUnAldeanoArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -105,7 +105,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test06MuevoUnAldeanoArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -123,7 +123,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test07MuevoUnAldeanoAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -140,7 +140,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test08MuevoUnAldeanoAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnAldeanoAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -157,7 +157,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test09aldeanoConstruyeUnaPlaza() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testaldeanoConstruyeUnaPlaza() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -175,7 +175,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test10aldeanoConstruyeUnCuartel() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testaldeanoConstruyeUnCuartel() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -193,7 +193,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test11aldeanoReparaUnCuartel() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testaldeanoReparaUnCuartel() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -213,7 +213,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test12AldeanoNoSumaOroMientrasRepara() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testAldeanoNoSumaOroMientrasRepara() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -236,7 +236,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void test13AldeanoSumaOroSiNoEstaReparando() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testAldeanoSumaOroSiNoEstaReparando() throws DimensionesInvalidasError, CasilleroInvalidoException {
         Terreno terreno = new Terreno(10, 10);
 
         Jugador jugador = new Jugador(terreno);
@@ -250,5 +250,20 @@ public class AldeanoTest {
         assertEquals(jugador.getOro(), 20);
     }
 
+    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
+    public void testAldeanoSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casilleroACrearAldeano = new Casillero(3, 4);
+
+        Aldeano aldeano = new Aldeano(terreno,casilleroACrearAldeano);
+
+        Direccion direccion = new DireccionArriba();
+
+        aldeano.desplazarHacia(direccion);
+
+        aldeano.desplazarHacia(direccion);
+    }
 
 }

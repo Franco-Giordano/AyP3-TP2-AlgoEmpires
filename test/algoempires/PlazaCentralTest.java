@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class PlazaCentralTest {
 
     @Test
-    public void test01PlazaCentralCreaAldeanoCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testPlazaCentralCreaAldeanoCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
         Terreno terreno = new Terreno(10, 10);
 

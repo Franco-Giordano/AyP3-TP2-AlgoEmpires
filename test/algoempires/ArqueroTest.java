@@ -2,6 +2,7 @@ package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Arquero;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class ArqueroTest {
 
     @Test
-    public void test01MuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -31,7 +32,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test02MuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -48,7 +49,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test03MuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -66,7 +67,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test04MuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -83,7 +84,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test05MuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -100,7 +101,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test06MuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -118,7 +119,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test07MuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -135,7 +136,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void test08MuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -149,6 +150,22 @@ public class ArqueroTest {
 
         assertTrue(arquero.estaEnCasillero(new Casillero(3, 1)));
 
+    }
+
+    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
+    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+
+        Terreno terreno = new Terreno(10,10);
+
+        Casillero casilleroACrearArquero = new Casillero(3, 4);
+
+        Arquero arquero= new Arquero(terreno,casilleroACrearArquero);
+
+        Direccion direccion = new DireccionArriba();
+
+        arquero.desplazarHacia(direccion);
+
+        arquero.desplazarHacia(direccion);
     }
 }
 
