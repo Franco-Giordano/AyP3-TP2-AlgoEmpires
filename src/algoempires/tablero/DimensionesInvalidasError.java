@@ -1,6 +1,6 @@
 package algoempires.tablero;
 
-public class DimensionesInvalidasError extends Exception {
+public class DimensionesInvalidasError extends RuntimeException {
 
 
     public DimensionesInvalidasError(int horiz, int vert) {

@@ -1,7 +1,7 @@
 package algoempires.entidad.unidad;
 
 import algoempires.entidad.Entidad;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
@@ -9,13 +9,13 @@ import algoempires.tablero.direccion.Direccion;
 
 public abstract class Unidad extends Entidad {
 
-    private Casillero casilleroQueOcupo;
+    private Posicion posicionQueOcupo;
     private boolean movioEsteTurno;
 
-    public Unidad(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
+    public Unidad(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
         super(terreno);
-        this.casilleroQueOcupo = casillero;
-        this.terrenoDeJuego.ocupar(casilleroQueOcupo, this);
+        this.posicionQueOcupo = posicion;
+        this.terrenoDeJuego.ocupar(posicionQueOcupo, this);
         this.movioEsteTurno = false;
     }
 
@@ -24,13 +24,13 @@ public abstract class Unidad extends Entidad {
             throw new UnidadYaMovioEnEsteTurnoException();
         }
 
-        terrenoDeJuego.moverUnidad(casilleroQueOcupo, direccion);
-        this.casilleroQueOcupo = casilleroQueOcupo.generarMovimientoHacia(direccion);
+        terrenoDeJuego.moverUnidad(posicionQueOcupo, direccion);
+        this.posicionQueOcupo = posicionQueOcupo.generarMovimientoHacia(direccion);
         movioEsteTurno = true;
     }
 
-    public boolean estaEnCasillero(Casillero casillero) {
-        return casilleroQueOcupo.equals(casillero);
+    public boolean estaEnCasillero(Posicion posicion) {
+        return posicionQueOcupo.equals(posicion);
     }
 
 }

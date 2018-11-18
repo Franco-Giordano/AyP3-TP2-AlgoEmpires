@@ -1,10 +1,9 @@
 package algoempires;
 
-import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
@@ -22,9 +21,9 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        Casillero casillero = new Casillero(2,2);
+        Posicion posicion = new Posicion(2,2);
 
-        Aldeano aldeano = new Aldeano(terreno,casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         assertTrue(aldeano.tieneEstasCaracteristicas(50,20,false));
     }
@@ -34,15 +33,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionAbajo();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(2, 1)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(2, 1)));
 
     }
 
@@ -51,15 +50,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionArriba();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(2, 3)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(2, 3)));
 
     }
 
@@ -68,15 +67,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionIzquierda();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(1, 2)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 2)));
 
     }
 
@@ -85,15 +84,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionDerecha();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(3, 2)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 2)));
 
     }
 
@@ -102,15 +101,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(1, 3)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 3)));
 
     }
 
@@ -119,16 +118,16 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
 
         Direccion direccion = new DireccionArribaDerecha();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(3, 3)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 3)));
 
     }
 
@@ -137,15 +136,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(1, 1)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 1)));
 
     }
 
@@ -154,15 +153,15 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, casillero);
+        Aldeano aldeano = new Aldeano(terreno, posicion);
 
         Direccion direccion = new DireccionAbajoDerecha();
 
         aldeano.desplazarHacia(direccion);
 
-        assertTrue(aldeano.estaEnCasillero(new Casillero(3, 1)));
+        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 1)));
 
     }
 
@@ -171,17 +170,17 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casilleroACrearAldeano = new Casillero(2, 2);
+        Posicion posicionACrearAldeano = new Posicion(2, 2);
 
-        Casillero casilleroAConstruir = new Casillero(3, 3);
+        Posicion posicionAConstruir = new Posicion(3, 3);
 
-        Casillero casilleroAConsultar = new Casillero(4, 4);
+        Posicion posicionAConsultar = new Posicion(4, 4);
 
-        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
-        aldeano.construirPlazaCentral(casilleroAConstruir);
+        aldeano.construirPlazaCentral(posicionAConstruir);
 
-        assertTrue(terreno.estaOcupada(casilleroAConsultar));
+        assertTrue(terreno.estaOcupada(posicionAConsultar));
     }
 
     @Test
@@ -189,17 +188,17 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casilleroACrearAldeano = new Casillero(2, 2);
+        Posicion posicionACrearAldeano = new Posicion(2, 2);
 
-        Casillero casilleroAConstruir = new Casillero(3, 3);
+        Posicion posicionAConstruir = new Posicion(3, 3);
 
-        Casillero casilleroAConsultar = new Casillero(4, 4);
+        Posicion posicionAConsultar = new Posicion(4, 4);
 
-        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
-        aldeano.construirCuartel(casilleroAConstruir);
+        aldeano.construirCuartel(posicionAConstruir);
 
-        assertTrue(terreno.estaOcupada(casilleroAConsultar));
+        assertTrue(terreno.estaOcupada(posicionAConsultar));
     }
 
     @Test
@@ -207,17 +206,17 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casilleroACrearAldeano = new Casillero(4, 5);
+        Posicion posicionACrearAldeano = new Posicion(4, 5);
 
-        Casillero casilleroAConstruir = new Casillero(3, 3);
+        Posicion posicionAConstruir = new Posicion(3, 3);
 
-        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
-        aldeano.construirCuartel(casilleroAConstruir);
+        aldeano.construirCuartel(posicionAConstruir);
 
-        aldeano.reparar(casilleroAConstruir);
+        aldeano.reparar(posicionAConstruir);
 
-        assertTrue(terreno.compararVidaDe(casilleroAConstruir, 300));
+        assertTrue(terreno.compararVidaDe(posicionAConstruir, 300));
     }
 
     @Test
@@ -227,15 +226,15 @@ public class AldeanoTest {
 
         Jugador jugador = new Jugador(terreno);
 
-        Casillero casilleroACrearAldeano = new Casillero(4, 5);
+        Posicion posicionACrearAldeano = new Posicion(4, 5);
 
-        Casillero casilleroAConstruir = new Casillero(1, 3);
+        Posicion posicionAConstruir = new Posicion(1, 3);
 
-        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
-        aldeano.construirCuartel(casilleroAConstruir);
+        aldeano.construirCuartel(posicionAConstruir);
 
-        aldeano.reparar(casilleroAConstruir);
+        aldeano.reparar(posicionAConstruir);
 
         aldeano.actualizarEntreTurnos(jugador);
 
@@ -249,9 +248,9 @@ public class AldeanoTest {
 
         Jugador jugador = new Jugador(terreno);
 
-        Casillero casilleroACrearAldeano = new Casillero(3, 5);
+        Posicion posicionACrearAldeano = new Posicion(3, 5);
 
-        Aldeano aldeano = new Aldeano(terreno, casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
         aldeano.actualizarEntreTurnos(jugador);
 
@@ -263,9 +262,9 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        Casillero casilleroACrearAldeano = new Casillero(3, 4);
+        Posicion posicionACrearAldeano = new Posicion(3, 4);
 
-        Aldeano aldeano = new Aldeano(terreno,casilleroACrearAldeano);
+        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
 
         Direccion direccion = new DireccionArriba();
 
@@ -280,16 +279,16 @@ public class AldeanoTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        Casillero casillero1 = new Casillero(3, 4);
-        Casillero casillero2 = new Casillero(6, 6);
+        Posicion posicion1 = new Posicion(3, 4);
+        Posicion posicion2 = new Posicion(6, 6);
 
         Jugador jugador1= new Jugador(terreno);
         Jugador jugador2= new Jugador(terreno);
         jugador1.setContrincante(jugador2);
         jugador2.setContrincante(jugador1);
 
-        Aldeano aldeano1= new Aldeano(terreno,casillero1);
-        Aldeano aldeano2= new Aldeano(terreno,casillero2);
+        Aldeano aldeano1= new Aldeano(terreno, posicion1);
+        Aldeano aldeano2= new Aldeano(terreno, posicion2);
 
         aldeano1.actualizarEntreTurnos(jugador1);
 

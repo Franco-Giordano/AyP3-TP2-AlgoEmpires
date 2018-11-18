@@ -1,9 +1,8 @@
 package algoempires.tablero;
 
-public class CasilleroInvalidoException extends Exception {
+public class CasilleroInvalidoException extends RuntimeException {
 
-    public CasilleroInvalidoException(Casillero casillero) {
-        super(String.format("Se trato de ocupar coordenada ya ocupada o fuera de rango: (%d, %d)",
-                casillero.getHorizontal(), casillero.getVertical()));
+    public CasilleroInvalidoException() {
+        super(String.format("Se trato de ocupar un casillero ya ocupado o invalido."));
     }
 }

@@ -2,8 +2,7 @@ package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Arquero;
-import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
@@ -19,9 +18,9 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        Casillero casillero = new Casillero(2,2);
+        Posicion posicion = new Posicion(2,2);
 
-        Arquero arquero = new Arquero(terreno,casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         assertTrue(arquero.tieneEstasCaracteristicas(75,3,15,10));
 
@@ -32,15 +31,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionAbajo();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(2, 1)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(2, 1)));
 
     }
 
@@ -49,15 +48,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionArriba();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(2, 3)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(2, 3)));
 
     }
 
@@ -66,16 +65,16 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionIzquierda();
 
         arquero.desplazarHacia(direccion);
 
         //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
-        assertTrue(arquero.estaEnCasillero(new Casillero(1, 2)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(1, 2)));
 
     }
 
@@ -84,15 +83,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionDerecha();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(3, 2)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(3, 2)));
 
     }
 
@@ -101,15 +100,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(1, 3)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(1, 3)));
 
     }
 
@@ -118,16 +117,16 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
 
         Direccion direccion = new DireccionArribaDerecha();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(3, 3)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(3, 3)));
 
     }
 
@@ -136,15 +135,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(1, 1)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(1, 1)));
 
     }
 
@@ -153,15 +152,15 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(2, 2);
+        Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, casillero);
+        Arquero arquero = new Arquero(terreno, posicion);
 
         Direccion direccion = new DireccionAbajoDerecha();
 
         arquero.desplazarHacia(direccion);
 
-        assertTrue(arquero.estaEnCasillero(new Casillero(3, 1)));
+        assertTrue(arquero.estaEnCasillero(new Posicion(3, 1)));
 
     }
 
@@ -170,9 +169,9 @@ public class ArqueroTest {
 
         Terreno terreno = new Terreno(10,10);
 
-        Casillero casilleroACrearArquero = new Casillero(3, 4);
+        Posicion posicionACrearArquero = new Posicion(3, 4);
 
-        Arquero arquero= new Arquero(terreno,casilleroACrearArquero);
+        Arquero arquero= new Arquero(terreno, posicionACrearArquero);
 
         Direccion direccion = new DireccionArriba();
 

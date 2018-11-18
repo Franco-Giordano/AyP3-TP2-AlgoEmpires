@@ -1,61 +1,49 @@
 package algoempires.tablero;
 
-import algoempires.tablero.direccion.Direccion;
+import algoempires.entidad.Entidad;
+import algoempires.entidad.unidad.Unidad;
 
 public class Casillero {
 
-    private int posHorizontal;
-    private int posVertical;
+    Entidad entidadContenida;
+    Posicion posicion;
 
-    public Casillero(int posHorizontal, int posVertical) {
+    public Casillero(Posicion posicionRecibida) {
 
-        this.posHorizontal = posHorizontal;
-        this.posVertical = posVertical;
+        this.posicion = posicionRecibida;
+        this.entidadContenida = null;
     }
 
 
-    public int getHorizontal() {
-        return posHorizontal;
-    }
+    public void trasladarUnidadA(Casillero casilleroQueQuieroOcupar) {
 
+        try {
 
-    public int getVertical() {
-        return posVertical;
-    }
+            Unidad unidadQueQuieroTrasladar = (Unidad) this.entidadContenida;
 
-    public boolean pertenzcoAlRango(Casillero limiteInfIzq, Casillero limiteSupDer) {
+            casilleroQueQuieroOcupar.ocupar(unidadQueQuieroTrasladar);
 
-        boolean estaEnRangoVertical = limiteInfIzq.getVertical() <= posVertical &&
-                posVertical <= limiteSupDer.getVertical();
-        boolean estaEnRangoHorizontal = limiteInfIzq.getHorizontal() <= posHorizontal &&
-                posHorizontal <= limiteSupDer.getHorizontal();
+            this.entidadContenida = null;
 
-        return estaEnRangoHorizontal && estaEnRangoVertical;
+        } catch (ClassCastException exception) {
 
-    }
+            throw new SoloUnidadesSePuedenDesplazarException();
 
-
-    public Casillero generarMovimientoHacia(Direccion direccionRecibida) {
-
-        return new Casillero(posHorizontal + direccionRecibida.getHorizontal(),
-                posVertical + direccionRecibida.getVertical());
-
-    }
-
-
-    @Override
-    public boolean equals(Object otro) {
-        boolean result = false;
-        if (otro instanceof Casillero) {
-            Casillero that = (Casillero) otro;
-            result = (this.posHorizontal == that.getHorizontal() && this.posVertical == that.getVertical());
         }
-        return result;
+
+
     }
 
-    @Override
-    public int hashCode() {
-        return (41 * (41 + posHorizontal) + posVertical);
+    public void ocupar(Entidad entidadRecibida) {
+
+        if (this.entidadContenida != null) {
+            throw new CasilleroInvalidoException();
+        }
+        this.entidadContenida = entidadRecibida;
+    }
+
+    public boolean tieneEstaVida(int vidaAComparar) {
+        return this.entidadContenida.tieneEstaVida(vidaAComparar);
     }
 
 

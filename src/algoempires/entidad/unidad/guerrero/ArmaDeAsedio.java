@@ -2,7 +2,7 @@ package algoempires.entidad.unidad.guerrero;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
@@ -19,9 +19,9 @@ public class ArmaDeAsedio extends Guerrero {
 
     private boolean estaMontada;
 
-    public ArmaDeAsedio(Terreno terreno, Casillero casilleroRecibido) throws CasilleroInvalidoException {
+    public ArmaDeAsedio(Terreno terreno, Posicion posicionRecibido) throws CasilleroInvalidoException {
 
-        super(terreno, casilleroRecibido);
+        super(terreno, posicionRecibido);
 
         this.turnosDeConstruccion = TURNOS_DE_CONSTRUCCION_INICIAL;
 

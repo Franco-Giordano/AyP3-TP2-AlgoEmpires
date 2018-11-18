@@ -4,7 +4,7 @@ import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 
@@ -14,29 +14,29 @@ public class Aldeano extends Unidad {
     private final int VIDA = 50;
     private boolean estaTrabajando;
 
-    public Aldeano(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
+    public Aldeano(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
 
-        super(terreno, casillero);
+        super(terreno, posicion);
         this.estaTrabajando = false;
     }
 
-    public void construirPlazaCentral(Casillero casillero) throws CasilleroInvalidoException {
+    public void construirPlazaCentral(Posicion posicion) throws CasilleroInvalidoException {
 
-        new PlazaCentral(terrenoDeJuego, casillero);
+        new PlazaCentral(terrenoDeJuego, posicion);
         estaTrabajando = true;
 
     }
 
-    public void construirCuartel(Casillero casillero) throws CasilleroInvalidoException {
+    public void construirCuartel(Posicion posicion) throws CasilleroInvalidoException {
 
-        new Cuartel(terrenoDeJuego, casillero);
+        new Cuartel(terrenoDeJuego, posicion);
         estaTrabajando = true;
 
     }
 
-    public void reparar(Casillero casillero) {
+    public void reparar(Posicion posicion) {
 
-        terrenoDeJuego.reparar(casillero);
+        terrenoDeJuego.reparar(posicion);
         estaTrabajando = true;
 
     }

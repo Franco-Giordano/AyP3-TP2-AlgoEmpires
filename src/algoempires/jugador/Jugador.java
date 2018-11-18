@@ -1,9 +1,6 @@
 package algoempires.jugador;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.tablero.Casillero;
-import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 
 import java.util.ArrayList;

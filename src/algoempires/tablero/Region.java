@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Region {
 
-    private Casillero infIzquierdo;
+    private Posicion infIzquierdo;
     private int tamanioHorizontal;
     private int tamanioVertical;
 
-    public Region(Casillero infIzquierdo, int tamanioHorizontal, int tamanioVertical) {
+    public Region(Posicion infIzquierdo, int tamanioHorizontal, int tamanioVertical) {
 
         this.infIzquierdo = infIzquierdo;
         this.tamanioVertical = tamanioVertical;
@@ -17,15 +17,15 @@ public class Region {
     }
 
 
-    public ArrayList<Casillero> generarCasillerosContenidos() {
+    public ArrayList<Posicion> generarCasillerosContenidos() {
 
-        ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
+        ArrayList<Posicion> casillerosContenidos = new ArrayList<>();
 
         for (int i = 0; i < tamanioHorizontal; i++) {
             for (int j = 0; j < tamanioVertical; j++) {
-                Casillero casilleroContenido = new Casillero(i + infIzquierdo.getHorizontal(),
+                Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
                         j + infIzquierdo.getVertical());
-                casillerosContenidos.add(casilleroContenido);
+                casillerosContenidos.add(posicionContenido);
             }
         }
 

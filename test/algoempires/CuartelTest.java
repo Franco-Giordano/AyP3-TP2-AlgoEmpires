@@ -1,7 +1,7 @@
 package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
@@ -17,15 +17,15 @@ public class CuartelTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(3, 3);
+        Posicion posicion = new Posicion(3, 3);
 
-        Casillero casilleroACrearEspadachin = new Casillero(5, 4);
+        Posicion posicionACrearEspadachin = new Posicion(5, 4);
 
-        Cuartel cuartel = new Cuartel(terreno, casillero);
+        Cuartel cuartel = new Cuartel(terreno, posicion);
 
-        cuartel.crearEspadachin(casilleroACrearEspadachin);
+        cuartel.crearEspadachin(posicionACrearEspadachin);
 
-        assertTrue(terreno.estaOcupada(casilleroACrearEspadachin));
+        assertTrue(terreno.estaOcupada(posicionACrearEspadachin));
 
     }
 
@@ -34,15 +34,15 @@ public class CuartelTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(3, 3);
+        Posicion posicion = new Posicion(3, 3);
 
-        Casillero casilleroACrearArquero = new Casillero(5, 4);
+        Posicion posicionACrearArquero = new Posicion(5, 4);
 
-        Cuartel cuartel = new Cuartel(terreno, casillero);
+        Cuartel cuartel = new Cuartel(terreno, posicion);
 
-        cuartel.crearArquero(casilleroACrearArquero);
+        cuartel.crearArquero(posicionACrearArquero);
 
-        assertTrue(terreno.estaOcupada(casilleroACrearArquero));
+        assertTrue(terreno.estaOcupada(posicionACrearArquero));
 
     }
 }

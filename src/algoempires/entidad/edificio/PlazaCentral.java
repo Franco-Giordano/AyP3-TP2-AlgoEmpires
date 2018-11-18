@@ -2,7 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 
@@ -14,13 +14,13 @@ public class PlazaCentral extends Edificio {
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
     private final int VELOCIDAD_DE_REPARACION = 25;
 
-    public PlazaCentral(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
-        super(terreno, casillero);
+    public PlazaCentral(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
+        super(terreno, posicion);
         this.vida = getVidaInicial();
     }
 
-    public void crearAldeano(Casillero casillero) throws CasilleroInvalidoException {
-        new Aldeano(terrenoDeJuego, casillero);
+    public void crearAldeano(Posicion posicion) throws CasilleroInvalidoException {
+        new Aldeano(terrenoDeJuego, posicion);
     }
 
     @Override

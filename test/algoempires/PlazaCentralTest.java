@@ -1,7 +1,7 @@
 package algoempires;
 
 import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
@@ -16,14 +16,14 @@ public class PlazaCentralTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(3, 3);
+        Posicion posicion = new Posicion(3, 3);
 
-        Casillero casilleroACrearAldeano = new Casillero(5, 4);
+        Posicion posicionACrearAldeano = new Posicion(5, 4);
 
-        PlazaCentral plazaCentral = new PlazaCentral(terreno, casillero);
+        PlazaCentral plazaCentral = new PlazaCentral(terreno, posicion);
 
-        plazaCentral.crearAldeano(casilleroACrearAldeano);
+        plazaCentral.crearAldeano(posicionACrearAldeano);
 
-        assertTrue(terreno.estaOcupada(casilleroACrearAldeano));
+        assertTrue(terreno.estaOcupada(posicionACrearAldeano));
     }
 }

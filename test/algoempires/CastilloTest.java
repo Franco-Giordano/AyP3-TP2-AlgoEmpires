@@ -1,7 +1,7 @@
 package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
@@ -16,15 +16,15 @@ public class CastilloTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(3, 3);
+        Posicion posicion = new Posicion(3, 3);
 
-        Casillero casilleroACrearArmaDeAsedio = new Casillero(7, 7);
+        Posicion posicionACrearArmaDeAsedio = new Posicion(7, 7);
 
-        Castillo castillo = new Castillo(terreno, casillero);
+        Castillo castillo = new Castillo(terreno, posicion);
 
-        castillo.crearArmaDeAsedio(casilleroACrearArmaDeAsedio);
+        castillo.crearArmaDeAsedio(posicionACrearArmaDeAsedio);
 
-        assertTrue(terreno.estaOcupada(casilleroACrearArmaDeAsedio));
+        assertTrue(terreno.estaOcupada(posicionACrearArmaDeAsedio));
     }
 
     @Test
@@ -33,9 +33,9 @@ public class CastilloTest {
         //TODO terminar prueba
         Terreno terreno = new Terreno(10, 10);
 
-        Casillero casillero = new Casillero(3, 3);
+        Posicion posicion = new Posicion(3, 3);
 
-       new Castillo(terreno, casillero);
+       new Castillo(terreno, posicion);
 
     }
 

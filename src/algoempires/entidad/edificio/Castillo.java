@@ -2,7 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Terreno;
 
@@ -14,13 +14,13 @@ public class Castillo extends Edificio {
     private final int VELOCIDAD_DE_REPARACION = 15;
 
     /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
-    public Castillo(Terreno terreno, Casillero casillero) throws CasilleroInvalidoException {
-        super(terreno, casillero);
+    public Castillo(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
+        super(terreno, posicion);
         this.vida = getVidaInicial();
     }
 
-    public void crearArmaDeAsedio(Casillero casillero) throws CasilleroInvalidoException {
-        new ArmaDeAsedio(terrenoDeJuego, casillero);
+    public void crearArmaDeAsedio(Posicion posicion) throws CasilleroInvalidoException {
+        new ArmaDeAsedio(terrenoDeJuego, posicion);
     }
 
     @Override
