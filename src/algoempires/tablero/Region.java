@@ -1,7 +1,6 @@
 package algoempires.tablero;
 
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.utilero.Aldeano;
 
 import java.util.ArrayList;
 
@@ -46,13 +45,16 @@ public class Region {
         int minRangoVertical = posicion.getVertical() - unidad.getRango();
         int maxRangoVertical = posicion.getVertical() + unidad.getRango();
 
-        for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i ++){
-            for (int j = minRangoVertical; j <= maxRangoVertical; j++){
+        for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i++) {
+
+            for (int j = minRangoVertical; j <= maxRangoVertical; j++) {
+
                 if (i != posicion.getHorizontal() && j != posicion.getVertical()) {
                     Posicion posicionContenido = new Posicion(i, j);
                     posicionesContenidas.add(posicionContenido);
                 }
             }
+
         }
 
         return posicionesContenidas;

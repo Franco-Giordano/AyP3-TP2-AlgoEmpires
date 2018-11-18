@@ -47,8 +47,12 @@ public class Arquero extends Guerrero {
 
     public void imprimirListaDeEntidades() {
 
-        for (Entidad each: this.atacables) {
-            System.out.println(each);
+        if (!this.atacables.isEmpty()) {
+            for (Entidad each : this.atacables) {
+                System.out.println(each);
+            }
+        }else {
+            System.out.println("Esta unidad no ve a nadie.");
         }
     }
 }

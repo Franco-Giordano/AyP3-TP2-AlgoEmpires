@@ -1,5 +1,6 @@
 package algoempires.entidad.unidad.guerrero;
 
+import algoempires.entidad.Entidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.CasilleroInvalidoException;
 
@@ -41,4 +42,15 @@ public class Espadachin extends Guerrero {
         return DANIO_A_EDIFICIOS;
     }
 
+
+    public void imprimirListaDeEntidades() {
+
+        if (!this.atacables.isEmpty()) {
+            for (Entidad each : this.atacables) {
+                System.out.println(each);
+            }
+        }else {
+            System.out.println("Esta unidad no ve a nadie.");
+        }
+    }
 }

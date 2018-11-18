@@ -2,19 +2,16 @@ package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
+import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
+import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
-import algoempires.tablero.direccion.*;
+import algoempires.tablero.direccion.Direccion;
+import algoempires.tablero.direccion.DireccionArriba;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -22,28 +19,28 @@ import static org.junit.Assert.assertTrue;
 public class AldeanoTest {
 
     @Test
-    public void testAldeanoSeMueveBien(){
+    public void testAldeanoSeMueveBien() {
 
-        Posicion posicion = new Posicion(1,1);
+        Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10,10);
+        Terreno terreno = new Terreno(10, 10);
 
-        Aldeano aldeano = new Aldeano ();
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionArriba();
 
-        terreno.ocuparConUnidad(posicion,aldeano);
+        terreno.ocuparConUnidad(posicion, aldeano);
 
-        terreno.moverUnidad(posicion,direccion);
+        terreno.moverUnidad(posicion, direccion);
 
-        Posicion posicionOcupada = new Posicion(1,2);
+        Posicion posicionOcupada = new Posicion(1, 2);
 
         assertTrue(terreno.estaOcupada(posicionOcupada));
         assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testAldeanoSeCreabien(){
+    public void testAldeanoSeCreabien() {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -68,31 +65,49 @@ public class AldeanoTest {
 
         Arquero arquero = new Arquero();
 
+        Espadachin espadachin = new Espadachin();
+
         Aldeano aldeano = new Aldeano();
 
-        Castillo castillo = new Castillo();
+        Aldeano aldeano1 = new Aldeano();
+
+        Aldeano aldeano2 = new Aldeano();
 
         Cuartel cuartel = new Cuartel();
 
-        Posicion posicionAldeano = new Posicion(4,4);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio();
+
+        Posicion posicionAldeano = new Posicion(4, 4);
 
         Posicion posicionArquero = new Posicion(6, 6);
 
-        Posicion posicionDelCastillo = new Posicion (7,7);
+        Posicion posicionDelAldeano1 = new Posicion(7, 7);
+
+        Posicion posicionDelAldeano2 = new Posicion(9,9);
 
         Posicion posicionDelCuartel = new Posicion(2, 2);
 
+        Posicion posicionDelArmaDeasedio = new Posicion(5,5);
+
+        Posicion posicionDelEspadachin = new Posicion(8,8);
+
         terreno.ocuparConUnidad(posicionArquero, arquero);
 
-        terreno.ocuparConUnidad(posicionAldeano,aldeano);
+        terreno.ocuparConUnidad(posicionAldeano, aldeano);
 
-        terreno.ocuparConEdificio(posicionDelCastillo,castillo);
+        terreno.ocuparConUnidad(posicionDelAldeano1, aldeano1);
+
+        terreno.ocuparConUnidad(posicionDelAldeano2,aldeano2);
+
+        terreno.ocuparConUnidad(posicionDelEspadachin,espadachin);
 
         terreno.ocuparConEdificio(posicionDelCuartel, cuartel);
 
-        terreno.informarEntidadesAlAlcance(posicionArquero);
+        terreno.ocuparConUnidad(posicionDelArmaDeasedio,armaDeAsedio);
 
-        arquero.imprimirListaDeEntidades();
+        terreno.informarEntidadesAlAlcance(posicionDelEspadachin);
+
+        espadachin.imprimirListaDeEntidades();
 
     }
     /*@Test

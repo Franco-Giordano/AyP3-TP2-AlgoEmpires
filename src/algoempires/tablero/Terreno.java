@@ -132,11 +132,13 @@ public class Terreno {
 
             for (Posicion each : rango) {
                 if (mapa.get(each).estaOcupada()) {
-                    listaEntidades.add((Entidad) mapa.get(each).entidadContenida);
+                    listaEntidades.add(mapa.get(each).entidadContenida);
                 }
             }
 
-            unidad.setAtacables(listaEntidades);
+            if (!rango.isEmpty()) {
+                unidad.setAtacables(listaEntidades);
+            }
 
         }catch (ClassCastException exception){
             throw new SoloUnidadesPuedenVerASuAlrededorException();
