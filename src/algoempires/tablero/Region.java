@@ -37,6 +37,8 @@ public class Region {
 
     public ArrayList<Posicion> generarRango(Unidad unidad, Posicion posicion) {
 
+        //A diferencia del método de arriba, la posición en este caso, es el casillero central.
+
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
         for (int i = posicion.getHorizontal() - unidad.getRango(); i <= posicion.getHorizontal() + unidad.getRango(); i ++){
