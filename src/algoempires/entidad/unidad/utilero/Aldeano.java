@@ -1,12 +1,14 @@
 package algoempires.entidad.unidad.utilero;
 
+import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.Terreno;
+import algoempires.tablero.Posicion;
+
+import java.util.ArrayList;
 
 public class Aldeano extends Unidad {
 
@@ -14,29 +16,32 @@ public class Aldeano extends Unidad {
     private final int VIDA = 50;
     private boolean estaTrabajando;
 
-    public Aldeano(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
+    private ArrayList<Entidad> reparables;
 
-        super(terreno, posicion);
+    public Aldeano() throws CasilleroInvalidoException {
+
+        super();
         this.estaTrabajando = false;
+
     }
 
-    public void construirPlazaCentral(Posicion posicion) throws CasilleroInvalidoException {
+    public void construirPlazaCentral() throws CasilleroInvalidoException {
 
-        new PlazaCentral(terrenoDeJuego, posicion);
+        new PlazaCentral();
         estaTrabajando = true;
 
     }
 
-    public void construirCuartel(Posicion posicion) throws CasilleroInvalidoException {
+    public void construirCuartel() throws CasilleroInvalidoException {
 
-        new Cuartel(terrenoDeJuego, posicion);
+        new Cuartel();
         estaTrabajando = true;
 
     }
 
     public void reparar(Posicion posicion) {
 
-        terrenoDeJuego.reparar(posicion);
+
         estaTrabajando = true;
 
     }
@@ -54,7 +59,7 @@ public class Aldeano extends Unidad {
     }
 
     //METODO DE TESTEO UNICAMENTE
-    public boolean tieneEstasCaracteristicas(int vida, int oroGenerado, boolean estaTrabajando){
+    public boolean tieneEstasCaracteristicas(int vida, int oroGenerado, boolean estaTrabajando) {
         return (vida == this.getVidaInicial() && this.ORO_GENERADO == oroGenerado && this.estaTrabajando == estaTrabajando);
     }
 

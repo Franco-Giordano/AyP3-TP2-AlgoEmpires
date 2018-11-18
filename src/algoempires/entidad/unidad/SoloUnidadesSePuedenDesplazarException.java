@@ -1,4 +1,4 @@
-package algoempires.tablero;
+package algoempires.entidad.unidad;
 
 public class SoloUnidadesSePuedenDesplazarException extends RuntimeException {
 

@@ -1,23 +1,24 @@
 package algoempires.entidad.edificio;
 
 import algoempires.entidad.Entidad;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.Region;
-import algoempires.tablero.Terreno;
 
 public abstract class Edificio extends Entidad {
 
     private int turnosDeConstruccion;
-    private Region regionQueOcupa;
 
-    public Edificio(Terreno terreno, Posicion posicionInfIzq) throws CasilleroInvalidoException {
-        super(terreno);
+    public Edificio() throws CasilleroInvalidoException {
+        super();
 
         this.turnosDeConstruccion = getTurnosDeContruccionIniciales();
+    }
 
-        this.regionQueOcupa = new Region(posicionInfIzq, getTamanioHorizontal(), getTamanioVertical());
-        terrenoDeJuego.ocupar(regionQueOcupa, this);
+    public Region generarRegionAPartirDePosicion(Posicion posicion) {
+
+        return new Region(posicion, this.getTamanioHorizontal(), this.getTamanioVertical());
+
     }
 
     public void reparar() {

@@ -1,4 +1,4 @@
-package algoempires;
+/*package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
@@ -167,3 +167,4 @@ public class EspadachinTest {
         espadachin.desplazarHacia(direccion);
     }
 }
+*/

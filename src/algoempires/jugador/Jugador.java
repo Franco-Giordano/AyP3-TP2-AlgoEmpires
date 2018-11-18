@@ -37,7 +37,7 @@ public class Jugador {
         return monedero.getOro();
     }
 
-    public void asignarAlJugador(Entidad entidad){
+    public void asignarAlJugador(Entidad entidad) {
         entidadesPropias.add(entidad);
     }
 }

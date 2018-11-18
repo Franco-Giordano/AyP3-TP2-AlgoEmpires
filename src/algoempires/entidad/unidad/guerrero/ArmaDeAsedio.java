@@ -1,11 +1,7 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.Terreno;
-import algoempires.tablero.direccion.Direccion;
 
 public class ArmaDeAsedio extends Guerrero {
 
@@ -19,9 +15,9 @@ public class ArmaDeAsedio extends Guerrero {
 
     private boolean estaMontada;
 
-    public ArmaDeAsedio(Terreno terreno, Posicion posicionRecibido) throws CasilleroInvalidoException {
+    public ArmaDeAsedio() throws CasilleroInvalidoException {
 
-        super(terreno, posicionRecibido);
+        super();
 
         this.turnosDeConstruccion = TURNOS_DE_CONSTRUCCION_INICIAL;
 
@@ -36,13 +32,6 @@ public class ArmaDeAsedio extends Guerrero {
     /*public void desmontar() {
         estaMontada = false;
     }*/
-
-    @Override
-    public void desplazarHacia(Direccion direccion) throws CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
-        if (!estaMontada) {
-            super.desplazarHacia(direccion);
-        }
-    }
 
     @Override
     protected int getVidaInicial() {
@@ -70,7 +59,7 @@ public class ArmaDeAsedio extends Guerrero {
 
     public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {
         return ((this.getVidaInicial() == vida) && (this.getDanioAEdificios() == danioAEdficios)
-                && (this.estaMontada == estaMontada) && (this.getRangoAtaque()==rangoAtaque)
+                && (this.estaMontada == estaMontada) && (this.getRangoAtaque() == rangoAtaque)
                 && (this.turnosDeConstruccion == turnosDeConstruccion) && (this.getDanioAUnidades() == 0));
     }
 }

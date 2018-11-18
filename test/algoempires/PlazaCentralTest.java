@@ -1,4 +1,4 @@
-package algoempires;
+/*package algoempires;
 
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.tablero.Posicion;
@@ -26,4 +26,4 @@ public class PlazaCentralTest {
 
         assertTrue(terreno.estaOcupada(posicionACrearAldeano));
     }
-}
+}*/

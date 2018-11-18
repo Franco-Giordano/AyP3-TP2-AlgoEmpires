@@ -1,9 +1,7 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.Terreno;
 
 public class Arquero extends Guerrero {
 
@@ -12,8 +10,8 @@ public class Arquero extends Guerrero {
     private final int DANIO_A_UNIDADES = 15;
     private final int DANIO_A_EDIFICIOS = 10;
 
-    public Arquero(Terreno terreno, Posicion posicion) throws CasilleroInvalidoException {
-        super(terreno, posicion);
+    public Arquero() {
+        super();
     }
 
     @Override

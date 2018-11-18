@@ -1,4 +1,4 @@
-package algoempires;
+/*package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.utilero.Aldeano;
@@ -121,7 +121,6 @@ public class AldeanoTest {
         Posicion posicion = new Posicion(2, 2);
 
         Aldeano aldeano = new Aldeano(terreno, posicion);
-
 
         Direccion direccion = new DireccionArribaDerecha();
 
@@ -303,4 +302,4 @@ public class AldeanoTest {
     }
 
 
-}
+}*/

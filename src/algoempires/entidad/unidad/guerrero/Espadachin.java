@@ -1,9 +1,7 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.Terreno;
 
 public class Espadachin extends Guerrero {
 
@@ -12,9 +10,9 @@ public class Espadachin extends Guerrero {
     private final int DANIO_A_UNIDADES = 25;
     private final int DANIO_A_EDIFICIOS = 15;
 
-    public Espadachin(Terreno terreno, Posicion posicionRecibido) throws CasilleroInvalidoException {
+    public Espadachin() throws CasilleroInvalidoException {
 
-        super(terreno, posicionRecibido);
+        super();
 
     }
 

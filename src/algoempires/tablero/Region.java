@@ -17,19 +17,19 @@ public class Region {
     }
 
 
-    public ArrayList<Posicion> generarCasillerosContenidos() {
+    public ArrayList<Posicion> generarPosicionesContenidas() {
 
-        ArrayList<Posicion> casillerosContenidos = new ArrayList<>();
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
         for (int i = 0; i < tamanioHorizontal; i++) {
             for (int j = 0; j < tamanioVertical; j++) {
                 Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
                         j + infIzquierdo.getVertical());
-                casillerosContenidos.add(posicionContenido);
+                posicionesContenidas.add(posicionContenido);
             }
         }
 
-        return casillerosContenidos;
+        return posicionesContenidas;
     }
 
 }

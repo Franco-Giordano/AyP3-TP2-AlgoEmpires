@@ -23,6 +23,14 @@ public class Posicion {
         return posVertical;
     }
 
+
+    public Posicion generarMovimientoHacia(Direccion direccionRecibida) {
+
+        return new Posicion(posHorizontal + direccionRecibida.getHorizontal(),
+                posVertical + direccionRecibida.getVertical());
+
+    }
+
     public boolean pertenzcoAlRango(Posicion limiteInfIzq, Posicion limiteSupDer) {
 
         boolean estaEnRangoVertical = limiteInfIzq.getVertical() <= posVertical &&
@@ -31,14 +39,6 @@ public class Posicion {
                 posHorizontal <= limiteSupDer.getHorizontal();
 
         return estaEnRangoHorizontal && estaEnRangoVertical;
-
-    }
-
-
-    public Posicion generarMovimientoHacia(Direccion direccionRecibida) {
-
-        return new Posicion(posHorizontal + direccionRecibida.getHorizontal(),
-                posVertical + direccionRecibida.getVertical());
 
     }
 
@@ -52,6 +52,7 @@ public class Posicion {
         }
         return result;
     }
+
 
     @Override
     public int hashCode() {

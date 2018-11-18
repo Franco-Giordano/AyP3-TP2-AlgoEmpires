@@ -1,4 +1,4 @@
-package algoempires;
+/*package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.tablero.Posicion;
@@ -45,4 +45,4 @@ public class CuartelTest {
         assertTrue(terreno.estaOcupada(posicionACrearArquero));
 
     }
-}
+}*/

@@ -1,10 +1,10 @@
-package algoempires;
+/*package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.CasilleroInvalidoException;ocupar
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
@@ -219,3 +219,4 @@ public class ArmaDeAsedioTest {
         armaDeAsedio.desplazarHacia(direccion);
     }
 }
+*/
