@@ -29,7 +29,7 @@ public class AldeanoTest {
 
         Direccion direccion = new DireccionArriba();
 
-        terreno.ocupar(posicion, aldeano);
+        terreno.ocuparConUnidad(posicion, aldeano);
 
         terreno.moverUnidad(posicion, direccion);
 
@@ -48,7 +48,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(3, 3);
 
-        terreno.ocupar(posicion, aldeano);
+        terreno.ocuparConUnidad(posicion, aldeano);
 
         assertTrue(terreno.estaOcupada(posicion));
 
@@ -69,30 +69,47 @@ public class AldeanoTest {
 
         Aldeano aldeano = new Aldeano();
 
+        Aldeano aldeano1 = new Aldeano();
+
         Aldeano aldeano2 = new Aldeano();
 
         Cuartel cuartel = new Cuartel();
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio();
 
+        Posicion posicionAldeano = new Posicion(4, 4);
+
         Posicion posicionArquero = new Posicion(6, 6);
 
-        Castillo castillo = new Castillo();
+        Posicion posicionDelAldeano1 = new Posicion(7, 7);
+
+        Posicion posicionDelAldeano2 = new Posicion(9,9);
 
         Posicion posicionDelCuartel = new Posicion(2, 2);
 
         Posicion posicionDelArmaDeasedio = new Posicion(5,5);
 
-        Posicion posicionDelCastillo = new Posicion(7,7);
+        Posicion posicionDelEspadachin = new Posicion(8,8);
 
-        terreno.informarEntidadesAlAlcance(posicionArquero);
+        terreno.ocuparConUnidad(posicionArquero, arquero);
 
-        //Metodo de prueba UNICAMENTE.
-        arquero.imprimirListaDeEntidades();
+        terreno.ocuparConUnidad(posicionAldeano, aldeano);
+
+        terreno.ocuparConUnidad(posicionDelAldeano1, aldeano1);
+
+        terreno.ocuparConUnidad(posicionDelAldeano2,aldeano2);
+
+        terreno.ocuparConUnidad(posicionDelEspadachin,espadachin);
+
+        terreno.ocuparConEdificio(posicionDelCuartel, cuartel);
+
+        terreno.ocuparConUnidad(posicionDelArmaDeasedio,armaDeAsedio);
+
+        terreno.informarEntidadesAlAlcance(posicionDelEspadachin);
+
+        espadachin.imprimirListaDeEntidades();
 
     }
-
-
     /*@Test
     public void testMuevoUnAldeanoAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
