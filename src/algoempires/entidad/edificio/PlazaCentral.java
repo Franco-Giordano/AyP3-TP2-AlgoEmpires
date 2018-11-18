@@ -4,7 +4,11 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Posicion;
+import algoempires.tablero.Region;
 import algoempires.tablero.Terreno;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class PlazaCentral extends Edificio {
 

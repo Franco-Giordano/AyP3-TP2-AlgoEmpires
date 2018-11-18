@@ -75,6 +75,7 @@ public class Aldeano extends Unidad {
         this.entidadesReparables = listaRecibida;
     }
 
+    //METODO DE PRUEBAS.
     public void imprimirListaDeReparables() {
         for (Edificio each : this.entidadesReparables) {
             System.out.println(each);

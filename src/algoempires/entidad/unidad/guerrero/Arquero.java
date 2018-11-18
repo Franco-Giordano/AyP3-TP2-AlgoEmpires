@@ -45,6 +45,7 @@ public class Arquero extends Guerrero {
                 && (this.getDanioAEdificios() == danioEdificios) && (this.getDanioAUnidades() == danioUnidades));
     }
 
+    //METODO DE PRUEBAS.
     public void imprimirListaDeEntidades() {
 
         if (!this.atacables.isEmpty()) {

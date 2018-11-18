@@ -1,5 +1,6 @@
 package algoempires.entidad.unidad.guerrero;
 
+import algoempires.entidad.Entidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.CasilleroInvalidoException;
 
@@ -61,6 +62,18 @@ public class ArmaDeAsedio extends Guerrero {
         return ((this.getVidaInicial() == vida) && (this.getDanioAEdificios() == danioAEdficios)
                 && (this.estaMontada == estaMontada) && (this.getRango() == rangoAtaque)
                 && (this.turnosDeConstruccion == turnosDeConstruccion) && (this.getDanioAUnidades() == 0));
+    }
+
+    //METODO DE PRUEBAS.
+    public void imprimirListaDeEntidades() {
+
+        if (!this.atacables.isEmpty()) {
+            for (Entidad each : this.atacables) {
+                System.out.println(each);
+            }
+        }else {
+            System.out.println("Esta unidad no ve a nadie.");
+        }
     }
 }
 

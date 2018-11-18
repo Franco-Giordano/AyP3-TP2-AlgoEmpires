@@ -1,6 +1,9 @@
 package algoempires.jugador;
 
 import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 
 import java.util.ArrayList;
@@ -20,6 +23,16 @@ public class Jugador {
 
     public void setContrincante(Jugador jugador) {
         jugadorContrincante = jugador;
+    }
+
+    //Suponemos que se obtiene la posicion por click en interfaz.
+    public void crearAldeano(Posicion posicion){
+
+        Aldeano aldeanoCreado = plazaCentral.crearAldeano();
+        PlazaCentral plazaCentral = entidadesPropias.buscar(terrenoDeJuego.obtener(posicion));
+        Posicion posicionAdyancente = plazaCentral.generarAdyancente(posicion);
+        terrenoDeJuego.ocupar(posicionAdyancente,aldeanoCreado);
+
     }
 
     public void jugarTurno() {

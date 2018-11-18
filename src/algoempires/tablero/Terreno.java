@@ -4,16 +4,15 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.SoloAldeanoPuedeReparar;
 import algoempires.entidad.SoloUnidadesPuedenVerASuAlrededorException;
 import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.direccion.Direccion;
-import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 public class Terreno {
 
@@ -82,7 +81,7 @@ public class Terreno {
     }
 
 
-    private void ocupar(Posicion posicion, Entidad entidad){
+    private void ocuparConEntidad(Posicion posicion, Entidad entidad){
 
         if (!posicionEnRango(posicion) || (estaOcupada(posicion))) {
             throw new CasilleroInvalidoException();
@@ -92,32 +91,18 @@ public class Terreno {
 
     }
 
-    public void ocuparConUnidad(Posicion posicion, Unidad unidad) throws CasilleroInvalidoException {
+    public void ocupar(Posicion posicion, Unidad unidad) throws CasilleroInvalidoException {
 
-        this.ocupar(posicion,unidad);
+        this.ocuparConEntidad(posicion,unidad);
     }
 
-    public void ocuparConEdificio(Posicion posicion, Edificio edificio) throws CasilleroInvalidoException {
+    public void ocupar(Posicion posicion, Edificio edificio) throws CasilleroInvalidoException {
 
         ArrayList<Posicion> casillerosAOcupar = edificio.generarRegionAPartirDePosicion(posicion).generarPosicionesContenidas();
 
         for (Posicion each : casillerosAOcupar) {
-            this.ocupar(each, edificio);
+            this.ocuparConEntidad(each, edificio);
         }
-    }
-
-    //METODOS DE TESTEO
-    public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
-        return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
-
-    }
-
-    public int getTamHorizontal() {
-        return limiteSupDer.getHorizontal();
-    }
-
-    public int getTamVertical() {
-        return limiteSupDer.getVertical();
     }
 
     public void informarEntidadesAlAlcance(Posicion posicionRecibida) {
@@ -148,6 +133,7 @@ public class Terreno {
 
     //TODO probablemente este metodo se pueda obviar, si lo manejamos bien, le informamos tanto las que puede atacar como las
     //que puede reparar al aldeano, y lesto.
+
     public void informarEdificiosAlAlcance(Posicion posicionRecibida){
 
         try {
@@ -170,6 +156,25 @@ public class Terreno {
         }
 
     }
+
+    //METODOS DE TESTEO
+    public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
+        return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
+
+    }
+
+    public int getTamHorizontal() {
+        return limiteSupDer.getHorizontal();
+    }
+
+    public int getTamVertical() {
+        return limiteSupDer.getVertical();
+    }
+
+
+
+
+
 
 }
 

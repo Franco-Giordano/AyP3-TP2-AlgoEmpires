@@ -43,6 +43,7 @@ public class Espadachin extends Guerrero {
     }
 
 
+    //METODO DE PRUEBAS.
     public void imprimirListaDeEntidades() {
 
         if (!this.atacables.isEmpty()) {
