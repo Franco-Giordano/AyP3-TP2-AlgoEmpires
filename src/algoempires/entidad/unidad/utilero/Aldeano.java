@@ -1,19 +1,15 @@
 package algoempires.entidad.unidad.utilero;
 
-import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.Region;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class Aldeano extends Unidad {
 
@@ -22,7 +18,7 @@ public class Aldeano extends Unidad {
     private final int RANGO_REPARACION = 1;
     private boolean estaTrabajando;
 
-    private ArrayList<Edificio> entidadesReparables;
+    private HashSet<Edificio> entidadesReparables;
 
     public Aldeano() throws CasilleroInvalidoException {
 
@@ -53,11 +49,6 @@ public class Aldeano extends Unidad {
 
     }
 
-
-    public int getRango(){
-        return RANGO_REPARACION;
-    }
-
     @Override
     protected int getVidaInicial() {
         return VIDA;
@@ -70,23 +61,24 @@ public class Aldeano extends Unidad {
         }
     }
 
+    @Override
+    public int getRango() {
+        return RANGO_REPARACION;
+    }
+
     //METODO DE TESTEO UNICAMENTE
     public boolean tieneEstasCaracteristicas(int vida, int oroGenerado, boolean estaTrabajando) {
         return (vida == this.getVidaInicial() && this.ORO_GENERADO == oroGenerado && this.estaTrabajando == estaTrabajando);
     }
 
-    public ArrayList<Posicion> generarRangoAPartirDePosicion(Posicion posicionRecibida){
-        Region region = new Region(posicionRecibida, this.getRango(), this.getRango());
-        return region.generarRango(this,posicionRecibida);
-    }
-
-    public void setReparables(ArrayList<Edificio> listaRecibida){
+    public void setReparables(HashSet<Edificio> listaRecibida) {
         this.entidadesReparables = listaRecibida;
     }
 
     public void imprimirListaDeReparables() {
-        for (Edificio each: this.entidadesReparables){
+        for (Edificio each : this.entidadesReparables) {
             System.out.println(each);
         }
     }
+
 }

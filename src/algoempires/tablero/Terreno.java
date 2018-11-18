@@ -2,14 +2,17 @@ package algoempires.tablero;
 
 import algoempires.entidad.Entidad;
 import algoempires.entidad.SoloAldeanoPuedeReparar;
+import algoempires.entidad.SoloUnidadesPuedenVerASuAlrededorException;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.direccion.Direccion;
 import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Terreno {
@@ -59,29 +62,6 @@ public class Terreno {
         informarEdificiosAlAlcance(posicion);
 
         mapa.get(posicion).reparar();
-    }
-
-    public void informarEdificiosAlAlcance(Posicion posicionRecibida){
-
-        try {
-            Aldeano aldeano = (Aldeano) mapa.get(posicionRecibida).entidadContenida;
-
-            ArrayList<Edificio> listaEdificios = new ArrayList<Edificio>();
-
-            ArrayList<Posicion> rango = aldeano.generarRangoAPartirDePosicion(posicionRecibida);
-
-            for (Posicion each : rango) {
-                if (mapa.get(each).estaOcupada()) {
-                    listaEdificios.add((Edificio) mapa.get(each).entidadContenida);
-                }
-            }
-
-            aldeano.setReparables(listaEdificios);
-
-        }catch (ClassCastException exception){
-            throw new SoloAldeanoPuedeReparar();
-        }
-
     }
 
     public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) throws CasilleroInvalidoException {
@@ -138,6 +118,55 @@ public class Terreno {
 
     public int getTamVertical() {
         return limiteSupDer.getVertical();
+    }
+
+    public void informarEntidadesAlAlcance(Posicion posicionRecibida) {
+
+        try {
+
+            Guerrero unidad = (Guerrero) mapa.get(posicionRecibida).entidadContenida;
+
+            HashSet<Entidad> listaEntidades = new HashSet<>();
+
+            ArrayList<Posicion> rango = unidad.generarRangoAPartirDePosicion(posicionRecibida);
+
+            for (Posicion each : rango) {
+                if (mapa.get(each).estaOcupada()) {
+                    listaEntidades.add((Entidad) mapa.get(each).entidadContenida);
+                }
+            }
+
+            unidad.setAtacables(listaEntidades);
+
+        }catch (ClassCastException exception){
+            throw new SoloUnidadesPuedenVerASuAlrededorException();
+        }
+
+    }
+
+    //TODO probablemente este metodo se pueda obviar, si lo manejamos bien, le informamos tanto las que puede atacar como las
+    //que puede reparar al aldeano, y lesto.
+    public void informarEdificiosAlAlcance(Posicion posicionRecibida){
+
+        try {
+            Aldeano aldeano = (Aldeano) mapa.get(posicionRecibida).entidadContenida;
+
+            HashSet<Edificio> listaEdificios = new HashSet<>();
+
+            ArrayList<Posicion> rango = aldeano.generarRangoAPartirDePosicion(posicionRecibida);
+
+            for (Posicion each : rango) {
+                if (mapa.get(each).estaOcupada()) {
+                    listaEdificios.add((Edificio) mapa.get(each).entidadContenida);
+                }
+            }
+
+            aldeano.setReparables(listaEdificios);
+
+        }catch (ClassCastException exception){
+            throw new SoloAldeanoPuedeReparar();
+        }
+
     }
 
 }

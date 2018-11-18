@@ -27,7 +27,7 @@ public class Espadachin extends Guerrero {
     }
 
     @Override
-    protected int getRangoAtaque() {
+    public int getRango() {
         return RANGO_ATAQUE;
     }
 

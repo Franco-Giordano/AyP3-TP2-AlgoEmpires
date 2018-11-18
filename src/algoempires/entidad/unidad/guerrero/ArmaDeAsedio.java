@@ -43,7 +43,7 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
-    protected int getRangoAtaque() {
+    public int getRango() {
         return RANGO_ATAQUE;
     }
 
@@ -59,7 +59,7 @@ public class ArmaDeAsedio extends Guerrero {
 
     public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {
         return ((this.getVidaInicial() == vida) && (this.getDanioAEdificios() == danioAEdficios)
-                && (this.estaMontada == estaMontada) && (this.getRangoAtaque() == rangoAtaque)
+                && (this.estaMontada == estaMontada) && (this.getRango() == rangoAtaque)
                 && (this.turnosDeConstruccion == turnosDeConstruccion) && (this.getDanioAUnidades() == 0));
     }
 }

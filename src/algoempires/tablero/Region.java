@@ -35,12 +35,12 @@ public class Region {
         return posicionesContenidas;
     }
 
-    public ArrayList<Posicion> generarRango(Aldeano aldeano, Posicion posicion) {
+    public ArrayList<Posicion> generarRango(Unidad unidad, Posicion posicion) {
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
-        for (int i = posicion.getHorizontal() - aldeano.getRango(); i <= posicion.getHorizontal() + aldeano.getRango(); i ++){
-            for (int j = posicion.getVertical() - aldeano.getRango(); j <= posicion.getVertical() + aldeano.getRango(); j++){
+        for (int i = posicion.getHorizontal() - unidad.getRango(); i <= posicion.getHorizontal() + unidad.getRango(); i ++){
+            for (int j = posicion.getVertical() - unidad.getRango(); j <= posicion.getVertical() + unidad.getRango(); j++){
                 if (i == posicion.getHorizontal() && j == posicion.getVertical()) {
                 }
                 else{

@@ -57,32 +57,42 @@ public class AldeanoTest {
 
     }
 
+
+    //TODO esto NO es un test de aldeano, pero bueno.
     @Test
     public void testInformarDeEdificiosInformaBien() {
 
-        Terreno terreno = new Terreno(8, 8);
+        //TODO lo manejé con posiciones suponiendo que vamos a tener que hacer click sobre donde está la unidad, eso lo vemos después.
+
+        Terreno terreno = new Terreno(15, 15);
+
+        Arquero arquero = new Arquero();
 
         Aldeano aldeano = new Aldeano();
 
-        Posicion posicion = new Posicion(3, 3);
-
-        Posicion posicionDelCastillo = new Posicion (4,4);
-
         Castillo castillo = new Castillo();
-
-        terreno.ocuparConEdificio(posicionDelCastillo,castillo);
-
-        terreno.ocuparConUnidad(posicion, aldeano);
 
         Cuartel cuartel = new Cuartel();
 
-        Posicion posicionDelCuartel = new Posicion(1, 1);
+        Posicion posicionAldeano = new Posicion(4,4);
+
+        Posicion posicionArquero = new Posicion(6, 6);
+
+        Posicion posicionDelCastillo = new Posicion (7,7);
+
+        Posicion posicionDelCuartel = new Posicion(2, 2);
+
+        terreno.ocuparConUnidad(posicionArquero, arquero);
+
+        terreno.ocuparConUnidad(posicionAldeano,aldeano);
+
+        terreno.ocuparConEdificio(posicionDelCastillo,castillo);
 
         terreno.ocuparConEdificio(posicionDelCuartel, cuartel);
 
-        terreno.informarEdificiosAlAlcance(posicion);
+        terreno.informarEntidadesAlAlcance(posicionArquero);
 
-        aldeano.imprimirListaDeReparables();
+        arquero.imprimirListaDeEntidades();
 
     }
     /*@Test
