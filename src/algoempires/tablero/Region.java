@@ -41,11 +41,14 @@ public class Region {
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
-        for (int i = posicion.getHorizontal() - unidad.getRango(); i <= posicion.getHorizontal() + unidad.getRango(); i ++){
-            for (int j = posicion.getVertical() - unidad.getRango(); j <= posicion.getVertical() + unidad.getRango(); j++){
-                if (i == posicion.getHorizontal() && j == posicion.getVertical()) {
-                }
-                else{
+        int minRangoHorizontal = posicion.getHorizontal() - unidad.getRango();
+        int maxRangoHorizontal = posicion.getHorizontal() + unidad.getRango();
+        int minRangoVertical = posicion.getVertical() - unidad.getRango();
+        int maxRangoVertical = posicion.getVertical() + unidad.getRango();
+
+        for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i ++){
+            for (int j = minRangoVertical; j <= maxRangoVertical; j++){
+                if (i != posicion.getHorizontal() && j != posicion.getVertical()) {
                     Posicion posicionContenido = new Posicion(i, j);
                     posicionesContenidas.add(posicionContenido);
                 }
