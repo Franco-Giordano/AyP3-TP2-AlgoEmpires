@@ -1,6 +1,10 @@
-/*package algoempires;
+package algoempires;
 
+import algoempires.entidad.edificio.Castillo;
+import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
+import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -11,24 +15,77 @@ import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class AldeanoTest {
 
     @Test
-    public void testAldeanoSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testAldeanoSeMueveBien(){
+
+        Posicion posicion = new Posicion(1,1);
 
         Terreno terreno = new Terreno(10,10);
 
-        Posicion posicion = new Posicion(2,2);
+        Aldeano aldeano = new Aldeano ();
 
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Direccion direccion = new DireccionArriba();
 
-        assertTrue(aldeano.tieneEstasCaracteristicas(50,20,false));
+        terreno.ocuparConUnidad(posicion,aldeano);
+
+        terreno.moverUnidad(posicion,direccion);
+
+        Posicion posicionOcupada = new Posicion(1,2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
+    public void testAldeanoSeCreabien(){
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
+
+        Posicion posicion = new Posicion(3, 3);
+
+        terreno.ocuparConUnidad(posicion, aldeano);
+
+        assertTrue(terreno.estaOcupada(posicion));
+
+    }
+
+    @Test
+    public void testInformarDeEdificiosInformaBien() {
+
+        Terreno terreno = new Terreno(8, 8);
+
+        Aldeano aldeano = new Aldeano();
+
+        Posicion posicion = new Posicion(3, 3);
+
+        Posicion posicionDelCastillo = new Posicion (4,4);
+
+        Castillo castillo = new Castillo();
+
+        terreno.ocuparConEdificio(posicionDelCastillo,castillo);
+
+        terreno.ocuparConUnidad(posicion, aldeano);
+
+        Cuartel cuartel = new Cuartel();
+
+        Posicion posicionDelCuartel = new Posicion(1, 1);
+
+        terreno.ocuparConEdificio(posicionDelCuartel, cuartel);
+
+        terreno.informarEdificiosAlAlcance(posicion);
+
+        aldeano.imprimirListaDeReparables();
+
+    }
+    /*@Test
     public void testMuevoUnAldeanoAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
@@ -301,5 +358,5 @@ public class AldeanoTest {
 
     }
 
-
-}*/
+*/
+}

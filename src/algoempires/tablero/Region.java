@@ -1,5 +1,8 @@
 package algoempires.tablero;
 
+import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.utilero.Aldeano;
+
 import java.util.ArrayList;
 
 public class Region {
@@ -26,6 +29,24 @@ public class Region {
                 Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
                         j + infIzquierdo.getVertical());
                 posicionesContenidas.add(posicionContenido);
+            }
+        }
+
+        return posicionesContenidas;
+    }
+
+    public ArrayList<Posicion> generarRango(Aldeano aldeano, Posicion posicion) {
+
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
+
+        for (int i = posicion.getHorizontal() - aldeano.getRango(); i <= posicion.getHorizontal() + aldeano.getRango(); i ++){
+            for (int j = posicion.getVertical() - aldeano.getRango(); j <= posicion.getVertical() + aldeano.getRango(); j++){
+                if (i == posicion.getHorizontal() && j == posicion.getVertical()) {
+                }
+                else{
+                    Posicion posicionContenido = new Posicion(i, j);
+                    posicionesContenidas.add(posicionContenido);
+                }
             }
         }
 
