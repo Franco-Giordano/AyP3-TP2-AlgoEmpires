@@ -77,6 +77,8 @@ public class AldeanoTest {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio();
 
+        //TODO NO DEBERIAMOS DE TENER QUE INSTANCIAR POSICIONES PARA PODER UBICAR UNIDADES EN EL TERRENO.
+
         Posicion posicionAldeano = new Posicion(4, 4);
 
         Posicion posicionArquero = new Posicion(6, 6);
