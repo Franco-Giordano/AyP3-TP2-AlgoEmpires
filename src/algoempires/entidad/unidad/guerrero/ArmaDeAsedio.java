@@ -1,8 +1,11 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.DimensionesInvalidasError;
 
 public class ArmaDeAsedio extends Guerrero {
 
@@ -33,6 +36,16 @@ public class ArmaDeAsedio extends Guerrero {
     /*public void desmontar() {
         estaMontada = false;
     }*/
+
+    @Override
+    public void atacar(Unidad unidad) throws ArmaDeAsedioNoPuedeAtacarUnidades {
+        throw new ArmaDeAsedioNoPuedeAtacarUnidades();
+    }
+
+    @Override
+    public void atacar(Edificio edificio){
+        edificio.restarVida(DANIO_A_EDIFICIOS);
+    }
 
     @Override
     protected int getVidaInicial() {
