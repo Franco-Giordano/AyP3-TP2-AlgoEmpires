@@ -57,7 +57,7 @@ public class Terreno {
 
     public void reparar(Posicion posicion) {
 
-        informarEdificiosAlAlcance(posicion);
+        //informarEdificiosAlAlcance(posicion); TODO no se que hace esto aca
 
         mapa.get(posicion).reparar();
     }
@@ -113,7 +113,7 @@ public class Terreno {
 
             HashSet<Entidad> listaEntidades = new HashSet<>();
 
-            ArrayList<Posicion> rango = unidad.generarRangoAPartirDePosicion(posicionRecibida);
+            ArrayList<Posicion> rango = Region.generarRegionCentradaEn(posicionRecibida, unidad);
 
             for (Posicion each : rango) {
                 if (mapa.get(each).estaOcupada()) {
@@ -141,7 +141,7 @@ public class Terreno {
 
             HashSet<Edificio> listaEdificios = new HashSet<>();
 
-            ArrayList<Posicion> rango = aldeano.generarRangoAPartirDePosicion(posicionRecibida);
+            ArrayList<Posicion> rango = Region.generarRegionCentradaEn(posicionRecibida, aldeano);
 
             for (Posicion each : rango) {
                 if (mapa.get(each).estaOcupada()) {

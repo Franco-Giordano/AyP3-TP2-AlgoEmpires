@@ -18,8 +18,7 @@ public abstract class Unidad extends Entidad {
     }
 
     public ArrayList<Posicion> generarRangoAPartirDePosicion(Posicion posicionRecibida) {
-        Region region = new Region(posicionRecibida, this.RANGO_VISION, this.RANGO_VISION);
-        return region.generarRango(this, posicionRecibida);
+        return Region.generarRegionCentradaEn(posicionRecibida, this);
     }
 
     public int getRango() {

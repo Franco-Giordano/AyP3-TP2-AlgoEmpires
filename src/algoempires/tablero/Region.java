@@ -37,22 +37,22 @@ public class Region {
         return posicionesContenidas;
     }
 
-    public ArrayList<Posicion> generarRango(Unidad unidad, Posicion posicion) {
+    public static ArrayList<Posicion> generarRegionCentradaEn(Posicion posicionCentral, Unidad unidadConRango) {
 
-        //A diferencia del método de arriba, la posición en este caso, es el casillero central.
+        //la posición en este caso es el casillero central.
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
-        int minRangoHorizontal = posicion.getHorizontal() - unidad.getRango();
-        int maxRangoHorizontal = posicion.getHorizontal() + unidad.getRango();
-        int minRangoVertical = posicion.getVertical() - unidad.getRango();
-        int maxRangoVertical = posicion.getVertical() + unidad.getRango();
+        int minRangoHorizontal = posicionCentral.getHorizontal() - unidadConRango.getRango();
+        int maxRangoHorizontal = posicionCentral.getHorizontal() + unidadConRango.getRango();
+        int minRangoVertical = posicionCentral.getVertical() - unidadConRango.getRango();
+        int maxRangoVertical = posicionCentral.getVertical() + unidadConRango.getRango();
 
         for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i++) {
 
             for (int j = minRangoVertical; j <= maxRangoVertical; j++) {
 
-                if (i != posicion.getHorizontal() && j != posicion.getVertical()) {
+                if (i != posicionCentral.getHorizontal() && j != posicionCentral.getVertical()) {
                     Posicion posicionContenido = new Posicion(i, j);
                     posicionesContenidas.add(posicionContenido);
                 }
