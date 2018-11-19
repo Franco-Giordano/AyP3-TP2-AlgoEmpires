@@ -31,13 +31,15 @@ public class Jugador {
     }
 
     //TODO obtener posicion adyacente
-    public void crearAldeano(Posicion posicion) {
+    public void crearAldeano(Posicion posicionDeLaPlaza, Posicion posicionDeCreacion) {
 
-        PlazaCentral plazaCentral = (PlazaCentral) edificiosPropios.get(posicion);
+        PlazaCentral plazaCentral = (PlazaCentral) edificiosPropios.get(posicionDeLaPlaza);
         Aldeano aldeanoCreado = plazaCentral.crearAldeano();
-        Posicion posicionAdyacente = terrenoDeJuego.obtenerPosicionAdyacente(posicion);
+/*
+        Posicion posicionAdyacente = terrenoDeJuego.obtenerPosicionAdyacente(posicionDeCreacion);
+*/
         poblacion.agregar(aldeanoCreado);
-        terrenoDeJuego.ocupar(posicionAdyacente,aldeanoCreado);
+        terrenoDeJuego.ocupar(posicionDeCreacion,aldeanoCreado);
 
     }
 
