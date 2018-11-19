@@ -13,6 +13,7 @@ public class Casillero {
     Entidad entidadContenida;
     Posicion posicion;
 
+
     public Casillero(Posicion posicionRecibida) {
 
         this.posicion = posicionRecibida;
@@ -39,6 +40,7 @@ public class Casillero {
 
     }
 
+
     public void ocupar(Entidad entidadRecibida) {
 
         if (this.entidadContenida != null) {
@@ -46,6 +48,7 @@ public class Casillero {
         }
         this.entidadContenida = entidadRecibida;
     }
+
 
     public boolean tieneEstaVida(int vidaAComparar) {
         return this.entidadContenida.tieneEstaVida(vidaAComparar);
@@ -63,17 +66,9 @@ public class Casillero {
         }
     }
 
+
     public boolean estaOcupada() {
         return this.entidadContenida != null;
     }
-
-    public Aldeano crearAldeano(){
-        PlazaCentral plazaCentral= (PlazaCentral) this.entidadContenida;
-        Aldeano aldeano= plazaCentral.crearAldeano();
-
-        return aldeano;
-
-    }
-
 
 }

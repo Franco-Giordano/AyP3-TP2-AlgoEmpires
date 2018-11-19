@@ -50,10 +50,6 @@ public class Terreno {
 
     }
 
-    public Aldeano crearAldeanoDesdePosicion(Posicion posicion){
-        return mapa.get(posicion).crearAldeano();
-    }
-
     public boolean estaOcupada(Posicion posicion) {
 
         return mapa.get(posicion).estaOcupada();
@@ -83,7 +79,6 @@ public class Terreno {
 
         return posicion.pertenzcoAlRango(limiteInfIzq, limiteSupDer);
     }
-
 
     private void ocuparConEntidad(Posicion posicion, Entidad entidad){
 

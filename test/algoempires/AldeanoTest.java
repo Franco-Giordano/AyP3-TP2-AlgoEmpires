@@ -29,7 +29,7 @@ public class AldeanoTest {
 
         Direccion direccion = new DireccionArriba();
 
-        terreno.ocuparConUnidad(posicion, aldeano);
+        terreno.ocupar(posicion, aldeano);
 
         terreno.moverUnidad(posicion, direccion);
 
@@ -48,7 +48,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(3, 3);
 
-        terreno.ocuparConUnidad(posicion, aldeano);
+        terreno.ocupar(posicion, aldeano);
 
         assertTrue(terreno.estaOcupada(posicion));
 
@@ -91,19 +91,19 @@ public class AldeanoTest {
 
         Posicion posicionDelEspadachin = new Posicion(8,8);
 
-        terreno.ocuparConUnidad(posicionArquero, arquero);
+        terreno.ocupar(posicionArquero, arquero);
 
-        terreno.ocuparConUnidad(posicionAldeano, aldeano);
+        terreno.ocupar(posicionAldeano, aldeano);
 
-        terreno.ocuparConUnidad(posicionDelAldeano1, aldeano1);
+        terreno.ocupar(posicionDelAldeano1, aldeano1);
 
-        terreno.ocuparConUnidad(posicionDelAldeano2,aldeano2);
+        terreno.ocupar(posicionDelAldeano2,aldeano2);
 
-        terreno.ocuparConUnidad(posicionDelEspadachin,espadachin);
+        terreno.ocupar(posicionDelEspadachin,espadachin);
 
-        terreno.ocuparConEdificio(posicionDelCuartel, cuartel);
+        terreno.ocupar(posicionDelCuartel, cuartel);
 
-        terreno.ocuparConUnidad(posicionDelArmaDeasedio,armaDeAsedio);
+        terreno.ocupar(posicionDelArmaDeasedio,armaDeAsedio);
 
         terreno.informarEntidadesAlAlcance(posicionDelEspadachin);
 

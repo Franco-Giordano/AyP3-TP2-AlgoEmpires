@@ -24,7 +24,7 @@ public abstract class Edificio extends Entidad {
     public void reparar() {
         this.vida += getVelocidadDeReparacion();
     }
-
+    
     protected abstract int getTamanioHorizontal();
 
     protected abstract int getTamanioVertical();

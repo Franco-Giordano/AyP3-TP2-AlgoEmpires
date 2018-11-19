@@ -4,6 +4,7 @@ import algoempires.entidad.unidad.Unidad;
 
 import java.util.ArrayList;
 
+//TODO tiene sentido esta clase ahora? solamente está generando ArrayList<Posicion>
 public class Region {
 
     private Posicion infIzquierdo;
@@ -20,6 +21,8 @@ public class Region {
 
 
     public ArrayList<Posicion> generarPosicionesContenidas() {
+
+        //Porque lo consideramos en un supuesto, la posición es la inferior izquierda.
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
@@ -59,5 +62,6 @@ public class Region {
 
         return posicionesContenidas;
     }
+
 
 }
