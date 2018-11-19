@@ -36,7 +36,7 @@ public class AlgoEmpires {
 
         //TODO Luego chequear condicion de perdida/victoria
         while (true) {
-            jugadorActual.jugarTurno();
+            jugadorActual = jugadorActual.jugarTurnoYDevolverSiguienteJugador();
         }
 
     }

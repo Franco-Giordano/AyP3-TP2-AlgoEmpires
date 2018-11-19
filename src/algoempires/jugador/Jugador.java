@@ -47,8 +47,10 @@ public class Jugador {
 
     }
 
-    public void jugarTurno() {
+    public Jugador jugarTurnoYDevolverSiguienteJugador() {
 
+
+        return jugadorContrincante;
     }
 
     public void atacar(Guerrero guerreroAtacante, Unidad unidadAtacada){
