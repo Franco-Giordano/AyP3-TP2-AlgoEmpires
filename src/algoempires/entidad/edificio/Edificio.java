@@ -1,8 +1,8 @@
 package algoempires.entidad.edificio;
 
 import algoempires.entidad.Entidad;
-import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Posicion;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Region;
 
 public abstract class Edificio extends Entidad {
@@ -14,7 +14,7 @@ public abstract class Edificio extends Entidad {
 
     private int turnosDeConstruccion;
 
-    public Edificio() throws CasilleroInvalidoException {
+    public Edificio() throws PosicionInvalidaException {
         super();
 
         this.turnosDeConstruccion = getTurnosDeConstruccionInicial();

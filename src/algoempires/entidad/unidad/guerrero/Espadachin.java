@@ -4,13 +4,13 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 
 public class Espadachin extends Guerrero {
 
     private final int VIDA_INICIAL = 100;
 
-    public Espadachin() throws CasilleroInvalidoException {
+    public Espadachin() throws PosicionInvalidaException {
 
         super();
 

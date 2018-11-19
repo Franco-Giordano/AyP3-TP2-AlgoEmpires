@@ -5,7 +5,7 @@ import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;ocupar
+import algoempires.tablero.PosicionInvalidaException;ocupar
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class ArmaDeAsedioTest {
 
     @Test
-    public void testArmaDeAsedioSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testArmaDeAsedioSeCreaBien() throws DimensionesInvalidasError, PosicionInvalidaException {
         Terreno terreno = new Terreno(10,10);
 
         Posicion posicion = new Posicion(2,2);
@@ -28,7 +28,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -45,7 +45,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -62,7 +62,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -80,7 +80,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -97,7 +97,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -114,7 +114,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -132,7 +132,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -149,7 +149,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArmaDeAsedioAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -166,7 +166,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+    public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -186,7 +186,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+    public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -203,7 +203,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10,10);
 

@@ -2,7 +2,7 @@
 
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class PlazaCentralTest {
 
     @Test
-    public void testPlazaCentralCreaAldeanoCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testPlazaCentralCreaAldeanoCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10, 10);
 

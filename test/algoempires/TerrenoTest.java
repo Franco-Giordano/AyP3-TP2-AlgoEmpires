@@ -5,7 +5,7 @@ import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class TerrenoTest {
     }
 
     @Test
-    public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, PosicionInvalidaException {
         Terreno terreno = new Terreno(2, 2);
 
         new Aldeano(terreno, new Posicion(2, 2));
@@ -45,7 +45,7 @@ public class TerrenoTest {
     }
 
     @Test
-    public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(3, 3);
 
@@ -64,16 +64,16 @@ public class TerrenoTest {
 
     }
 
-    @Test(expected = CasilleroInvalidoException.class)
-    public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    @Test(expected = PosicionInvalidaException.class)
+    public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws DimensionesInvalidasError, PosicionInvalidaException {
         Terreno terreno = new Terreno(5, 2);
 
         new Aldeano(terreno, new Posicion(3, 3));
 
     }
 
-    @Test(expected = CasilleroInvalidoException.class)
-    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    @Test(expected = PosicionInvalidaException.class)
+    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasError {
         Terreno terreno = new Terreno(3, 20);
 
         new Castillo(terreno, new Posicion(1, 5));

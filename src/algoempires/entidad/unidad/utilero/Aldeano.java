@@ -5,8 +5,8 @@ import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.Posicion;
+import algoempires.tablero.PosicionInvalidaException;
 
 import java.util.HashSet;
 
@@ -19,7 +19,7 @@ public class Aldeano extends Unidad {
 
     private HashSet<Edificio> entidadesReparables;
 
-    public Aldeano() throws CasilleroInvalidoException {
+    public Aldeano() throws PosicionInvalidaException {
 
         super();
         this.estaTrabajando = false;
@@ -33,14 +33,14 @@ public class Aldeano extends Unidad {
         return VIDA_INICIAL;
     }
 
-    public void construirPlazaCentral() throws CasilleroInvalidoException {
+    public void construirPlazaCentral() throws PosicionInvalidaException {
 
         new PlazaCentral();
         estaTrabajando = true;
 
     }
 
-    public void construirCuartel() throws CasilleroInvalidoException {
+    public void construirCuartel() throws PosicionInvalidaException {
 
         new Cuartel();
         estaTrabajando = true;

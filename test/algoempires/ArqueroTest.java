@@ -1,17 +1,10 @@
 
 package algoempires;
 
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.DimensionesInvalidasError;
-import algoempires.tablero.Terreno;
-import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ArqueroTest {
@@ -34,7 +27,7 @@ public class ArqueroTest {
 
     /*
     @Test
-    public void testArqueroSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testArqueroSeCreaBien() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10,10);
 
@@ -47,7 +40,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -64,7 +57,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -81,7 +74,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -99,7 +92,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -116,7 +109,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -133,7 +126,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -151,7 +144,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -168,7 +161,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testMuevoUnArqueroAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnArqueroAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -185,7 +178,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10,10);
 

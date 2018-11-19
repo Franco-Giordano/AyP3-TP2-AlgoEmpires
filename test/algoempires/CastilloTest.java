@@ -3,7 +3,7 @@ package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class CastilloTest {
 
     @Test
-    public void testCastilloCreaArmaDeAsedioCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testCastilloCreaArmaDeAsedioCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -29,7 +29,7 @@ public class CastilloTest {
 }
 
     @Test
-    public void testCastilloAsignaCorrectamenteSusCaracteristicas() throws CasilleroInvalidoException, DimensionesInvalidasError {
+    public void testCastilloAsignaCorrectamenteSusCaracteristicas() throws PosicionInvalidaException, DimensionesInvalidasError {
 
         //TODO terminar prueba
         Terreno terreno = new Terreno(10, 10);

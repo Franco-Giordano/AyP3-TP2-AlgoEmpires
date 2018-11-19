@@ -4,7 +4,7 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 
 
 public class ArmaDeAsedio extends Guerrero {
@@ -16,7 +16,7 @@ public class ArmaDeAsedio extends Guerrero {
 
     private boolean estaMontada;
 
-    public ArmaDeAsedio() throws CasilleroInvalidoException {
+    public ArmaDeAsedio() throws PosicionInvalidaException {
 
         super();
 

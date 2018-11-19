@@ -3,7 +3,7 @@ package algoempires.entidad.edificio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 
 public class Cuartel extends Edificio {
 
@@ -11,7 +11,7 @@ public class Cuartel extends Edificio {
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
 
 
-    public Cuartel() throws CasilleroInvalidoException {
+    public Cuartel() throws PosicionInvalidaException {
         super();
 
         TAMANIO_HORIZONTAL = 2;
@@ -31,11 +31,11 @@ public class Cuartel extends Edificio {
         return VIDA_INICIAL;
     }
 
-    public Espadachin crearEspadachin() throws CasilleroInvalidoException {
+    public Espadachin crearEspadachin() throws PosicionInvalidaException {
         return new Espadachin();
     }
 
-    public Arquero crearArquero() throws CasilleroInvalidoException {
+    public Arquero crearArquero() throws PosicionInvalidaException {
         return new Arquero();
     }
 

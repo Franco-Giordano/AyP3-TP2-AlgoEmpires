@@ -2,7 +2,7 @@
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class CuartelTest {
 
     @Test
-    public void testcreaEspadachinCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException {
+    public void testcreaEspadachinCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -30,7 +30,7 @@ public class CuartelTest {
     }
 
     @Test
-    public void testcreaArqueroCorrectamente() throws DimensionesInvalidasError, CasilleroInvalidoException{
+    public void testcreaArqueroCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException{
 
         Terreno terreno = new Terreno(10, 10);
 

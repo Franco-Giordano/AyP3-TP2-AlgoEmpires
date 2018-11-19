@@ -42,7 +42,7 @@ public class Casillero {
     public void ocupar(Entidad entidadRecibida) {
 
         if (this.entidadContenida != null) {
-            throw new CasilleroInvalidoException();
+            throw new PosicionInvalidaException("El casillero ya se encuentra ocupado");
         }
         this.entidadContenida = entidadRecibida;
     }

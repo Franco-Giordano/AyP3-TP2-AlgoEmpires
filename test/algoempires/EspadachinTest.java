@@ -3,7 +3,7 @@
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class EspadachinTest {
 
     @Test
-    public void testMuevoUnEspadachinAbajo() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -31,7 +31,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinArriba() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -48,7 +48,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -66,7 +66,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -83,7 +83,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinArribaIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -100,7 +100,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinArribaDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -118,7 +118,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinAbajoIzquierda() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -135,7 +135,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testMuevoUnEspadachinAbajoDerecha() throws CasilleroInvalidoException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testMuevoUnEspadachinAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -152,7 +152,7 @@ public class EspadachinTest {
     }
 
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, CasilleroInvalidoException, UnidadYaMovioEnEsteTurnoException {
+    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
         Terreno terreno = new Terreno(10,10);
 

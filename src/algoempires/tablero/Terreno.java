@@ -62,9 +62,11 @@ public class Terreno {
         mapa.get(posicion).reparar();
     }
 
-    public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) throws CasilleroInvalidoException {
+    public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) throws PosicionInvalidaException {
 
         Posicion posicionQueQuieroOcupar = posicionRecibida.generarMovimientoHacia(direccionRecibida);
+
+        this.posicionEnRango(posicionQueQuieroOcupar);
 
         Casillero casilleroOcupadoActualmente = mapa.get(posicionRecibida);
 
@@ -74,27 +76,27 @@ public class Terreno {
 
     }
 
-    private boolean posicionEnRango(Posicion posicion) {
+    private void posicionEnRango(Posicion posicion) {
 
-        return posicion.pertenzcoAlRango(limiteInfIzq, limiteSupDer);
+        if (!mapa.containsKey(posicion)) {
+            throw new PosicionInvalidaException("La posicion no esta en rango");
+        }
     }
 
     private void ocuparConEntidad(Posicion posicion, Entidad entidad){
 
-        if (!posicionEnRango(posicion) || (estaOcupada(posicion))) {
-            throw new CasilleroInvalidoException();
-        }
+        this.posicionEnRango(posicion);
 
         mapa.get(posicion).ocupar(entidad);
 
     }
 
-    public void ocupar(Posicion posicion, Unidad unidad) throws CasilleroInvalidoException {
+    public void ocupar(Posicion posicion, Unidad unidad) throws PosicionInvalidaException {
 
         this.ocuparConEntidad(posicion,unidad);
     }
 
-    public void ocupar(Posicion posicion, Edificio edificio) throws CasilleroInvalidoException {
+    public void ocupar(Posicion posicion, Edificio edificio) throws PosicionInvalidaException {
 
         ArrayList<Posicion> casillerosAOcupar = edificio.generarRegionAPartirDePosicion(posicion).generarPosicionesContenidas();
 
