@@ -3,11 +3,14 @@ package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.Direccion;
+import algoempires.tablero.direccion.DireccionArriba;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -77,6 +80,23 @@ public class TerrenoTest {
         Terreno terreno = new Terreno(3, 20);
 
         terreno.ocupar(new Posicion(1, 5), new Castillo());
+
+    }
+
+    @Test(expected = PosicionInvalidaException.class)
+    public void testUnidadNoSePuedeMoverFueraDeTerreno() {
+
+        Posicion posicion = new Posicion(10, 10);
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
+
+        terreno.ocupar(posicion, unidad);
+
+        Direccion direccion = new DireccionArriba();
+
+        terreno.moverUnidad(posicion, direccion);
 
     }
 
