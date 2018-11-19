@@ -34,18 +34,18 @@ public class Aldeano extends Unidad {
         return VIDA_INICIAL;
     }
 
-    public void construirPlazaCentral() throws PosicionInvalidaException {
+    public PlazaCentral construirPlazaCentral() throws PosicionInvalidaException {
 
-        new PlazaCentral();
         estaTrabajando = true;
 
+        return new PlazaCentral();
     }
 
-    public void construirCuartel() throws PosicionInvalidaException {
+    public Cuartel construirCuartel() throws PosicionInvalidaException {
 
-        new Cuartel();
         estaTrabajando = true;
 
+        return new Cuartel();
     }
 
     public void reparar(Posicion posicion) {

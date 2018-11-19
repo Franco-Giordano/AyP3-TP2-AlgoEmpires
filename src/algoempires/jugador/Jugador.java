@@ -9,7 +9,6 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Jugador {
@@ -33,9 +32,12 @@ public class Jugador {
     }
 
     //TODO obtener posicion adyacente
-    public void crearAldeano(Posicion posicionDeLaPlaza, Posicion posicionDeCreacion) {
+    public void crearAldeano(Posicion unaPosicionDeLaPlaza, Posicion posicionDeCreacion) {
 
-        PlazaCentral plazaCentral = (PlazaCentral) edificiosPropios.get(posicionDeLaPlaza);
+        PlazaCentral plazaCentral = (PlazaCentral) edificiosPropios.get(unaPosicionDeLaPlaza);
+
+        terrenoDeJuego.puedeEdificioVerA(unaPosicionDeLaPlaza, posicionDeCreacion);
+
         Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 /*
         Posicion posicionAdyacente = terrenoDeJuego.obtenerPosicionAdyacente(posicionDeCreacion);

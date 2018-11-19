@@ -1,42 +1,20 @@
 package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
-import algoempires.tablero.direccion.Direccion;
-import algoempires.tablero.direccion.DireccionArriba;
+import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class AldeanoTest {
-
-    @Test
-    public void testAldeanoSeMueveBien() {
-
-        Posicion posicion = new Posicion(1, 1);
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
-
-        Direccion direccion = new DireccionArriba();
-
-        terreno.ocupar(posicion, aldeano);
-
-        terreno.moverUnidad(posicion, direccion);
-
-        Posicion posicionOcupada = new Posicion(1, 2);
-
-        assertTrue(terreno.estaOcupada(posicionOcupada));
-        assertFalse(terreno.estaOcupada(posicion));
-    }
 
     @Test
     public void testAldeanoSeCreabien() {
@@ -55,6 +33,7 @@ public class AldeanoTest {
 
 
     //TODO esto NO es un test de aldeano, pero bueno.
+
     @Test
     public void testInformarDeEdificiosInformaBien() {
 
@@ -109,178 +88,195 @@ public class AldeanoTest {
         espadachin.imprimirListaDeEntidades();
 
     }
-    /*@Test
-    public void testMuevoUnAldeanoAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicion = new Posicion(2, 2);
-
-        Aldeano aldeano = new Aldeano(terreno, posicion);
-
-        Direccion direccion = new DireccionAbajo();
-
-        aldeano.desplazarHacia(direccion);
-
-        assertTrue(aldeano.estaEnCasillero(new Posicion(2, 1)));
-
-    }
 
     @Test
-    public void testMuevoUnAldeanoArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testAldeanoSeMueveBienHaciaArriba() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionArriba();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(2, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testAldeanoSeMueveBienHaciaAbajo() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
+
+        Direccion direccion = new DireccionAbajo();
+
+        terreno.ocupar(posicion, aldeano);
+
+        terreno.moverUnidad(posicion, direccion);
+
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
+    }
+
+    @Test
+    public void testAldeanoSeMueveBienHaciaIzquierda() {
+
+        Posicion posicion = new Posicion(2, 2);
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionIzquierda();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testAldeanoSeMueveBienHaciaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionDerecha();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testAldeanoSeMueveBienHaciaArribaIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionArribaIzquierda();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 3);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testAldeanoSeMueveBienHaciaArribaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionArribaDerecha();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testAldeanoSeMueveBienHaciaAbajoIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(1, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnAldeanoAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testAldeanoSeMueveBienHaciaAbajoDerecha() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Aldeano aldeano = new Aldeano(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Aldeano aldeano = new Aldeano();
 
         Direccion direccion = new DireccionAbajoDerecha();
 
-        aldeano.desplazarHacia(direccion);
+        terreno.ocupar(posicion, aldeano);
 
-        assertTrue(aldeano.estaEnCasillero(new Posicion(3, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(3, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
+    }
+    @Test
+    public void testaldeanoCreaUnaPlaza() {
+
+        Aldeano aldeano = new Aldeano();
+
+        PlazaCentral pc = aldeano.construirPlazaCentral();
+
+        assertNotNull(pc);
     }
 
     @Test
-    public void testaldeanoConstruyeUnaPlaza() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testaldeanoConstruyeUnCuartel() {
 
-        Terreno terreno = new Terreno(10, 10);
+        Aldeano aldeano = new Aldeano();
 
-        Posicion posicionACrearAldeano = new Posicion(2, 2);
+        Cuartel cuartel = aldeano.construirCuartel();
 
-        Posicion posicionAConstruir = new Posicion(3, 3);
-
-        Posicion posicionAConsultar = new Posicion(4, 4);
-
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
-
-        aldeano.construirPlazaCentral(posicionAConstruir);
-
-        assertTrue(terreno.estaOcupada(posicionAConsultar));
+        assertNotNull(cuartel);
     }
 
-    @Test
-    public void testaldeanoConstruyeUnCuartel() throws DimensionesInvalidasError, PosicionInvalidaException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicionACrearAldeano = new Posicion(2, 2);
-
-        Posicion posicionAConstruir = new Posicion(3, 3);
-
-        Posicion posicionAConsultar = new Posicion(4, 4);
-
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
-
-        aldeano.construirCuartel(posicionAConstruir);
-
-        assertTrue(terreno.estaOcupada(posicionAConsultar));
-    }
-
+    /*
     @Test
     public void testaldeanoReparaUnCuartel() throws DimensionesInvalidasError, PosicionInvalidaException {
 
@@ -338,7 +334,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testAldeanoSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    public void testAldeanoSeMueveUnaSolaVezPorTurno() {
 
         Terreno terreno = new Terreno(10,10);
 
@@ -382,5 +378,5 @@ public class AldeanoTest {
 
     }
 
-*/
+    */
 }

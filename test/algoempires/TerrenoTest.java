@@ -1,12 +1,12 @@
-/*
+
 package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class TerrenoTest {
     public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, PosicionInvalidaException {
         Terreno terreno = new Terreno(2, 2);
 
-        new Aldeano(terreno, new Posicion(2, 2));
+        terreno.ocupar(new Posicion(2, 2), new Aldeano());
 
         assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
 
@@ -49,7 +49,7 @@ public class TerrenoTest {
 
         Terreno terreno = new Terreno(3, 3);
 
-        new Cuartel(terreno, new Posicion(2, 2));
+        terreno.ocupar(new Posicion(2, 2), new Cuartel());
 
         assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
         assertTrue(terreno.estaOcupada(new Posicion(3, 2)));
@@ -65,10 +65,10 @@ public class TerrenoTest {
     }
 
     @Test(expected = PosicionInvalidaException.class)
-    public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws PosicionInvalidaException {
         Terreno terreno = new Terreno(5, 2);
 
-        new Aldeano(terreno, new Posicion(3, 3));
+        terreno.ocupar(new Posicion(6, 2), new Aldeano());
 
     }
 
@@ -76,9 +76,9 @@ public class TerrenoTest {
     public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasError {
         Terreno terreno = new Terreno(3, 20);
 
-        new Castillo(terreno, new Posicion(1, 5));
+        terreno.ocupar(new Posicion(1, 5), new Castillo());
 
     }
 
 }
-*/
+

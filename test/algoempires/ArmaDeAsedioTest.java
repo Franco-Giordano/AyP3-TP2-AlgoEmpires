@@ -1,12 +1,8 @@
-/*
+
 package algoempires;
 
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
-import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;ocupar
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
 import org.junit.Test;
@@ -16,155 +12,176 @@ import static org.junit.Assert.assertTrue;
 
 public class ArmaDeAsedioTest {
 
-    @Test
-    public void testArmaDeAsedioSeCreaBien() throws DimensionesInvalidasError, PosicionInvalidaException {
-        Terreno terreno = new Terreno(10,10);
-
-        Posicion posicion = new Posicion(2,2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
-
-        assertTrue(armaDeAsedio.tieneEstasCaracteristicas(150,5,1, 75, false));
-    }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaArriba() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
-
-        Direccion direccion = new DireccionAbajo();
-
-        armaDeAsedio.desplazarHacia(direccion);
-
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(2, 1)));
-
-    }
-
-    @Test
-    public void testMuevoUnArmaDeAsedioArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicion = new Posicion(2, 2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionArriba();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(2, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajo() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
+
+        Direccion direccion = new DireccionAbajo();
+
+        terreno.ocupar(posicion, unidad);
+
+        terreno.moverUnidad(posicion, direccion);
+
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
+    }
+
+    @Test
+    public void testUnidadSeMueveBienHaciaIzquierda() {
+
+        Posicion posicion = new Posicion(2, 2);
+
+        Terreno terreno = new Terreno(10, 10);
+
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionIzquierda();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(1, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionDerecha();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(3, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaArribaIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionArribaIzquierda();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(1, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 3);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaArribaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
-
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionArribaDerecha();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(3, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(1, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArmaDeAsedioAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoDerecha() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        ArmaDeAsedio unidad = new ArmaDeAsedio();
 
         Direccion direccion = new DireccionAbajoDerecha();
 
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(3, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(3, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
+    /*
     @Test
     public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
@@ -219,5 +236,7 @@ public class ArmaDeAsedioTest {
 
         armaDeAsedio.desplazarHacia(direccion);
     }
+
+    */
 }
-*/
+

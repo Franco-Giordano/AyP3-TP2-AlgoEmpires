@@ -17,6 +17,11 @@ public class Poblacion {
 
 
     public void agregar(Posicion posicion, Unidad unidad){
+
+        if (unidades.size() >= MAXIMO_POBLACION) {
+            throw new SeIntentoSuperarPoblacionMaximaException();
+        }
+
         unidades.put(posicion, unidad);
     }
 

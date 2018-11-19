@@ -8,6 +8,9 @@ import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.direccion.Direccion;
+import algoempires.tablero.direccion.DireccionAbajo;
+import algoempires.tablero.direccion.DireccionAbajoIzquierda;
+import algoempires.tablero.direccion.DireccionIzquierda;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,9 +99,9 @@ public class Terreno {
         this.ocuparConEntidad(posicion,unidad);
     }
 
-    public void ocupar(Posicion posicion, Edificio edificio) throws PosicionInvalidaException {
+    public void ocupar(Posicion posicionInfIzq, Edificio edificio) throws PosicionInvalidaException {
 
-        ArrayList<Posicion> casillerosAOcupar = edificio.generarRegionAPartirDePosicion(posicion).generarPosicionesContenidas();
+        ArrayList<Posicion> casillerosAOcupar = edificio.generarRegionAPartirDePosicion(posicionInfIzq).generarPosicionesContenidas();
 
         for (Posicion each : casillerosAOcupar) {
             this.ocuparConEntidad(each, edificio);
@@ -161,6 +164,37 @@ public class Terreno {
         return mapa.get(posicion);
     }
 
+
+    public boolean puedeEdificioVerA(Posicion unaPosicionDelEdificio, Posicion posicionQueQuieroVer) {
+
+        Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosicionDelEdificio);
+        Edificio edificio = (Edificio) mapa.get(posInfIzq).getEntidadContenida();
+
+        Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
+
+        return Region.generarRegionCentradaEn(regionOcupada, edificio).contains(posicionQueQuieroVer);
+
+    }
+
+    public boolean puedeUnidadVerA(Posicion posUnidad, Posicion posicionQueQuieroVer) {
+
+        Unidad unidad = (Unidad) mapa.get(posUnidad).getEntidadContenida();
+
+        return Region.generarRegionCentradaEn(posUnidad, unidad).contains(posicionQueQuieroVer);
+
+    }
+
+    private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {
+        Entidad entidad = mapa.get(unaPosicionDeLaEntidad).getEntidadContenida();
+
+        Posicion posIzq = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionIzquierda());
+        Posicion posInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajo());
+        Posicion posIzqInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajoIzquierda());
+
+        //TODO asi esta mal, seguir calculando, por ej con recursividad
+        return unaPosicionDeLaEntidad;
+    }
+
     //METODOS DE TESTEO
     public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
         return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
@@ -174,11 +208,6 @@ public class Terreno {
     public int getTamVertical() {
         return limiteSupDer.getVertical();
     }
-
-
-
-
-
 
 }
 

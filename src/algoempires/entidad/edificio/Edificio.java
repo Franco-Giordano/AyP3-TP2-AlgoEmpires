@@ -23,9 +23,9 @@ public abstract class Edificio extends Entidad {
 
     protected abstract int getTurnosDeConstruccionInicial();
 
-    public Region generarRegionAPartirDePosicion(Posicion posicion) {
+    public Region generarRegionAPartirDePosicion(Posicion posicionInfIzq) {
 
-        return new Region(posicion, this.TAMANIO_HORIZONTAL, this.TAMANIO_VERTICAL);
+        return new Region(posicionInfIzq, this.TAMANIO_HORIZONTAL, this.TAMANIO_VERTICAL);
 
     }
 

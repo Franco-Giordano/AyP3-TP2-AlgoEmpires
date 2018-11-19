@@ -29,8 +29,13 @@ public abstract class Entidad {
         this.vida += vidaASumar;
     }
 
+    public int getRango() {
+        return RANGO_VISION;
+    }
+
     //Metodo de testeo
     public boolean tieneEstaVida(int vidaRecibida) {
         return this.vida == vidaRecibida;
     }
+
 }

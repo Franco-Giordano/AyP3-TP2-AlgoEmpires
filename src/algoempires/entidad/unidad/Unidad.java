@@ -13,8 +13,4 @@ public abstract class Unidad extends Entidad {
         this.movioEsteTurno = false;
     }
 
-    public int getRango() {
-        return RANGO_VISION;
-    }
-
 }

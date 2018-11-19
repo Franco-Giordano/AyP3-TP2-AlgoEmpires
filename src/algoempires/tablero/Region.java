@@ -1,5 +1,6 @@
 package algoempires.tablero;
 
+import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 
 import java.util.ArrayList;
@@ -61,6 +62,56 @@ public class Region {
         }
 
         return posicionesContenidas;
+    }
+
+    public static ArrayList<Posicion> generarRegionCentradaEn(Region regionCentral, Edificio edificioConRango) {
+
+
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
+
+        int minRangoHorizontal = regionCentral.getHorizontalIzq() - edificioConRango.getRango();
+        int maxRangoHorizontal = regionCentral.getHorizontalDer() + edificioConRango.getRango();
+        int minRangoVertical = regionCentral.getVerticalInf() - edificioConRango.getRango();
+        int maxRangoVertical = regionCentral.getVerticalSup() + edificioConRango.getRango();
+
+        for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i++) {
+
+            for (int j = minRangoVertical; j <= maxRangoVertical; j++) {
+
+                Posicion posicion = new Posicion(i, j);
+
+                if (!regionCentral.contiene(posicion)) {
+                    posicionesContenidas.add(posicion);
+                }
+            }
+
+        }
+
+        return posicionesContenidas;
+    }
+
+    private int getVerticalSup() {
+        return infIzquierdo.getVertical() + tamanioVertical;
+    }
+
+    private int getVerticalInf() {
+        return infIzquierdo.getVertical();
+    }
+
+    private int getHorizontalDer() {
+        return infIzquierdo.getHorizontal() + tamanioHorizontal;
+    }
+
+    private int getHorizontalIzq() {
+        return infIzquierdo.getHorizontal();
+    }
+
+    private boolean contiene(Posicion posicion) {
+
+        Posicion supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal,
+                infIzquierdo.getVertical() + tamanioVertical);
+
+        return posicion.pertenzcoAlRango(infIzquierdo, supDerecho);
     }
 
 

@@ -1,156 +1,192 @@
-/*package algoempires;
+package algoempires;
 
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class EspadachinTest {
 
     @Test
-    public void testMuevoUnEspadachinAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaArriba() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Espadachin espadachin = new Espadachin(terreno, posicion);
-
-        Direccion direccion = new DireccionAbajo();
-
-        espadachin.desplazarHacia(direccion);
-
-        assertTrue(espadachin.estaEnCasillero(new Posicion(2, 1)));
-
-    }
-
-    @Test
-    public void testMuevoUnEspadachinArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicion = new Posicion(2, 2);
-
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Espadachin unidad = new Espadachin();
 
         Direccion direccion = new DireccionArriba();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(2, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajo() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Espadachin unidad = new Espadachin();
+
+
+        Direccion direccion = new DireccionAbajo();
+
+        terreno.ocupar(posicion, unidad);
+
+        terreno.moverUnidad(posicion, direccion);
+
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
+    }
+
+    @Test
+    public void testUnidadSeMueveBienHaciaIzquierda() {
+
+        Posicion posicion = new Posicion(2, 2);
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Espadachin unidad = new Espadachin();
+
 
         Direccion direccion = new DireccionIzquierda();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
-        assertTrue(espadachin.estaEnCasillero(new Posicion(1, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
+        Espadachin unidad = new Espadachin();
 
-        Espadachin espadachin = new Espadachin(terreno, posicion);
 
         Direccion direccion = new DireccionDerecha();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(3, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaArribaIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Espadachin unidad = new Espadachin();
+
 
         Direccion direccion = new DireccionArribaIzquierda();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(1, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 3);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaArribaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Espadachin unidad = new Espadachin();
 
 
         Direccion direccion = new DireccionArribaDerecha();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(3, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Espadachin unidad = new Espadachin();
+
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(1, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnEspadachinAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoDerecha() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Espadachin espadachin = new Espadachin(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Espadachin unidad = new Espadachin();
+
 
         Direccion direccion = new DireccionAbajoDerecha();
 
-        espadachin.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(espadachin.estaEnCasillero(new Posicion(3, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(3, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
+    /*
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
     public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
 
@@ -166,5 +202,6 @@ public class EspadachinTest {
 
         espadachin.desplazarHacia(direccion);
     }
+
+    */
 }
-*/

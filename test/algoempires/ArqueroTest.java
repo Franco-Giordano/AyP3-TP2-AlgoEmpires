@@ -3,8 +3,12 @@ package algoempires;
 
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.Posicion;
+import algoempires.tablero.Terreno;
+import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ArqueroTest {
@@ -23,159 +27,175 @@ public class ArqueroTest {
     }
 
 
-
-
-    /*
     @Test
-    public void testArqueroSeCreaBien() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testUnidadSeMueveBienHaciaArriba() {
 
-        Terreno terreno = new Terreno(10,10);
-
-        Posicion posicion = new Posicion(2,2);
-
-        Arquero arquero = new Arquero(terreno, posicion);
-
-        assertTrue(arquero.tieneEstasCaracteristicas(75,3,15,10));
-
-    }
-
-    @Test
-    public void testMuevoUnArqueroAbajo() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Arquero arquero = new Arquero(terreno, posicion);
-
-        Direccion direccion = new DireccionAbajo();
-
-        arquero.desplazarHacia(direccion);
-
-        assertTrue(arquero.estaEnCasillero(new Posicion(2, 1)));
-
-    }
-
-    @Test
-    public void testMuevoUnArqueroArriba() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicion = new Posicion(2, 2);
-
-        Arquero arquero = new Arquero(terreno, posicion);
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionArriba();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(2, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajo() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
+
+        Direccion direccion = new DireccionAbajo();
+
+        terreno.ocupar(posicion, unidad);
+
+        terreno.moverUnidad(posicion, direccion);
+
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
+    }
+
+    @Test
+    public void testUnidadSeMueveBienHaciaIzquierda() {
+
+        Posicion posicion = new Posicion(2, 2);
+
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionIzquierda();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        //El problema son las id de los casilleros. Son distintas aunque tengan las mismas coordenadas.
-        assertTrue(arquero.estaEnCasillero(new Posicion(1, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Arquero arquero = new Arquero(terreno, posicion);
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionDerecha();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(3, 2)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroArribaIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaArribaIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionArribaIzquierda();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(1, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 3);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroArribaDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
+    public void testUnidadSeMueveBienHaciaArribaDerecha() {
+
+        Posicion posicion = new Posicion(1, 1);
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(2, 2);
-
-        Arquero arquero = new Arquero(terreno, posicion);
-
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionArribaDerecha();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(3, 3)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(2, 2);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroAbajoIzquierda() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoIzquierda() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(1, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(1, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
 
     @Test
-    public void testMuevoUnArqueroAbajoDerecha() throws PosicionInvalidaException, DimensionesInvalidasError, UnidadYaMovioEnEsteTurnoException {
-
-        Terreno terreno = new Terreno(10, 10);
+    public void testUnidadSeMueveBienHaciaAbajoDerecha() {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Arquero arquero = new Arquero(terreno, posicion);
+        Terreno terreno = new Terreno(10, 10);
+
+        Arquero unidad = new Arquero();
 
         Direccion direccion = new DireccionAbajoDerecha();
 
-        arquero.desplazarHacia(direccion);
+        terreno.ocupar(posicion, unidad);
 
-        assertTrue(arquero.estaEnCasillero(new Posicion(3, 1)));
+        terreno.moverUnidad(posicion, direccion);
 
+        Posicion posicionOcupada = new Posicion(3, 1);
+
+        assertTrue(terreno.estaOcupada(posicionOcupada));
+        assertFalse(terreno.estaOcupada(posicion));
     }
+
+    /*
 
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
     public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
