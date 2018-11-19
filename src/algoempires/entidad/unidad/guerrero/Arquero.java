@@ -4,18 +4,17 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.CasilleroInvalidoException;
-import algoempires.tablero.Posicion;
 
 public class Arquero extends Guerrero {
 
-    private final int VIDA_INICIAL = 75;
-    private final int RANGO_ATAQUE = 3;
-    private final int DANIO_A_UNIDADES = 15;
-    private final int DANIO_A_EDIFICIOS = 10;
+    private final int VIDA_INICIAL = 50;
 
     public Arquero() {
         super();
+
+        RANGO_VISION = 3;
+        DANIO_A_UNIDADES = 15;
+        DANIO_A_EDIFICIOS = 10;
     }
 
     @Override
@@ -23,29 +22,15 @@ public class Arquero extends Guerrero {
         return VIDA_INICIAL;
     }
 
-
     @Override
     public void actualizarEntreTurnos(Jugador jugador) {
     }
 
-    @Override
-    public int getRango() {
-        return RANGO_ATAQUE;
-    }
-
-    @Override
-    protected int getDanioAUnidades() {
-        return DANIO_A_UNIDADES;
-    }
-
-    @Override
-    protected int getDanioAEdificios() {
-        return DANIO_A_EDIFICIOS;
-    }
 
     public boolean tieneEstasCaracteristicas(int vida, int rango, int danioUnidades, int danioEdificios) {
-        return ((this.getVidaInicial() == vida) && (this.getRango() == rango)
-                && (this.getDanioAEdificios() == danioEdificios) && (this.getDanioAUnidades() == danioUnidades));
+        return ((this.VIDA_INICIAL == vida) && (this.RANGO_VISION == rango)
+                && (this.DANIO_A_EDIFICIOS == danioEdificios) && (this.DANIO_A_UNIDADES == danioUnidades));
+
     }
 
     @Override

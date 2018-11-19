@@ -9,14 +9,14 @@ import algoempires.tablero.CasilleroInvalidoException;
 public class Espadachin extends Guerrero {
 
     private final int VIDA_INICIAL = 100;
-    private final int RANGO_ATAQUE = 1;
-    private final int DANIO_A_UNIDADES = 25;
-    private final int DANIO_A_EDIFICIOS = 15;
 
     public Espadachin() throws CasilleroInvalidoException {
 
         super();
 
+        RANGO_VISION = 1;
+        DANIO_A_UNIDADES = 25;
+        DANIO_A_EDIFICIOS = 15;
     }
 
     @Override
@@ -28,25 +28,6 @@ public class Espadachin extends Guerrero {
     public void actualizarEntreTurnos(Jugador jugador) {
 
     }
-
-    @Override
-    public int getRango() {
-        return RANGO_ATAQUE;
-    }
-
-    @Override
-    protected int getDanioAUnidades() {
-        return DANIO_A_UNIDADES;
-    }
-
-    @Override
-    protected int getDanioAEdificios() {
-        return DANIO_A_EDIFICIOS;
-    }
-
- /*   @Override
-    public void atacar(Entidad entidad){
-    }*/
 
     @Override
     public void atacar(Unidad unidad){

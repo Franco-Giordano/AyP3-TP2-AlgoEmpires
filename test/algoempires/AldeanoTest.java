@@ -1,6 +1,5 @@
 package algoempires;
 
-import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;

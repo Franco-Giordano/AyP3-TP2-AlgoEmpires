@@ -4,7 +4,6 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.SoloAldeanoPuedeReparar;
 import algoempires.entidad.SoloUnidadesPuedenVerASuAlrededorException;
 import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
@@ -108,7 +107,7 @@ public class Terreno {
 
         try {
 
-            Guerrero unidad = (Guerrero) mapa.get(posicionRecibida).entidadContenida;
+            Guerrero unidad = (Guerrero) mapa.get(posicionRecibida).getEntidadContenida();
 
             HashSet<Entidad> listaEntidades = new HashSet<>();
 
@@ -116,7 +115,7 @@ public class Terreno {
 
             for (Posicion each : rango) {
                 if (mapa.get(each).estaOcupada()) {
-                    listaEntidades.add(mapa.get(each).entidadContenida);
+                    listaEntidades.add(mapa.get(each).getEntidadContenida());
                 }
             }
 
@@ -136,7 +135,7 @@ public class Terreno {
     public void informarEdificiosAlAlcance(Posicion posicionRecibida){
 
         try {
-            Aldeano aldeano = (Aldeano) mapa.get(posicionRecibida).entidadContenida;
+            Aldeano aldeano = (Aldeano) mapa.get(posicionRecibida).getEntidadContenida();
 
             HashSet<Edificio> listaEdificios = new HashSet<>();
 
@@ -144,7 +143,7 @@ public class Terreno {
 
             for (Posicion each : rango) {
                 if (mapa.get(each).estaOcupada()) {
-                    listaEdificios.add((Edificio) mapa.get(each).entidadContenida);
+                    listaEdificios.add((Edificio) mapa.get(each).getEntidadContenida());
                 }
             }
 

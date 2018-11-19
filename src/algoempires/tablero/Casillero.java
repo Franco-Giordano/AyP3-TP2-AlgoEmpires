@@ -3,16 +3,13 @@ package algoempires.tablero;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.SoloEdificiosPuedenSerReparadosException;
 import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.guerrero.Guerrero;
-import algoempires.entidad.unidad.utilero.Aldeano;
 
 public class Casillero {
 
-    Entidad entidadContenida;
-    Posicion posicion;
+    private Entidad entidadContenida;
+    private Posicion posicion;
 
 
     public Casillero(Posicion posicionRecibida) {

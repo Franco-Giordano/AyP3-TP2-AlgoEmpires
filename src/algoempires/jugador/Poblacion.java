@@ -3,7 +3,6 @@ package algoempires.jugador;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.tablero.Posicion;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Poblacion {
