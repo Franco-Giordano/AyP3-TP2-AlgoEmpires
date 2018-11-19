@@ -13,7 +13,7 @@ public class Castillo extends Edificio {
     /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
     public Castillo() {
         super();
-        this.vida = getVidaInicial();
+        this.setVida(getVidaInicial());
     }
 
     public ArmaDeAsedio crearArmaDeAsedio() {

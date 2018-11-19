@@ -1,8 +1,9 @@
-/*
+
 package algoempires;
 
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.Arquero;
+import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.CasilleroInvalidoException;
 import algoempires.tablero.DimensionesInvalidasError;
@@ -10,10 +11,28 @@ import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ArqueroTest {
 
+    @Test
+    public void testSeRealizaDañoAlAtacar(){
+
+        Arquero arquero= new Arquero();
+        Aldeano aldeano= new Aldeano();
+
+        assertTrue(aldeano.tieneEstaVida(50));
+
+        arquero.atacar(aldeano);
+
+        assertTrue(aldeano.tieneEstaVida(35));
+    }
+
+
+
+
+    /*
     @Test
     public void testArqueroSeCreaBien() throws DimensionesInvalidasError, CasilleroInvalidoException {
 
@@ -180,6 +199,8 @@ public class ArqueroTest {
 
         arquero.desplazarHacia(direccion);
     }
-}
+
 
 */
+}
+

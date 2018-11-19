@@ -4,14 +4,27 @@ import algoempires.jugador.Jugador;
 
 public abstract class Entidad {
 
-    protected int vida;
-
+    private int vida;
     public Entidad() {
         this.vida = getVidaInicial();
+
     }
 
-    public void restarVida(int vidaARestar){
-        vida=- vidaARestar;
+    public boolean restarVida(int vidaARestar){
+        vida-= vidaARestar;
+        return seMurioAlRecibirAtaque();
+    }
+
+    public boolean seMurioAlRecibirAtaque(){
+        return vida<=0;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public int getVida() {
+        return vida;
     }
 
     protected abstract int getVidaInicial();
@@ -23,4 +36,7 @@ public abstract class Entidad {
         return this.vida == vidaRecibida;
     }
 
+    public void sumarVida(int vidaASumar){
+        this.vida+=vidaASumar;
+    }
 }

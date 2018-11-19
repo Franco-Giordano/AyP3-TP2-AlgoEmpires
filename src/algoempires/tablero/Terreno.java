@@ -130,7 +130,7 @@ public class Terreno {
 
     }
 
-    //TODO probablemente este metodo se pueda obviar, si lo manejamos bien, le informamos tanto las que puede atacar como las
+    //TODO probablemente este metodo se pueda obviar, si lo manejamos bien, le informamos tanto las que puede atacarA como las
     //que puede reparar al aldeano, y lesto.
 
     public void informarEdificiosAlAlcance(Posicion posicionRecibida){
@@ -154,6 +154,10 @@ public class Terreno {
             throw new SoloAldeanoPuedeReparar();
         }
 
+    }
+
+    public Casillero getCasilleroEn(Posicion posicion){
+        return mapa.get(posicion);
     }
 
     //METODOS DE TESTEO

@@ -22,7 +22,7 @@ public abstract class Edificio extends Entidad {
     }
 
     public void reparar() {
-        this.vida += getVelocidadDeReparacion();
+        this.sumarVida(getVelocidadDeReparacion());
     }
     
     protected abstract int getTamanioHorizontal();

@@ -15,7 +15,7 @@ public class Cuartel extends Edificio {
 
     public Cuartel() throws CasilleroInvalidoException {
         super();
-        this.vida = getVidaInicial();
+        this.setVida(getVidaInicial());
     }
 
     public Espadachin crearEspadachin() throws CasilleroInvalidoException {
@@ -59,7 +59,7 @@ public class Cuartel extends Edificio {
 
     //METODO DE TESTEO
     public int getVidaActual() {
-        return vida;
+        return this.getVida();
     }
 }
 

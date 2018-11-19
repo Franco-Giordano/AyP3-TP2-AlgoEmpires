@@ -3,6 +3,8 @@ package algoempires.jugador;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -38,14 +40,21 @@ public class Jugador {
 /*
         Posicion posicionAdyacente = terrenoDeJuego.obtenerPosicionAdyacente(posicionDeCreacion);
 */
-        poblacion.agregar(aldeanoCreado);
+        poblacion.agregar(posicionDeCreacion,aldeanoCreado);
         terrenoDeJuego.ocupar(posicionDeCreacion,aldeanoCreado);
 
     }
 
     public void jugarTurno() {
 
+    }
 
+    public void atacar(Guerrero guerreroAtacante, Unidad unidadAtacada){
+        guerreroAtacante.atacar(unidadAtacada);
+    }
+
+    public void atacar(Guerrero guerrero, Edificio edificioAAtacar){
+        guerrero.atacar(edificioAAtacar);
     }
 
     public void sumarOro(int oro) {

@@ -44,6 +44,10 @@ public class Espadachin extends Guerrero {
         return DANIO_A_EDIFICIOS;
     }
 
+ /*   @Override
+    public void atacar(Entidad entidad){
+    }*/
+
     @Override
     public void atacar(Unidad unidad){
         unidad.restarVida(DANIO_A_UNIDADES);
@@ -53,6 +57,7 @@ public class Espadachin extends Guerrero {
     public void atacar(Edificio edificio){
         edificio.restarVida(DANIO_A_EDIFICIOS);
     }
+
     //METODO DE PRUEBAS.
     public void imprimirListaDeEntidades() {
 

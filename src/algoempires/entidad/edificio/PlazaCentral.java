@@ -20,7 +20,7 @@ public class PlazaCentral extends Edificio {
 
     public PlazaCentral(){
         super();
-        this.vida = getVidaInicial();
+        this.setVida(getVidaInicial());
     }
 
     public Aldeano crearAldeano(){
