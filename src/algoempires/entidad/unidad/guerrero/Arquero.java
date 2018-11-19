@@ -1,8 +1,11 @@
 package algoempires.entidad.unidad.guerrero;
 
 import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.CasilleroInvalidoException;
+import algoempires.tablero.Posicion;
 
 public class Arquero extends Guerrero {
 
@@ -43,6 +46,16 @@ public class Arquero extends Guerrero {
     public boolean tieneEstasCaracteristicas(int vida, int rango, int danioUnidades, int danioEdificios) {
         return ((this.getVidaInicial() == vida) && (this.getRango() == rango)
                 && (this.getDanioAEdificios() == danioEdificios) && (this.getDanioAUnidades() == danioUnidades));
+    }
+
+    @Override
+    public void atacar(Unidad unidad){
+        unidad.restarVida(DANIO_A_UNIDADES);
+    }
+
+    @Override
+    public void atacar(Edificio edificio){
+        edificio.restarVida(DANIO_A_EDIFICIOS);
     }
 
     //METODO DE PRUEBAS.

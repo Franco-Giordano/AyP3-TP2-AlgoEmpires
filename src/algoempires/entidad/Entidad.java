@@ -10,6 +10,10 @@ public abstract class Entidad {
         this.vida = getVidaInicial();
     }
 
+    public void restarVida(int vidaARestar){
+        vida=- vidaARestar;
+    }
+
     protected abstract int getVidaInicial();
 
     public abstract void actualizarEntreTurnos(Jugador jugador);

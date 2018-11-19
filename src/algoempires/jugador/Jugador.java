@@ -1,7 +1,7 @@
 package algoempires.jugador;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -10,13 +10,15 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    private ArrayList<Entidad> entidadesPropias;
+    private Poblacion poblacion;
+    private ArrayList<Edificio> edificiosPropios;
     private Terreno terrenoDeJuego;
     private Jugador jugadorContrincante;
     private Monedero monedero;
 
     public Jugador(Terreno terrenoDeJuego) {
-        this.entidadesPropias = new ArrayList<>();
+        this.poblacion= new Poblacion();
+        this.edificiosPropios = new ArrayList<>();
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
     }
@@ -25,13 +27,15 @@ public class Jugador {
         jugadorContrincante = jugador;
     }
 
-    //Suponemos que se obtiene la posicion por click en interfaz.
-    public void crearAldeano(Posicion posicion){
+    //TODO obtener posicion adyacente
+    public void crearAldeano(Posicion posicion, Posicion posicionAdyacente){
 
-        Aldeano aldeanoCreado = plazaCentral.crearAldeano();
-        PlazaCentral plazaCentral = entidadesPropias.buscar(terrenoDeJuego.obtener(posicion));
-        Posicion posicionAdyancente = plazaCentral.generarAdyancente(posicion);
-        terrenoDeJuego.ocupar(posicionAdyancente,aldeanoCreado);
+      //  PlazaCentral plazaCentral = edificiosPropios.buscar(terrenoDeJuego.obtener(posicion));
+        Aldeano aldeanoCreado = terrenoDeJuego.crearAldeanoDesdePosicion(posicion);
+        poblacion.agregar(aldeanoCreado);
+      //  Posicion posicionAdyancente = generarAdyancente(posicion);
+        terrenoDeJuego.ocupar(posicionAdyacente,aldeanoCreado);
+
 
     }
 
@@ -51,6 +55,6 @@ public class Jugador {
     }
 
     public void asignarAlJugador(Entidad entidad) {
-        entidadesPropias.add(entidad);
+        edificiosPropios.add(entidad);
     }
 }

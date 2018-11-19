@@ -3,8 +3,10 @@ package algoempires.tablero;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.SoloEdificiosPuedenSerReparadosException;
 import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.utilero.Aldeano;
 
 public class Casillero {
 
@@ -63,6 +65,14 @@ public class Casillero {
 
     public boolean estaOcupada() {
         return this.entidadContenida != null;
+    }
+
+    public Aldeano crearAldeano(){
+        PlazaCentral plazaCentral= (PlazaCentral) this.entidadContenida;
+        Aldeano aldeano= plazaCentral.crearAldeano();
+
+        return aldeano;
+
     }
 
 

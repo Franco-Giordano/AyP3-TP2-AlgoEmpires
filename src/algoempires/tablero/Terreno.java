@@ -50,6 +50,10 @@ public class Terreno {
 
     }
 
+    public Aldeano crearAldeanoDesdePosicion(Posicion posicion){
+        return mapa.get(posicion).crearAldeano();
+    }
+
     public boolean estaOcupada(Posicion posicion) {
 
         return mapa.get(posicion).estaOcupada();
