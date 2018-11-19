@@ -15,6 +15,7 @@ public class Castillo extends Edificio {
         TAMANIO_VERTICAL = 4;
         VELOCIDAD_DE_REPARACION = 15;
         RANGO_VISION = 3;
+        COSTO = 0;
     }
 
     @Override

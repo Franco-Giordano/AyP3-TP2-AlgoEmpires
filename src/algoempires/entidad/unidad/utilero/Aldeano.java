@@ -26,6 +26,7 @@ public class Aldeano extends Unidad {
         this.entidadesReparables = null;
 
         RANGO_VISION = 1;
+        COSTO = 25;
     }
 
     @Override

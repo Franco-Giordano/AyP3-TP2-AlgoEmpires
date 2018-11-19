@@ -26,6 +26,7 @@ public class ArmaDeAsedio extends Guerrero {
 
         RANGO_VISION = 5;
         DANIO_A_EDIFICIOS = 75;
+        COSTO = 200;
 
     }
 

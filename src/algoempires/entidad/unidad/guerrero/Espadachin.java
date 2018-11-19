@@ -17,6 +17,7 @@ public class Espadachin extends Guerrero {
         RANGO_VISION = 1;
         DANIO_A_UNIDADES = 25;
         DANIO_A_EDIFICIOS = 15;
+        COSTO = 50;
     }
 
     @Override

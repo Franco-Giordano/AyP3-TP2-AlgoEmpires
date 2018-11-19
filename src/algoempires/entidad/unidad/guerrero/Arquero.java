@@ -15,6 +15,7 @@ public class Arquero extends Guerrero {
         RANGO_VISION = 3;
         DANIO_A_UNIDADES = 15;
         DANIO_A_EDIFICIOS = 10;
+        COSTO = 75;
     }
 
     @Override

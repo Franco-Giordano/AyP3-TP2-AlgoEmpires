@@ -15,7 +15,8 @@ public class PlazaCentral extends Edificio {
         TAMANIO_HORIZONTAL = 2;
         TAMANIO_VERTICAL = 2;
         VELOCIDAD_DE_REPARACION = 25;
-        RANGO_VISION = 0;
+        RANGO_VISION = 1;
+        COSTO = 100;
     }
 
     @Override
