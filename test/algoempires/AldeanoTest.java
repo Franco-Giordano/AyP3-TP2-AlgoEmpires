@@ -3,10 +3,13 @@ package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
@@ -62,13 +65,13 @@ public class AldeanoTest {
 
         Posicion posicionDelAldeano1 = new Posicion(7, 7);
 
-        Posicion posicionDelAldeano2 = new Posicion(9,9);
+        Posicion posicionDelAldeano2 = new Posicion(9, 9);
 
         Posicion posicionDelCuartel = new Posicion(2, 2);
 
-        Posicion posicionDelArmaDeasedio = new Posicion(5,5);
+        Posicion posicionDelArmaDeasedio = new Posicion(5, 5);
 
-        Posicion posicionDelEspadachin = new Posicion(8,8);
+        Posicion posicionDelEspadachin = new Posicion(8, 8);
 
         terreno.ocupar(posicionArquero, arquero);
 
@@ -76,13 +79,13 @@ public class AldeanoTest {
 
         terreno.ocupar(posicionDelAldeano1, aldeano1);
 
-        terreno.ocupar(posicionDelAldeano2,aldeano2);
+        terreno.ocupar(posicionDelAldeano2, aldeano2);
 
-        terreno.ocupar(posicionDelEspadachin,espadachin);
+        terreno.ocupar(posicionDelEspadachin, espadachin);
 
         terreno.ocupar(posicionDelCuartel, cuartel);
 
-        terreno.ocupar(posicionDelArmaDeasedio,armaDeAsedio);
+        terreno.ocupar(posicionDelArmaDeasedio, armaDeAsedio);
 
     }
 
@@ -253,6 +256,7 @@ public class AldeanoTest {
         assertTrue(terreno.estaOcupada(posicionOcupada));
         assertFalse(terreno.estaOcupada(posicion));
     }
+
     @Test
     public void testaldeanoCreaUnaPlaza() {
 
@@ -273,107 +277,98 @@ public class AldeanoTest {
         assertNotNull(cuartel);
     }
 
-    /*
     @Test
-    public void testaldeanoReparaUnCuartel() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testAldeanoReparaUnCuartel() {
+
+        Aldeano aldeano = new Aldeano();
+
+        Cuartel cuartel = aldeano.construirCuartel();
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicionACrearAldeano = new Posicion(4, 5);
+        terreno.ocupar(new Posicion(1, 1), cuartel);
 
-        Posicion posicionAConstruir = new Posicion(3, 3);
+        terreno.ocupar(new Posicion(3, 3), aldeano);
 
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
+        aldeano.reparar(cuartel);
 
-        aldeano.construirCuartel(posicionAConstruir);
+        assertTrue(terreno.compararVidaDe(new Posicion(2, 2), 300));
 
-        aldeano.reparar(posicionAConstruir);
-
-        assertTrue(terreno.compararVidaDe(posicionAConstruir, 300));
     }
 
     @Test
-    public void testAldeanoNoSumaOroMientrasRepara() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testAldeanoNoSumaOroMientrasRepara() {
 
         Terreno terreno = new Terreno(10, 10);
 
         Jugador jugador = new Jugador(terreno);
 
-        Posicion posicionACrearAldeano = new Posicion(4, 5);
+        Aldeano aldeano = new Aldeano();
 
-        Posicion posicionAConstruir = new Posicion(1, 3);
+        Cuartel cuartel = aldeano.construirCuartel();
 
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
+        terreno.ocupar(new Posicion(5, 5), aldeano);
 
-        aldeano.construirCuartel(posicionAConstruir);
+        terreno.ocupar(new Posicion(3, 3), cuartel);
 
-        aldeano.reparar(posicionAConstruir);
+        aldeano.reparar(cuartel);
 
         aldeano.actualizarEntreTurnos(jugador);
 
         assertEquals(jugador.getOro(), 0);
-
     }
 
     @Test
-    public void testAldeanoSumaOroSiNoEstaReparando() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testAldeanoSumaOroSiEstaReparando() {
+
         Terreno terreno = new Terreno(10, 10);
 
         Jugador jugador = new Jugador(terreno);
 
-        Posicion posicionACrearAldeano = new Posicion(3, 5);
-
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
+        Aldeano aldeano = new Aldeano();
 
         aldeano.actualizarEntreTurnos(jugador);
 
         assertEquals(jugador.getOro(), 20);
     }
 
+    //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
     public void testAldeanoSeMueveUnaSolaVezPorTurno() {
+        Terreno terreno = new Terreno(10, 10);
 
-        Terreno terreno = new Terreno(10,10);
+        Aldeano aldeano = new Aldeano();
 
-        Posicion posicionACrearAldeano = new Posicion(3, 4);
+        terreno.ocupar(new Posicion(4, 4), aldeano);
 
-        Aldeano aldeano = new Aldeano(terreno, posicionACrearAldeano);
+        terreno.moverUnidad(new Posicion(4, 4), new DireccionArriba());
 
-        Direccion direccion = new DireccionArriba();
-
-        aldeano.desplazarHacia(direccion);
-
-        aldeano.desplazarHacia(direccion);
+        terreno.moverUnidad(new Posicion(4, 5), new DireccionArriba());
     }
 
-
     @Test
-    public void testAldeanoLasAccionesSeHacenEnElPropioTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException{
-
-        Terreno terreno = new Terreno(10,10);
-
-        Posicion posicion1 = new Posicion(3, 4);
-        Posicion posicion2 = new Posicion(6, 6);
-
-        Jugador jugador1= new Jugador(terreno);
-        Jugador jugador2= new Jugador(terreno);
+    public void testAldeanoLasAccionesSeHacenEnElPropioTurno() {
+        Terreno terreno = new Terreno(10, 10);
+        Jugador jugador1 = new Jugador(terreno);
+        Jugador jugador2 = new Jugador(terreno);
         jugador1.setContrincante(jugador2);
         jugador2.setContrincante(jugador1);
 
-        Aldeano aldeano1= new Aldeano(terreno, posicion1);
-        Aldeano aldeano2= new Aldeano(terreno, posicion2);
+        Aldeano aldeano1 = new Aldeano();
+        Aldeano aldeano2 = new Aldeano();
+
+        terreno.ocupar(new Posicion(3, 4), aldeano1);
+        terreno.ocupar(new Posicion(5, 6), aldeano2);
 
         aldeano1.actualizarEntreTurnos(jugador1);
 
         assertEquals(jugador1.getOro(), 20);
-        assertEquals(jugador2.getOro(),0);
+        assertEquals(jugador2.getOro(), 0);
 
         aldeano2.actualizarEntreTurnos(jugador2);
 
         assertEquals(jugador1.getOro(), 20);
-        assertEquals(jugador2.getOro(),20);
-
+        assertEquals(jugador2.getOro(), 20);
     }
 
-    */
 }

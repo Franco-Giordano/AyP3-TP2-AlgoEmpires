@@ -56,13 +56,13 @@ public class Jugador {
 
         terrenoDeJuego.puedeEdificioVerA(unaPosicionDeLaPlaza, posicionDeCreacion);
 
-
         Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
         try {
             aldeanoCreado.cobrar(monedero);
 
             poblacion.agregar(posicionDeCreacion, aldeanoCreado);
+
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
         } catch (OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
@@ -137,8 +137,8 @@ public class Jugador {
         return jugadorContrincante;
     }
 
-    public void atacar(Guerrero guerrero, Edificio edificioAAtacar){
-        guerrero.atacar(edificioAAtacar);
+    public void atacar(Posicion posicionDelAtacante, Posicion posicionDelAtacado){
+        terrenoDeJuego.atacar(posicionDelAtacante, posicionDelAtacado);
     }
 
     public void sumarOro(int oro) {

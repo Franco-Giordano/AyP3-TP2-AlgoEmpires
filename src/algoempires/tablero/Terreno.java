@@ -1,12 +1,9 @@
 package algoempires.tablero;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.SoloAldeanoPuedeReparar;
-import algoempires.entidad.SoloUnidadesPuedenVerASuAlrededorException;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Guerrero;
-import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionAbajoIzquierda;
@@ -15,7 +12,6 @@ import algoempires.tablero.direccion.DireccionIzquierda;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Terreno {
 
@@ -61,8 +57,6 @@ public class Terreno {
 
     public void reparar(Posicion posicion) {
 
-        //informarEdificiosAlAlcance(posicion); TODO no se que hace esto aca
-
         mapa.get(posicion).reparar();
     }
 
@@ -77,7 +71,6 @@ public class Terreno {
         Casillero casilleroQueQuieroOcupar = mapa.get(posicionQueQuieroOcupar);
 
         casilleroOcupadoActualmente.trasladarUnidadA(casilleroQueQuieroOcupar);
-
     }
 
     private void posicionEnRango(Posicion posicion) {
@@ -87,7 +80,7 @@ public class Terreno {
         }
     }
 
-    private void ocuparConEntidad(Posicion posicion, Entidad entidad){
+    private void ocuparConEntidad(Posicion posicion, Entidad entidad) {
 
         this.posicionEnRango(posicion);
 
@@ -97,7 +90,7 @@ public class Terreno {
 
     public void ocupar(Posicion posicion, Unidad unidad) throws PosicionInvalidaException {
 
-        this.ocuparConEntidad(posicion,unidad);
+        this.ocuparConEntidad(posicion, unidad);
     }
 
     public void ocupar(Posicion posicionInfIzq, Edificio edificio) throws PosicionInvalidaException {
@@ -109,7 +102,7 @@ public class Terreno {
         }
     }
 
-    public Casillero getCasilleroEn(Posicion posicion){
+    public Casillero getCasilleroEn(Posicion posicion) {
         return mapa.get(posicion);
     }
 
@@ -192,5 +185,10 @@ public class Terreno {
         return limiteSupDer.getVertical();
     }
 
+    public void atacar(Posicion posicionAtacante, Posicion posicionDelAtacado) {
+        Guerrero guerrero = (Guerrero) mapa.get(posicionAtacante).getEntidadContenida();
+        Entidad entidad = (Entidad) mapa.get(posicionDelAtacado).getEntidadContenida();
+        guerrero.atacar((Unidad) entidad);
+    }
 }
 

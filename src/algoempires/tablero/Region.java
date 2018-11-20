@@ -20,24 +20,6 @@ public class Region {
 
     }
 
-
-    public ArrayList<Posicion> generarPosicionesContenidas() {
-
-        //Porque lo consideramos en un supuesto, la posición es la inferior izquierda.
-
-        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
-
-        for (int i = 0; i < tamanioHorizontal; i++) {
-            for (int j = 0; j < tamanioVertical; j++) {
-                Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
-                        j + infIzquierdo.getVertical());
-                posicionesContenidas.add(posicionContenido);
-            }
-        }
-
-        return posicionesContenidas;
-    }
-
     public static ArrayList<Posicion> generarRegionCentradaEn(Posicion posicionCentral, Unidad unidadConRango) {
 
         //la posición en este caso es el casillero central.
@@ -85,6 +67,23 @@ public class Region {
                 }
             }
 
+        }
+
+        return posicionesContenidas;
+    }
+
+    public ArrayList<Posicion> generarPosicionesContenidas() {
+
+        //Porque lo consideramos en un supuesto, la posición es la inferior izquierda.
+
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
+
+        for (int i = 0; i < tamanioHorizontal; i++) {
+            for (int j = 0; j < tamanioVertical; j++) {
+                Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
+                        j + infIzquierdo.getVertical());
+                posicionesContenidas.add(posicionContenido);
+            }
         }
 
         return posicionesContenidas;

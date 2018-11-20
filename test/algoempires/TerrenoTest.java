@@ -1,4 +1,3 @@
-
 package algoempires;
 
 import algoempires.entidad.edificio.Castillo;
@@ -29,7 +28,7 @@ public class TerrenoTest {
     @Test(expected = DimensionesInvalidasError.class)
     public void testTerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasError {
 
-        new Terreno(-1,4);
+        new Terreno(-1, 4);
 
     }
 

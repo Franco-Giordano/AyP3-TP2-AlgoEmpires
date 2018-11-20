@@ -13,4 +13,11 @@ public abstract class Unidad extends Entidad {
         this.movioEsteTurno = false;
     }
 
+    public boolean seMovioEnEsteTurno() {
+        return this.movioEsteTurno;
+    }
+
+    public void seMovio() {
+        this.movioEsteTurno = true;
+    }
 }

@@ -1,12 +1,12 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
 
-public class Espadachin extends Guerrero {
+public class
+Espadachin extends Guerrero {
 
     private final int VIDA_INICIAL = 100;
 
@@ -31,12 +31,12 @@ public class Espadachin extends Guerrero {
     }
 
     @Override
-    public void atacar(Unidad unidad){
+    public void atacar(Unidad unidad) {
         unidad.restarVida(DANIO_A_UNIDADES);
     }
 
     @Override
-    public void atacar(Edificio edificio){
+    public void atacar(Edificio edificio) {
         edificio.restarVida(DANIO_A_EDIFICIOS);
     }
 

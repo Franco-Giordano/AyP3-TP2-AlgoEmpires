@@ -1,4 +1,3 @@
-
 package algoempires;
 
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;

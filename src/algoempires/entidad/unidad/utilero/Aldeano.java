@@ -8,13 +8,12 @@ import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 
-import java.util.HashSet;
-
 public class Aldeano extends Unidad {
 
     private final int VIDA_INICIAL = 50;
 
     private final int ORO_GENERADO = 20;
+
     private boolean estaTrabajando;
 
     public Aldeano() throws PosicionInvalidaException {
@@ -45,11 +44,11 @@ public class Aldeano extends Unidad {
         return new Cuartel();
     }
 
-    public void reparar(Posicion posicion) {
+    public void reparar(Edificio edificioRecibido) {
 
+        edificioRecibido.reparar();
 
-        estaTrabajando = true;
-
+        this.estaTrabajando = true;
     }
 
     @Override

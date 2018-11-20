@@ -9,7 +9,7 @@ public class PlazaCentral extends Edificio {
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
 
 
-    public PlazaCentral(){
+    public PlazaCentral() {
         super();
 
         TAMANIO_HORIZONTAL = 2;

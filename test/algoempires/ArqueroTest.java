@@ -1,4 +1,3 @@
-
 package algoempires;
 
 import algoempires.entidad.unidad.guerrero.Arquero;
@@ -14,10 +13,10 @@ import static org.junit.Assert.assertTrue;
 public class ArqueroTest {
 
     @Test
-    public void testSeRealizaDañoAlAtacar(){
+    public void testSeRealizaDañoAlAtacar() {
 
-        Arquero arquero= new Arquero();
-        Aldeano aldeano= new Aldeano();
+        Arquero arquero = new Arquero();
+        Aldeano aldeano = new Aldeano();
 
         assertTrue(aldeano.tieneEstaVida(50));
 
