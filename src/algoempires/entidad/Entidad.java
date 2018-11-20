@@ -8,9 +8,11 @@ public abstract class Entidad {
     protected int COSTO;
     protected int RANGO_VISION;
     protected int vida;
+    protected Jugador jugadorPropietario;
 
-    public Entidad() {
+    public Entidad(Jugador propietarioDeEntidad) {
         this.vida = getVidaInicial();
+        this.jugadorPropietario = propietarioDeEntidad;
     }
 
     protected abstract int getVidaInicial();

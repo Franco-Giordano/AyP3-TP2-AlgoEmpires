@@ -2,9 +2,11 @@ package algoempires;
 
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -12,11 +14,22 @@ import static org.junit.Assert.assertTrue;
 
 public class ArqueroTest {
 
+
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador(terreno);
+    }
+
+
     @Test
     public void testSeRealizaDañoAlAtacar() {
 
-        Arquero arquero = new Arquero();
-        Aldeano aldeano = new Aldeano();
+        Arquero arquero = new Arquero(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         assertTrue(aldeano.tieneEstaVida(50));
 
@@ -31,9 +44,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionArriba();
 
@@ -52,9 +63,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajo();
 
@@ -73,9 +82,8 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
 
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionIzquierda();
 
@@ -94,9 +102,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionDerecha();
 
@@ -115,9 +121,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
@@ -136,9 +140,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaDerecha();
 
@@ -157,9 +159,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
@@ -178,9 +178,7 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoDerecha();
 

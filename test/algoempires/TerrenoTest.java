@@ -4,17 +4,28 @@ import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionArriba;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class TerrenoTest {
+
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador(terreno);
+    }
 
     @Test
     public void testTerrenoAsignaBienElTamanio() throws DimensionesInvalidasError {
@@ -36,7 +47,7 @@ public class TerrenoTest {
     public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, PosicionInvalidaException {
         Terreno terreno = new Terreno(2, 2);
 
-        terreno.ocupar(new Posicion(2, 2), new Aldeano());
+        terreno.ocupar(new Posicion(2, 2), new Aldeano(jugadorDePrueba));
 
         assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
 
@@ -51,7 +62,7 @@ public class TerrenoTest {
 
         Terreno terreno = new Terreno(3, 3);
 
-        terreno.ocupar(new Posicion(2, 2), new Cuartel());
+        terreno.ocupar(new Posicion(2, 2), new Cuartel(jugadorDePrueba));
 
         assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
         assertTrue(terreno.estaOcupada(new Posicion(3, 2)));
@@ -70,7 +81,7 @@ public class TerrenoTest {
     public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws PosicionInvalidaException {
         Terreno terreno = new Terreno(5, 2);
 
-        terreno.ocupar(new Posicion(6, 2), new Aldeano());
+        terreno.ocupar(new Posicion(6, 2), new Aldeano(jugadorDePrueba));
 
     }
 
@@ -78,7 +89,7 @@ public class TerrenoTest {
     public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasError {
         Terreno terreno = new Terreno(3, 20);
 
-        terreno.ocupar(new Posicion(1, 5), new Castillo());
+        terreno.ocupar(new Posicion(1, 5), new Castillo(jugadorDePrueba));
 
     }
 
@@ -89,7 +100,7 @@ public class TerrenoTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Arquero unidad = new Arquero();
+        Arquero unidad = new Arquero(jugadorDePrueba);
 
         terreno.ocupar(posicion, unidad);
 

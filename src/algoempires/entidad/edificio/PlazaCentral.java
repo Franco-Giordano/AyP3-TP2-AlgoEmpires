@@ -9,8 +9,8 @@ public class PlazaCentral extends Edificio {
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
 
 
-    public PlazaCentral() {
-        super();
+    public PlazaCentral(Jugador jugador) {
+        super(jugador);
 
         TAMANIO_HORIZONTAL = 2;
         TAMANIO_VERTICAL = 2;
@@ -31,7 +31,7 @@ public class PlazaCentral extends Edificio {
     }
 
     public Aldeano crearAldeano() {
-        return new Aldeano();
+        return new Aldeano(jugadorPropietario);
     }
 
 

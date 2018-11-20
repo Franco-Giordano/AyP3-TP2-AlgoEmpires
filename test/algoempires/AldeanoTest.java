@@ -3,7 +3,6 @@ package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
@@ -13,6 +12,7 @@ import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,12 +20,19 @@ import static org.junit.Assert.*;
 
 public class AldeanoTest {
 
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador(terreno);
+    }
+
     @Test
     public void testAldeanoSeCreabien() {
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Posicion posicion = new Posicion(3, 3);
 
@@ -43,21 +50,21 @@ public class AldeanoTest {
 
         //TODO lo manejé con posiciones suponiendo que vamos a tener que hacer click sobre donde está la unidad, eso lo vemos después.
 
-        Terreno terreno = new Terreno(15, 15);
+        terreno = new Terreno(15, 15);
 
-        Arquero arquero = new Arquero();
+        Arquero arquero = new Arquero(jugadorDePrueba);
 
-        Espadachin espadachin = new Espadachin();
+        Espadachin espadachin = new Espadachin(jugadorDePrueba);
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        Aldeano aldeano1 = new Aldeano();
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
 
-        Aldeano aldeano2 = new Aldeano();
+        Aldeano aldeano2 = new Aldeano(jugadorDePrueba);
 
-        Cuartel cuartel = new Cuartel();
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio();
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
         Posicion posicionAldeano = new Posicion(4, 4);
 
@@ -94,9 +101,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionArriba();
 
@@ -115,9 +120,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajo();
 
@@ -136,9 +139,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionIzquierda();
 
@@ -157,9 +158,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionDerecha();
 
@@ -178,9 +177,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
@@ -199,9 +196,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaDerecha();
 
@@ -220,9 +215,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
@@ -241,9 +234,7 @@ public class AldeanoTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoDerecha();
 
@@ -260,7 +251,7 @@ public class AldeanoTest {
     @Test
     public void testaldeanoCreaUnaPlaza() {
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         PlazaCentral pc = aldeano.construirPlazaCentral();
 
@@ -270,7 +261,7 @@ public class AldeanoTest {
     @Test
     public void testaldeanoConstruyeUnCuartel() {
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Cuartel cuartel = aldeano.construirCuartel();
 
@@ -280,11 +271,9 @@ public class AldeanoTest {
     @Test
     public void testAldeanoReparaUnCuartel() {
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Cuartel cuartel = aldeano.construirCuartel();
-
-        Terreno terreno = new Terreno(10, 10);
 
         terreno.ocupar(new Posicion(1, 1), cuartel);
 
@@ -299,11 +288,9 @@ public class AldeanoTest {
     @Test
     public void testAldeanoNoSumaOroMientrasRepara() {
 
-        Terreno terreno = new Terreno(10, 10);
-
         Jugador jugador = new Jugador(terreno);
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Cuartel cuartel = aldeano.construirCuartel();
 
@@ -321,11 +308,9 @@ public class AldeanoTest {
     @Test
     public void testAldeanoSumaOroSiEstaReparando() {
 
-        Terreno terreno = new Terreno(10, 10);
-
         Jugador jugador = new Jugador(terreno);
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         aldeano.actualizarEntreTurnos(jugador);
 
@@ -335,9 +320,8 @@ public class AldeanoTest {
     //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
     @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
     public void testAldeanoSeMueveUnaSolaVezPorTurno() {
-        Terreno terreno = new Terreno(10, 10);
 
-        Aldeano aldeano = new Aldeano();
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(4, 4), aldeano);
 
@@ -348,14 +332,14 @@ public class AldeanoTest {
 
     @Test
     public void testAldeanoLasAccionesSeHacenEnElPropioTurno() {
-        Terreno terreno = new Terreno(10, 10);
+
         Jugador jugador1 = new Jugador(terreno);
         Jugador jugador2 = new Jugador(terreno);
         jugador1.setContrincante(jugador2);
         jugador2.setContrincante(jugador1);
 
-        Aldeano aldeano1 = new Aldeano();
-        Aldeano aldeano2 = new Aldeano();
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano2 = new Aldeano(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(3, 4), aldeano1);
         terreno.ocupar(new Posicion(5, 6), aldeano2);

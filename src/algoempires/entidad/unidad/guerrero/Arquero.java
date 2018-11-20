@@ -8,8 +8,8 @@ public class Arquero extends Guerrero {
 
     private final int VIDA_INICIAL = 50;
 
-    public Arquero() {
-        super();
+    public Arquero(Jugador jugador) {
+        super(jugador);
 
         RANGO_VISION = 3;
         DANIO_A_UNIDADES = 15;

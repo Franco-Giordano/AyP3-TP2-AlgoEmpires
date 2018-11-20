@@ -1,6 +1,7 @@
 package algoempires.entidad.edificio;
 
 import algoempires.entidad.Entidad;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Region;
@@ -14,8 +15,8 @@ public abstract class Edificio extends Entidad {
 
     private int turnosDeConstruccion;
 
-    public Edificio() throws PosicionInvalidaException {
-        super();
+    public Edificio(Jugador jugador) throws PosicionInvalidaException {
+        super(jugador);
 
         this.turnosDeConstruccion = getTurnosDeConstruccionInicial();
 

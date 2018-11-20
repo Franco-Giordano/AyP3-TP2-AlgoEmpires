@@ -10,9 +10,9 @@ Espadachin extends Guerrero {
 
     private final int VIDA_INICIAL = 100;
 
-    public Espadachin() throws PosicionInvalidaException {
+    public Espadachin(Jugador jugador) throws PosicionInvalidaException {
 
-        super();
+        super(jugador);
 
         RANGO_VISION = 1;
         DANIO_A_UNIDADES = 25;

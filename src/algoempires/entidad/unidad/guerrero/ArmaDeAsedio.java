@@ -15,9 +15,9 @@ public class ArmaDeAsedio extends Guerrero {
 
     private boolean estaMontada;
 
-    public ArmaDeAsedio() throws PosicionInvalidaException {
+    public ArmaDeAsedio(Jugador jugador) throws PosicionInvalidaException {
 
-        super();
+        super(jugador);
 
         this.turnosDeConstruccion = TURNOS_DE_CONSTRUCCION_INICIAL;
 

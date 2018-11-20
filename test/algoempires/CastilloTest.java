@@ -11,7 +11,7 @@ public class CastilloTest {
     @Test
     public void testCastilloCreaArmaDeAsedioCorrectamente() {
 
-        Castillo castillo = new Castillo();
+        Castillo castillo = new Castillo(null);
 
         ArmaDeAsedio asd = castillo.crearArmaDeAsedio();
 

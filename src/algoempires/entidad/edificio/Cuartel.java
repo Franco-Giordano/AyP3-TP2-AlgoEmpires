@@ -11,8 +11,8 @@ public class Cuartel extends Edificio {
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
 
 
-    public Cuartel() throws PosicionInvalidaException {
-        super();
+    public Cuartel(Jugador jugador) throws PosicionInvalidaException {
+        super(jugador);
 
         TAMANIO_HORIZONTAL = 2;
         TAMANIO_VERTICAL = 2;
@@ -33,11 +33,11 @@ public class Cuartel extends Edificio {
     }
 
     public Espadachin crearEspadachin() throws PosicionInvalidaException {
-        return new Espadachin();
+        return new Espadachin(jugadorPropietario);
     }
 
     public Arquero crearArquero() throws PosicionInvalidaException {
-        return new Arquero();
+        return new Arquero(jugadorPropietario);
     }
 
 

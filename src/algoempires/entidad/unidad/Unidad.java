@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad;
 
 import algoempires.entidad.Entidad;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
 
 
@@ -8,8 +9,8 @@ public abstract class Unidad extends Entidad {
 
     private boolean movioEsteTurno;
 
-    public Unidad() throws PosicionInvalidaException {
-        super();
+    public Unidad(Jugador jugador) throws PosicionInvalidaException {
+        super(jugador);
         this.movioEsteTurno = false;
     }
 

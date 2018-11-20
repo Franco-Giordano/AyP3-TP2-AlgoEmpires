@@ -1,9 +1,11 @@
 package algoempires;
 
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -12,14 +14,24 @@ import static org.junit.Assert.assertTrue;
 public class ArmaDeAsedioTest {
 
 
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador(terreno);
+    }
+
+
+
     @Test
     public void testUnidadSeMueveBienHaciaArriba() {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
 
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionArriba();
 
@@ -38,9 +50,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajo();
 
@@ -59,9 +69,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionIzquierda();
 
@@ -80,9 +88,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionDerecha();
 
@@ -101,9 +107,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaIzquierda();
 
@@ -122,9 +126,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(1, 1);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionArribaDerecha();
 
@@ -143,9 +145,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoIzquierda();
 
@@ -164,9 +164,7 @@ public class ArmaDeAsedioTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-        Terreno terreno = new Terreno(10, 10);
-
-        ArmaDeAsedio unidad = new ArmaDeAsedio();
+        ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 
         Direccion direccion = new DireccionAbajoDerecha();
 

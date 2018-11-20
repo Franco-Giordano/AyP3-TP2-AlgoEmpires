@@ -5,7 +5,6 @@ import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 
 public class Aldeano extends Unidad {
@@ -16,9 +15,9 @@ public class Aldeano extends Unidad {
 
     private boolean estaTrabajando;
 
-    public Aldeano() throws PosicionInvalidaException {
+    public Aldeano(Jugador jugador) throws PosicionInvalidaException {
 
-        super();
+        super(jugador);
         this.estaTrabajando = false;
 
         RANGO_VISION = 1;
@@ -34,14 +33,14 @@ public class Aldeano extends Unidad {
 
         estaTrabajando = true;
 
-        return new PlazaCentral();
+        return new PlazaCentral(jugadorPropietario);
     }
 
     public Cuartel construirCuartel() throws PosicionInvalidaException {
 
         estaTrabajando = true;
 
-        return new Cuartel();
+        return new Cuartel(jugadorPropietario);
     }
 
     public void reparar(Edificio edificioRecibido) {
