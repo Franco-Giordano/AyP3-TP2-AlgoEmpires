@@ -16,11 +16,13 @@ public class Monedero {
 
     }
 
-    public void restarOro(int oroASumar) {
+    public void restarOro(int oroARestar) {
 
-        if (puedoDebitarElValor(oroASumar) && oroASumar > 0) {
-            cantidadOro -= oroASumar;
+        if (!puedoDebitarElValor(oroARestar) || oroARestar <= 0) {
+            throw new OroInsuficienteException("Se intento crear una unidad pero no se tenía el oro suficiente.");
         }
+
+        cantidadOro -= oroARestar;
     }
 
     private boolean puedoDebitarElValor(int oroASumar) {

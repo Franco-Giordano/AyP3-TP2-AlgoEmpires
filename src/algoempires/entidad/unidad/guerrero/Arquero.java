@@ -1,6 +1,5 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
@@ -37,6 +36,8 @@ public class Arquero extends Guerrero {
     @Override
     public void atacar(Unidad unidad){
         unidad.restarVida(DANIO_A_UNIDADES);
+
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package algoempires.entidad;
 
 import algoempires.jugador.Jugador;
+import algoempires.jugador.Monedero;
 
 public abstract class Entidad {
 
@@ -38,4 +39,8 @@ public abstract class Entidad {
         return this.vida == vidaRecibida;
     }
 
+
+    public void cobrar(Monedero monedero) {
+        monedero.restarOro(COSTO);
+    }
 }

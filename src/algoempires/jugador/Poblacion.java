@@ -34,4 +34,12 @@ public class Poblacion {
     public boolean seLlegoAlMaximo(){
         return unidades.size()==50;
     }
+
+    public void actualizarUnidades() {
+
+    }
+
+    public int cantidadDeUnidades() {
+        return unidades.size();
+    }
 }
