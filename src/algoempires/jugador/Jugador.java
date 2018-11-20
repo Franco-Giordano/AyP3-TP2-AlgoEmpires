@@ -31,6 +31,7 @@ public class Jugador {
         jugadorContrincante = jugador;
     }
 
+
     //TODO obtener posicion adyacente
     public void crearAldeano(Posicion unaPosicionDeLaPlaza, Posicion posicionDeCreacion) {
 
@@ -39,16 +40,14 @@ public class Jugador {
         terrenoDeJuego.puedeEdificioVerA(unaPosicionDeLaPlaza, posicionDeCreacion);
 
         Aldeano aldeanoCreado = plazaCentral.crearAldeano();
-/*
-        Posicion posicionAdyacente = terrenoDeJuego.obtenerPosicionAdyacente(posicionDeCreacion);
-*/
+
         poblacion.agregar(posicionDeCreacion,aldeanoCreado);
         terrenoDeJuego.ocupar(posicionDeCreacion,aldeanoCreado);
-
     }
 
     public Jugador jugarTurnoYDevolverSiguienteJugador() {
 
+        //El controlador/view ejecuta las elecciones que hace el jugador
 
         return jugadorContrincante;
     }

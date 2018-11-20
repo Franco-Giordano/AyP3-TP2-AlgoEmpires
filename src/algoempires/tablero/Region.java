@@ -53,7 +53,7 @@ public class Region {
 
             for (int j = minRangoVertical; j <= maxRangoVertical; j++) {
 
-                if (i != posicionCentral.getHorizontal() && j != posicionCentral.getVertical()) {
+                if (!(i == posicionCentral.getHorizontal() && j == posicionCentral.getVertical())) {
                     Posicion posicionContenido = new Posicion(i, j);
                     posicionesContenidas.add(posicionContenido);
                 }

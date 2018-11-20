@@ -85,7 +85,6 @@ public class EspadachinTest {
 
         Espadachin unidad = new Espadachin();
 
-
         Direccion direccion = new DireccionDerecha();
 
         terreno.ocupar(posicion, unidad);

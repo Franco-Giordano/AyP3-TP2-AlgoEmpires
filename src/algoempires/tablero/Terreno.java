@@ -13,6 +13,7 @@ import algoempires.tablero.direccion.DireccionAbajoIzquierda;
 import algoempires.tablero.direccion.DireccionIzquierda;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -134,8 +135,6 @@ public class Terreno {
 
     }
 
-    //TODO probablemente este metodo se pueda obviar, si lo manejamos bien, le informamos tanto las que puede atacarA como las
-    //que puede reparar al aldeano, y lesto.
 
     public void informarEdificiosAlAlcance(Posicion posicionRecibida){
 
@@ -168,6 +167,7 @@ public class Terreno {
     public boolean puedeEdificioVerA(Posicion unaPosicionDelEdificio, Posicion posicionQueQuieroVer) {
 
         Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosicionDelEdificio);
+
         Edificio edificio = (Edificio) mapa.get(posInfIzq).getEntidadContenida();
 
         Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
@@ -191,8 +191,41 @@ public class Terreno {
         Posicion posInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajo());
         Posicion posIzqInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajoIzquierda());
 
-        //TODO asi esta mal, seguir calculando, por ej con recursividad
-        return unaPosicionDeLaEntidad;
+        if (mapa.get(posInf).getEntidadContenida() == null && mapa.get(posIzq).getEntidadContenida() == null && mapa.get(posIzqInf).getEntidadContenida() == null) {
+            return unaPosicionDeLaEntidad;
+        }
+
+        ArrayList<Posicion> posAFiltrar = new ArrayList<>(Arrays.asList(posInf, posIzq, posIzqInf));
+        ArrayList<Posicion> posConEntidad = filtrarPosicionesConEntidad(posAFiltrar, entidad);
+
+        return encontrarInfIzqDeEntidad(this.seleccionarMenorModulo(posConEntidad));
+
+    }
+
+    private Posicion seleccionarMenorModulo(ArrayList<Posicion> posConEntidad) {
+
+        Posicion posSeleccionada = posConEntidad.get(0);
+
+        for (Posicion each : posConEntidad) {
+            if (each.getModulo() <= posSeleccionada.getModulo()) {
+                posSeleccionada = each;
+            }
+        }
+
+        return posSeleccionada;
+    }
+
+    private ArrayList<Posicion> filtrarPosicionesConEntidad(ArrayList<Posicion> posiciones, Entidad entidad) {
+
+        ArrayList<Posicion> resultado = new ArrayList<>();
+
+        for (Posicion each : posiciones) {
+            if (mapa.get(each).getEntidadContenida() == entidad) {
+                resultado.add(each);
+            }
+        }
+
+        return resultado;
     }
 
     //METODOS DE TESTEO

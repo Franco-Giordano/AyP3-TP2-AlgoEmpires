@@ -58,7 +58,7 @@ public class AldeanoTest {
 
         Posicion posicionAldeano = new Posicion(4, 4);
 
-        Posicion posicionArquero = new Posicion(6, 6);
+        Posicion posicionArquero = new Posicion(8, 7);
 
         Posicion posicionDelAldeano1 = new Posicion(7, 7);
 
@@ -84,9 +84,9 @@ public class AldeanoTest {
 
         terreno.ocupar(posicionDelArmaDeasedio,armaDeAsedio);
 
-        terreno.informarEntidadesAlAlcance(posicionDelEspadachin);
+        terreno.informarEntidadesAlAlcance(posicionArquero);
 
-        espadachin.imprimirListaDeEntidades();
+        arquero.imprimirListaDeEntidades();
 
     }
 

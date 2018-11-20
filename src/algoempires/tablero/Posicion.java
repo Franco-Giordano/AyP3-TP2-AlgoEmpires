@@ -60,4 +60,7 @@ public class Posicion {
     }
 
 
+    public double getModulo() {
+        return Math.sqrt(Math.pow(posHorizontal, 2) + Math.pow(posVertical, 2));
+    }
 }
