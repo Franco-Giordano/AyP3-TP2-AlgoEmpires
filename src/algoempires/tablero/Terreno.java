@@ -191,7 +191,7 @@ public class Terreno {
         Posicion posInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajo());
         Posicion posIzqInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajoIzquierda());
 
-        if (mapa.get(posInf).getEntidadContenida() == null && mapa.get(posIzq).getEntidadContenida() == null && mapa.get(posIzqInf).getEntidadContenida() == null) {
+        if (mapa.get(posInf).getEntidadContenida() != entidad && mapa.get(posIzq).getEntidadContenida() != entidad && mapa.get(posIzqInf).getEntidadContenida() != entidad) {
             return unaPosicionDeLaEntidad;
         }
 
