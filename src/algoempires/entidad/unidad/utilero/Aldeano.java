@@ -17,13 +17,10 @@ public class Aldeano extends Unidad {
     private final int ORO_GENERADO = 20;
     private boolean estaTrabajando;
 
-    private HashSet<Edificio> entidadesReparables;
-
     public Aldeano() throws PosicionInvalidaException {
 
         super();
         this.estaTrabajando = false;
-        this.entidadesReparables = null;
 
         RANGO_VISION = 1;
         COSTO = 25;
@@ -59,21 +56,6 @@ public class Aldeano extends Unidad {
     public void actualizarEntreTurnos(Jugador jugador) {
         if (!estaTrabajando) {
             jugador.sumarOro(ORO_GENERADO);
-        }
-    }
-
-    public void setReparables(HashSet<Edificio> listaRecibida) {
-        this.entidadesReparables = listaRecibida;
-    }
-
-    //METODOS DE TESTEOS UNICAMENTE
-    public boolean tieneEstasCaracteristicas(int vida, int oroGenerado, boolean estaTrabajando) {
-        return (vida == this.VIDA_INICIAL && this.ORO_GENERADO == oroGenerado && this.estaTrabajando == estaTrabajando);
-    }
-
-    public void imprimirListaDeReparables() {
-        for (Edificio each : this.entidadesReparables) {
-            System.out.println(each);
         }
     }
 

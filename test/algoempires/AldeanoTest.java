@@ -84,10 +84,6 @@ public class AldeanoTest {
 
         terreno.ocupar(posicionDelArmaDeasedio,armaDeAsedio);
 
-        terreno.informarEntidadesAlAlcance(posicionArquero);
-
-        arquero.imprimirListaDeEntidades();
-
     }
 
     @Test

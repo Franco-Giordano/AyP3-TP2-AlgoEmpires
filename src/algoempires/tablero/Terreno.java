@@ -109,56 +109,6 @@ public class Terreno {
         }
     }
 
-    public void informarEntidadesAlAlcance(Posicion posicionRecibida) {
-
-        try {
-
-            Guerrero unidad = (Guerrero) mapa.get(posicionRecibida).getEntidadContenida();
-
-            HashSet<Entidad> listaEntidades = new HashSet<>();
-
-            ArrayList<Posicion> rango = Region.generarRegionCentradaEn(posicionRecibida, unidad);
-
-            for (Posicion each : rango) {
-                if (mapa.get(each).estaOcupada()) {
-                    listaEntidades.add(mapa.get(each).getEntidadContenida());
-                }
-            }
-
-            if (!rango.isEmpty()) {
-                unidad.setAtacables(listaEntidades);
-            }
-
-        }catch (ClassCastException exception){
-            throw new SoloUnidadesPuedenVerASuAlrededorException();
-        }
-
-    }
-
-
-    public void informarEdificiosAlAlcance(Posicion posicionRecibida){
-
-        try {
-            Aldeano aldeano = (Aldeano) mapa.get(posicionRecibida).getEntidadContenida();
-
-            HashSet<Edificio> listaEdificios = new HashSet<>();
-
-            ArrayList<Posicion> rango = Region.generarRegionCentradaEn(posicionRecibida, aldeano);
-
-            for (Posicion each : rango) {
-                if (mapa.get(each).estaOcupada()) {
-                    listaEdificios.add((Edificio) mapa.get(each).getEntidadContenida());
-                }
-            }
-
-            aldeano.setReparables(listaEdificios);
-
-        }catch (ClassCastException exception){
-            throw new SoloAldeanoPuedeReparar();
-        }
-
-    }
-
     public Casillero getCasilleroEn(Posicion posicion){
         return mapa.get(posicion);
     }

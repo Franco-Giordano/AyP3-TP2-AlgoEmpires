@@ -8,7 +8,6 @@ import java.util.HashSet;
 
 public abstract class Guerrero extends Unidad {
 
-    protected HashSet<Entidad> atacables;
     protected int DANIO_A_UNIDADES;
     protected int DANIO_A_EDIFICIOS;
 
@@ -21,9 +20,5 @@ public abstract class Guerrero extends Unidad {
     public abstract void atacar(Unidad unidad);
 
     public abstract void atacar(Edificio edificio);
-
-    public void setAtacables(HashSet<Entidad> atacablesRecibidos){
-        this.atacables = atacablesRecibidos;
-    }
 
 }
