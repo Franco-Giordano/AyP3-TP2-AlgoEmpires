@@ -22,7 +22,7 @@ public class Arquero extends Guerrero {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 

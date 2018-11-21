@@ -2,9 +2,9 @@ package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.jugador.Jugador;
+import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
 
@@ -20,14 +20,14 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(new Jugador(terreno));
 
-        terreno.ocupar(new Posicion(1,1),cuartel.crearEspadachin());
+        terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
 
-        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
 
     }
 
     @Test
-    public void testcreaArqueroCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException{
+    public void testcreaArqueroCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -37,9 +37,9 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(jugador);
 
-        terreno.ocupar(new Posicion(1,1),cuartel.crearArquero());
+        terreno.ocupar(new Posicion(1, 1), cuartel.crearArquero());
 
-        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
 
     }
 }

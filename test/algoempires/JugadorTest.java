@@ -28,97 +28,97 @@ public class JugadorTest {
     }
 
     @Test
-    public void jugadorAtacaBienConArqueroAEdificios(){
+    public void jugadorAtacaBienConArqueroAEdificios() {
 
         Arquero arquero = new Arquero(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), arquero);
+        terreno.ocupar(new Posicion(1, 1), arquero);
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(3,3),cuartel);
+        terreno.ocupar(new Posicion(3, 3), cuartel);
 
-        jugadorDePrueba.atacar(arquero,new Posicion(3,3));
+        jugadorDePrueba.atacar(arquero, new Posicion(3, 3));
 
         assertTrue(cuartel.tieneEstaVida(240));
     }
 
     @Test
-    public void jugadorAtacaBienConArqueroAUnidades(){
+    public void jugadorAtacaBienConArqueroAUnidades() {
 
         Arquero arquero = new Arquero(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), arquero);
+        terreno.ocupar(new Posicion(1, 1), arquero);
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(2,2),aldeano);
+        terreno.ocupar(new Posicion(2, 2), aldeano);
 
-        jugadorDePrueba.atacar(arquero,new Posicion(2,2));
+        jugadorDePrueba.atacar(arquero, new Posicion(2, 2));
 
         assertTrue(aldeano.tieneEstaVida(35));
     }
 
     @Test
-    public void jugadorAtacaBienConEspadachinAEdificios(){
+    public void jugadorAtacaBienConEspadachinAEdificios() {
 
         Espadachin espadachin = new Espadachin(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), espadachin);
+        terreno.ocupar(new Posicion(1, 1), espadachin);
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(2,2),cuartel);
+        terreno.ocupar(new Posicion(2, 2), cuartel);
 
-        jugadorDePrueba.atacar(espadachin,new Posicion(2,2));
+        jugadorDePrueba.atacar(espadachin, new Posicion(2, 2));
 
         assertTrue(cuartel.tieneEstaVida(235));
     }
 
     @Test
-    public void jugadorAtacaBienConEspadachinAUnidades(){
+    public void jugadorAtacaBienConEspadachinAUnidades() {
 
         Espadachin espadachin = new Espadachin(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), espadachin);
+        terreno.ocupar(new Posicion(1, 1), espadachin);
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(2,2),aldeano);
+        terreno.ocupar(new Posicion(2, 2), aldeano);
 
-        jugadorDePrueba.atacar(espadachin,new Posicion(2,2));
+        jugadorDePrueba.atacar(espadachin, new Posicion(2, 2));
 
         assertTrue(aldeano.tieneEstaVida(25));
     }
 
     @Test
-    public void jugadorAtacaBienConArmaDeAsedioAEdificios(){
+    public void jugadorAtacaBienConArmaDeAsedioAEdificios() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), armaDeAsedio);
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(2,2),cuartel);
+        terreno.ocupar(new Posicion(2, 2), cuartel);
 
-        jugadorDePrueba.atacar(armaDeAsedio,new Posicion(2,2));
+        jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
 
         assertTrue(cuartel.tieneEstaVida(175));
     }
 
     @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidades.class)
-    public void jugadorConArmaDeAsedioNoPuedeAtacarUnidades(){
+    public void jugadorConArmaDeAsedioNoPuedeAtacarUnidades() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1), armaDeAsedio);
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(2,2),aldeano);
+        terreno.ocupar(new Posicion(2, 2), aldeano);
 
-        jugadorDePrueba.atacar(armaDeAsedio,new Posicion(2,2));
+        jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
     }
 
 }

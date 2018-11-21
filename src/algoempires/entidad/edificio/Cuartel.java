@@ -34,7 +34,7 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 

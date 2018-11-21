@@ -32,7 +32,7 @@ public class Aldeano extends Unidad {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 

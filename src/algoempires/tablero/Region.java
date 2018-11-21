@@ -20,7 +20,7 @@ public class Region {
 
     }
 
-    public static ArrayList<Posicion> generarRegionCentradaEn(Posicion posicionCentral, Unidad unidadConRango) {
+    public static ArrayList<Posicion> generarPosicionesVisiblesPor(Posicion posicionCentral, Unidad unidadConRango) {
 
         //la posición en este caso es el casillero central.
 
@@ -46,7 +46,7 @@ public class Region {
         return posicionesContenidas;
     }
 
-    public static ArrayList<Posicion> generarRegionCentradaEn(Region regionCentral, Edificio edificioConRango) {
+    public static ArrayList<Posicion> generarPosicionesVisiblesPor(Region regionCentral, Edificio edificioConRango) {
 
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
@@ -87,6 +87,14 @@ public class Region {
         }
 
         return posicionesContenidas;
+    }
+
+    public ArrayList<Posicion> generarPosicionesOcupadasContenidas(Terreno terreno) {
+
+        ArrayList<Posicion> posiciones = this.generarPosicionesContenidas();
+        posiciones.removeIf(posicion -> !terreno.estaOcupada(posicion));
+
+        return posiciones;
     }
 
     private int getVerticalSup() {

@@ -1,6 +1,5 @@
 package algoempires;
 
-import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;

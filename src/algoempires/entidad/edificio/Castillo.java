@@ -1,12 +1,22 @@
 package algoempires.entidad.edificio;
 
+import algoempires.entidad.Atacante;
+import algoempires.entidad.Entidad;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
+import algoempires.tablero.Posicion;
+import algoempires.tablero.Terreno;
 
-public class Castillo extends Edificio {
+import java.util.HashSet;
+
+public class Castillo extends Edificio implements Atacante {
 
     private final int VIDA_INICIAL = 450;
     private final int COSTO = 0;
+    private final int DANIO_A_TODO = 20;
+
+    private HashSet<Entidad> cercanos;
 
     /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
     public Castillo(Jugador jugador) {
@@ -31,7 +41,7 @@ public class Castillo extends Edificio {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 
@@ -39,8 +49,29 @@ public class Castillo extends Edificio {
         return new ArmaDeAsedio(jugadorPropietario);
     }
 
+
+    public void atacar(Unidad unidad) {
+        unidad.restarVida(DANIO_A_TODO);
+    }
+
+    public void atacar(Edificio edificio) {
+        edificio.restarVida(DANIO_A_TODO);
+    }
+
+    public boolean puedeVerA(Terreno terreno, Posicion posicionDeLaVictima) {
+        return terreno.puedeEdificioVerA(this, posicionDeLaVictima);
+    }
+
     @Override
     public void actualizarEntreTurnos() {
+        cercanos = jugadorPropietario.calcularCercanosA(this);
 
+        this.atacarCercanos();
+    }
+
+    private void atacarCercanos() {
+        for (Entidad entidad : cercanos) {
+            entidad.recibirAtaqueDe(this);
+        }
     }
 }

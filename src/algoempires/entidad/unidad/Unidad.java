@@ -1,5 +1,6 @@
 package algoempires.entidad.unidad;
 
+import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
@@ -28,6 +29,10 @@ public abstract class Unidad extends Entidad {
             jugadorPropietario.informarDestruccion(this);
         }
 
+    }
+
+    public void recibirAtaqueDe(Atacante atacante) {
+        atacante.atacar(this);
     }
 
 

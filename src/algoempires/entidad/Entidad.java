@@ -41,4 +41,5 @@ public abstract class Entidad {
         return this.vida == vidaRecibida;
     }
 
+    public abstract void recibirAtaqueDe(Atacante atacante);
 }

@@ -1,9 +1,9 @@
 package algoempires.tablero;
 
 import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionAbajoIzquierda;
@@ -12,6 +12,7 @@ import algoempires.tablero.direccion.DireccionIzquierda;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Terreno {
 
@@ -75,6 +76,10 @@ public class Terreno {
         }
     }
 
+    public boolean contienePosicion(Posicion posicion) {
+        return mapa.containsKey(posicion);
+    }
+
     private void ocuparConEntidad(Posicion posicion, Entidad entidad) {
 
         this.posicionEnRango(posicion);
@@ -105,11 +110,11 @@ public class Terreno {
 
         Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
 
-        return Region.generarRegionCentradaEn(regionOcupada, edificio).contains(posicionQueQuieroVer);
+        return Region.generarPosicionesVisiblesPor(regionOcupada, edificio).contains(posicionQueQuieroVer);
 
     }
 
-    private Posicion encontrarUnaPosDeEntidad(Entidad entidad) {
+    public Posicion encontrarUnaPosDeEntidad(Entidad entidad) {
 
         for (HashMap.Entry<Posicion, Casillero> entry : mapa.entrySet()) {
             Posicion posicion = entry.getKey();
@@ -127,7 +132,7 @@ public class Terreno {
 
         Posicion posicionUnidad = this.encontrarUnaPosDeEntidad(unidad);
 
-        return Region.generarRegionCentradaEn(posicionUnidad,unidad).contains(posicionQueQuieroVer);
+        return Region.generarPosicionesVisiblesPor(posicionUnidad, unidad).contains(posicionQueQuieroVer);
 
     }
 
@@ -192,8 +197,8 @@ public class Terreno {
 
     public void remover(Entidad entidad) {
 
-        mapa.forEach((k,v) -> {
-            if (v.contieneA(entidad)){
+        mapa.forEach((k, v) -> {
+            if (v.contieneA(entidad)) {
                 v.desocupar();
             }
         });
@@ -203,6 +208,28 @@ public class Terreno {
 
         return mapa.get(posicion).getEntidadContenida();
 
+    }
+
+
+    public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
+
+        HashSet<Entidad> listaEntidades = new HashSet<>();
+        Posicion posicionInfIzq = this.encontrarInfIzq(castillo);
+        ArrayList<Posicion> rango = Region.generarPosicionesVisiblesPor(castillo.generarRegionAPartirDePosicion(posicionInfIzq),
+                castillo);
+        rango.removeIf(pos -> !this.contienePosicion(pos));
+
+        for (Posicion each : rango) {
+            if (mapa.get(each).estaOcupada()) {
+                listaEntidades.add(mapa.get(each).getEntidadContenida());
+            }
+        }
+
+        return listaEntidades;
+    }
+
+    public Posicion encontrarInfIzq(Castillo castillo) {
+        return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
     }
 }
 

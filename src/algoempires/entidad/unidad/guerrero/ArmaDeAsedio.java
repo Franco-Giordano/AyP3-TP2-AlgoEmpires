@@ -35,7 +35,7 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 

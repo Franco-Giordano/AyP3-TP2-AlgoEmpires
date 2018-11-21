@@ -1,5 +1,6 @@
 package algoempires.entidad.edificio;
 
+import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -43,6 +44,10 @@ public abstract class Edificio extends Entidad {
             jugadorPropietario.informarDestruccion(this);
         }
 
+    }
+
+    public void recibirAtaqueDe(Atacante atacante) {
+        atacante.atacar(this);
     }
 
 }

@@ -24,7 +24,7 @@ public class Espadachin extends Guerrero {
     }
 
     @Override
-    protected int getCosto(){
+    protected int getCosto() {
         return COSTO;
     }
 

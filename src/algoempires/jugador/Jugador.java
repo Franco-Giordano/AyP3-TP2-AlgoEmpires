@@ -1,5 +1,7 @@
 package algoempires.jugador;
 
+import algoempires.entidad.Atacante;
+import algoempires.entidad.Entidad;
 import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
@@ -10,7 +12,6 @@ import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
-import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
@@ -52,7 +53,7 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral plazaCentral, Posicion posicionDeCreacion) {
 
-        if (!terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion)){
+        if (!terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 
@@ -70,7 +71,7 @@ public class Jugador {
     //TODO esto IGUAL al crearAldeano, ver forma de juntarlos
     public void crearEspadachin(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)){
+        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 
@@ -88,7 +89,7 @@ public class Jugador {
     //TODO IDEM
     public void crearArquero(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)){
+        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 
@@ -105,7 +106,7 @@ public class Jugador {
     //TODO AAAAAAAAAAAAAAAAAAAAA
     public void crearArmaDeAsedio(Castillo castillo, Posicion posicionDeCreacion) {
 
-        if (!terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion)){
+        if (!terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 
@@ -132,17 +133,13 @@ public class Jugador {
         edificiosPropios.forEach((e) -> e.actualizarEntreTurnos());
     }
 
-    public void atacar(Guerrero miGuerrero, Posicion posicionDeLaVictima) {
+    public void atacar(Atacante atacante, Posicion posicionDeLaVictima) {
 
-        if (!terrenoDeJuego.puedeUnidadVerA(miGuerrero, posicionDeLaVictima)){
+        if (!atacante.puedeVerA(terrenoDeJuego, posicionDeLaVictima)) {
             throw new EntidadFueraDeRangoException();
         }
 
-        try {
-            miGuerrero.atacar((Unidad) terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima));
-        }catch (ClassCastException excepcion){
-            miGuerrero.atacar((Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima));
-        }
+        terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
     }
 
     public void sumarOro(int oro) {
@@ -167,11 +164,11 @@ public class Jugador {
         edificiosPropios.add(edificio);
     }
 
-    public void agregar(Unidad unidad){
+    public void agregar(Unidad unidad) {
         poblacion.agregar(unidad);
     }
 
-    public void cobrar(int costo){
+    public void cobrar(int costo) {
         this.monedero.restarOro(costo);
     }
 
@@ -181,4 +178,7 @@ public class Jugador {
     }
 
 
+    public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
+        return terrenoDeJuego.calcularCercanosA(castillo);
+    }
 }

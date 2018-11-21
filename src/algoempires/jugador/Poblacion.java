@@ -6,10 +6,10 @@ import java.util.HashSet;
 
 public class Poblacion {
 
+    private final int MAXIMO_POBLACION = 50;
     private HashSet<Unidad> unidades;
-    private final int MAXIMO_POBLACION=50;
 
-    public Poblacion(){
+    public Poblacion() {
 
         unidades = new HashSet<>();
     }
