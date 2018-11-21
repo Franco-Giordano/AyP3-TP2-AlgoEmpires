@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
@@ -23,6 +24,7 @@ public class ArqueroTest {
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador(terreno);
+        jugadorDePrueba.sumarOro(10000);
     }
 
 
@@ -204,6 +206,22 @@ public class ArqueroTest {
 
         terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
 
+    }
+
+    @Test
+    public void arqueroAtacaBien(){
+
+        Arquero arquero = new Arquero(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1,1), arquero);
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(3,3),cuartel);
+
+        jugadorDePrueba.atacar(arquero,new Posicion(3,3));
+
+        assertTrue(cuartel.tieneEstaVida(240));
     }
 
 }

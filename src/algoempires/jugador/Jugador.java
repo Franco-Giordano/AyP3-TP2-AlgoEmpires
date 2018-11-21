@@ -1,5 +1,6 @@
 package algoempires.jugador;
 
+import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
@@ -125,12 +126,17 @@ public class Jugador {
         edificiosPropios.forEach((e) -> e.actualizarEntreTurnos());
     }
 
-    public void atacar(Guerrero miGuerrero, Edificio victima) {
-        miGuerrero.atacar(victima);
-    }
+    public void atacar(Guerrero miGuerrero, Posicion posicionDeLaVictima) {
 
-    public void atacar(Guerrero miGuerrero, Unidad victima) {
-        miGuerrero.atacar(victima);
+        if (!terrenoDeJuego.puedeUnidadVerA(miGuerrero, posicionDeLaVictima)){
+            throw new EntidadFueraDeRangoException();
+        }
+
+        try {
+            miGuerrero.atacar((Unidad) terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima));
+        }catch (ClassCastException excepcion){
+            miGuerrero.atacar((Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima));
+        }
     }
 
     public void sumarOro(int oro) {
@@ -138,12 +144,16 @@ public class Jugador {
     }
 
     public void informarDestruccion(Edificio entidad) {
+
         edificiosPropios.remove(entidad);
+
         terrenoDeJuego.remover(entidad);
     }
 
     public void informarDestruccion(Unidad entidad) {
+
         poblacion.quitar(entidad);
+
         terrenoDeJuego.remover(entidad);
     }
 

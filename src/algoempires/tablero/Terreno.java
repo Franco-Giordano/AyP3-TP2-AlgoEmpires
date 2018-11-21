@@ -97,10 +97,6 @@ public class Terreno {
         }
     }
 
-    public Casillero getCasilleroEn(Posicion posicion) {
-        return mapa.get(posicion);
-    }
-
     public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
 
         Posicion unaPosDelEdificio = this.encontrarUnaPosDeEntidad(edificio);
@@ -127,11 +123,11 @@ public class Terreno {
         return null;
     }
 
-    public boolean puedeUnidadVerA(Posicion posUnidad, Posicion posicionQueQuieroVer) {
+    public boolean puedeUnidadVerA(Unidad unidad, Posicion posicionQueQuieroVer) {
 
-        Unidad unidad = (Unidad) mapa.get(posUnidad).getEntidadContenida();
+        Posicion posicionUnidad = this.encontrarUnaPosDeEntidad(unidad);
 
-        return Region.generarRegionCentradaEn(posUnidad, unidad).contains(posicionQueQuieroVer);
+        return Region.generarRegionCentradaEn(posicionUnidad,unidad).contains(posicionQueQuieroVer);
 
     }
 
@@ -180,12 +176,6 @@ public class Terreno {
         return resultado;
     }
 
-    public void atacar(Posicion posicionAtacante, Posicion posicionDelAtacado) {
-        Guerrero guerrero = (Guerrero) mapa.get(posicionAtacante).getEntidadContenida();
-        Entidad entidad = (Entidad) mapa.get(posicionDelAtacado).getEntidadContenida();
-        guerrero.atacar((Unidad) entidad);
-    }
-
     //METODOS DE TESTEO
     public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
         return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
@@ -207,6 +197,12 @@ public class Terreno {
                 v.desocupar();
             }
         });
+    }
+
+    public Entidad obtenerEntidadEnPosicion(Posicion posicion) {
+
+        return mapa.get(posicion).getEntidadContenida();
+
     }
 }
 
