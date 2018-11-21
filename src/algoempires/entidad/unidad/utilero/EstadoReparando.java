@@ -6,7 +6,7 @@ public class EstadoReparando extends EstadoAldeano {
 
     private Edificio edificioSiendoReparado;
 
-    public EstadoReparando(Aldeano aldeano,Edificio edificioSiendoReparado){
+    public EstadoReparando(Aldeano aldeano, Edificio edificioSiendoReparado) {
         super(aldeano);
         this.edificioSiendoReparado = edificioSiendoReparado;
     }
@@ -18,8 +18,7 @@ public class EstadoReparando extends EstadoAldeano {
 
         if (!this.edificioSiendoReparado.tieneVidaLlena()) {
             return this;
-        }
-        else {
+        } else {
             return new EstadoRecolectandoOro(aldeano);
         }
     }

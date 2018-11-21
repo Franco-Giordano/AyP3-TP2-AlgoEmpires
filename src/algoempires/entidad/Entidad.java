@@ -1,7 +1,6 @@
 package algoempires.entidad;
 
 import algoempires.jugador.Jugador;
-import algoempires.jugador.Monedero;
 
 public abstract class Entidad {
 

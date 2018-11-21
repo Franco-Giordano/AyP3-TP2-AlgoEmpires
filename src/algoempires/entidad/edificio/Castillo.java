@@ -67,7 +67,7 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
-    protected int getVidaMaxima(){
+    protected int getVidaMaxima() {
         return VIDA_MAXIMA;
     }
 

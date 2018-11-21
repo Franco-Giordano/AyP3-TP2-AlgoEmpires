@@ -39,7 +39,7 @@ public abstract class Edificio extends Entidad {
 
     public void reparar() {
         this.sumarVida(this.VELOCIDAD_DE_REPARACION);
-        if (this.tieneVidaLlena()){
+        if (this.tieneVidaLlena()) {
             this.vida = getVidaMaxima();
         }
     }
@@ -71,7 +71,7 @@ public abstract class Edificio extends Entidad {
     public void continuarConstruccion() {
         this.turnosDeConstruccion--;
         this.sumarVida(getVidaInicial());
-        if (this.tieneVidaLlena()){
+        if (this.tieneVidaLlena()) {
             this.vida = getVidaMaxima();
         }
     }

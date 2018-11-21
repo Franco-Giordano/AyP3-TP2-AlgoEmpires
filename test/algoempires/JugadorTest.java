@@ -48,7 +48,7 @@ public class JugadorTest {
 
         jugadorDePrueba.atacar(arquero, new Posicion(3, 3));
 
-        assertTrue(cuartel.tieneEstaVida((250/3) - 10));
+        assertTrue(cuartel.tieneEstaVida((250 / 3) - 10));
     }
 
     @Test

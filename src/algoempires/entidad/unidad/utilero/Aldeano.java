@@ -40,7 +40,7 @@ public class Aldeano extends Unidad {
 
         PlazaCentral plazaCentral = new PlazaCentral(jugadorPropietario);
 
-        this.estadoActual = new EstadoConstruyendo(this,plazaCentral);
+        this.estadoActual = new EstadoConstruyendo(this, plazaCentral);
 
         return plazaCentral;
     }

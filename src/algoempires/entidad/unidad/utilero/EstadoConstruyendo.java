@@ -6,9 +6,9 @@ public class EstadoConstruyendo extends EstadoAldeano {
 
     private Edificio edificioSiendoConstruido;
 
-   public EstadoConstruyendo(Aldeano aldeano, Edificio edificioSiendoConstruido){
-       super(aldeano);
-       this.edificioSiendoConstruido = edificioSiendoConstruido;
+    public EstadoConstruyendo(Aldeano aldeano, Edificio edificioSiendoConstruido) {
+        super(aldeano);
+        this.edificioSiendoConstruido = edificioSiendoConstruido;
     }
 
     @Override
@@ -18,8 +18,7 @@ public class EstadoConstruyendo extends EstadoAldeano {
 
         if (!this.edificioSiendoConstruido.tieneVidaLlena()) {
             return this;
-        }
-        else {
+        } else {
             return new EstadoRecolectandoOro(aldeano);
         }
     }

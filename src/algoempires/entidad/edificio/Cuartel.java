@@ -34,7 +34,7 @@ public class Cuartel extends Edificio {
     }
 
     @Override
-    protected int getVidaMaxima(){
+    protected int getVidaMaxima() {
         return VIDA_MAXIMA;
     }
 

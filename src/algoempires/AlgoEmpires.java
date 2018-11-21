@@ -28,7 +28,6 @@ public class AlgoEmpires {
         jugadores = new Jugador[]{jugador1, jugador2};
 
         this.prepararJugadoresParaBatalla(tamHorizontal, tamVertical);
-
     }
 
     public static void main(String[] args) {
@@ -75,6 +74,7 @@ public class AlgoEmpires {
 
         //TODO Luego chequear condicion de perdida/victoria
         while (true) {
+
             jugadores[i].jugarTurno();
 
             i++;
