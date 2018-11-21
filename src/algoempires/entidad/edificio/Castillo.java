@@ -18,7 +18,6 @@ public class Castillo extends Edificio implements Atacante {
 
     private HashSet<Entidad> cercanos;
 
-    /*TODO revisar esto porque Castillo no corresponde a ser un edificio, ni una entidad. (0 turnos, 0 costo)*/
     public Castillo(Jugador jugador) {
         super(jugador);
 

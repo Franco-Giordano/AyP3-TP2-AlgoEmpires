@@ -45,6 +45,7 @@ public class Jugador {
         }
     }
 
+    //TODO buscar manera (si la hay) de hacer un metodo general de crear unidades.
     public void crearAldeano(PlazaCentral plazaCentral, Posicion posicionDeCreacion) {
 
         if (!terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion)) {
@@ -62,7 +63,6 @@ public class Jugador {
 
     }
 
-    //TODO esto IGUAL al crearAldeano, ver forma de juntarlos
     public void crearEspadachin(Cuartel cuartel, Posicion posicionDeCreacion) {
 
         if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)) {
@@ -80,7 +80,6 @@ public class Jugador {
 
     }
 
-    //TODO IDEM
     public void crearArquero(Cuartel cuartel, Posicion posicionDeCreacion) {
 
         if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)) {
@@ -97,7 +96,6 @@ public class Jugador {
         }
     }
 
-    //TODO AAAAAAAAAAAAAAAAAAAAA
     public void crearArmaDeAsedio(Castillo castillo, Posicion posicionDeCreacion) {
 
         if (!terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion)) {

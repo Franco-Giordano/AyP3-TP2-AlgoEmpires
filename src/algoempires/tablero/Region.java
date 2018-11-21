@@ -5,7 +5,6 @@ import algoempires.entidad.unidad.Unidad;
 
 import java.util.ArrayList;
 
-//TODO tiene sentido esta clase ahora? solamente está generando ArrayList<Posicion>
 public class Region {
 
     private Posicion infIzquierdo;

@@ -191,7 +191,6 @@ public class JugadorTest {
 
         assertEquals(jugadorDePrueba.getOro(), 10015);
 
-
     }
 
 }

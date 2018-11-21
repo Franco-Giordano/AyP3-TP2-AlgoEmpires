@@ -260,7 +260,6 @@ public class AldeanoTest {
         assertEquals(jugadorDePrueba.getOro(), 95);
     }
 
-    //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
     @Test(expected = UnidadNoPuedeMoverseException.class)
     public void testAldeanoSeMueveUnaSolaVezPorTurno() {
 
