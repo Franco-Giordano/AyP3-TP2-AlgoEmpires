@@ -62,6 +62,11 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
+    public boolean esDelEquipo(Jugador jugador) {
+        return jugador == jugadorPropietario;
+    }
+
+    @Override
     protected int getVidaMaxima(){
         return VIDA_MAXIMA;
     }

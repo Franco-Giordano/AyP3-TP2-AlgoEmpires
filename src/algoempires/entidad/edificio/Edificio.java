@@ -2,6 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
+import algoempires.entidad.NoSeToleraFuegoAmigoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
@@ -55,6 +56,11 @@ public abstract class Edificio extends Entidad {
     }
 
     public void recibirAtaqueDe(Atacante atacante) {
+
+        if (atacante.esDelEquipo(jugadorPropietario)) {
+            throw new NoSeToleraFuegoAmigoException("Un atacante intento herir un aliado!");
+        }
+
         atacante.atacar(this);
     }
 

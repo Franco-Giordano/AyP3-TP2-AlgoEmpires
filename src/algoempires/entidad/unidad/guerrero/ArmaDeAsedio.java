@@ -58,6 +58,12 @@ public class ArmaDeAsedio extends Guerrero {
 
     }
 
+
+    @Override
+    public boolean esDelEquipo(Jugador jugador) {
+        return jugador == jugadorPropietario;
+    }
+
     public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {
         return ((this.VIDA_INICIAL == vida) && (this.DANIO_A_EDIFICIOS == danioAEdficios)
                 && (this.estaMontada == estaMontada) && (this.RANGO_VISION == rangoAtaque)

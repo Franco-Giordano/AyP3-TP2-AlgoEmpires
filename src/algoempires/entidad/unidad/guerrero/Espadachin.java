@@ -18,6 +18,12 @@ public class Espadachin extends Guerrero {
 
     }
 
+
+    @Override
+    public boolean esDelEquipo(Jugador jugador) {
+        return jugador == jugadorPropietario;
+    }
+
     @Override
     protected int getVidaInicial() {
         return VIDA_INICIAL;

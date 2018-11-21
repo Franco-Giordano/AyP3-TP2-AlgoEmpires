@@ -179,11 +179,6 @@ public class ArmaDeAsedioTest {
         assertFalse(terreno.estaOcupada(posicion));
     }
 
-    @Test
-    public void test() {
-
-    }
-
     @Test(expected = UnidadNoPuedeMoverseException.class)
     public void testArmaDeAsedioNoSeMueveSiEstaMontada() {
 

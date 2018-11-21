@@ -1,6 +1,7 @@
 package algoempires;
 
 import algoempires.entidad.EntidadFueraDeRangoException;
+import algoempires.entidad.NoSeToleraFuegoAmigoException;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
@@ -22,13 +23,16 @@ public class JugadorTest {
 
     private Terreno terreno;
     private Jugador jugadorDePrueba;
+    private Jugador jugadorEnemigo;
 
 
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador(terreno);
+        this.jugadorEnemigo = new Jugador(terreno);
         jugadorDePrueba.sumarOro(10000);
+        jugadorEnemigo.sumarOro(10000);
     }
 
     @Test
@@ -38,7 +42,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), arquero);
 
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+        Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(3, 3), cuartel);
 
@@ -54,7 +58,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), arquero);
 
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), aldeano);
 
@@ -70,7 +74,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), arquero);
 
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(9, 9), aldeano);
 
@@ -85,7 +89,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), espadachin);
 
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+        Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), cuartel);
 
@@ -101,7 +105,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), espadachin);
 
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), aldeano);
 
@@ -117,7 +121,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), espadachin);
 
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(3, 3), aldeano);
 
@@ -132,7 +136,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+        Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), cuartel);
 
@@ -148,7 +152,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+        Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(7, 7), cuartel);
 
@@ -163,7 +167,7 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), aldeano);
 
@@ -191,6 +195,36 @@ public class JugadorTest {
 
         assertEquals(jugadorDePrueba.getOro(), 10015);
 
+    }
+
+    @Test(expected = NoSeToleraFuegoAmigoException.class)
+    public void testNoSePuedenAtacarEdificiosAliados() {
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(2, 2), cuartel);
+
+        jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
+
+    }
+
+
+    @Test(expected = NoSeToleraFuegoAmigoException.class)
+    public void testNoSePuedenAtacarUnidadesAliadas() {
+
+        Espadachin espadachin = new Espadachin(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), espadachin);
+
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(2, 2), aldeano);
+
+        jugadorDePrueba.atacar(espadachin, new Posicion(2, 2));
     }
 
 }

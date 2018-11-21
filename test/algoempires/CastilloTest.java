@@ -35,23 +35,24 @@ public class CastilloTest {
         Terreno terreno = new Terreno(10, 10);
 
         Jugador jugador = new Jugador(terreno);
+        Jugador jugadorEnemigo = new Jugador(terreno);
 
-        jugador.sumarOro(10000);
+        jugadorEnemigo.sumarOro(10000);
 
         Castillo castillo = new Castillo(jugador);
 
         terreno.ocupar(new Posicion(2, 2), castillo);
 
-        Aldeano aldeano1 = new Aldeano(jugador);
+        Aldeano aldeano1 = new Aldeano(jugadorEnemigo);
         terreno.ocupar(new Posicion(1, 1), aldeano1);
 
-        Aldeano aldeano2 = new Aldeano(jugador);
+        Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
         terreno.ocupar(new Posicion(4, 1), aldeano2);
 
-        Espadachin espadachin = new Espadachin(jugador);
+        Espadachin espadachin = new Espadachin(jugadorEnemigo);
         terreno.ocupar(new Posicion(1, 7), espadachin);
 
-        Cuartel cuartel = new Cuartel(jugador);
+        Cuartel cuartel = new Cuartel(jugadorEnemigo);
         terreno.ocupar(new Posicion(7, 7), cuartel);
 
         castillo.actualizarEntreTurnos();
