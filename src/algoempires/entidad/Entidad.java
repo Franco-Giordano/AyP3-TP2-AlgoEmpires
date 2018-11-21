@@ -17,13 +17,14 @@ public abstract class Entidad {
 
     protected abstract int getVidaInicial();
 
-    public boolean restarVida(int vidaARestar){
-        vida-= vidaARestar;
-        return seMurioAlRecibirAtaque();
-    }
+    public void restarVida(int vidaARestar){
 
-    private boolean seMurioAlRecibirAtaque() {
-        return vida<=0;
+        vida-= vidaARestar;
+
+        if (vida <= 0){
+            jugadorPropietario.informarDestruccion(this);
+        }
+
     }
 
     public abstract void actualizarEntreTurnos(Jugador jugador);

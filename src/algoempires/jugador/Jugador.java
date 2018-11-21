@@ -9,19 +9,20 @@ import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
-import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Jugador {
 
     private Poblacion poblacion;
-    private HashMap<Posicion, Edificio> edificiosPropios;
+    private HashSet<Edificio> edificiosPropios;
     private Terreno terrenoDeJuego;
     //private Posicion posicionSeleccionada; // en teoría esto va a servir cuando implementemos la interfaz.
     private Jugador jugadorContrincante;
@@ -29,7 +30,7 @@ public class Jugador {
 
     public Jugador(Terreno terrenoDeJuego) {
         this.poblacion = new Poblacion();
-        this.edificiosPropios = new HashMap<>();
+        this.edificiosPropios = new HashSet<>();
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
     }
@@ -49,12 +50,9 @@ public class Jugador {
         }
     }
 
+    public void crearAldeano(PlazaCentral plazaCentral, Posicion posicionDeCreacion) {
 
-    public void crearAldeano(Posicion unaPosicionDeLaPlaza, Posicion posicionDeCreacion) {
-
-        PlazaCentral plazaCentral = (PlazaCentral) edificiosPropios.get(unaPosicionDeLaPlaza);
-
-        terrenoDeJuego.puedeEdificioVerA(unaPosicionDeLaPlaza, posicionDeCreacion);
+        terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion);
 
         Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
@@ -70,13 +68,10 @@ public class Jugador {
 
     }
 
-
     //TODO esto IGUAL al crearAldeano, ver forma de juntarlos
-    public void crearEspadachin(Posicion unaPosicionDelCuartel, Posicion posicionDeCreacion) {
+    public void crearEspadachin(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        Cuartel cuartel = (Cuartel) edificiosPropios.get(unaPosicionDelCuartel);
-
-        terrenoDeJuego.puedeEdificioVerA(unaPosicionDelCuartel, posicionDeCreacion);
+        terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
 
         Espadachin espadachinCreado = cuartel.crearEspadachin();
 
@@ -92,11 +87,9 @@ public class Jugador {
     }
 
     //TODO IDEM
-    public void crearArquero(Posicion unaPosicionDelCuartel, Posicion posicionDeCreacion) {
+    public void crearArquero(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        Cuartel cuartel = (Cuartel) edificiosPropios.get(unaPosicionDelCuartel);
-
-        terrenoDeJuego.puedeEdificioVerA(unaPosicionDelCuartel, posicionDeCreacion);
+        terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
 
         Arquero arqueroCreado = cuartel.crearArquero();
 
@@ -111,11 +104,9 @@ public class Jugador {
     }
 
     //TODO AAAAAAAAAAAAAAAAAAAAA
-    public void crearArmaDeAsedio(Posicion unaPosicionDelCastillo, Posicion posicionDeCreacion) {
+    public void crearArmaDeAsedio(Castillo castillo, Posicion posicionDeCreacion) {
 
-        Castillo castillo = (Castillo) edificiosPropios.get(unaPosicionDelCastillo);
-
-        terrenoDeJuego.puedeEdificioVerA(unaPosicionDelCastillo, posicionDeCreacion);
+        terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion);
 
         ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
@@ -129,7 +120,6 @@ public class Jugador {
         }
     }
 
-
     public Jugador jugarTurnoYDevolverSiguienteJugador() {
 
         //El controlador/view ejecuta las elecciones que hace el jugador
@@ -137,7 +127,7 @@ public class Jugador {
         return jugadorContrincante;
     }
 
-    public void atacar(Posicion posicionDelAtacante, Posicion posicionDelAtacado){
+    public void atacar(Posicion posicionDelAtacante, Posicion posicionDelAtacado) {
         terrenoDeJuego.atacar(posicionDelAtacante, posicionDelAtacado);
     }
 
@@ -145,14 +135,14 @@ public class Jugador {
         monedero.sumarOro(oro);
     }
 
-
     //METODO DE TESTEO
     public int getOro() {
         return monedero.getOro();
     }
 
-    public void asignarAlJugador(Posicion posicion, Entidad entidad) {
+    public void informarDestruccion(Entidad entidad) {
 
-        edificiosPropios.put(posicion,(Edificio)entidad);
+        terrenoDeJuego.remover(entidad);
+
     }
 }

@@ -55,11 +55,6 @@ public class Terreno {
 
     }
 
-    public void reparar(Posicion posicion) {
-
-        mapa.get(posicion).reparar();
-    }
-
     public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) throws PosicionInvalidaException {
 
         Posicion posicionQueQuieroOcupar = posicionRecibida.generarMovimientoHacia(direccionRecibida);
@@ -106,12 +101,11 @@ public class Terreno {
         return mapa.get(posicion);
     }
 
+    public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
 
-    public boolean puedeEdificioVerA(Posicion unaPosicionDelEdificio, Posicion posicionQueQuieroVer) {
+        
 
-        Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosicionDelEdificio);
-
-        Edificio edificio = (Edificio) mapa.get(posInfIzq).getEntidadContenida();
+        Posicion posInfIzq = this.encontrarInfIzqDeEntidad();
 
         Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
 
@@ -171,6 +165,12 @@ public class Terreno {
         return resultado;
     }
 
+    public void atacar(Posicion posicionAtacante, Posicion posicionDelAtacado) {
+        Guerrero guerrero = (Guerrero) mapa.get(posicionAtacante).getEntidadContenida();
+        Entidad entidad = (Entidad) mapa.get(posicionDelAtacado).getEntidadContenida();
+        guerrero.atacar((Unidad) entidad);
+    }
+
     //METODOS DE TESTEO
     public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
         return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
@@ -185,10 +185,13 @@ public class Terreno {
         return limiteSupDer.getVertical();
     }
 
-    public void atacar(Posicion posicionAtacante, Posicion posicionDelAtacado) {
-        Guerrero guerrero = (Guerrero) mapa.get(posicionAtacante).getEntidadContenida();
-        Entidad entidad = (Entidad) mapa.get(posicionDelAtacado).getEntidadContenida();
-        guerrero.atacar((Unidad) entidad);
+    public void remover(Entidad entidad) {
+
+        mapa.forEach((k,v) -> {
+            if (v.contieneA(entidad)){
+                v.desocupar();
+            }
+        });
     }
 }
 

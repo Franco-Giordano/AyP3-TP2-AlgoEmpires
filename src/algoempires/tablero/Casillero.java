@@ -19,7 +19,6 @@ public class Casillero {
         this.entidadContenida = null;
     }
 
-
     public void trasladarUnidadA(Casillero casilleroQueQuieroOcupar) {
 
         try {
@@ -45,7 +44,6 @@ public class Casillero {
 
     }
 
-
     public void ocupar(Entidad entidadRecibida) {
 
         if (this.entidadContenida != null) {
@@ -54,11 +52,14 @@ public class Casillero {
         this.entidadContenida = entidadRecibida;
     }
 
+    public void desocupar(){
+
+        this.entidadContenida = null;
+    }
 
     public boolean tieneEstaVida(int vidaAComparar) {
         return this.entidadContenida.tieneEstaVida(vidaAComparar);
     }
-
 
     public void reparar() {
 
@@ -71,7 +72,6 @@ public class Casillero {
         }
     }
 
-
     public boolean estaOcupada() {
         return this.entidadContenida != null;
     }
@@ -81,4 +81,7 @@ public class Casillero {
     }
 
 
+    public boolean contieneA(Entidad entidad) {
+        return this.entidadContenida == entidad;
+    }
 }

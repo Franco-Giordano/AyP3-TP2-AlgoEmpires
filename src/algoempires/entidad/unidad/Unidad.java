@@ -21,4 +21,5 @@ public abstract class Unidad extends Entidad {
     public void seMovio() {
         this.movioEsteTurno = true;
     }
+
 }
