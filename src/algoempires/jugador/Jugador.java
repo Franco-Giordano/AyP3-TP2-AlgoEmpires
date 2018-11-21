@@ -111,6 +111,10 @@ public class Jugador {
         }
     }
 
+    public void reparar(Aldeano aldeano, Posicion posAReparar) {
+
+    }
+
     public void jugarTurno() {
 
         //El controlador/view ejecuta las elecciones que hace el jugador
