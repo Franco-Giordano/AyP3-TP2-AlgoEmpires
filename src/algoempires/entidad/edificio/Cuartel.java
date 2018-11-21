@@ -9,6 +9,7 @@ public class Cuartel extends Edificio {
 
     private final int VIDA_INICIAL = 250;
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
+    private final int COSTO = 50;
 
 
     public Cuartel(Jugador jugador) throws PosicionInvalidaException {
@@ -18,7 +19,7 @@ public class Cuartel extends Edificio {
         TAMANIO_VERTICAL = 2;
         VELOCIDAD_DE_REPARACION = 50;
         RANGO_VISION = 1;
-        COSTO = 50;
+
     }
 
     @Override
@@ -30,6 +31,11 @@ public class Cuartel extends Edificio {
     @Override
     protected int getVidaInicial() {
         return VIDA_INICIAL;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
     }
 
     public Espadachin crearEspadachin() throws PosicionInvalidaException {

@@ -13,20 +13,27 @@ public class Aldeano extends Unidad {
 
     private final int ORO_GENERADO = 20;
 
+    private final int COSTO = 25;
+
     private boolean estaTrabajando;
 
     public Aldeano(Jugador jugador) throws PosicionInvalidaException {
 
         super(jugador);
+
         this.estaTrabajando = false;
 
         RANGO_VISION = 1;
-        COSTO = 25;
     }
 
     @Override
     protected int getVidaInicial() {
         return VIDA_INICIAL;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
     }
 
     public PlazaCentral construirPlazaCentral() throws PosicionInvalidaException {

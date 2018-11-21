@@ -17,7 +17,7 @@ public abstract class Edificio extends Entidad {
 
     public Edificio(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);
-
+        jugadorPropietario.agregar(this);
         this.turnosDeConstruccion = getTurnosDeConstruccionInicial();
 
     }
@@ -44,6 +44,5 @@ public abstract class Edificio extends Entidad {
         }
 
     }
-
 
 }

@@ -13,9 +13,12 @@ public abstract class Entidad {
     public Entidad(Jugador propietarioDeEntidad) {
         this.vida = getVidaInicial();
         this.jugadorPropietario = propietarioDeEntidad;
+        this.jugadorPropietario.cobrar(this.getCosto());
     }
 
     protected abstract int getVidaInicial();
+
+    protected abstract int getCosto();
 
     public abstract void actualizarEntreTurnos();
 

@@ -19,7 +19,7 @@ public class MonederoTest {
     @Test
     public void testMonederoSeCreaVacio() {
 
-        assertEquals(0, monedero.getOro());
+        assertEquals(100, monedero.getOro());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class MonederoTest {
 
         monedero.sumarOro(10);
 
-        assertEquals(10, monedero.getOro());
+        assertEquals(110, monedero.getOro());
 
     }
 
@@ -35,7 +35,7 @@ public class MonederoTest {
     public void testNoSePuedeSumarOroNegativo() {
         monedero.sumarOro(-3);
 
-        assertEquals(monedero.getOro(), 0);
+        assertEquals(monedero.getOro(), 100);
     }
 
     @Test
@@ -43,13 +43,13 @@ public class MonederoTest {
         monedero.sumarOro(10);
         monedero.restarOro(6);
 
-        assertEquals(monedero.getOro(), 4);
+        assertEquals(monedero.getOro(), 104);
     }
 
     @Test(expected = OroInsuficienteException.class)
     public void testNoSePuedeRestarOroNegativo() {
         monedero.sumarOro(10);
-        monedero.restarOro(-3);
+        monedero.restarOro(115);
 
     }
 

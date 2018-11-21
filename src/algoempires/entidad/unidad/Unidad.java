@@ -11,6 +11,7 @@ public abstract class Unidad extends Entidad {
 
     public Unidad(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);
+        jugadorPropietario.agregar(this);
         this.movioEsteTurno = false;
     }
 

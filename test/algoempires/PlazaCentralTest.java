@@ -1,9 +1,8 @@
-/*package algoempires;
+package algoempires;
 
 import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Terreno;
 import org.junit.Test;
 
@@ -12,18 +11,18 @@ import static org.junit.Assert.assertTrue;
 public class PlazaCentralTest {
 
     @Test
-    public void testPlazaCentralCreaAldeanoCorrectamente() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testPlazaCentralCreaAldeanoCorrectamente() {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(3, 3);
+        Jugador jugador = new Jugador(terreno);
 
-        Posicion posicionACrearAldeano = new Posicion(5, 4);
+        jugador.sumarOro(1000);
 
-        PlazaCentral plazaCentral = new PlazaCentral(terreno, posicion);
+        PlazaCentral plazaCentral = new PlazaCentral(jugador);
 
-        plazaCentral.crearAldeano(posicionACrearAldeano);
+        terreno.ocupar(new Posicion(1, 1), plazaCentral.crearAldeano());
 
-        assertTrue(terreno.estaOcupada(posicionACrearAldeano));
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
     }
-}*/
+}

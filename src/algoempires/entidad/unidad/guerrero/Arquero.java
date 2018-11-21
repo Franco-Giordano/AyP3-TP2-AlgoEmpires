@@ -5,6 +5,7 @@ import algoempires.jugador.Jugador;
 public class Arquero extends Guerrero {
 
     private final int VIDA_INICIAL = 50;
+    private final int COSTO = 75;
 
     public Arquero(Jugador jugador) {
         super(jugador);
@@ -12,12 +13,17 @@ public class Arquero extends Guerrero {
         RANGO_VISION = 3;
         DANIO_A_UNIDADES = 15;
         DANIO_A_EDIFICIOS = 10;
-        COSTO = 75;
+
     }
 
     @Override
     protected int getVidaInicial() {
         return VIDA_INICIAL;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
     }
 
     @Override

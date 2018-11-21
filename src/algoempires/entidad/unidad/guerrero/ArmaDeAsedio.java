@@ -9,6 +9,7 @@ public class ArmaDeAsedio extends Guerrero {
 
     private final int VIDA_INICIAL = 50;
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 1;
+    private final int COSTO = 200;
 
     private int turnosDeConstruccion;
 
@@ -24,13 +25,18 @@ public class ArmaDeAsedio extends Guerrero {
 
         RANGO_VISION = 5;
         DANIO_A_EDIFICIOS = 75;
-        COSTO = 200;
+
 
     }
 
     @Override
     protected int getVidaInicial() {
         return VIDA_INICIAL;
+    }
+
+    @Override
+    protected int getCosto(){
+        return COSTO;
     }
 
     public void montar() {

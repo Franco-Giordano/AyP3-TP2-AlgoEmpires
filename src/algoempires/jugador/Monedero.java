@@ -5,7 +5,7 @@ public class Monedero {
     private int cantidadOro;
 
     public Monedero() {
-        this.cantidadOro = 0;
+        this.cantidadOro = 100;
     }
 
     public void sumarOro(int oroASumar) {
@@ -18,7 +18,7 @@ public class Monedero {
 
     public void restarOro(int oroARestar) {
 
-        if (!puedoDebitarElValor(oroARestar) || oroARestar <= 0) {
+        if (!puedoDebitarElValor(oroARestar) || oroARestar < 0) {
             throw new OroInsuficienteException("Se intento crear una unidad pero no se tenía el oro suficiente.");
         }
 

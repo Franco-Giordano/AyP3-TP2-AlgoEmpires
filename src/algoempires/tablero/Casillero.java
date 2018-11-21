@@ -25,7 +25,7 @@ public class Casillero {
 
             Unidad unidadQueQuieroTrasladar = (Unidad) this.entidadContenida;
 
-            if (unidadQueQuieroTrasladar.sePuedeMover()) {
+            if (!unidadQueQuieroTrasladar.sePuedeMover()) {
                 throw new UnidadNoPuedeMoverseException();
             }
 

@@ -53,12 +53,11 @@ public class Jugador {
 
         terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion);
 
-        Aldeano aldeanoCreado = plazaCentral.crearAldeano();
+
 
         try {
-            aldeanoCreado.cobrar(monedero);
 
-            poblacion.agregar(aldeanoCreado);
+            Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
@@ -72,12 +71,10 @@ public class Jugador {
 
         terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
 
-        Espadachin espadachinCreado = cuartel.crearEspadachin();
-
         try {
-            espadachinCreado.cobrar(monedero);
 
-            poblacion.agregar(espadachinCreado);
+            Espadachin espadachinCreado = cuartel.crearEspadachin();
+
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
@@ -90,12 +87,10 @@ public class Jugador {
 
         terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
 
-        Arquero arqueroCreado = cuartel.crearArquero();
-
         try {
-            arqueroCreado.cobrar(monedero);
 
-            poblacion.agregar(arqueroCreado);
+            Arquero arqueroCreado = cuartel.crearArquero();
+
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
@@ -107,12 +102,9 @@ public class Jugador {
 
         terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion);
 
-        ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
-
         try {
-            armaDeAsedio.cobrar(monedero);
+            ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
-            poblacion.agregar(armaDeAsedio);
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
@@ -155,8 +147,22 @@ public class Jugador {
         terrenoDeJuego.remover(entidad);
     }
 
+    public void agregar(Edificio edificio) {
+        edificiosPropios.add(edificio);
+    }
+
+    public void agregar(Unidad unidad){
+        poblacion.agregar(unidad);
+    }
+
+    public void cobrar(int costo){
+        this.monedero.restarOro(costo);
+    }
+
     //METODO DE TESTEO
     public int getOro() {
         return monedero.getOro();
     }
+
+
 }

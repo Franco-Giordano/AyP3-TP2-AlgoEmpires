@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -21,8 +22,8 @@ public class ArmaDeAsedioTest {
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador(terreno);
+        jugadorDePrueba.sumarOro(10000);
     }
-
 
 
     @Test
@@ -183,67 +184,45 @@ public class ArmaDeAsedioTest {
 
     }
 
+    @Test(expected = UnidadNoPuedeMoverseException.class)
+    public void testArmaDeAsedioNoSeMueveSiEstaMontada() {
 
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
-
-
-    /*
-    @Test
-    public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
-
-        Terreno terreno = new Terreno(10, 10);
-
-        Posicion posicion = new Posicion(2, 2);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
         armaDeAsedio.montar();
 
-        Direccion direccion = new DireccionAbajoDerecha();
-
-        armaDeAsedio.desplazarHacia(direccion);
-
-        assertFalse(armaDeAsedio.estaEnCasillero(new Posicion(3, 1)));
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(2, 2)));
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
 
     }
 
 
     @Test
-    public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
+    public void testArmaDeAsedioSeMueveSiNoEstaMontada() {
 
-        Terreno terreno = new Terreno(10, 10);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
-        Posicion posicion = new Posicion(2, 2);
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicion);
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
 
-        Direccion direccion = new DireccionAbajoDerecha();
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
 
-        armaDeAsedio.desplazarHacia(direccion);
+        assertTrue(terreno.estaOcupada(new Posicion(1, 2)));
 
-        assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(3, 1)));
-        assertFalse(armaDeAsedio.estaEnCasillero(new Posicion(2, 2)));
     }
 
     @Test(expected = UnidadNoPuedeMoverseException.class)
-    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
+    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() {
 
-        Terreno terreno = new Terreno(10,10);
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
-        Jugador jugador = new Jugador(terreno);
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        Posicion posicionACrearArmaDeAsedio = new Posicion(3, 4);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(terreno, posicionACrearArmaDeAsedio);
-
-        Direccion direccion = new DireccionArriba();
-
-        armaDeAsedio.desplazarHacia(direccion);
-
-        armaDeAsedio.desplazarHacia(direccion);
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
+        terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
     }
 
-    */
 }
 

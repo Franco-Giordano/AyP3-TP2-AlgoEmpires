@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -181,22 +182,16 @@ public class EspadachinTest {
         assertFalse(terreno.estaOcupada(posicion));
     }
 
-    /*
     @Test(expected = UnidadNoPuedeMoverseException.class)
-    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
+    public void testEspadachinSeMueveUnaSolaVezPorTurno() {
 
-        Terreno terreno = new Terreno(10,10);
+        Espadachin espadachin = new Espadachin(jugadorDePrueba);
 
-        Posicion posicionACrearEspadachin = new Posicion(3, 4);
+        terreno.ocupar(new Posicion(1, 1), espadachin);
 
-        Espadachin espadachin= new Espadachin(terreno, posicionACrearEspadachin);
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
 
-        Direccion direccion = new DireccionArriba();
-
-        espadachin.desplazarHacia(direccion);
-
-        espadachin.desplazarHacia(direccion);
+        terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
     }
 
-    */
 }

@@ -1,6 +1,7 @@
-/*package algoempires;
+package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.DimensionesInvalidasError;
@@ -17,15 +18,11 @@ public class CuartelTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(3, 3);
+        Cuartel cuartel = new Cuartel(new Jugador(terreno));
 
-        Posicion posicionACrearEspadachin = new Posicion(5, 4);
+        terreno.ocupar(new Posicion(1,1),cuartel.crearEspadachin());
 
-        Cuartel cuartel = new Cuartel(terreno, posicion);
-
-        cuartel.crearEspadachin(posicionACrearEspadachin);
-
-        assertTrue(terreno.estaOcupada(posicionACrearEspadachin));
+        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
 
     }
 
@@ -34,15 +31,15 @@ public class CuartelTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Posicion posicion = new Posicion(3, 3);
+        Jugador jugador = new Jugador(terreno);
 
-        Posicion posicionACrearArquero = new Posicion(5, 4);
+        jugador.sumarOro(1000);
 
-        Cuartel cuartel = new Cuartel(terreno, posicion);
+        Cuartel cuartel = new Cuartel(jugador);
 
-        cuartel.crearArquero(posicionACrearArquero);
+        terreno.ocupar(new Posicion(1,1),cuartel.crearArquero());
 
-        assertTrue(terreno.estaOcupada(posicionACrearArquero));
+        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
 
     }
-}*/
+}

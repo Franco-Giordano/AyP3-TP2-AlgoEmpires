@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
@@ -192,25 +193,18 @@ public class ArqueroTest {
         assertFalse(terreno.estaOcupada(posicion));
     }
 
-    /*
-
     @Test(expected = UnidadNoPuedeMoverseException.class)
-    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
+    public void testArqueroSeMueveUnaSolaVezPorTurno() {
 
-        Terreno terreno = new Terreno(10,10);
+        Arquero arquero = new Arquero(jugadorDePrueba);
 
-        Posicion posicionACrearArquero = new Posicion(3, 4);
+        terreno.ocupar(new Posicion(1, 1), arquero);
 
-        Arquero arquero= new Arquero(terreno, posicionACrearArquero);
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
 
-        Direccion direccion = new DireccionArriba();
+        terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
 
-        arquero.desplazarHacia(direccion);
-
-        arquero.desplazarHacia(direccion);
     }
 
-
-*/
 }
 

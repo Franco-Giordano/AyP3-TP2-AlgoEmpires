@@ -42,60 +42,6 @@ public class AldeanoTest {
 
     }
 
-
-    //TODO esto NO es un test de aldeano, pero bueno.
-
-    @Test
-    public void testInformarDeEdificiosInformaBien() {
-
-        //TODO lo manejé con posiciones suponiendo que vamos a tener que hacer click sobre donde está la unidad, eso lo vemos después.
-
-        terreno = new Terreno(15, 15);
-
-        Arquero arquero = new Arquero(jugadorDePrueba);
-
-        Espadachin espadachin = new Espadachin(jugadorDePrueba);
-
-        Aldeano aldeano = new Aldeano(jugadorDePrueba);
-
-        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
-
-        Aldeano aldeano2 = new Aldeano(jugadorDePrueba);
-
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
-
-        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
-
-        Posicion posicionAldeano = new Posicion(4, 4);
-
-        Posicion posicionArquero = new Posicion(8, 7);
-
-        Posicion posicionDelAldeano1 = new Posicion(7, 7);
-
-        Posicion posicionDelAldeano2 = new Posicion(9, 9);
-
-        Posicion posicionDelCuartel = new Posicion(2, 2);
-
-        Posicion posicionDelArmaDeasedio = new Posicion(5, 5);
-
-        Posicion posicionDelEspadachin = new Posicion(8, 8);
-
-        terreno.ocupar(posicionArquero, arquero);
-
-        terreno.ocupar(posicionAldeano, aldeano);
-
-        terreno.ocupar(posicionDelAldeano1, aldeano1);
-
-        terreno.ocupar(posicionDelAldeano2, aldeano2);
-
-        terreno.ocupar(posicionDelEspadachin, espadachin);
-
-        terreno.ocupar(posicionDelCuartel, cuartel);
-
-        terreno.ocupar(posicionDelArmaDeasedio, armaDeAsedio);
-
-    }
-
     @Test
     public void testAldeanoSeMueveBienHaciaArriba() {
 
@@ -253,9 +199,11 @@ public class AldeanoTest {
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        PlazaCentral pc = aldeano.construirPlazaCentral();
+        jugadorDePrueba.sumarOro(1000);
 
-        assertNotNull(pc);
+        PlazaCentral plazaCentral = aldeano.construirPlazaCentral();
+
+        assertNotNull(plazaCentral);
     }
 
     @Test
@@ -302,7 +250,7 @@ public class AldeanoTest {
 
         aldeano.actualizarEntreTurnos();
 
-        assertEquals(jugador.getOro(), 0);
+        assertEquals(jugador.getOro(), 100);
     }
 
     @Test
@@ -312,7 +260,7 @@ public class AldeanoTest {
 
         aldeano.actualizarEntreTurnos();
 
-        assertEquals(jugadorDePrueba.getOro(), 20);
+        assertEquals(jugadorDePrueba.getOro(), 95);
     }
 
     //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
@@ -344,13 +292,13 @@ public class AldeanoTest {
 
         aldeano1.actualizarEntreTurnos();
 
-        assertEquals(jugador1.getOro(), 20);
-        assertEquals(jugador2.getOro(), 0);
+        assertEquals(jugador1.getOro(), 95);
+        assertEquals(jugador2.getOro(), 75);
 
         aldeano2.actualizarEntreTurnos();
 
-        assertEquals(jugador1.getOro(), 20);
-        assertEquals(jugador2.getOro(), 20);
+        assertEquals(jugador1.getOro(), 95);
+        assertEquals(jugador2.getOro(), 95);
     }
 
 }
