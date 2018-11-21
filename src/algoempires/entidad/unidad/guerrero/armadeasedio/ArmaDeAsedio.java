@@ -43,8 +43,8 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
-    public void atacar(Unidad unidad) throws ArmaDeAsedioNoPuedeAtacarUnidades {
-        throw new ArmaDeAsedioNoPuedeAtacarUnidades();
+    public void atacar(Unidad unidad) throws ArmaDeAsedioNoPuedeAtacarUnidadesException {
+        throw new ArmaDeAsedioNoPuedeAtacarUnidadesException();
     }
 
     @Override

@@ -3,6 +3,6 @@ package algoempires.jugador;
 public class SeIntentoSuperarPoblacionMaximaException extends RuntimeException {
 
     public SeIntentoSuperarPoblacionMaximaException() {
-        super("Se agrego ");
+        super("Casi se alcanza la sobrepoblacion!");
     }
 }

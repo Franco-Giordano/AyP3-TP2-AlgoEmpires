@@ -8,7 +8,7 @@ import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
-import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedioNoPuedeAtacarUnidades;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -164,7 +164,7 @@ public class JugadorTest {
 
     }
 
-    @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidades.class)
+    @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidadesException.class)
     public void jugadorConArmaDeAsedioNoPuedeAtacarUnidades() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
