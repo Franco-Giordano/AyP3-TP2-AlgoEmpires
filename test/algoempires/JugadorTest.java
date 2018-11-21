@@ -1,6 +1,8 @@
 package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
+import algoempires.entidad.unidad.guerrero.ArmaDeAsedioNoPuedeAtacarUnidades;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.utilero.Aldeano;
@@ -89,5 +91,34 @@ public class JugadorTest {
         assertTrue(aldeano.tieneEstaVida(25));
     }
 
+    @Test
+    public void jugadorAtacaBienConArmaDeAsedioAEdificios(){
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1,1), armaDeAsedio);
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(2,2),cuartel);
+
+        jugadorDePrueba.atacar(armaDeAsedio,new Posicion(2,2));
+
+        assertTrue(cuartel.tieneEstaVida(175));
+    }
+
+    @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidades.class)
+    public void jugadorConArmaDeAsedioNoPuedeAtacarUnidades(){
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1,1), armaDeAsedio);
+
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(2,2),aldeano);
+
+        jugadorDePrueba.atacar(armaDeAsedio,new Posicion(2,2));
+    }
 
 }
