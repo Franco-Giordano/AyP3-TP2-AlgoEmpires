@@ -52,9 +52,9 @@ public class Jugador {
 
     public void crearAldeano(PlazaCentral plazaCentral, Posicion posicionDeCreacion) {
 
-        terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion);
-
-
+        if (!terrenoDeJuego.puedeEdificioVerA(plazaCentral, posicionDeCreacion)){
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
 
         try {
 
@@ -70,7 +70,9 @@ public class Jugador {
     //TODO esto IGUAL al crearAldeano, ver forma de juntarlos
     public void crearEspadachin(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
+        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)){
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
 
         try {
 
@@ -86,7 +88,9 @@ public class Jugador {
     //TODO IDEM
     public void crearArquero(Cuartel cuartel, Posicion posicionDeCreacion) {
 
-        terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion);
+        if (!terrenoDeJuego.puedeEdificioVerA(cuartel, posicionDeCreacion)){
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
 
         try {
 
@@ -101,7 +105,9 @@ public class Jugador {
     //TODO AAAAAAAAAAAAAAAAAAAAA
     public void crearArmaDeAsedio(Castillo castillo, Posicion posicionDeCreacion) {
 
-        terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion);
+        if (!terrenoDeJuego.puedeEdificioVerA(castillo, posicionDeCreacion)){
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
 
         try {
             ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();

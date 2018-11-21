@@ -208,21 +208,5 @@ public class ArqueroTest {
 
     }
 
-    @Test
-    public void arqueroAtacaBien(){
-
-        Arquero arquero = new Arquero(jugadorDePrueba);
-
-        terreno.ocupar(new Posicion(1,1), arquero);
-
-        Cuartel cuartel = new Cuartel(jugadorDePrueba);
-
-        terreno.ocupar(new Posicion(3,3),cuartel);
-
-        jugadorDePrueba.atacar(arquero,new Posicion(3,3));
-
-        assertTrue(cuartel.tieneEstaVida(240));
-    }
-
 }
 

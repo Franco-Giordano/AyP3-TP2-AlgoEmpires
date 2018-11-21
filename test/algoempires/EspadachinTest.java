@@ -169,7 +169,6 @@ public class EspadachinTest {
 
         Espadachin unidad = new Espadachin(jugadorDePrueba);
 
-
         Direccion direccion = new DireccionAbajoDerecha();
 
         terreno.ocupar(posicion, unidad);
@@ -193,7 +192,5 @@ public class EspadachinTest {
 
         terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
     }
-
-
 
 }
