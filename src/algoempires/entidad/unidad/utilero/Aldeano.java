@@ -61,6 +61,11 @@ public class Aldeano extends Unidad {
     }
 
     @Override
+    public boolean sePuedeMover() {
+        return estadoActual.sePuedeMover() && super.sePuedeMover();
+    }
+
+    @Override
     public void actualizarEntreTurnos() {
         super.actualizarEntreTurnos();
         this.estadoActual = estadoActual.actualizarEntreTurnos();

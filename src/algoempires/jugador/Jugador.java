@@ -113,6 +113,53 @@ public class Jugador {
 
     public void reparar(Aldeano aldeano, Posicion posAReparar) {
 
+        try {
+
+            Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
+
+            if (edificio.estaEnReparacion()) {
+                throw new SoloUnAldeanoReparaALaVezException("No puede haber mas de un aldeano reparando a un edificio!");
+            }
+
+            aldeano.ordenarReparacion(edificio);
+
+        } catch (ClassCastException e) {
+            //TODO Avisar que fallo la operacion mediante el Controlador
+        }
+    }
+
+    public void crearPlazaCentral(Aldeano aldeano, Posicion posAConstruir) {
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
+
+        try {
+            PlazaCentral plaza = aldeano.construirPlazaCentral();
+
+            terrenoDeJuego.ocupar(posAConstruir, plaza);
+
+        } catch (PosicionInvalidaException | OroInsuficienteException e) {
+            //TODO Avisar que fallo la operacion mediante el Controlador
+        }
+
+    }
+
+    public void crearCuartel(Aldeano aldeano, Posicion posAConstruir) {
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
+
+        try {
+            Cuartel cuartel = aldeano.construirCuartel();
+
+            terrenoDeJuego.ocupar(posAConstruir, cuartel);
+
+        } catch (PosicionInvalidaException | OroInsuficienteException e) {
+            //TODO Avisar que fallo la operacion mediante el Controlador
+        }
+
     }
 
     public void jugarTurno() {

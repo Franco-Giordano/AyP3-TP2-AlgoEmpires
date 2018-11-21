@@ -23,6 +23,11 @@ public class EstadoReparando extends EstadoAldeano {
         }
     }
 
+    @Override
+    public boolean sePuedeMover() {
+        return false;
+    }
+
 }
 
 

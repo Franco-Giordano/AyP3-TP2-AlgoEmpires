@@ -16,10 +16,15 @@ public class EstadoConstruyendo extends EstadoAldeano {
 
         this.edificioSiendoConstruido.continuarConstruccion();
 
-        if (!this.edificioSiendoConstruido.tieneVidaLlena()) {
-            return this;
-        } else {
+        if (this.edificioSiendoConstruido.terminoConstruccion()) {
             return new EstadoRecolectandoOro(aldeano);
         }
+
+        return this;
+    }
+
+    @Override
+    public boolean sePuedeMover() {
+        return false;
     }
 }

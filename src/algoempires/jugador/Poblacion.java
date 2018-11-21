@@ -35,4 +35,5 @@ public class Poblacion {
     public int cantidadDeUnidades() {
         return unidades.size();
     }
+
 }

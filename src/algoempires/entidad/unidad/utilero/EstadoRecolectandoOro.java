@@ -12,4 +12,9 @@ public class EstadoRecolectandoOro extends EstadoAldeano {
 
         return this;
     }
+
+    @Override
+    public boolean sePuedeMover() {
+        return true;
+    }
 }
