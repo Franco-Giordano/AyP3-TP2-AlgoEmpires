@@ -28,6 +28,8 @@ public class Arquero extends Guerrero {
 
     @Override
     public void actualizarEntreTurnos() {
+        super.actualizarEntreTurnos();
+
     }
 
 

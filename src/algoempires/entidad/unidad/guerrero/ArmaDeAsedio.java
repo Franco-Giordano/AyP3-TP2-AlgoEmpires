@@ -54,6 +54,8 @@ public class ArmaDeAsedio extends Guerrero {
 
     @Override
     public void actualizarEntreTurnos() {
+        super.actualizarEntreTurnos();
+
     }
 
     public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {

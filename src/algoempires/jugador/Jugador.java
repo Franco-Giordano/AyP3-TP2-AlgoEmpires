@@ -25,8 +25,6 @@ public class Jugador {
     private Poblacion poblacion;
     private HashSet<Edificio> edificiosPropios;
     private Terreno terrenoDeJuego;
-    //private Posicion posicionSeleccionada; // en teoría esto va a servir cuando implementemos la interfaz.
-    private Jugador jugadorContrincante;
     private Monedero monedero;
 
     public Jugador(Terreno terrenoDeJuego) {
@@ -34,10 +32,6 @@ public class Jugador {
         this.edificiosPropios = new HashSet<>();
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
-    }
-
-    public void setContrincante(Jugador jugador) {
-        jugadorContrincante = jugador;
     }
 
     //TODO de momento se asume que TODAS las posiciones de entidades recibidas son propietarias de este jugador, habra que chequearlo
@@ -119,13 +113,12 @@ public class Jugador {
         }
     }
 
-    public Jugador jugarTurnoYDevolverSiguienteJugador() {
+    public void jugarTurno() {
 
         //El controlador/view ejecuta las elecciones que hace el jugador
 
         this.actualizarEntreTurnos();
 
-        return jugadorContrincante;
     }
 
     public void actualizarEntreTurnos() {
@@ -172,13 +165,37 @@ public class Jugador {
         this.monedero.restarOro(costo);
     }
 
+
+    public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
+        return terrenoDeJuego.calcularCercanosA(castillo);
+    }
+
+    public void posicionarLaEntidad(Posicion posicion, Edificio entidad) {
+        terrenoDeJuego.ocupar(posicion, entidad);
+    }
+
+    public void posicionarLaEntidad(Posicion posicion, Unidad entidad) {
+        terrenoDeJuego.ocupar(posicion, entidad);
+    }
+
     //METODO DE TESTEO
     public int getOro() {
         return monedero.getOro();
     }
 
+    public boolean tieneCastilloEn(Posicion posicion) {
+        return terrenoDeJuego.obtenerEntidadEnPosicion(posicion).getClass() == Castillo.class;
+    }
 
-    public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
-        return terrenoDeJuego.calcularCercanosA(castillo);
+    public boolean tienePlazaCentralEn(Posicion posicion) {
+        return terrenoDeJuego.obtenerEntidadEnPosicion(posicion).getClass() == PlazaCentral.class;
+    }
+
+    public boolean tieneAldeanoEn(Posicion posicion) {
+        return terrenoDeJuego.obtenerEntidadEnPosicion(posicion).getClass() == Aldeano.class;
+    }
+
+    public boolean tieneEstaCantidadDePropiedades(int cantPobladores, int cantEdificios) {
+        return poblacion.cantidadDeUnidades() == cantPobladores && edificiosPropios.size() == cantEdificios;
     }
 }

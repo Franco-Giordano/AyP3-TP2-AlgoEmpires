@@ -13,6 +13,12 @@ public class Posicion {
         this.posVertical = posVertical;
     }
 
+    public Posicion(int posHorizontal, int posVertical, Posicion desplazamiento) {
+
+        this.posHorizontal = posHorizontal + desplazamiento.getHorizontal();
+        this.posVertical = posVertical + desplazamiento.getVertical();
+    }
+
 
     public int getHorizontal() {
         return posHorizontal;

@@ -278,8 +278,6 @@ public class AldeanoTest {
 
         Jugador jugador1 = new Jugador(terreno);
         Jugador jugador2 = new Jugador(terreno);
-        jugador1.setContrincante(jugador2);
-        jugador2.setContrincante(jugador1);
 
         Aldeano aldeano1 = new Aldeano(jugador1);
         Aldeano aldeano2 = new Aldeano(jugador2);

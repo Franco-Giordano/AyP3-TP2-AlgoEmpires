@@ -2,10 +2,11 @@ package algoempires.jugador;
 
 public class Monedero {
 
+    private final int ORO_INICIAL = 100;
     private int cantidadOro;
 
     public Monedero() {
-        this.cantidadOro = 100;
+        this.cantidadOro = ORO_INICIAL;
     }
 
     public void sumarOro(int oroASumar) {

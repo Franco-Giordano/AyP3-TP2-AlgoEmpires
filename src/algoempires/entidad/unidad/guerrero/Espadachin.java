@@ -30,7 +30,7 @@ public class Espadachin extends Guerrero {
 
     @Override
     public void actualizarEntreTurnos() {
-
+        super.actualizarEntreTurnos();
     }
 
 }

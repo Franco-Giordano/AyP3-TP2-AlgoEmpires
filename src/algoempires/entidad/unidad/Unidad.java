@@ -39,4 +39,8 @@ public abstract class Unidad extends Entidad {
     public boolean sePuedeMover() {
         return !this.movioEsteTurno;
     }
+
+    public void actualizarEntreTurnos() {
+        this.movioEsteTurno = false;
+    }
 }

@@ -7,4 +7,8 @@ public class DimensionesInvalidasError extends RuntimeException {
         super(String.format("El terreno debe tener dimensiones positivas no nulas. Se ingreso: (%d, %d)",
                 horiz, vert));
     }
+
+    public DimensionesInvalidasError(String msj) {
+        super(msj);
+    }
 }

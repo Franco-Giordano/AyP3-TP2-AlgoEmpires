@@ -64,7 +64,7 @@ public class JugadorTest {
     }
 
     @Test(expected = EntidadFueraDeRangoException.class)
-    public void jugadorNoPuedeAtacarConArqueroPorDistanciaDeLaUnidadTest(){
+    public void jugadorNoPuedeAtacarConArqueroPorDistanciaDeLaUnidadTest() {
 
         Arquero arquero = new Arquero(jugadorDePrueba);
 
@@ -111,7 +111,7 @@ public class JugadorTest {
     }
 
     @Test(expected = EntidadFueraDeRangoException.class)
-    public void jugadorNoPuedeAtacarConEspadachinPorDistanciaDeLaUnidadTest(){
+    public void jugadorNoPuedeAtacarConEspadachinPorDistanciaDeLaUnidadTest() {
 
         Espadachin espadachin = new Espadachin(jugadorDePrueba);
 
@@ -142,7 +142,7 @@ public class JugadorTest {
     }
 
     @Test(expected = EntidadFueraDeRangoException.class)
-    public void jugadorNoPuedeAtacarConArmaDeAsedioPorDistanciaDeLEdificioTest(){
+    public void jugadorNoPuedeAtacarConArmaDeAsedioPorDistanciaDeLEdificioTest() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
@@ -171,13 +171,13 @@ public class JugadorTest {
     }
 
     @Test
-    public void matarAldeanosBajaLaProduccionDeOro(){
+    public void matarAldeanosBajaLaProduccionDeOro() {
 
         PlazaCentral plazaCentral = new PlazaCentral(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(1,1),plazaCentral);
+        terreno.ocupar(new Posicion(1, 1), plazaCentral);
 
-        Posicion posicion = new Posicion(3,3);
+        Posicion posicion = new Posicion(3, 3);
 
         jugadorDePrueba.crearAldeano(plazaCentral, posicion);
 
@@ -185,12 +185,11 @@ public class JugadorTest {
 
         assertEquals(jugadorDePrueba.getOro(), 9995);
 
-        jugadorDePrueba.informarDestruccion((Unidad)terreno.obtenerEntidadEnPosicion(new Posicion(1,3)));
+        jugadorDePrueba.informarDestruccion((Unidad) terreno.obtenerEntidadEnPosicion(new Posicion(1, 3)));
 
         jugadorDePrueba.actualizarEntreTurnos();
 
         assertEquals(jugadorDePrueba.getOro(), 10015);
-
 
 
     }
