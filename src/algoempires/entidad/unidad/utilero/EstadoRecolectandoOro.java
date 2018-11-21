@@ -1,13 +1,13 @@
 package algoempires.entidad.unidad.utilero;
 
-public class EstadoRecolectandoOro extends Estado {
+public class EstadoRecolectandoOro extends EstadoAldeano {
 
     public EstadoRecolectandoOro(Aldeano aldeano) {
         super(aldeano);
     }
 
     @Override
-    protected Estado actualizarEntreTurnos() {
+    protected EstadoAldeano actualizarEntreTurnos() {
         aldeano.generarOro();
 
         return this;

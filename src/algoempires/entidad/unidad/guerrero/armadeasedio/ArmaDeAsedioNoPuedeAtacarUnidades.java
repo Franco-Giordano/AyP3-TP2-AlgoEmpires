@@ -1,4 +1,4 @@
-package algoempires.entidad.unidad.guerrero;
+package algoempires.entidad.unidad.guerrero.armadeasedio;
 
 public class ArmaDeAsedioNoPuedeAtacarUnidades extends RuntimeException {
 

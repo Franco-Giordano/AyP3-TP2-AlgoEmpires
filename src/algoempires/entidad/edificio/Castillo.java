@@ -3,7 +3,7 @@ package algoempires.entidad.edificio;
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;

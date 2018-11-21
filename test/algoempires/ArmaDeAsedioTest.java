@@ -1,7 +1,7 @@
 package algoempires;
 
 import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
-import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -30,7 +30,6 @@ public class ArmaDeAsedioTest {
     public void testUnidadSeMueveBienHaciaArriba() {
 
         Posicion posicion = new Posicion(1, 1);
-
 
         ArmaDeAsedio unidad = new ArmaDeAsedio(jugadorDePrueba);
 

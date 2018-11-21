@@ -2,7 +2,7 @@ package algoempires.entidad.unidad.utilero;
 
 import algoempires.entidad.edificio.Edificio;
 
-public class EstadoConstruyendo extends Estado {
+public class EstadoConstruyendo extends EstadoAldeano {
 
     private Edificio edificioSiendoConstruido;
 
@@ -12,7 +12,7 @@ public class EstadoConstruyendo extends Estado {
     }
 
     @Override
-    protected Estado actualizarEntreTurnos(){
+    protected EstadoAldeano actualizarEntreTurnos() {
 
         this.edificioSiendoConstruido.continuarConstruccion();
 

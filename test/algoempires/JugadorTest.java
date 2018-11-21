@@ -5,10 +5,10 @@ import algoempires.entidad.NoSeToleraFuegoAmigoException;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
-import algoempires.entidad.unidad.guerrero.ArmaDeAsedioNoPuedeAtacarUnidades;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedioNoPuedeAtacarUnidades;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -139,6 +139,10 @@ public class JugadorTest {
         Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(2, 2), cuartel);
+
+        armaDeAsedio.montar();
+
+        armaDeAsedio.actualizarEntreTurnos();
 
         jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
 

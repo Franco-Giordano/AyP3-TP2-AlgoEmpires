@@ -1,6 +1,8 @@
-package algoempires.entidad.unidad.guerrero;
+package algoempires.entidad.unidad.guerrero.armadeasedio;
 
+import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
 
@@ -8,25 +10,18 @@ import algoempires.tablero.PosicionInvalidaException;
 public class ArmaDeAsedio extends Guerrero {
 
     private final int VIDA_INICIAL = 50;
-    private final int TURNOS_DE_CONSTRUCCION_INICIAL = 1;
     private final int COSTO = 200;
 
-    private int turnosDeConstruccion;
-
-    private boolean estaMontada;
+    private EstadoArmaDeAsedio estadoActual;
 
     public ArmaDeAsedio(Jugador jugador) throws PosicionInvalidaException {
 
         super(jugador);
 
-        this.turnosDeConstruccion = TURNOS_DE_CONSTRUCCION_INICIAL;
-
-        this.estaMontada = false;
+        this.estadoActual = new EstadoMovible();
 
         RANGO_VISION = 5;
         DANIO_A_EDIFICIOS = 75;
-
-
     }
 
     @Override
@@ -40,12 +35,12 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     public void montar() {
-        estaMontada = true;
+        estadoActual = new EstadoMontando();
     }
 
-    /*public void desmontar() {
-        estaMontada = false;
-    }*/
+    public void desmontar() {
+        estadoActual = new EstadoDesmontando();
+    }
 
     @Override
     public void atacar(Unidad unidad) throws ArmaDeAsedioNoPuedeAtacarUnidades {
@@ -53,9 +48,19 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
+    public void atacar(Edificio edificio) {
+
+        if (!estadoActual.puedeAtacar()) {
+            throw new ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException("Se intento atacar sin haber montado antes");
+        }
+
+        super.atacar(edificio);
+    }
+
+    @Override
     public void actualizarEntreTurnos() {
         super.actualizarEntreTurnos();
-
+        this.estadoActual = estadoActual.actualizarEntreTurnos();
     }
 
 
@@ -64,15 +69,9 @@ public class ArmaDeAsedio extends Guerrero {
         return jugador == jugadorPropietario;
     }
 
-    public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {
-        return ((this.VIDA_INICIAL == vida) && (this.DANIO_A_EDIFICIOS == danioAEdficios)
-                && (this.estaMontada == estaMontada) && (this.RANGO_VISION == rangoAtaque)
-                && (this.turnosDeConstruccion == turnosDeConstruccion));
-    }
-
     @Override
     public boolean sePuedeMover() {
-        return !this.estaMontada && super.sePuedeMover();
+        return this.estadoActual.sePuedeMover() && super.sePuedeMover();
     }
 }
 
