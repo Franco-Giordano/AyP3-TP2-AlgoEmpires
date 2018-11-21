@@ -51,9 +51,9 @@ public class Aldeano extends Unidad {
     }
 
     @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
         if (!estaTrabajando) {
-            jugador.sumarOro(ORO_GENERADO);
+            jugadorPropietario.sumarOro(ORO_GENERADO);
         }
     }
 

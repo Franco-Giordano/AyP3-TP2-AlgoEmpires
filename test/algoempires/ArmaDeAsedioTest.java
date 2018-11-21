@@ -178,6 +178,15 @@ public class ArmaDeAsedioTest {
         assertFalse(terreno.estaOcupada(posicion));
     }
 
+    @Test
+    public void test() {
+
+    }
+
+
+
+
+
     /*
     @Test
     public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
@@ -198,6 +207,7 @@ public class ArmaDeAsedioTest {
         assertTrue(armaDeAsedio.estaEnCasillero(new Posicion(2, 2)));
 
     }
+
 
     @Test
     public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {

@@ -103,14 +103,28 @@ public class Terreno {
 
     public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
 
-        
+        Posicion unaPosDelEdificio = this.encontrarUnaPosDeEntidad(edificio);
 
-        Posicion posInfIzq = this.encontrarInfIzqDeEntidad();
+        Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosDelEdificio);
 
         Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
 
         return Region.generarRegionCentradaEn(regionOcupada, edificio).contains(posicionQueQuieroVer);
 
+    }
+
+    private Posicion encontrarUnaPosDeEntidad(Entidad entidad) {
+
+        for (HashMap.Entry<Posicion, Casillero> entry : mapa.entrySet()) {
+            Posicion posicion = entry.getKey();
+            Casillero casillero = entry.getValue();
+
+            if (casillero.contieneA(entidad)) {
+                return posicion;
+            }
+        }
+
+        return null;
     }
 
     public boolean puedeUnidadVerA(Posicion posUnidad, Posicion posicionQueQuieroVer) {
@@ -122,6 +136,7 @@ public class Terreno {
     }
 
     private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {
+
         Entidad entidad = mapa.get(unaPosicionDeLaEntidad).getEntidadContenida();
 
         Posicion posIzq = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionIzquierda());

@@ -1,22 +1,21 @@
 package algoempires.jugador;
 
-import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.entidad.unidad.guerrero.Guerrero;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Jugador {
@@ -59,10 +58,10 @@ public class Jugador {
         try {
             aldeanoCreado.cobrar(monedero);
 
-            poblacion.agregar(posicionDeCreacion, aldeanoCreado);
+            poblacion.agregar(aldeanoCreado);
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
-        } catch (OroInsuficienteException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
         }
 
@@ -78,9 +77,9 @@ public class Jugador {
         try {
             espadachinCreado.cobrar(monedero);
 
-            poblacion.agregar(posicionDeCreacion, espadachinCreado);
+            poblacion.agregar(espadachinCreado);
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
-        } catch (OroInsuficienteException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
         }
 
@@ -96,9 +95,9 @@ public class Jugador {
         try {
             arqueroCreado.cobrar(monedero);
 
-            poblacion.agregar(posicionDeCreacion, arqueroCreado);
+            poblacion.agregar(arqueroCreado);
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
-        } catch (OroInsuficienteException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
         }
     }
@@ -113,9 +112,9 @@ public class Jugador {
         try {
             armaDeAsedio.cobrar(monedero);
 
-            poblacion.agregar(posicionDeCreacion, armaDeAsedio);
+            poblacion.agregar(armaDeAsedio);
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
-        } catch (OroInsuficienteException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
             //TODO Avisar que fallo la operacion mediante el Controlador
         }
     }
@@ -124,25 +123,40 @@ public class Jugador {
 
         //El controlador/view ejecuta las elecciones que hace el jugador
 
+        this.actualizarEntreTurnos();
+
         return jugadorContrincante;
     }
 
-    public void atacar(Posicion posicionDelAtacante, Posicion posicionDelAtacado) {
-        terrenoDeJuego.atacar(posicionDelAtacante, posicionDelAtacado);
+    private void actualizarEntreTurnos() {
+        poblacion.actualizarUnidades();
+        edificiosPropios.forEach((e) -> e.actualizarEntreTurnos());
+    }
+
+    public void atacar(Guerrero miGuerrero, Edificio victima) {
+        miGuerrero.atacar(victima);
+    }
+
+    public void atacar(Guerrero miGuerrero, Unidad victima) {
+        miGuerrero.atacar(victima);
     }
 
     public void sumarOro(int oro) {
         monedero.sumarOro(oro);
     }
 
+    public void informarDestruccion(Edificio entidad) {
+        edificiosPropios.remove(entidad);
+        terrenoDeJuego.remover(entidad);
+    }
+
+    public void informarDestruccion(Unidad entidad) {
+        poblacion.quitar(entidad);
+        terrenoDeJuego.remover(entidad);
+    }
+
     //METODO DE TESTEO
     public int getOro() {
         return monedero.getOro();
-    }
-
-    public void informarDestruccion(Entidad entidad) {
-
-        terrenoDeJuego.remover(entidad);
-
     }
 }

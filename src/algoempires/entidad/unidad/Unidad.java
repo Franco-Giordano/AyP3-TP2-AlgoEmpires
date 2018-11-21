@@ -22,4 +22,16 @@ public abstract class Unidad extends Entidad {
         this.movioEsteTurno = true;
     }
 
+    @Override
+    public void restarVida(int vidaARestar) {
+
+        vida -= vidaARestar;
+
+        if (vida <= 0) {
+            jugadorPropietario.informarDestruccion(this);
+        }
+
+    }
+
+
 }

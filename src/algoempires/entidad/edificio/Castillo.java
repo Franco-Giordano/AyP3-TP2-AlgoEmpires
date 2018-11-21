@@ -34,7 +34,7 @@ public class Castillo extends Edificio {
     }
 
     @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
 
     }
 }

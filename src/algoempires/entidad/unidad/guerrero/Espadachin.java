@@ -1,7 +1,5 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
 
@@ -26,18 +24,8 @@ Espadachin extends Guerrero {
     }
 
     @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
 
-    }
-
-    @Override
-    public void atacar(Unidad unidad) {
-        unidad.restarVida(DANIO_A_UNIDADES);
-    }
-
-    @Override
-    public void atacar(Edificio edificio) {
-        edificio.restarVida(DANIO_A_EDIFICIOS);
     }
 
 }

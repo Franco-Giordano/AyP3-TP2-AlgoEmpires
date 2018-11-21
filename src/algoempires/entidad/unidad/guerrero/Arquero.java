@@ -1,7 +1,5 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 
 public class Arquero extends Guerrero {
@@ -23,7 +21,7 @@ public class Arquero extends Guerrero {
     }
 
     @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
     }
 
 
@@ -31,18 +29,6 @@ public class Arquero extends Guerrero {
         return ((this.VIDA_INICIAL == vida) && (this.RANGO_VISION == rango)
                 && (this.DANIO_A_EDIFICIOS == danioEdificios) && (this.DANIO_A_UNIDADES == danioUnidades));
 
-    }
-
-    @Override
-    public void atacar(Unidad unidad){
-        unidad.restarVida(DANIO_A_UNIDADES);
-
-
-    }
-
-    @Override
-    public void atacar(Edificio edificio){
-        edificio.restarVida(DANIO_A_EDIFICIOS);
     }
 
 }

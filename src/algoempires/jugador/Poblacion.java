@@ -1,42 +1,35 @@
 package algoempires.jugador;
 
 import algoempires.entidad.unidad.Unidad;
-import algoempires.tablero.Posicion;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 public class Poblacion {
 
-    private HashMap<Posicion,Unidad> unidades;
+    private HashSet<Unidad> unidades;
     private final int MAXIMO_POBLACION=50;
 
     public Poblacion(){
 
-        unidades= new HashMap<>();
+        unidades = new HashSet<>();
     }
 
 
-    public void agregar(Posicion posicion, Unidad unidad){
+    public void agregar(Unidad unidad) {
 
-        if (unidades.size() >= MAXIMO_POBLACION) {
+        if (this.cantidadDeUnidades() >= MAXIMO_POBLACION) {
             throw new SeIntentoSuperarPoblacionMaximaException();
         }
 
-        unidades.put(posicion, unidad);
+        unidades.add(unidad);
     }
 
-    public void quitar(Posicion posicionDeLaUnidadAEliminar){
-        unidades.remove(posicionDeLaUnidadAEliminar);
-    }
-
-
-
-    public boolean seLlegoAlMaximo(){
-        return unidades.size()==50;
+    public void quitar(Unidad unidad) {
+        unidades.remove(unidad);
     }
 
     public void actualizarUnidades() {
-
+        unidades.forEach(unidad -> unidad.actualizarEntreTurnos());
     }
 
     public int cantidadDeUnidades() {

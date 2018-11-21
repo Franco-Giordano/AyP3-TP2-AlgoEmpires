@@ -34,4 +34,16 @@ public abstract class Edificio extends Entidad {
         this.sumarVida(this.VELOCIDAD_DE_REPARACION);
     }
 
+    @Override
+    public void restarVida(int vidaARestar) {
+
+        vida -= vidaARestar;
+
+        if (vida <= 0) {
+            jugadorPropietario.informarDestruccion(this);
+        }
+
+    }
+
+
 }

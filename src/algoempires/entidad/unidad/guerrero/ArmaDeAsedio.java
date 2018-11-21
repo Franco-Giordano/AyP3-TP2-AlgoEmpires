@@ -1,6 +1,5 @@
 package algoempires.entidad.unidad.guerrero;
 
-import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.PosicionInvalidaException;
@@ -48,12 +47,7 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
-    public void atacar(Edificio edificio) {
-        edificio.restarVida(DANIO_A_EDIFICIOS);
-    }
-
-    @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
     }
 
     public boolean tieneEstasCaracteristicas(int vida, int rangoAtaque, int turnosDeConstruccion, int danioAEdficios, boolean estaMontada) {

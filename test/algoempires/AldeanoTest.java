@@ -300,21 +300,19 @@ public class AldeanoTest {
 
         aldeano.reparar(cuartel);
 
-        aldeano.actualizarEntreTurnos(jugador);
+        aldeano.actualizarEntreTurnos();
 
         assertEquals(jugador.getOro(), 0);
     }
 
     @Test
     public void testAldeanoSumaOroSiEstaReparando() {
-
-        Jugador jugador = new Jugador(terreno);
-
+        
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        aldeano.actualizarEntreTurnos(jugador);
+        aldeano.actualizarEntreTurnos();
 
-        assertEquals(jugador.getOro(), 20);
+        assertEquals(jugadorDePrueba.getOro(), 20);
     }
 
     //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
@@ -338,18 +336,18 @@ public class AldeanoTest {
         jugador1.setContrincante(jugador2);
         jugador2.setContrincante(jugador1);
 
-        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
-        Aldeano aldeano2 = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano1 = new Aldeano(jugador1);
+        Aldeano aldeano2 = new Aldeano(jugador2);
 
         terreno.ocupar(new Posicion(3, 4), aldeano1);
         terreno.ocupar(new Posicion(5, 6), aldeano2);
 
-        aldeano1.actualizarEntreTurnos(jugador1);
+        aldeano1.actualizarEntreTurnos();
 
         assertEquals(jugador1.getOro(), 20);
         assertEquals(jugador2.getOro(), 0);
 
-        aldeano2.actualizarEntreTurnos(jugador2);
+        aldeano2.actualizarEntreTurnos();
 
         assertEquals(jugador1.getOro(), 20);
         assertEquals(jugador2.getOro(), 20);

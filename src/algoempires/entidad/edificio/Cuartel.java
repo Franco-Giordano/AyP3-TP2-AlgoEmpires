@@ -42,7 +42,7 @@ public class Cuartel extends Edificio {
 
 
     @Override
-    public void actualizarEntreTurnos(Jugador jugador) {
+    public void actualizarEntreTurnos() {
     }
 
 

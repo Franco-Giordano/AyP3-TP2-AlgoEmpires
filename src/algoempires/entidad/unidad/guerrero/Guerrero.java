@@ -15,8 +15,12 @@ public abstract class Guerrero extends Unidad {
         super(jugador);
     }
 
-    public abstract void atacar(Unidad unidad);
+    public void atacar(Unidad unidad) {
+        unidad.restarVida(DANIO_A_UNIDADES);
+    }
 
-    public abstract void atacar(Edificio edificio);
+    public void atacar(Edificio edificio) {
+        edificio.restarVida(DANIO_A_EDIFICIOS);
+    }
 
 }
