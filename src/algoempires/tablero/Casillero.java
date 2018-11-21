@@ -5,7 +5,7 @@ import algoempires.entidad.SoloEdificiosPuedenSerReparadosException;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
+import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 
 public class Casillero {
 
@@ -25,8 +25,8 @@ public class Casillero {
 
             Unidad unidadQueQuieroTrasladar = (Unidad) this.entidadContenida;
 
-            if (unidadQueQuieroTrasladar.seMovioEnEsteTurno()){
-                throw new UnidadYaMovioEnEsteTurnoException();
+            if (unidadQueQuieroTrasladar.sePuedeMover()) {
+                throw new UnidadNoPuedeMoverseException();
             }
 
             unidadQueQuieroTrasladar.seMovio();

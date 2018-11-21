@@ -56,5 +56,9 @@ public class ArmaDeAsedio extends Guerrero {
                 && (this.turnosDeConstruccion == turnosDeConstruccion));
     }
 
+    @Override
+    public boolean sePuedeMover() {
+        return !this.estaMontada && super.sePuedeMover();
+    }
 }
 

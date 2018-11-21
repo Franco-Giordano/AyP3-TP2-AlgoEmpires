@@ -194,8 +194,8 @@ public class ArqueroTest {
 
     /*
 
-    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    @Test(expected = UnidadNoPuedeMoverseException.class)
+    public void testArqueroSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
 
         Terreno terreno = new Terreno(10,10);
 

@@ -189,7 +189,7 @@ public class ArmaDeAsedioTest {
 
     /*
     @Test
-    public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    public void testArmaDeAsedioNoSeMueveSiEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -210,7 +210,7 @@ public class ArmaDeAsedioTest {
 
 
     @Test
-    public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    public void testArmaDeAsedioSeMueveSiNoEstaMontada() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -226,8 +226,8 @@ public class ArmaDeAsedioTest {
         assertFalse(armaDeAsedio.estaEnCasillero(new Posicion(2, 2)));
     }
 
-    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    @Test(expected = UnidadNoPuedeMoverseException.class)
+    public void testArmaDeAsedioSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
 
         Terreno terreno = new Terreno(10,10);
 

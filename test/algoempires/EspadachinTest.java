@@ -182,8 +182,8 @@ public class EspadachinTest {
     }
 
     /*
-    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
-    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadYaMovioEnEsteTurnoException {
+    @Test(expected = UnidadNoPuedeMoverseException.class)
+    public void testEspadachinSeMueveUnaSolaVezPorTurno() throws DimensionesInvalidasError, PosicionInvalidaException, UnidadNoPuedeMoverseException {
 
         Terreno terreno = new Terreno(10,10);
 

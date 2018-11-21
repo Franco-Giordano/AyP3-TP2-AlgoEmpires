@@ -3,7 +3,7 @@ package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.entidad.unidad.UnidadYaMovioEnEsteTurnoException;
+import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
@@ -307,7 +307,7 @@ public class AldeanoTest {
 
     @Test
     public void testAldeanoSumaOroSiEstaReparando() {
-        
+
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         aldeano.actualizarEntreTurnos();
@@ -316,7 +316,7 @@ public class AldeanoTest {
     }
 
     //TODO por ahora las unidades se pueden mover 2 veces, CORREGIR.
-    @Test(expected = UnidadYaMovioEnEsteTurnoException.class)
+    @Test(expected = UnidadNoPuedeMoverseException.class)
     public void testAldeanoSeMueveUnaSolaVezPorTurno() {
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
