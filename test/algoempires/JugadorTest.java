@@ -44,7 +44,7 @@ public class JugadorTest {
 
         jugadorDePrueba.atacar(arquero, new Posicion(3, 3));
 
-        assertTrue(cuartel.tieneEstaVida(240));
+        assertTrue(cuartel.tieneEstaVida((250/3) - 10));
     }
 
     @Test
@@ -91,7 +91,7 @@ public class JugadorTest {
 
         jugadorDePrueba.atacar(espadachin, new Posicion(2, 2));
 
-        assertTrue(cuartel.tieneEstaVida(235));
+        assertTrue(cuartel.tieneEstaVida(68));
     }
 
     @Test
@@ -138,7 +138,7 @@ public class JugadorTest {
 
         jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
 
-        assertTrue(cuartel.tieneEstaVida(175));
+        assertTrue(cuartel.tieneEstaVida(8));
     }
 
     @Test(expected = EntidadFueraDeRangoException.class)

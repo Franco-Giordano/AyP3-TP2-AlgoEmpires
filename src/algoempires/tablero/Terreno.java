@@ -234,5 +234,9 @@ public class Terreno {
     public Posicion encontrarInfIzq(Castillo castillo) {
         return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
     }
+
+    public int getVida(Posicion posicion) {
+        return mapa.get(posicion).getEntidadContenida().getVida();
+    }
 }
 

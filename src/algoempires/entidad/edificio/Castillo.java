@@ -12,7 +12,7 @@ import java.util.HashSet;
 
 public class Castillo extends Edificio implements Atacante {
 
-    private final int VIDA_INICIAL = 450;
+    private final int VIDA_MAXIMA = 450;
     private final int COSTO = 0;
     private final int DANIO_A_TODO = 20;
 
@@ -36,7 +36,7 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA_INICIAL;
+        return VIDA_MAXIMA;
     }
 
     @Override
@@ -59,6 +59,11 @@ public class Castillo extends Edificio implements Atacante {
 
     public boolean puedeVerA(Terreno terreno, Posicion posicionDeLaVictima) {
         return terreno.puedeEdificioVerA(this, posicionDeLaVictima);
+    }
+
+    @Override
+    protected int getVidaMaxima(){
+        return VIDA_MAXIMA;
     }
 
     @Override

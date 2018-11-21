@@ -7,7 +7,7 @@ import algoempires.tablero.PosicionInvalidaException;
 
 public class Cuartel extends Edificio {
 
-    private final int VIDA_INICIAL = 250;
+    private final int VIDA_MAXIMA = 250;
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
     private final int COSTO = 50;
 
@@ -30,7 +30,12 @@ public class Cuartel extends Edificio {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA_INICIAL;
+        return (VIDA_MAXIMA / getTurnosDeConstruccionInicial());
+    }
+
+    @Override
+    protected int getVidaMaxima(){
+        return VIDA_MAXIMA;
     }
 
     @Override
@@ -51,10 +56,5 @@ public class Cuartel extends Edificio {
     public void actualizarEntreTurnos() {
     }
 
-
-    //METODO DE TESTEO
-    public int getVidaActual() {
-        return this.vida;
-    }
 }
 

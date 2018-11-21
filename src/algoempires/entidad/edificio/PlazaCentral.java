@@ -5,7 +5,7 @@ import algoempires.jugador.Jugador;
 
 public class PlazaCentral extends Edificio {
 
-    private final int VIDA_INICIAL = 450;
+    private final int VIDA_MAXIMA = 450;
     private final int TURNOS_DE_CONSTRUCCION_INICIAL = 3;
     private final int COSTO = 100;
 
@@ -28,7 +28,12 @@ public class PlazaCentral extends Edificio {
 
     @Override
     protected int getVidaInicial() {
-        return VIDA_INICIAL;
+        return (VIDA_MAXIMA / getTurnosDeConstruccionInicial());
+    }
+
+    @Override
+    protected int getVidaMaxima(){
+        return VIDA_MAXIMA;
     }
 
     @Override

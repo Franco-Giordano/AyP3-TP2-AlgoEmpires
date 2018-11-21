@@ -1,8 +1,6 @@
 package algoempires.tablero;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.SoloEdificiosPuedenSerReparadosException;
-import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
@@ -61,17 +59,6 @@ public class Casillero {
         return this.entidadContenida.tieneEstaVida(vidaAComparar);
     }
 
-    public void reparar() {
-
-        try {
-            Edificio edificioAReparar = (Edificio) this.entidadContenida;
-
-            edificioAReparar.reparar();
-        } catch (ClassCastException exception) {
-            throw new SoloEdificiosPuedenSerReparadosException();
-        }
-    }
-
     public boolean estaOcupada() {
         return this.entidadContenida != null;
     }
@@ -79,7 +66,6 @@ public class Casillero {
     public Entidad getEntidadContenida() {
         return entidadContenida;
     }
-
 
     public boolean contieneA(Entidad entidad) {
         return this.entidadContenida == entidad;

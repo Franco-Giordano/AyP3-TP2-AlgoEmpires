@@ -59,7 +59,7 @@ public class CastilloTest {
         assertTrue(aldeano1.tieneEstaVida(30));
         assertTrue(aldeano2.tieneEstaVida(30));
         assertTrue(espadachin.tieneEstaVida(80));
-        assertTrue(cuartel.tieneEstaVida(230));
+        assertTrue(cuartel.tieneEstaVida(63));
 
     }
 

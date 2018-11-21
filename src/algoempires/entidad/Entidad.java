@@ -22,15 +22,7 @@ public abstract class Entidad {
 
     public abstract void actualizarEntreTurnos();
 
-    public void sumarVida(int vidaASumar) {
-        this.vida += vidaASumar;
-    }
-
     public abstract void restarVida(int vidaARestar);
-
-    public void cobrar(Monedero monedero) {
-        monedero.restarOro(COSTO);
-    }
 
     public int getRango() {
         return RANGO_VISION;
@@ -42,4 +34,8 @@ public abstract class Entidad {
     }
 
     public abstract void recibirAtaqueDe(Atacante atacante);
+
+    public int getVida() {
+        return vida;
+    }
 }

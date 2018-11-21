@@ -15,15 +15,15 @@ public class Aldeano extends Unidad {
 
     private final int COSTO = 25;
 
-    private boolean estaTrabajando;
+    Estado estadoActual;
 
     public Aldeano(Jugador jugador) throws PosicionInvalidaException {
 
         super(jugador);
 
-        this.estaTrabajando = false;
-
         RANGO_VISION = 1;
+
+        this.estadoActual = new EstadoRecolectandoOro(this);
     }
 
     @Override
@@ -38,31 +38,35 @@ public class Aldeano extends Unidad {
 
     public PlazaCentral construirPlazaCentral() throws PosicionInvalidaException {
 
-        estaTrabajando = true;
+        PlazaCentral plazaCentral = new PlazaCentral(jugadorPropietario);
 
-        return new PlazaCentral(jugadorPropietario);
+        this.estadoActual = new EstadoConstruyendo(this,plazaCentral);
+
+        return plazaCentral;
     }
 
     public Cuartel construirCuartel() throws PosicionInvalidaException {
 
-        estaTrabajando = true;
+        Cuartel cuartel = new Cuartel(jugadorPropietario);
 
-        return new Cuartel(jugadorPropietario);
+        this.estadoActual = new EstadoConstruyendo(this, cuartel);
+
+        return cuartel;
     }
 
-    public void reparar(Edificio edificioRecibido) {
+    public void ordenarReparacion(Edificio edificioRecibido) {
 
-        edificioRecibido.reparar();
+        this.estadoActual = new EstadoReparando(this, edificioRecibido);
 
-        this.estaTrabajando = true;
     }
 
     @Override
     public void actualizarEntreTurnos() {
         super.actualizarEntreTurnos();
-        if (!estaTrabajando) {
-            jugadorPropietario.sumarOro(ORO_GENERADO);
-        }
+        this.estadoActual = estadoActual.actualizarEntreTurnos();
     }
 
+    public void generarOro() {
+        jugadorPropietario.sumarOro(ORO_GENERADO);
+    }
 }

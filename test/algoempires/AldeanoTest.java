@@ -24,6 +24,7 @@ public class AldeanoTest {
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador(terreno);
+        jugadorDePrueba.sumarOro(1000);
     }
 
     @Test
@@ -214,21 +215,30 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoReparaUnCuartel() {
+    public void testAldeanoNoReparaUnCuartelConVidaLlena() {
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Cuartel cuartel = aldeano.construirCuartel();
 
+        aldeano.actualizarEntreTurnos();
+
+        aldeano.actualizarEntreTurnos();
+
+        aldeano.actualizarEntreTurnos();
+
         terreno.ocupar(new Posicion(1, 1), cuartel);
 
         terreno.ocupar(new Posicion(3, 3), aldeano);
 
-        aldeano.reparar(cuartel);
+        aldeano.ordenarReparacion(cuartel);
 
-        assertTrue(terreno.compararVidaDe(new Posicion(2, 2), 300));
+        aldeano.actualizarEntreTurnos();
+
+        assertEquals(terreno.getVida(new Posicion(1, 1)), 250);
 
     }
+
 
     @Test
     public void testAldeanoNoSumaOroMientrasRepara() {
@@ -243,7 +253,7 @@ public class AldeanoTest {
 
         terreno.ocupar(new Posicion(3, 3), cuartel);
 
-        aldeano.reparar(cuartel);
+        aldeano.ordenarReparacion(cuartel);
 
         aldeano.actualizarEntreTurnos();
 
@@ -257,7 +267,7 @@ public class AldeanoTest {
 
         aldeano.actualizarEntreTurnos();
 
-        assertEquals(jugadorDePrueba.getOro(), 95);
+        assertEquals(jugadorDePrueba.getOro(), 1095);
     }
 
     @Test(expected = UnidadNoPuedeMoverseException.class)
