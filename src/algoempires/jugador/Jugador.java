@@ -128,7 +128,7 @@ public class Jugador {
         return jugadorContrincante;
     }
 
-    private void actualizarEntreTurnos() {
+    public void actualizarEntreTurnos() {
         poblacion.actualizarUnidades();
         edificiosPropios.forEach((e) -> e.actualizarEntreTurnos());
     }

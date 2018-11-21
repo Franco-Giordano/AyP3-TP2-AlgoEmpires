@@ -2,6 +2,8 @@ package algoempires;
 
 import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.edificio.PlazaCentral;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedioNoPuedeAtacarUnidades;
 import algoempires.entidad.unidad.guerrero.Arquero;
@@ -13,6 +15,7 @@ import algoempires.tablero.Terreno;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class JugadorTest {
@@ -165,6 +168,31 @@ public class JugadorTest {
         terreno.ocupar(new Posicion(2, 2), aldeano);
 
         jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
+    }
+
+    @Test
+    public void matarAldeanosBajaLaProduccionDeOro(){
+
+        PlazaCentral plazaCentral = new PlazaCentral(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1,1),plazaCentral);
+
+        Posicion posicion = new Posicion(3,3);
+
+        jugadorDePrueba.crearAldeano(plazaCentral, posicion);
+
+        jugadorDePrueba.actualizarEntreTurnos();
+
+        assertEquals(jugadorDePrueba.getOro(), 9995);
+
+        jugadorDePrueba.informarDestruccion((Unidad)terreno.obtenerEntidadEnPosicion(new Posicion(1,3)));
+
+        jugadorDePrueba.actualizarEntreTurnos();
+
+        assertEquals(jugadorDePrueba.getOro(), 10015);
+
+
+
     }
 
 }

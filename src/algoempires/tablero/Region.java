@@ -98,7 +98,7 @@ public class Region {
     }
 
     private int getVerticalSup() {
-        return infIzquierdo.getVertical() + tamanioVertical;
+        return infIzquierdo.getVertical() + tamanioVertical - 1;
     }
 
     private int getVerticalInf() {
@@ -106,7 +106,7 @@ public class Region {
     }
 
     private int getHorizontalDer() {
-        return infIzquierdo.getHorizontal() + tamanioHorizontal;
+        return infIzquierdo.getHorizontal() + tamanioHorizontal - 1;
     }
 
     private int getHorizontalIzq() {
@@ -115,8 +115,8 @@ public class Region {
 
     private boolean contiene(Posicion posicion) {
 
-        Posicion supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal,
-                infIzquierdo.getVertical() + tamanioVertical);
+        Posicion supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
+                infIzquierdo.getVertical() + tamanioVertical - 1);
 
         return posicion.pertenzcoAlRango(infIzquierdo, supDerecho);
     }

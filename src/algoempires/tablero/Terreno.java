@@ -144,11 +144,14 @@ public class Terreno {
         Posicion posInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajo());
         Posicion posIzqInf = unaPosicionDeLaEntidad.generarMovimientoHacia(new DireccionAbajoIzquierda());
 
-        if (mapa.get(posInf).getEntidadContenida() != entidad && mapa.get(posIzq).getEntidadContenida() != entidad && mapa.get(posIzqInf).getEntidadContenida() != entidad) {
+        ArrayList<Posicion> posAFiltrar = new ArrayList<>(Arrays.asList(posInf, posIzq, posIzqInf));
+
+        posAFiltrar.removeIf(posicion -> !this.contienePosicion(posicion));
+
+        if (posAFiltrar.stream().allMatch(posicion -> mapa.get(posicion).getEntidadContenida() != entidad)) {
             return unaPosicionDeLaEntidad;
         }
 
-        ArrayList<Posicion> posAFiltrar = new ArrayList<>(Arrays.asList(posInf, posIzq, posIzqInf));
         ArrayList<Posicion> posConEntidad = filtrarPosicionesConEntidad(posAFiltrar, entidad);
 
         return encontrarInfIzqDeEntidad(this.seleccionarMenorModulo(posConEntidad));
