@@ -1,5 +1,6 @@
 package algoempires;
 
+import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedio;
 import algoempires.entidad.unidad.guerrero.ArmaDeAsedioNoPuedeAtacarUnidades;
@@ -59,6 +60,21 @@ public class JugadorTest {
         assertTrue(aldeano.tieneEstaVida(35));
     }
 
+    @Test(expected = EntidadFueraDeRangoException.class)
+    public void jugadorNoPuedeAtacarConArqueroPorDistanciaDeLaUnidadTest(){
+
+        Arquero arquero = new Arquero(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), arquero);
+
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(9, 9), aldeano);
+
+        jugadorDePrueba.atacar(arquero, new Posicion(9, 9));
+
+    }
+
     @Test
     public void jugadorAtacaBienConEspadachinAEdificios() {
 
@@ -91,6 +107,21 @@ public class JugadorTest {
         assertTrue(aldeano.tieneEstaVida(25));
     }
 
+    @Test(expected = EntidadFueraDeRangoException.class)
+    public void jugadorNoPuedeAtacarConEspadachinPorDistanciaDeLaUnidadTest(){
+
+        Espadachin espadachin = new Espadachin(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), espadachin);
+
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(3, 3), aldeano);
+
+        jugadorDePrueba.atacar(espadachin, new Posicion(3, 3));
+
+    }
+
     @Test
     public void jugadorAtacaBienConArmaDeAsedioAEdificios() {
 
@@ -105,6 +136,21 @@ public class JugadorTest {
         jugadorDePrueba.atacar(armaDeAsedio, new Posicion(2, 2));
 
         assertTrue(cuartel.tieneEstaVida(175));
+    }
+
+    @Test(expected = EntidadFueraDeRangoException.class)
+    public void jugadorNoPuedeAtacarConArmaDeAsedioPorDistanciaDeLEdificioTest(){
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(7, 7), cuartel);
+
+        jugadorDePrueba.atacar(armaDeAsedio, new Posicion(7, 7));
+
     }
 
     @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidades.class)
