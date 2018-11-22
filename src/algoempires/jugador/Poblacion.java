@@ -18,7 +18,7 @@ public class Poblacion {
 
     public void agregar(Unidad unidad) {
 
-        if (this.cantidadDeUnidades() >= MAXIMO_POBLACION) {
+        if (this.getCantidadDeHabitantes() >= MAXIMO_POBLACION) {
             throw new SeIntentoSuperarPoblacionMaximaException();
         }
 
@@ -33,7 +33,7 @@ public class Poblacion {
         unidades.forEach(unidad -> unidad.actualizarEntreTurnos());
     }
 
-    public int cantidadDeUnidades() {
+    public int getCantidadDeHabitantes() {
         return unidades.size();
     }
 

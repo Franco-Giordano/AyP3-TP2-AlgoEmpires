@@ -30,7 +30,7 @@ public class PoblacionTest {
 
         pueblo.agregar(new Aldeano(jugadorDePrueba));
 
-        assertEquals(pueblo.cantidadDeUnidades(), 1);
+        assertEquals(pueblo.getCantidadDeHabitantes(), 1);
     }
 
     @Test
@@ -40,11 +40,11 @@ public class PoblacionTest {
 
         pueblo.agregar(aldeano);
 
-        assertEquals(pueblo.cantidadDeUnidades(), 1);
+        assertEquals(pueblo.getCantidadDeHabitantes(), 1);
 
         pueblo.quitar(aldeano);
 
-        assertEquals(pueblo.cantidadDeUnidades(), 0);
+        assertEquals(pueblo.getCantidadDeHabitantes(), 0);
 
     }
 

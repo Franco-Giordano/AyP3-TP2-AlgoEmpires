@@ -243,6 +243,10 @@ public class Jugador {
     }
 
     public boolean tieneEstaCantidadDePropiedades(int cantPobladores, int cantEdificios) {
-        return poblacion.cantidadDeUnidades() == cantPobladores && edificiosPropios.size() == cantEdificios;
+        return poblacion.getCantidadDeHabitantes() == cantPobladores && edificiosPropios.size() == cantEdificios;
+    }
+
+    public int getCantidadDeHabitantes(){
+        return poblacion.getCantidadDeHabitantes();
     }
 }

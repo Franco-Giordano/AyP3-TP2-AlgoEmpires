@@ -331,4 +331,42 @@ public class JugadorTest {
 
         assertTrue(terreno.estaOcupada(new Posicion(5,5)));
     }
+
+    @Test
+    public void testSeQuitaUnidadMuertaDelaPoblacion(){
+
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),0);
+
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        Cuartel cuartel= aldeano.construirCuartel();
+        terreno.ocupar(new Posicion(6,6), cuartel);
+
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),1);
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),0);
+
+
+        Aldeano aldeanoEnemigo= new Aldeano(jugadorEnemigo);
+        Cuartel cuartelEnemigo= aldeanoEnemigo.construirCuartel();
+        terreno.ocupar(new Posicion(1,1), cuartelEnemigo);
+
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),1);
+
+        jugadorDePrueba.crearArquero(cuartel, new Posicion(5,5));
+        jugadorEnemigo.crearEspadachin(cuartelEnemigo, new Posicion(3,3));
+
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),2);
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),2);
+
+        Arquero arqueroAliado= (Arquero) terreno.obtenerEntidadEnPosicion(new Posicion(5,5));
+        Espadachin espadachinEnemigo= (Espadachin) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+
+        espadachinEnemigo.restarVida(99);
+
+        jugadorEnemigo.atacar(arqueroAliado, new Posicion(3,3));
+
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),1);
+
+
+
+    }
 }
