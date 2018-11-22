@@ -46,8 +46,8 @@ public class Interfaz extends Application {
 
         Jugador[] jugadores = juego.getJugadores();
 
-        jugadores[0].moverUnidad(new Posicion(5, 7), new DireccionArriba());
         jugadores[1].moverUnidad(new Posicion(7, 12), new DireccionAbajo());
+        jugadores[0].moverUnidad(new Posicion(5, 7), new DireccionArriba());
         jugadores[0].moverUnidad(new Posicion(4,6),new DireccionDerecha());
         jugadores[1].moverUnidad(new Posicion(8,13),new DireccionAbajoIzquierda());
         jugadores[0].crearAldeano((PlazaCentral)juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(3,8)),new Posicion(3,9));

@@ -30,7 +30,7 @@ public class CastilloTest {
     }
 
     @Test
-    public void testCastilloAtacaATodosEnRango() {
+    public void testCastilloAtacaATodosEnRangoMenosAliados() {
 
         Terreno terreno = new Terreno(10, 10);
 
@@ -55,12 +55,16 @@ public class CastilloTest {
         Cuartel cuartel = new Cuartel(jugadorEnemigo);
         terreno.ocupar(new Posicion(7, 7), cuartel);
 
+        Aldeano aldeanoAmigo = new Aldeano(jugador);
+        terreno.ocupar(new Posicion(1, 2), aldeanoAmigo);
+
         castillo.actualizarEntreTurnos();
 
         assertTrue(aldeano1.tieneEstaVida(30));
         assertTrue(aldeano2.tieneEstaVida(30));
         assertTrue(espadachin.tieneEstaVida(80));
         assertTrue(cuartel.tieneEstaVida(63));
+        assertTrue(aldeanoAmigo.tieneEstaVida(50));
 
     }
 

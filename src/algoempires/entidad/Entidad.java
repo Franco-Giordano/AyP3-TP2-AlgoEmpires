@@ -36,4 +36,8 @@ public abstract class Entidad {
     public int getVida() {
         return vida;
     }
+
+    public boolean esDelEquipo(Atacante atacante) {
+        return atacante.esDelEquipo(jugadorPropietario);
+    }
 }

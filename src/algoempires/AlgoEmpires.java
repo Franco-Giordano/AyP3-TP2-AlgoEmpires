@@ -52,6 +52,8 @@ public class AlgoEmpires {
 
         Posicion posPlaza = new Posicion(1, 6, desplazamiento);
         PlazaCentral plaza = new PlazaCentral(jugador);
+        plaza.sumarVida(300);
+
 
         Posicion posAld1 = new Posicion(2, 4, desplazamiento);
         Aldeano ald1 = new Aldeano(jugador);

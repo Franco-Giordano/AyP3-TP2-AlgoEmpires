@@ -194,9 +194,10 @@ public class Terreno {
                 castillo);
         rango.removeIf(pos -> !this.contienePosicion(pos));
 
-        for (Posicion each : rango) {
-            if (mapa.get(each).estaOcupada()) {
-                listaEntidades.add(mapa.get(each).getEntidadContenida());
+        for (Posicion posActual : rango) {
+            Entidad entidadActual = mapa.get(posActual).getEntidadContenida();
+            if (mapa.get(posActual).estaOcupada() && !entidadActual.esDelEquipo(castillo)) {
+                listaEntidades.add(entidadActual);
             }
         }
 

@@ -56,10 +56,6 @@ public class Casillero {
         this.entidadContenida = null;
     }
 
-    public boolean tieneEstaVida(int vidaAComparar) {
-        return this.entidadContenida.tieneEstaVida(vidaAComparar);
-    }
-
     public boolean estaOcupada() {
         return this.entidadContenida != null;
     }
