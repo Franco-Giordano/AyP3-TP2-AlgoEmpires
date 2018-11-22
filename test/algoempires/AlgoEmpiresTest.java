@@ -1,7 +1,7 @@
 package algoempires;
 
+import algoempires.excepciones.DimensionesInvalidasException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import org.junit.Test;
 
@@ -35,7 +35,7 @@ public class AlgoEmpiresTest {
 
     }
 
-    @Test(expected = DimensionesInvalidasError.class)
+    @Test(expected = DimensionesInvalidasException.class)
     public void testNosePermitenDimensionesChicas() {
         AlgoEmpires juego = new AlgoEmpires(13, 5);
     }

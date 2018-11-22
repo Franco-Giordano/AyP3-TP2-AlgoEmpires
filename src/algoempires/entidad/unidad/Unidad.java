@@ -2,9 +2,9 @@ package algoempires.entidad.unidad;
 
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
-import algoempires.entidad.NoSeToleraFuegoAmigoException;
+import algoempires.excepciones.NoSeToleraFuegoAmigoException;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.PosicionInvalidaException;
 
 
 public abstract class Unidad extends Entidad {

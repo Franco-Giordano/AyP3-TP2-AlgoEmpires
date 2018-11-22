@@ -1,6 +1,7 @@
 package algoempires.jugador;
 
 import algoempires.entidad.unidad.Unidad;
+import algoempires.excepciones.SeIntentoSuperarPoblacionMaximaException;
 
 import java.util.HashSet;
 

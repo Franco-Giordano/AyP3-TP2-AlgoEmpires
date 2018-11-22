@@ -2,9 +2,9 @@ package algoempires;
 
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.SeIntentoSuperarPoblacionMaximaException;
 import algoempires.jugador.Jugador;
 import algoempires.jugador.Poblacion;
-import algoempires.jugador.SeIntentoSuperarPoblacionMaximaException;
 import algoempires.tablero.Terreno;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package algoempires;
 
+import algoempires.excepciones.OroInsuficienteException;
 import algoempires.jugador.Monedero;
-import algoempires.jugador.OroInsuficienteException;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package algoempires.entidad.unidad.guerrero;
 
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.PosicionInvalidaException;
 
 public class Espadachin extends Guerrero {
 

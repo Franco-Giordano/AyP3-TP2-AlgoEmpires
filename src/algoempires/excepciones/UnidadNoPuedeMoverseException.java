@@ -1,4 +1,4 @@
-package algoempires.entidad.unidad;
+package algoempires.excepciones;
 
 public class UnidadNoPuedeMoverseException extends RuntimeException {
 

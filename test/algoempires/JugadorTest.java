@@ -1,8 +1,5 @@
 package algoempires;
 
-import algoempires.entidad.Entidad;
-import algoempires.entidad.EntidadFueraDeRangoException;
-import algoempires.entidad.NoSeToleraFuegoAmigoException;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
@@ -10,17 +7,17 @@ import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
-import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
+import algoempires.excepciones.EntidadFueraDeRangoException;
+import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class JugadorTest {
 
@@ -276,15 +273,15 @@ public class JugadorTest {
         Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
         terreno.ocupar(new Posicion(4,4), aldeanoAliado);
 
-        Cuartel cuartel= new Cuartel(jugadorDePrueba);
+        Cuartel cuartel = aldeanoAliado.construirCuartel();
+
         terreno.ocupar(new Posicion(5,5), cuartel);
 
-        cuartel.actualizarEntreTurnos();
-        cuartel.actualizarEntreTurnos();
-        cuartel.actualizarEntreTurnos();
-        cuartel.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
 
-        assertTrue(cuartel.tieneEstaVida(250));
+        assertEquals(cuartel.getVida(), 250);
 
         cuartel.restarVida(50);
 
@@ -303,26 +300,25 @@ public class JugadorTest {
         Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
         terreno.ocupar(new Posicion(4,4), aldeanoAliado);
 
-        PlazaCentral plazaCentral= new PlazaCentral(jugadorDePrueba);
+        PlazaCentral plazaCentral = aldeanoAliado.construirPlazaCentral();
+
         terreno.ocupar(new Posicion(5,5), plazaCentral);
 
-        plazaCentral.actualizarEntreTurnos();
-        plazaCentral.actualizarEntreTurnos();
-        plazaCentral.actualizarEntreTurnos();
-        plazaCentral.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
 
-        assertTrue(plazaCentral.tieneEstaVida(150));
+        assertEquals(plazaCentral.getVida(), 450);
 
         plazaCentral.restarVida(50);
 
-        assertTrue(plazaCentral.tieneEstaVida(100));
+        assertTrue(plazaCentral.tieneEstaVida(400));
 
-        //TODO esta es la misma prueba que la de arriba, acá tira SoloUnAldeanoReparaALaVezException. REVISAR
         jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5,5));
 
         aldeanoAliado.actualizarEntreTurnos();
 
-        assertTrue(plazaCentral.tieneEstaVida(150));
+        assertTrue(plazaCentral.tieneEstaVida(425));
     }
 
     @Test

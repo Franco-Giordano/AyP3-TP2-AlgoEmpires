@@ -2,19 +2,17 @@ package algoempires.jugador;
 
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
-import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.*;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 

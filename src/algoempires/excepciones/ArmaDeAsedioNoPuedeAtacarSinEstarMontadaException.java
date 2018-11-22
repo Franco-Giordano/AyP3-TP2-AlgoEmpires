@@ -1,4 +1,4 @@
-package algoempires.entidad.unidad.guerrero.armadeasedio;
+package algoempires.excepciones;
 
 public class ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException extends RuntimeException {
 

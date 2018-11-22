@@ -3,8 +3,8 @@ package algoempires;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.DimensionesInvalidasException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 
@@ -15,10 +15,10 @@ public class AlgoEmpires {
     private Jugador[] jugadores;
     private Terreno terrenoDeJuego;
 
-    public AlgoEmpires(int tamHorizontal, int tamVertical) throws DimensionesInvalidasError {
+    public AlgoEmpires(int tamHorizontal, int tamVertical) throws DimensionesInvalidasException {
 
         if (tamHorizontal < 13 || tamVertical < 13) {
-            throw new DimensionesInvalidasError("Para ubicar los bienes iniciales, el terreno debe ser de al menos 13x13 casilleros");
+            throw new DimensionesInvalidasException("Para ubicar los bienes iniciales, el terreno debe ser de al menos 13x13 casilleros");
         }
 
         this.terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);

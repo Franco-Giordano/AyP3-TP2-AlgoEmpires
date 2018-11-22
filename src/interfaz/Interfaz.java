@@ -1,4 +1,4 @@
-package Interfaz;
+package interfaz;
 
 import algoempires.AlgoEmpires;
 import algoempires.entidad.edificio.PlazaCentral;
@@ -31,7 +31,7 @@ public class Interfaz extends Application {
 
         Parent root = fxmlLoader.load();
 
-        Controlador controlador = (Controlador) fxmlLoader.getController();
+        Controlador controlador = fxmlLoader.getController();
 
         controlador.setJuego(juego);
 

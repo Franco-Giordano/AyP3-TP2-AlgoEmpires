@@ -1,9 +1,10 @@
 package algoempires.tablero;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.unidad.SoloUnidadesSePuedenDesplazarException;
 import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
+import algoempires.excepciones.PosicionInvalidaException;
+import algoempires.excepciones.SoloUnidadesSePuedenDesplazarException;
+import algoempires.excepciones.UnidadNoPuedeMoverseException;
 
 public class Casillero {
 

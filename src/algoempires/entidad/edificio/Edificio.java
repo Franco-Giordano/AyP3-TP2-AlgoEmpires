@@ -2,10 +2,10 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
-import algoempires.entidad.NoSeToleraFuegoAmigoException;
+import algoempires.excepciones.NoSeToleraFuegoAmigoException;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Region;
 
 public abstract class Edificio extends Entidad {

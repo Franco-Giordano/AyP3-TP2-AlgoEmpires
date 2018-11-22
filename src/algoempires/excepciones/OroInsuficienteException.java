@@ -1,4 +1,4 @@
-package algoempires.jugador;
+package algoempires.excepciones;
 
 public class OroInsuficienteException extends RuntimeException {
 

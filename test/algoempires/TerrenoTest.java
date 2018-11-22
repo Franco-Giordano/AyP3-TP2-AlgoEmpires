@@ -4,10 +4,10 @@ import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.DimensionesInvalidasException;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.DimensionesInvalidasError;
 import algoempires.tablero.Posicion;
-import algoempires.tablero.PosicionInvalidaException;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionArriba;
@@ -28,7 +28,7 @@ public class TerrenoTest {
     }
 
     @Test
-    public void testTerrenoAsignaBienElTamanio() throws DimensionesInvalidasError {
+    public void testTerrenoAsignaBienElTamanio() throws DimensionesInvalidasException {
 
         Terreno terreno = new Terreno(5, 4);
 
@@ -36,15 +36,15 @@ public class TerrenoTest {
         assertEquals(terreno.getTamVertical(), 4);
     }
 
-    @Test(expected = DimensionesInvalidasError.class)
-    public void testTerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasError {
+    @Test(expected = DimensionesInvalidasException.class)
+    public void testTerrenoNoAceptaDimensionesNegativas() throws DimensionesInvalidasException {
 
         new Terreno(-1, 4);
 
     }
 
     @Test
-    public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasException, PosicionInvalidaException {
         Terreno terreno = new Terreno(2, 2);
 
         terreno.ocupar(new Posicion(2, 2), new Aldeano(jugadorDePrueba));
@@ -58,7 +58,7 @@ public class TerrenoTest {
     }
 
     @Test
-    public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasError, PosicionInvalidaException {
+    public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasException, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(3, 3);
 
@@ -86,7 +86,7 @@ public class TerrenoTest {
     }
 
     @Test(expected = PosicionInvalidaException.class)
-    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasError {
+    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasException {
         Terreno terreno = new Terreno(3, 20);
 
         terreno.ocupar(new Posicion(1, 5), new Castillo(jugadorDePrueba));

@@ -1,4 +1,4 @@
-package algoempires.tablero;
+package algoempires.excepciones;
 
 public class PosicionInvalidaException extends RuntimeException {
 

@@ -4,8 +4,8 @@ import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.PosicionInvalidaException;
 
 public class Aldeano extends Unidad {
 

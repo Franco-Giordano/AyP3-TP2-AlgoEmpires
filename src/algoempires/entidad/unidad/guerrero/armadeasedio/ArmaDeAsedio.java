@@ -3,8 +3,10 @@ package algoempires.entidad.unidad.guerrero.armadeasedio;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Guerrero;
+import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException;
+import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.PosicionInvalidaException;
 
 
 public class ArmaDeAsedio extends Guerrero {

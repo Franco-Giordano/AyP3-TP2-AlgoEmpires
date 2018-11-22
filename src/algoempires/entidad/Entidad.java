@@ -4,7 +4,6 @@ import algoempires.jugador.Jugador;
 
 public abstract class Entidad {
 
-    protected int COSTO;
     protected int RANGO_VISION;
     protected int vida;
     protected Jugador jugadorPropietario;

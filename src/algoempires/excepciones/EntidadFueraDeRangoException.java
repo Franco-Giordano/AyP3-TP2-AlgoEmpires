@@ -1,4 +1,4 @@
-package algoempires.entidad;
+package algoempires.excepciones;
 
 public class EntidadFueraDeRangoException extends RuntimeException {
     public EntidadFueraDeRangoException() {

@@ -2,8 +2,8 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.PosicionInvalidaException;
 
 public class Cuartel extends Edificio {
 
@@ -56,7 +56,6 @@ public class Cuartel extends Edificio {
     public void actualizarEntreTurnos() {
 
         //TODO si le sacamos este metodo el cuartel no se construye bien por algun motivo... Se construye con 83 de vida.
-        this.continuarConstruccion();
     }
 
 }

@@ -88,14 +88,6 @@ public class Region {
         return posicionesContenidas;
     }
 
-    public ArrayList<Posicion> generarPosicionesOcupadasContenidas(Terreno terreno) {
-
-        ArrayList<Posicion> posiciones = this.generarPosicionesContenidas();
-        posiciones.removeIf(posicion -> !terreno.estaOcupada(posicion));
-
-        return posiciones;
-    }
-
     private int getVerticalSup() {
         return infIzquierdo.getVertical() + tamanioVertical - 1;
     }

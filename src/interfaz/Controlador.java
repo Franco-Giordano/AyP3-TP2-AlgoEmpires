@@ -1,4 +1,4 @@
-package Interfaz;
+package interfaz;
 
 import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
@@ -11,7 +11,10 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;

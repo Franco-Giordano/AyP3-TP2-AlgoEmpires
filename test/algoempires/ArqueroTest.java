@@ -1,8 +1,8 @@
 package algoempires;
 
-import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;

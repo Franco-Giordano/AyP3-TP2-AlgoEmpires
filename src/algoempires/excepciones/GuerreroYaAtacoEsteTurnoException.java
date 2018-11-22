@@ -1,4 +1,4 @@
-package algoempires.entidad.unidad.guerrero;
+package algoempires.excepciones;
 
 public class GuerreroYaAtacoEsteTurnoException extends RuntimeException {
 

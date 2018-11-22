@@ -3,6 +3,7 @@ package algoempires.entidad.unidad.guerrero;
 import algoempires.entidad.Atacante;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.excepciones.GuerreroYaAtacoEsteTurnoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;

@@ -1,7 +1,7 @@
 package algoempires;
 
-import algoempires.entidad.unidad.UnidadNoPuedeMoverseException;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
+import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -189,6 +189,34 @@ public class ArmaDeAsedioTest {
 
         terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
 
+    }
+
+    @Test
+    public void testArmaDeAsedioSeMueveLuegoDeDesmontarse() {
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
+
+        armaDeAsedio.montar();
+
+        assertFalse(armaDeAsedio.sePuedeMover()); //por estar en transicion
+
+        jugadorDePrueba.actualizarEntreTurnos();
+
+        assertFalse(armaDeAsedio.sePuedeMover()); //por estar montada
+
+        armaDeAsedio.desmontar();
+
+        jugadorDePrueba.actualizarEntreTurnos();
+
+        assertTrue(armaDeAsedio.sePuedeMover());
+
+        terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
+
+
+        assertTrue(terreno.estaOcupada(new Posicion(1, 2)));
+        assertFalse(terreno.estaOcupada(new Posicion(1, 1)));
     }
 
 

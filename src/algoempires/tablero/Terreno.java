@@ -4,6 +4,8 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.excepciones.DimensionesInvalidasException;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionAbajoIzquierda;
@@ -20,10 +22,10 @@ public class Terreno {
     private Posicion limiteInfIzq;
     private Posicion limiteSupDer;
 
-    public Terreno(int tamanioHorizontal, int tamanioVertical) throws DimensionesInvalidasError {
+    public Terreno(int tamanioHorizontal, int tamanioVertical) throws DimensionesInvalidasException {
 
         if (tamanioHorizontal <= 0 || tamanioVertical <= 0) {
-            throw new DimensionesInvalidasError(tamanioHorizontal, tamanioVertical);
+            throw new DimensionesInvalidasException(tamanioHorizontal, tamanioVertical);
         }
 
         this.limiteInfIzq = new Posicion(1, 1);
@@ -184,36 +186,6 @@ public class Terreno {
         return resultado;
     }
 
-    //METODOS DE TESTEO
-    public boolean compararVidaDe(Posicion posicionAConstruir, int vidaAComparar) {
-        return mapa.get(posicionAConstruir).tieneEstaVida(vidaAComparar);
-
-    }
-
-    public int getTamHorizontal() {
-        return limiteSupDer.getHorizontal();
-    }
-
-    public int getTamVertical() {
-        return limiteSupDer.getVertical();
-    }
-
-    public void remover(Entidad entidad) {
-
-        mapa.forEach((k, v) -> {
-            if (v.contieneA(entidad)) {
-                v.desocupar();
-            }
-        });
-    }
-
-    public Entidad obtenerEntidadEnPosicion(Posicion posicion) {
-
-        return mapa.get(posicion).getEntidadContenida();
-
-    }
-
-
     public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
 
         HashSet<Entidad> listaEntidades = new HashSet<>();
@@ -231,9 +203,35 @@ public class Terreno {
         return listaEntidades;
     }
 
+    public void remover(Entidad entidad) {
+
+        mapa.forEach((k, v) -> {
+            if (v.contieneA(entidad)) {
+                v.desocupar();
+            }
+        });
+    }
+
     public Posicion encontrarInfIzq(Castillo castillo) {
         return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
     }
+
+    //METODOS DE TESTEO
+
+    public int getTamHorizontal() {
+        return limiteSupDer.getHorizontal();
+    }
+
+    public int getTamVertical() {
+        return limiteSupDer.getVertical();
+    }
+
+    public Entidad obtenerEntidadEnPosicion(Posicion posicion) {
+
+        return mapa.get(posicion).getEntidadContenida();
+
+    }
+
 
     public int getVida(Posicion posicion) {
         return mapa.get(posicion).getEntidadContenida().getVida();

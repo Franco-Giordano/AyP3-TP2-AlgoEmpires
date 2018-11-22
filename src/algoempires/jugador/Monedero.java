@@ -1,5 +1,7 @@
 package algoempires.jugador;
 
+import algoempires.excepciones.OroInsuficienteException;
+
 public class Monedero {
 
     private final int ORO_INICIAL = 100;
