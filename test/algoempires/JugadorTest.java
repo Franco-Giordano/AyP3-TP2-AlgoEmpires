@@ -1,7 +1,9 @@
 package algoempires;
 
+import algoempires.entidad.Entidad;
 import algoempires.entidad.EntidadFueraDeRangoException;
 import algoempires.entidad.NoSeToleraFuegoAmigoException;
+import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
@@ -17,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class JugadorTest {
@@ -231,4 +234,77 @@ public class JugadorTest {
         jugadorDePrueba.atacar(espadachin, new Posicion(2, 2));
     }
 
+    @Test
+    public void testJugadorCreaPlazaCentralCorrectamente(){
+
+        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4,4), aldeano);
+        Posicion posicionDeLaPlaza= new Posicion(5,5);
+
+        assertFalse(terreno.estaOcupada(posicionDeLaPlaza));
+        assertFalse(terreno.estaOcupada(new Posicion(6,6)));
+        assertFalse(terreno.estaOcupada(new Posicion(5,6)));
+
+        jugadorDePrueba.crearPlazaCentral(aldeano, posicionDeLaPlaza);
+
+        assertTrue(terreno.estaOcupada(posicionDeLaPlaza));
+        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+    }
+
+    @Test
+    public void testJugadorCreaCuartelCorrectamente(){
+
+        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4,4), aldeano);
+
+
+        assertFalse(terreno.estaOcupada(new Posicion(5,5)));
+        assertFalse(terreno.estaOcupada(new Posicion(6,6)));
+        assertFalse(terreno.estaOcupada(new Posicion(5,6)));
+
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(5,5));
+
+        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+    }
+
+    @Test
+    public void testEdificioSeReparaCorrectamente(){
+
+        Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4,4), aldeanoAliado);
+
+        Cuartel cuartel= new Cuartel(jugadorDePrueba);
+        terreno.ocupar(new Posicion(5,5), cuartel);
+
+        cuartel.actualizarEntreTurnos();
+        cuartel.actualizarEntreTurnos();
+        cuartel.actualizarEntreTurnos();
+        cuartel.actualizarEntreTurnos();
+
+        assertTrue(cuartel.tieneEstaVida(250));
+
+        cuartel.restarVida(50);
+
+        assertTrue(cuartel.tieneEstaVida(200));
+
+        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5,5));
+
+        aldeanoAliado.actualizarEntreTurnos();
+
+        assertTrue(cuartel.tieneEstaVida(250));
+    }
+
+    @Test
+    public void testCrearArmaDeAsedioCorrectamente(){
+
+        Castillo castillo= new Castillo(jugadorDePrueba);
+        terreno.ocupar(new Posicion(1,1), castillo);
+
+        jugadorDePrueba.crearArmaDeAsedio(castillo, new Posicion(5,5));
+
+        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+    }
 }

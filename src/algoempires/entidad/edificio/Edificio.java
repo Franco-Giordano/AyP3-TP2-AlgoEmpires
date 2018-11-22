@@ -75,6 +75,7 @@ public abstract class Edificio extends Entidad {
     public void continuarConstruccion() {
         this.turnosDeConstruccion--;
         this.sumarVida(getVidaInicial());
+
         if (this.tieneVidaLlena()) {
             this.vida = getVidaMaxima();
             this.estaEnReparacion = false;

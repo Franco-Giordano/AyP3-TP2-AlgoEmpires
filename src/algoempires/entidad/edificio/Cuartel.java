@@ -54,6 +54,7 @@ public class Cuartel extends Edificio {
 
     @Override
     public void actualizarEntreTurnos() {
+        this.continuarConstruccion();
     }
 
 }
