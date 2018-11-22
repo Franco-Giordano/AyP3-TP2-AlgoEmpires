@@ -4,16 +4,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.Controlador">
-   <center>
-      <GridPane fx:id="pane" onScroll="#crearCasilleros">
-</GridPane>
-   </center>
-   <bottom>
-      <TextArea fx:id="textArea" editable="false" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font></TextArea>
-   </bottom>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="Interfaz.Controlador">
+    <center>
+        <GridPane fx:id="pane" onScroll="#crearCasilleros">
+        </GridPane>
+    </center>
+    <bottom>
+        <TextArea fx:id="textArea" editable="false" prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </TextArea>
+    </bottom>
+    <top>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Scroll actualiza el terreno, Click sobre un casillero proporciona info."
+              BorderPane.alignment="CENTER">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Text>
+    </top>
 </BorderPane>
