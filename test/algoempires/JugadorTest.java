@@ -298,6 +298,34 @@ public class JugadorTest {
     }
 
     @Test
+    public void testPlazaSeReparaCorrectamente(){
+
+        Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4,4), aldeanoAliado);
+
+        PlazaCentral plazaCentral= new PlazaCentral(jugadorDePrueba);
+        terreno.ocupar(new Posicion(5,5), plazaCentral);
+
+        plazaCentral.actualizarEntreTurnos();
+        plazaCentral.actualizarEntreTurnos();
+        plazaCentral.actualizarEntreTurnos();
+        plazaCentral.actualizarEntreTurnos();
+
+        assertTrue(plazaCentral.tieneEstaVida(150));
+
+        plazaCentral.restarVida(50);
+
+        assertTrue(plazaCentral.tieneEstaVida(100));
+
+        //TODO esta es la misma prueba que la de arriba, acá tira SoloUnAldeanoReparaALaVezException. REVISAR
+        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5,5));
+
+        aldeanoAliado.actualizarEntreTurnos();
+
+        assertTrue(plazaCentral.tieneEstaVida(150));
+    }
+
+    @Test
     public void testCrearArmaDeAsedioCorrectamente(){
 
         Castillo castillo= new Castillo(jugadorDePrueba);
