@@ -13,6 +13,7 @@ import java.util.Random;
 public class AlgoEmpires {
 
     private Jugador[] jugadores;
+    private Terreno terrenoDeJuego;
 
     public AlgoEmpires(int tamHorizontal, int tamVertical) throws DimensionesInvalidasError {
 
@@ -20,7 +21,7 @@ public class AlgoEmpires {
             throw new DimensionesInvalidasError("Para ubicar los bienes iniciales, el terreno debe ser de al menos 13x13 casilleros");
         }
 
-        Terreno terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);
+        this.terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);
 
         Jugador jugador1 = new Jugador(terrenoDeJuego);
         Jugador jugador2 = new Jugador(terrenoDeJuego);
@@ -96,4 +97,7 @@ public class AlgoEmpires {
         return jugadores;
     }
 
+    public Terreno getTerreno() {
+        return terrenoDeJuego;
+    }
 }
