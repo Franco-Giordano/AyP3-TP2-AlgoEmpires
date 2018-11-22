@@ -54,6 +54,8 @@ public class Cuartel extends Edificio {
 
     @Override
     public void actualizarEntreTurnos() {
+
+        //TODO si le sacamos este metodo el cuartel no se construye bien por algun motivo... Se construye con 83 de vida.
         this.continuarConstruccion();
     }
 

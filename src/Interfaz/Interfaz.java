@@ -23,7 +23,6 @@ public class Interfaz extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        //TODO si ponés (15, 15), (14,16). (16,14) u otros, rompe, no se como cajajo funciona esto. Milagrosamente el (13,16), anda... AUXILIO
         this.juego = new AlgoEmpires(13,16);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VistaInterfaz.fxml"));
