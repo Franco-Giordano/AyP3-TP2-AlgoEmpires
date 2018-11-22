@@ -4,14 +4,14 @@ import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -26,6 +26,12 @@ public class Controlador {
     @FXML
     TextArea textArea;
     private AlgoEmpires juego;
+    @FXML
+    Text textoJugador1;
+    @FXML
+    Text textoJugador2;
+    @FXML
+    VBox vBox;
 
     public void initialize() {
 
@@ -37,6 +43,7 @@ public class Controlador {
 
         textArea.centerShapeProperty();
 
+        vBox.setBackground(Background.EMPTY);
 
     }
 
@@ -56,6 +63,11 @@ public class Controlador {
         Text posicion = new Text(String.format("%d,%d", i + 1, j + 1));
         StackPane stack = new StackPane();
         stack.getChildren().addAll(rectangulo, posicion);
+
+        Jugador[] jugadores = juego.getJugadores();
+
+        textoJugador1.setText("Jugador 1 Oro: " + jugadores[0].getOro());
+        textoJugador2.setText("Jugador 2 Oro: " + jugadores[1].getOro());
 
         if (juego.getTerreno().estaOcupada(new Posicion(i + 1, j + 1))) {
             rectangulo.setStroke(Color.DARKRED);
@@ -90,6 +102,10 @@ public class Controlador {
 
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
+        Jugador[] jugadores = juego.getJugadores();
+
+        textoJugador1.setText("Jugador 1 Oro: " + jugadores[0].getOro());
+        textoJugador2.setText("Jugador 2 Oro: " + jugadores[1].getOro());
     }
 
 }
