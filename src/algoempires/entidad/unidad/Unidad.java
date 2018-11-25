@@ -11,7 +11,7 @@ import algoempires.tablero.Casillero;
 public abstract class Unidad extends Entidad {
 
     private boolean movioEsteTurno;
-    private Casillero casilleroQueLaContiene;
+    protected Casillero casilleroQueLaContiene;
 
     public Unidad(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);

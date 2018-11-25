@@ -86,7 +86,7 @@ public class TerrenoTest {
     }
 
     @Test(expected = PosicionInvalidaException.class)
-    public void testNoSePuedeUbicarEdificioFueraDeTerreno() throws PosicionInvalidaException, DimensionesInvalidasException {
+    public void testNoSePuedeUbicarEdificioFueraDeTerreno() {
         Terreno terreno = new Terreno(3, 20);
 
         terreno.ocupar(new Posicion(1, 5), new Castillo(jugadorDePrueba));

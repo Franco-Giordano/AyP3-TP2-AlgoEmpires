@@ -33,7 +33,7 @@ public abstract class Edificio extends Entidad {
 
     protected abstract int getTurnosDeConstruccionInicial();
 
-    public Region generarRegionAPartirDePosicion(ArrayList<Casillero> casillerosAOcupar) {
+    public Region generarRegion(ArrayList<Casillero> casillerosAOcupar) {
 
         return new Region(this, casillerosAOcupar);
 
