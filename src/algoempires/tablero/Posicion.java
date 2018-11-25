@@ -37,7 +37,7 @@ public class Posicion {
 
     }
 
-    public boolean pertenzcoAlRango(Posicion limiteInfIzq, Posicion limiteSupDer) {
+    public boolean pertenezcoAlRango(Posicion limiteInfIzq, Posicion limiteSupDer) {
 
         boolean estaEnRangoVertical = limiteInfIzq.getVertical() <= posVertical &&
                 posVertical <= limiteSupDer.getVertical();
@@ -68,5 +68,13 @@ public class Posicion {
 
     public double getModulo() {
         return Math.sqrt(Math.pow(posHorizontal, 2) + Math.pow(posVertical, 2));
+    }
+
+    public boolean esMayorQue(Posicion maximoBuscado) {
+        return (this.posHorizontal>maximoBuscado.getHorizontal() && this.posVertical>maximoBuscado.getVertical());
+    }
+
+    public boolean esMenorQue(Posicion minimoBuscado) {
+        return (this.posHorizontal<minimoBuscado.getHorizontal() && this.posVertical<minimoBuscado.getVertical());
     }
 }

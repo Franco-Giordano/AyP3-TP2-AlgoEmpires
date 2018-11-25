@@ -71,4 +71,16 @@ public class Casillero {
     public void vaciar() {
         this.entidadContenida=null;
     }
+
+    public boolean tieneCoordenadasMayoresA(Posicion maximoBuscado){
+        return this.posicion.esMayorQue(maximoBuscado);
+    }
+
+    public Posicion getPosicion() {
+        return posicion;
+    }
+
+    public boolean tieneCoordenadasMenoresA(Posicion minimoBuscado) {
+        return this.posicion.esMenorQue(minimoBuscado);
+    }
 }

@@ -22,6 +22,10 @@ public abstract class Entidad {
 
     public abstract void restarVida(int vidaARestar);
 
+    public boolean seMurioAlRecibirAtaque(){
+        return vida <= 0;
+    }
+
     public int getRango() {
         return RANGO_VISION;
     }

@@ -28,7 +28,7 @@ public abstract class Unidad extends Entidad {
 
         vida -= vidaARestar;
 
-        if (vida <= 0) {
+        if (this.seMurioAlRecibirAtaque()) {
             casilleroQueLaContiene.vaciar();
             jugadorPropietario.quitarDePoblacion(this);
         }

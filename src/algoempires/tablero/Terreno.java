@@ -99,17 +99,9 @@ public class Terreno {
     }
 
     public void ocupar(Posicion posicionInfIzq, Edificio edificio) throws PosicionInvalidaException {
-
-        ArrayList<Posicion> posicionesAOcupar = edificio.generarRegionAPartirDePosicion(posicionInfIzq).generarPosicionesContenidas();
-
-        Region regionOcupada = edificio.generarRegionAPartirDePosicion(posicionInfIzq);
-
-        edificio.informarRegionOcupada(regionOcupada);
-
-        for (Posicion each : posicionesAOcupar) {
-            this.ocuparConEntidad(each, edificio);
-        }
+        edificio.generarRegionAPartirDePosicion(this.generarCasillerosOcupadosPor(edificio, posicionInfIzq));
     }
+
 
     public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
 
@@ -117,7 +109,7 @@ public class Terreno {
 
         Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosDelEdificio);
 
-        Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
+        Region regionOcupada = edificio.generarRegionAPartirDePosicion(this.generarCasillerosOcupadosPor(edificio, posicionQueQuieroVer));
 
         return Rango.generarPosicionesVisiblesPor(regionOcupada, edificio).contains(posicionQueQuieroVer);
 
@@ -197,7 +189,7 @@ public class Terreno {
 
         HashSet<Entidad> listaEntidades = new HashSet<>();
         Posicion posicionInfIzq = this.encontrarInfIzq(castillo);
-        ArrayList<Posicion> rango = Rango.generarPosicionesVisiblesPor(castillo.generarRegionAPartirDePosicion(posicionInfIzq),
+        ArrayList<Posicion> rango = Rango.generarPosicionesVisiblesPor(castillo.generarRegionAPartirDePosicion(this.generarCasillerosOcupadosPor(castillo, posicionInfIzq)),
                 castillo);
         rango.removeIf(pos -> !this.contienePosicion(pos));
 
@@ -224,9 +216,31 @@ public class Terreno {
         return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
     }
 
+    public ArrayList<Posicion> generarPosicionesContenidas(Edificio edificio, Posicion posicion){
+
+        Posicion infIzquierdo=this.encontrarInfIzqDeEntidad(posicion);
+
+        int tamanioHorizontal= infIzquierdo.getHorizontal() + edificio.getTamanioHorizontal();
+
+        int tamanioVertical= infIzquierdo.getVertical() + edificio.getTamanioVertical();
+
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
+
+        for (int i = 0; i < tamanioHorizontal; i++) {
+            for (int j = 0; j < tamanioVertical; j++) {
+                Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
+                        j + infIzquierdo.getVertical());
+                posicionesContenidas.add(posicionContenido);
+
+            }
+        }
+
+        return posicionesContenidas;
+    }
+
     public ArrayList<Casillero> generarCasillerosOcupadosPor(Edificio edificio, Posicion posicion) {
 
-        ArrayList<Posicion> posicionesContenidas = edificio.generarRegionAPartirDePosicion(posicion).generarPosicionesContenidas();
+        ArrayList<Posicion> posicionesContenidas = this.generarPosicionesContenidas(edificio, posicion);
 
         ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
 

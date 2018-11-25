@@ -102,4 +102,12 @@ public abstract class Edificio extends Entidad {
     public void informarRegionOcupada(Region regionOcupada) {
         this.regionQueLoContiene = regionOcupada;
     }
+
+    public int getTamanioHorizontal(){
+        return TAMANIO_HORIZONTAL;
+    }
+
+    public int getTamanioVertical(){
+        return TAMANIO_VERTICAL;
+    }
 }

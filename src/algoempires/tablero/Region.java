@@ -1,15 +1,12 @@
 package algoempires.tablero;
 
 import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
 
 import java.util.ArrayList;
 
 public class Region {
 
-    private Posicion infIzquierdo;
-    private int tamanioHorizontal;
-    private int tamanioVertical;
+
     private ArrayList<Casillero> casillerosQueContengo;
 
     public Region(Edificio edificio, ArrayList<Casillero> casillerosContenidos) {
@@ -22,46 +19,58 @@ public class Region {
 
     }
 
-    public ArrayList<Posicion> generarPosicionesContenidas() {
+    public Posicion getPosicionSuperiorDerecha(){
 
-        //Porque lo consideramos en un supuesto, la posición es la inferior izquierda.
-
-        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
-
-        for (int i = 0; i < tamanioHorizontal; i++) {
-            for (int j = 0; j < tamanioVertical; j++) {
-                Posicion posicionContenido = new Posicion(i + infIzquierdo.getHorizontal(),
-                        j + infIzquierdo.getVertical());
-                posicionesContenidas.add(posicionContenido);
-
+        Posicion maximoBuscado= new Posicion(0,0);
+        for(Casillero casilleroActual: casillerosQueContengo){
+            if(casilleroActual.tieneCoordenadasMayoresA(maximoBuscado)){
+                maximoBuscado=casilleroActual.getPosicion();
             }
         }
 
-        return posicionesContenidas;
+        return maximoBuscado;
     }
 
-    protected int getVerticalSup() {
-        return infIzquierdo.getVertical() + tamanioVertical - 1;
+    public Posicion getPosicionInferiorIzquierda(){
+
+        Posicion minimoBuscado= this.getPosicionSuperiorDerecha();
+
+        for(Casillero casilleroActual: casillerosQueContengo){
+            if(casilleroActual.tieneCoordenadasMenoresA(minimoBuscado)){
+                minimoBuscado=casilleroActual.getPosicion();
+            }
+        }
+        return minimoBuscado;
     }
 
-    protected int getVerticalInf() {
-        return infIzquierdo.getVertical();
+    public int getTamanioHorizontal(){
+        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
+        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+
+        return supDerecho.getHorizontal()-infIzquierdo.getHorizontal();
     }
 
-    protected int getHorizontalDer() {
-        return infIzquierdo.getHorizontal() + tamanioHorizontal - 1;
+    public int getTamanioVertical(){
+        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
+        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+
+        return supDerecho.getVertical()-infIzquierdo.getVertical();
     }
 
-    protected int getHorizontalIzq() {
-        return infIzquierdo.getHorizontal();
-    }
 
-    protected boolean contiene(Posicion posicion) {
 
-        Posicion supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
+    public boolean contiene(Posicion posicion) {
+
+        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
+        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+
+        int tamanioHorizontal= this.getTamanioHorizontal();
+        int tamanioVertical= this.getTamanioVertical();
+
+        supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
                 infIzquierdo.getVertical() + tamanioVertical - 1);
 
-        return posicion.pertenzcoAlRango(infIzquierdo, supDerecho);
+        return posicion.pertenezcoAlRango(infIzquierdo, supDerecho);
     }
 
 
@@ -69,5 +78,25 @@ public class Region {
         for(Casillero casilleroActual : casillerosQueContengo){
             casilleroActual.vaciar();
         }
+    }
+
+
+
+    public int getHorizontalIzq() {
+        return this.getPosicionInferiorIzquierda().getHorizontal();
+    }
+
+    public int getHorizontalDer() {
+        return this.getPosicionInferiorIzquierda().getHorizontal()+ this.getTamanioHorizontal();
+    }
+
+
+    public int getVerticalInf() {
+        return this.getPosicionInferiorIzquierda().getVertical();
+    }
+
+
+    public int getVerticalSup() {
+        return this.getPosicionInferiorIzquierda().getVertical()+ this.getTamanioVertical();
     }
 }
