@@ -110,4 +110,8 @@ public abstract class Edificio extends Entidad {
     public int getTamanioVertical(){
         return TAMANIO_VERTICAL;
     }
+
+    public Region getRegionQueLoContiene() {
+        return regionQueLoContiene;
+    }
 }

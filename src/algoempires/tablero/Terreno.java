@@ -108,14 +108,7 @@ public class Terreno {
 
 
     public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
-
-        Posicion unaPosDelEdificio = this.encontrarUnaPosDeEntidad(edificio);
-
-        Posicion posInfIzq = this.encontrarInfIzqDeEntidad(unaPosDelEdificio);
-
-        Region regionOcupada = edificio.generarRegion(this.generarCasillerosOcupadosPor(edificio, posicionQueQuieroVer));
-
-        return Rango.generarPosicionesVisiblesPor(regionOcupada, edificio).contains(posicionQueQuieroVer);
+        return Rango.generarPosicionesVisiblesPor(edificio.getRegionQueLoContiene(), edificio).contains(posicionQueQuieroVer);
 
     }
 
@@ -192,9 +185,8 @@ public class Terreno {
     public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
 
         HashSet<Entidad> listaEntidades = new HashSet<>();
-        Posicion posicionInfIzq = this.encontrarInfIzq(castillo);
-        ArrayList<Posicion> rango = Rango.generarPosicionesVisiblesPor(castillo.generarRegion(this.generarCasillerosOcupadosPor(castillo, posicionInfIzq)),
-                castillo);
+
+        ArrayList<Posicion> rango = Rango.generarPosicionesVisiblesPor(castillo.getRegionQueLoContiene(), castillo);
         rango.removeIf(pos -> !this.contienePosicion(pos));
 
         for (Posicion posActual : rango) {
