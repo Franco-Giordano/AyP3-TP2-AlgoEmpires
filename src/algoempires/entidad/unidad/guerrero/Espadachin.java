@@ -34,9 +34,4 @@ public class Espadachin extends Guerrero {
         return COSTO;
     }
 
-    @Override
-    public void actualizarEntreTurnos() {
-        super.actualizarEntreTurnos();
-    }
-
 }

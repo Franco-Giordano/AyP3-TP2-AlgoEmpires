@@ -10,6 +10,7 @@ import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionAbajoIzquierda;
 import algoempires.tablero.direccion.DireccionIzquierda;
+import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -118,7 +119,7 @@ public class Terreno {
 
         Region regionOcupada = edificio.generarRegionAPartirDePosicion(posInfIzq);
 
-        return Region.generarPosicionesVisiblesPor(regionOcupada, edificio).contains(posicionQueQuieroVer);
+        return Rango.generarPosicionesVisiblesPor(regionOcupada, edificio).contains(posicionQueQuieroVer);
 
     }
 
@@ -140,7 +141,7 @@ public class Terreno {
 
         Posicion posicionUnidad = this.encontrarUnaPosDeEntidad(unidad);
 
-        return Region.generarPosicionesVisiblesPor(posicionUnidad, unidad).contains(posicionQueQuieroVer);
+        return Rango.generarPosicionesVisiblesPor(posicionUnidad, unidad).contains(posicionQueQuieroVer);
 
     }
 
@@ -196,7 +197,7 @@ public class Terreno {
 
         HashSet<Entidad> listaEntidades = new HashSet<>();
         Posicion posicionInfIzq = this.encontrarInfIzq(castillo);
-        ArrayList<Posicion> rango = Region.generarPosicionesVisiblesPor(castillo.generarRegionAPartirDePosicion(posicionInfIzq),
+        ArrayList<Posicion> rango = Rango.generarPosicionesVisiblesPor(castillo.generarRegionAPartirDePosicion(posicionInfIzq),
                 castillo);
         rango.removeIf(pos -> !this.contienePosicion(pos));
 
@@ -221,6 +222,19 @@ public class Terreno {
 
     public Posicion encontrarInfIzq(Castillo castillo) {
         return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
+    }
+
+    public ArrayList<Casillero> generarCasillerosOcupadosPor(Edificio edificio, Posicion posicion) {
+
+        ArrayList<Posicion> posicionesContenidas = edificio.generarRegionAPartirDePosicion(posicion).generarPosicionesContenidas();
+
+        ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
+
+        for (Posicion posActual : posicionesContenidas){
+            casillerosContenidos.add(this.mapa.get(posActual));
+        }
+
+        return casillerosContenidos;
     }
 
     //METODOS DE TESTEO

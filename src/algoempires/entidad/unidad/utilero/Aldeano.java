@@ -15,7 +15,7 @@ public class Aldeano extends Unidad {
 
     private final int COSTO = 25;
 
-    EstadoAldeano estadoActual;
+    private EstadoAldeano estadoActual;
 
     public Aldeano(Jugador jugador) throws PosicionInvalidaException {
 

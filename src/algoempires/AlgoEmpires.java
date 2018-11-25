@@ -31,10 +31,6 @@ public class AlgoEmpires {
         this.prepararJugadoresParaBatalla(tamHorizontal, tamVertical);
     }
 
-    public static void main(String[] args) {
-        //AlgoEmpires juego = new AlgoEmpires(10,10);
-    }
-
     private void prepararJugadoresParaBatalla(int tamHoriz, int tamVert) {
 
         asignarBienesJugadorCentradoEn(jugadores[0], new Posicion(1, 1));

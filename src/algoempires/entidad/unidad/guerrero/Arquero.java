@@ -26,12 +26,6 @@ public class Arquero extends Guerrero {
         return COSTO;
     }
 
-    @Override
-    public void actualizarEntreTurnos() {
-        super.actualizarEntreTurnos();
-
-    }
-
 
     @Override
     public boolean esDelEquipo(Jugador jugador) {

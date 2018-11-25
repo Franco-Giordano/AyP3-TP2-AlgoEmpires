@@ -3,7 +3,6 @@ package algoempires;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
@@ -195,7 +194,7 @@ public class JugadorTest {
 
         assertEquals(jugadorDePrueba.getOro(), 9995);
 
-        Aldeano aldeano= (Aldeano) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+        Aldeano aldeano = (Aldeano) terreno.obtenerEntidadEnPosicion(new Posicion(3, 3));
         aldeano.restarVida(500);
 
         jugadorDePrueba.actualizarEntreTurnos();
@@ -237,50 +236,50 @@ public class JugadorTest {
     }
 
     @Test
-    public void testJugadorCreaPlazaCentralCorrectamente(){
+    public void testJugadorCreaPlazaCentralCorrectamente() {
 
-        Aldeano aldeano= new Aldeano(jugadorDePrueba);
-        terreno.ocupar(new Posicion(4,4), aldeano);
-        Posicion posicionDeLaPlaza= new Posicion(5,5);
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4, 4), aldeano);
+        Posicion posicionDeLaPlaza = new Posicion(5, 5);
 
         assertFalse(terreno.estaOcupada(posicionDeLaPlaza));
-        assertFalse(terreno.estaOcupada(new Posicion(6,6)));
-        assertFalse(terreno.estaOcupada(new Posicion(5,6)));
+        assertFalse(terreno.estaOcupada(new Posicion(6, 6)));
+        assertFalse(terreno.estaOcupada(new Posicion(5, 6)));
 
         jugadorDePrueba.crearPlazaCentral(aldeano, posicionDeLaPlaza);
 
         assertTrue(terreno.estaOcupada(posicionDeLaPlaza));
-        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
-        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 6)));
     }
 
     @Test
-    public void testJugadorCreaCuartelCorrectamente(){
+    public void testJugadorCreaCuartelCorrectamente() {
 
-        Aldeano aldeano= new Aldeano(jugadorDePrueba);
-        terreno.ocupar(new Posicion(4,4), aldeano);
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4, 4), aldeano);
 
 
-        assertFalse(terreno.estaOcupada(new Posicion(5,5)));
-        assertFalse(terreno.estaOcupada(new Posicion(6,6)));
-        assertFalse(terreno.estaOcupada(new Posicion(5,6)));
+        assertFalse(terreno.estaOcupada(new Posicion(5, 5)));
+        assertFalse(terreno.estaOcupada(new Posicion(6, 6)));
+        assertFalse(terreno.estaOcupada(new Posicion(5, 6)));
 
-        jugadorDePrueba.crearCuartel(aldeano, new Posicion(5,5));
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(5, 5));
 
-        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
-        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
-        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 6)));
     }
 
     @Test
-    public void testEdificioSeReparaCorrectamente(){
+    public void testEdificioSeReparaCorrectamente() {
 
-        Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
-        terreno.ocupar(new Posicion(4,4), aldeanoAliado);
+        Aldeano aldeanoAliado = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4, 4), aldeanoAliado);
 
         Cuartel cuartel = aldeanoAliado.construirCuartel();
 
-        terreno.ocupar(new Posicion(5,5), cuartel);
+        terreno.ocupar(new Posicion(5, 5), cuartel);
 
         jugadorDePrueba.actualizarEntreTurnos();
         jugadorDePrueba.actualizarEntreTurnos();
@@ -292,7 +291,7 @@ public class JugadorTest {
 
         assertTrue(cuartel.tieneEstaVida(200));
 
-        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5,5));
+        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5, 5));
 
         aldeanoAliado.actualizarEntreTurnos();
 
@@ -300,14 +299,14 @@ public class JugadorTest {
     }
 
     @Test
-    public void testPlazaSeReparaCorrectamente(){
+    public void testPlazaSeReparaCorrectamente() {
 
-        Aldeano aldeanoAliado= new Aldeano(jugadorDePrueba);
-        terreno.ocupar(new Posicion(4,4), aldeanoAliado);
+        Aldeano aldeanoAliado = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(4, 4), aldeanoAliado);
 
         PlazaCentral plazaCentral = aldeanoAliado.construirPlazaCentral();
 
-        terreno.ocupar(new Posicion(5,5), plazaCentral);
+        terreno.ocupar(new Posicion(5, 5), plazaCentral);
 
         jugadorDePrueba.actualizarEntreTurnos();
         jugadorDePrueba.actualizarEntreTurnos();
@@ -319,7 +318,7 @@ public class JugadorTest {
 
         assertTrue(plazaCentral.tieneEstaVida(400));
 
-        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5,5));
+        jugadorDePrueba.reparar(aldeanoAliado, new Posicion(5, 5));
 
         aldeanoAliado.actualizarEntreTurnos();
 
@@ -327,50 +326,49 @@ public class JugadorTest {
     }
 
     @Test
-    public void testCrearArmaDeAsedioCorrectamente(){
+    public void testCrearArmaDeAsedioCorrectamente() {
 
-        Castillo castillo= new Castillo(jugadorDePrueba);
-        terreno.ocupar(new Posicion(1,1), castillo);
+        Castillo castillo = new Castillo(jugadorDePrueba);
+        terreno.ocupar(new Posicion(1, 1), castillo);
 
-        jugadorDePrueba.crearArmaDeAsedio(castillo, new Posicion(5,5));
+        jugadorDePrueba.crearArmaDeAsedio(castillo, new Posicion(5, 5));
 
-        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 5)));
     }
 
     @Test
-    public void testSeQuitaUnidadMuertaDelaPoblacion(){
+    public void testSeQuitaUnidadMuertaDelaPoblacion() {
 
-        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),0);
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 0);
 
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
-        Cuartel cuartel= aldeano.construirCuartel();
-        terreno.ocupar(new Posicion(6,6), cuartel);
+        Cuartel cuartel = aldeano.construirCuartel();
+        terreno.ocupar(new Posicion(6, 6), cuartel);
 
-        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),1);
-        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),0);
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 1);
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 0);
 
 
-        Aldeano aldeanoEnemigo= new Aldeano(jugadorEnemigo);
-        Cuartel cuartelEnemigo= aldeanoEnemigo.construirCuartel();
-        terreno.ocupar(new Posicion(1,1), cuartelEnemigo);
+        Aldeano aldeanoEnemigo = new Aldeano(jugadorEnemigo);
+        Cuartel cuartelEnemigo = aldeanoEnemigo.construirCuartel();
+        terreno.ocupar(new Posicion(1, 1), cuartelEnemigo);
 
-        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),1);
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
 
-        jugadorDePrueba.crearArquero(cuartel, new Posicion(5,5));
-        jugadorEnemigo.crearEspadachin(cuartelEnemigo, new Posicion(3,3));
+        jugadorDePrueba.crearArquero(cuartel, new Posicion(5, 5));
+        jugadorEnemigo.crearEspadachin(cuartelEnemigo, new Posicion(3, 3));
 
-        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(),2);
-        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),2);
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 2);
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 2);
 
-        Arquero arqueroAliado= (Arquero) terreno.obtenerEntidadEnPosicion(new Posicion(5,5));
-        Espadachin espadachinEnemigo= (Espadachin) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+        Arquero arqueroAliado = (Arquero) terreno.obtenerEntidadEnPosicion(new Posicion(5, 5));
+        Espadachin espadachinEnemigo = (Espadachin) terreno.obtenerEntidadEnPosicion(new Posicion(3, 3));
 
         espadachinEnemigo.restarVida(99);
 
-        jugadorEnemigo.atacar(arqueroAliado, new Posicion(3,3));
+        jugadorEnemigo.atacar(arqueroAliado, new Posicion(3, 3));
 
-        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(),1);
-
+        assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
 
 
     }

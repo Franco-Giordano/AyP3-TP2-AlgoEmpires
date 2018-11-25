@@ -28,7 +28,7 @@ public class ArqueroTest {
 
 
     @Test
-    public void testSeRealizaDañoAlAtacar() {
+    public void testSeRealizaDanioAlAtacar() {
 
         Arquero arquero = new Arquero(jugadorDePrueba);
         Aldeano aldeano = new Aldeano(jugadorDePrueba);

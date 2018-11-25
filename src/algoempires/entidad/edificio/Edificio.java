@@ -5,8 +5,11 @@ import algoempires.entidad.Entidad;
 import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Region;
+
+import java.util.ArrayList;
 
 public abstract class Edificio extends Entidad {
 
@@ -30,9 +33,9 @@ public abstract class Edificio extends Entidad {
 
     protected abstract int getTurnosDeConstruccionInicial();
 
-    public Region generarRegionAPartirDePosicion(Posicion posicionInfIzq) {
+    public Region generarRegionAPartirDePosicion(ArrayList<Casillero> casillerosAOcupar) {
 
-        return new Region(posicionInfIzq, this.TAMANIO_HORIZONTAL, this.TAMANIO_VERTICAL);
+        return new Region(this, casillerosAOcupar);
 
     }
 
