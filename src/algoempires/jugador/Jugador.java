@@ -186,20 +186,6 @@ public class Jugador {
         monedero.sumarOro(oro);
     }
 
-    public void informarDestruccion(Edificio entidad) {
-
-        edificiosPropios.remove(entidad);
-
-        terrenoDeJuego.remover(entidad);
-    }
-
-    public void informarDestruccion(Unidad entidad) {
-
-        poblacion.quitar(entidad);
-
-        terrenoDeJuego.remover(entidad);
-    }
-
     public void agregar(Edificio edificio) {
         edificiosPropios.add(edificio);
     }
@@ -212,6 +198,9 @@ public class Jugador {
         this.monedero.restarOro(costo);
     }
 
+    public void quitarDePoblacion(Unidad unidad) {
+        poblacion.quitar(unidad);
+    }
 
     public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
         return terrenoDeJuego.calcularCercanosA(castillo);
@@ -249,4 +238,6 @@ public class Jugador {
     public int getCantidadDeHabitantes(){
         return poblacion.getCantidadDeHabitantes();
     }
+
+
 }

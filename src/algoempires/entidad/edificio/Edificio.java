@@ -59,7 +59,7 @@ public abstract class Edificio extends Entidad {
         vida -= vidaARestar;
 
         if (vida <= 0) {
-            jugadorPropietario.informarDestruccion(this);
+            regionQueLoContiene.vaciar();
         }
 
     }

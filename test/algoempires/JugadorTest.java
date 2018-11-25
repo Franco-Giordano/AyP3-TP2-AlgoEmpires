@@ -189,15 +189,20 @@ public class JugadorTest {
 
         jugadorDePrueba.crearAldeano(plazaCentral, posicion);
 
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 1);
+
         jugadorDePrueba.actualizarEntreTurnos();
 
         assertEquals(jugadorDePrueba.getOro(), 9995);
 
-        jugadorDePrueba.informarDestruccion((Unidad) terreno.obtenerEntidadEnPosicion(new Posicion(1, 3)));
+        Aldeano aldeano= (Aldeano) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+        aldeano.restarVida(500);
 
         jugadorDePrueba.actualizarEntreTurnos();
 
-        assertEquals(jugadorDePrueba.getOro(), 10015);
+        assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 0);
+
+        assertEquals(jugadorDePrueba.getOro(), 9995);
 
     }
 

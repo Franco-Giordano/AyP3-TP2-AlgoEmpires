@@ -67,4 +67,8 @@ public class Casillero {
     public boolean contieneA(Entidad entidad) {
         return this.entidadContenida == entidad;
     }
+
+    public void vaciar() {
+        this.entidadContenida=null;
+    }
 }

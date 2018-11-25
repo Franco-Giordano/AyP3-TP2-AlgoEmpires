@@ -10,6 +10,7 @@ public class Region {
     private Posicion infIzquierdo;
     private int tamanioHorizontal;
     private int tamanioVertical;
+    private ArrayList<Casillero> casillerosQueContengo;
 
     public Region(Posicion infIzquierdo, int tamanioHorizontal, int tamanioVertical) {
 
@@ -113,4 +114,9 @@ public class Region {
     }
 
 
+    public void vaciar() {
+        for(Casillero casilleroActual : casillerosQueContengo){
+            casilleroActual.vaciar();
+        }
+    }
 }
