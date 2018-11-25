@@ -5,11 +5,13 @@ import algoempires.entidad.Entidad;
 import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
 
 
 public abstract class Unidad extends Entidad {
 
     private boolean movioEsteTurno;
+    private Casillero casilleroQueLaContiene;
 
     public Unidad(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);
@@ -41,6 +43,9 @@ public abstract class Unidad extends Entidad {
         atacante.atacar(this);
     }
 
+    public void informarDeCasilleroOcupado(Casillero casillero){
+        this.casilleroQueLaContiene = casillero;
+    }
 
     public boolean sePuedeMover() {
         return !this.movioEsteTurno;

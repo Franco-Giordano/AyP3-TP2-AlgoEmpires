@@ -78,7 +78,7 @@ public class Terreno {
         }
     }
 
-    public boolean contienePosicion(Posicion posicion) {
+    private boolean contienePosicion(Posicion posicion) {
         return mapa.containsKey(posicion);
     }
 
@@ -92,14 +92,20 @@ public class Terreno {
 
     public void ocupar(Posicion posicion, Unidad unidad) throws PosicionInvalidaException {
 
+        unidad.informarDeCasilleroOcupado(this.mapa.get(posicion));
+
         this.ocuparConEntidad(posicion, unidad);
     }
 
     public void ocupar(Posicion posicionInfIzq, Edificio edificio) throws PosicionInvalidaException {
 
-        ArrayList<Posicion> casillerosAOcupar = edificio.generarRegionAPartirDePosicion(posicionInfIzq).generarPosicionesContenidas();
+        ArrayList<Posicion> posicionesAOcupar = edificio.generarRegionAPartirDePosicion(posicionInfIzq).generarPosicionesContenidas();
 
-        for (Posicion each : casillerosAOcupar) {
+        Region regionOcupada = edificio.generarRegionAPartirDePosicion(posicionInfIzq);
+
+        edificio.informarRegionOcupada(regionOcupada);
+
+        for (Posicion each : posicionesAOcupar) {
             this.ocuparConEntidad(each, edificio);
         }
     }
@@ -233,9 +239,9 @@ public class Terreno {
 
     }
 
-
     public int getVida(Posicion posicion) {
         return mapa.get(posicion).getEntidadContenida().getVida();
     }
+
 }
 

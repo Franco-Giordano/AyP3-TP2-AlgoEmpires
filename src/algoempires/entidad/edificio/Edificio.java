@@ -17,6 +17,8 @@ public abstract class Edificio extends Entidad {
     private boolean estaEnReparacion;
     private int turnosDeConstruccion;
 
+    private Region regionQueLoContiene;
+
     public Edificio(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);
         jugadorPropietario.agregar(this);
@@ -91,5 +93,10 @@ public abstract class Edificio extends Entidad {
 
     public boolean estaEnReparacion() {
         return estaEnReparacion;
+    }
+
+    //  TODO ver si esto se puede hacer mejor, probablemente se pueda.
+    public void informarRegionOcupada(Region regionOcupada) {
+        this.regionQueLoContiene = regionOcupada;
     }
 }
