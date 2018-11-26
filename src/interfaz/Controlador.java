@@ -9,16 +9,21 @@ import algoempires.tablero.Posicion;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 public class Controlador {
 
+    public static final int RENDERIZAR_VERTICAL = 20;
+    public static final int RENDERIZAR_HORIZONTAL = 14;
     private int tamanioCasillero;
     private int VGAP;
     private int HGAP;
@@ -29,6 +34,14 @@ public class Controlador {
     private AlgoEmpires juego;
     @FXML
     BorderPane panePadre;
+
+    @FXML
+    Button btnTerminarTurno;
+
+    @FXML
+    VBox boxDerecho;
+
+    Posicion posInfIzq;
 
     public void initialize() {
 
@@ -54,13 +67,15 @@ public class Controlador {
         pane.setHgap(HGAP);
         pane.setVgap(VGAP);
 
-        tamanioCasillero = (int)(panePadre.getCenter().getLayoutBounds().getHeight()/ juego.getTerreno().getTamVertical() - VGAP);
+        tamanioCasillero = (int) (panePadre.getCenter().getLayoutBounds().getHeight() / RENDERIZAR_VERTICAL - VGAP);
 
-        for (int j = 0; j < juego.getTerreno().getTamVertical(); j++) {
-            for (int i = 0; i < juego.getTerreno().getTamHorizontal(); i++) {
-                pane.add(crearCasillero(i, j), i, juego.getTerreno().getTamVertical() - j);
+        for (int j = 0; j < RENDERIZAR_VERTICAL; j++) {
+            for (int i = 0; i < RENDERIZAR_HORIZONTAL; i++) {
+                pane.add(crearCasillero(i + posInfIzq.getHorizontal(), j + posInfIzq.getVertical()),
+                        i, RENDERIZAR_VERTICAL - j);
             }
         }
+        
     }
 
     private StackPane crearCasillero(int i, int j) {
@@ -71,7 +86,7 @@ public class Controlador {
 
         Jugador[] jugadores = juego.getJugadores();
 
-        if (juego.getTerreno().estaOcupada(new Posicion(i + 1, j + 1))) {
+        if (juego.getTerreno().estaOcupada(new Posicion(i, j))) {
             rectangulo.setStroke(Color.DARKRED);
             rectangulo.setFill(Color.DARKRED);
 
@@ -83,7 +98,7 @@ public class Controlador {
         rectangulo.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i + 1, j + 1));
+                Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i, j));
                 if (entidad != null) {
                     if (entidad.getClass() == Aldeano.class) {
                         textArea.setText("Entidad: Aldeano" + "\nVida:" + entidad.getVida());
@@ -104,6 +119,11 @@ public class Controlador {
 
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
+
+        int coordVertical = (juego.getTerreno().getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
+        int coordHorizontal = (juego.getTerreno().getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
+
+        posInfIzq = new Posicion(coordHorizontal, coordVertical);
     }
 
 }
