@@ -85,6 +85,7 @@ public class Controlador {
         StackPane stack = new StackPane();
         Text pos = new Text("(" + i + "," + j + ")");
         pos.setFont(Font.font(tamanioCasillero / 5));
+        pos.setMouseTransparent(true);
         stack.getChildren().addAll(rectangulo, pos);
 
         if (juego.getTerreno().estaOcupada(new Posicion(i, j))) {
@@ -95,6 +96,7 @@ public class Controlador {
             rectangulo.setStroke(Color.GREEN);
             rectangulo.setFill(Color.GREEN);
         }
+
 
         rectangulo.setOnMouseClicked(event -> {
             Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i, j));
