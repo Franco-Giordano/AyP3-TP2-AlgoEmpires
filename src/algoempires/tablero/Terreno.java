@@ -78,6 +78,10 @@ public class Terreno {
         }
     }
 
+    public boolean esPosicionValida(Posicion posicion) {
+        return mapa.containsKey(posicion);
+    }
+
     private boolean contienePosicion(Posicion posicion) {
         return mapa.containsKey(posicion);
     }

@@ -4,29 +4,31 @@ import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
-import javafx.event.EventHandler;
+import algoempires.tablero.direccion.DireccionAbajo;
+import algoempires.tablero.direccion.DireccionArriba;
+import algoempires.tablero.direccion.DireccionDerecha;
+import algoempires.tablero.direccion.DireccionIzquierda;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 public class Controlador {
 
-    public static final int RENDERIZAR_VERTICAL = 20;
-    public static final int RENDERIZAR_HORIZONTAL = 14;
-    private int tamanioCasillero;
-    private int VGAP;
-    private int HGAP;
+    private static final int RENDERIZAR_VERTICAL = 14;
+    private static final int RENDERIZAR_HORIZONTAL = 20;
+    private int tamanioCasillero = 0;
+    private int VGAP = 5;
+    private int HGAP = 5;
     @FXML
     GridPane pane;
     @FXML
@@ -38,8 +40,6 @@ public class Controlador {
     @FXML
     Button btnTerminarTurno;
 
-    @FXML
-    VBox boxDerecho;
 
     Posicion posInfIzq;
 
@@ -57,17 +57,16 @@ public class Controlador {
 
         textArea.setWrapText(true);
 
+
     }
 
     public void crearCasilleros() {
 
-        HGAP = 5;
-        VGAP = 5;
+        if (tamanioCasillero == 0) {
+            tamanioCasillero = (int) (panePadre.getCenter().getLayoutBounds().getHeight() / RENDERIZAR_VERTICAL - VGAP);
+        }
 
-        pane.setHgap(HGAP);
-        pane.setVgap(VGAP);
 
-        tamanioCasillero = (int) (panePadre.getCenter().getLayoutBounds().getHeight() / RENDERIZAR_VERTICAL - VGAP);
 
         for (int j = 0; j < RENDERIZAR_VERTICAL; j++) {
             for (int i = 0; i < RENDERIZAR_HORIZONTAL; i++) {
@@ -75,16 +74,16 @@ public class Controlador {
                         i, RENDERIZAR_VERTICAL - j);
             }
         }
-        
+
     }
 
     private StackPane crearCasillero(int i, int j) {
 
         Rectangle rectangulo = new Rectangle(tamanioCasillero, tamanioCasillero);
         StackPane stack = new StackPane();
-        stack.getChildren().addAll(rectangulo);
-
-        Jugador[] jugadores = juego.getJugadores();
+        Text pos = new Text("(" + i + "," + j + ")");
+        pos.setFont(Font.font(10));
+        stack.getChildren().addAll(rectangulo, pos);
 
         if (juego.getTerreno().estaOcupada(new Posicion(i, j))) {
             rectangulo.setStroke(Color.DARKRED);
@@ -95,23 +94,20 @@ public class Controlador {
             rectangulo.setFill(Color.GREEN);
         }
 
-        rectangulo.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i, j));
-                if (entidad != null) {
-                    if (entidad.getClass() == Aldeano.class) {
-                        textArea.setText("Entidad: Aldeano" + "\nVida:" + entidad.getVida());
-                    } else if (entidad.getClass() == PlazaCentral.class) {
-                        textArea.setText("Entidad: Plaza Central"+ "\nVida:" + entidad.getVida());
-                    } else {
-                        textArea.setText("Entidad: Castillo" + "\nVida:" + entidad.getVida());
-                    }
+        rectangulo.setOnMouseClicked(event -> {
+            Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i, j));
+            if (entidad != null) {
+                if (entidad.getClass() == Aldeano.class) {
+                    textArea.setText("Entidad: Aldeano" + "\nVida:" + entidad.getVida());
+                } else if (entidad.getClass() == PlazaCentral.class) {
+                    textArea.setText("Entidad: Plaza Central" + "\nVida:" + entidad.getVida());
                 } else {
-                    textArea.setText("Este casillero está vacío!");
+                    textArea.setText("Entidad: Castillo" + "\nVida:" + entidad.getVida());
                 }
-
+            } else {
+                textArea.setText("Este casillero está vacío!");
             }
+
         });
 
         return stack;
@@ -126,4 +122,71 @@ public class Controlador {
         posInfIzq = new Posicion(coordHorizontal, coordVertical);
     }
 
+    public void renderizarArriba() {
+
+        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionArriba());
+        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
+                , nuevaPosicionInfIzq);
+
+        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
+                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+
+        if (esValido) {
+            posInfIzq = nuevaPosicionInfIzq;
+        }
+
+        crearCasilleros();
+
+
+    }
+
+    public void renderizarAbajo() {
+
+        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionAbajo());
+        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
+                , nuevaPosicionInfIzq);
+
+        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
+                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+
+        if (esValido) {
+            posInfIzq = nuevaPosicionInfIzq;
+        }
+        crearCasilleros();
+
+
+    }
+
+    public void renderizarIzquierda() {
+
+        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionIzquierda());
+        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
+                , nuevaPosicionInfIzq);
+
+        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
+                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+
+        if (esValido) {
+            posInfIzq = nuevaPosicionInfIzq;
+        }
+        crearCasilleros();
+
+    }
+
+    public void renderizarDerecha() {
+
+        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionDerecha());
+        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
+                , nuevaPosicionInfIzq);
+
+        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
+                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+
+        if (esValido) {
+            posInfIzq = nuevaPosicionInfIzq;
+        }
+
+        crearCasilleros();
+
+    }
 }

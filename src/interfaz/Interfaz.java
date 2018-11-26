@@ -3,9 +3,11 @@ package interfaz;
 import algoempires.AlgoEmpires;
 import algoempires.jugador.Jugador;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,7 +25,7 @@ public class Interfaz extends Application {
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        this.juego = new AlgoEmpires(20, 14);
+        this.juego = new AlgoEmpires(50, 50);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VistaInterfaz.fxml"));
 
@@ -37,13 +39,38 @@ public class Interfaz extends Application {
 
         primaryStage.setTitle("AlgoEmpires");
 
-        primaryStage.setScene(new Scene(root));
+        Scene escena = new Scene(root);
+
+        escena.getRoot().requestFocus();
+
+        escena.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:
+                        controlador.renderizarArriba();
+                        break;
+                    case DOWN:
+                        controlador.renderizarAbajo();
+                        break;
+                    case LEFT:
+                        controlador.renderizarIzquierda();
+                        break;
+                    case RIGHT:
+                        controlador.renderizarDerecha();
+                        break;
+                }
+            }
+        });
+
+
+        primaryStage.setScene(escena);
 
         primaryStage.setMinHeight(Screen.getPrimary().getVisualBounds().getHeight());
 
         primaryStage.setMinWidth(Screen.getPrimary().getVisualBounds().getWidth());
 
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
         primaryStage.setMaximized(true);
 
