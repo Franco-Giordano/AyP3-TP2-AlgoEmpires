@@ -25,7 +25,7 @@ public class Interfaz extends Application {
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        this.juego = new AlgoEmpires(50, 50);
+        this.juego = new AlgoEmpires(100, 100);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VistaInterfaz.fxml"));
 

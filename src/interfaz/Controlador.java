@@ -62,6 +62,8 @@ public class Controlador {
 
     public void crearCasilleros() {
 
+        pane.getChildren().clear();
+
         if (tamanioCasillero == 0) {
             tamanioCasillero = (int) (panePadre.getCenter().getLayoutBounds().getHeight() / RENDERIZAR_VERTICAL - VGAP);
         }
@@ -82,7 +84,7 @@ public class Controlador {
         Rectangle rectangulo = new Rectangle(tamanioCasillero, tamanioCasillero);
         StackPane stack = new StackPane();
         Text pos = new Text("(" + i + "," + j + ")");
-        pos.setFont(Font.font(10));
+        pos.setFont(Font.font(tamanioCasillero / 5));
         stack.getChildren().addAll(rectangulo, pos);
 
         if (juego.getTerreno().estaOcupada(new Posicion(i, j))) {
