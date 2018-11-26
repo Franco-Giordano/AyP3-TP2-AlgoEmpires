@@ -1,19 +1,14 @@
 package interfaz;
 
 import algoempires.AlgoEmpires;
-import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Posicion;
-import algoempires.tablero.direccion.DireccionAbajo;
-import algoempires.tablero.direccion.DireccionAbajoIzquierda;
-import algoempires.tablero.direccion.DireccionArriba;
-import algoempires.tablero.direccion.DireccionDerecha;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Interfaz extends Application {
 
@@ -25,6 +20,8 @@ public class Interfaz extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        primaryStage.initStyle(StageStyle.UNDECORATED);
 
         this.juego = new AlgoEmpires(20, 14);
 
@@ -48,7 +45,7 @@ public class Interfaz extends Application {
 
         primaryStage.setResizable(false);
 
-        primaryStage.setFullScreen(true);
+        primaryStage.setMaximized(true);
 
         primaryStage.show();
 
