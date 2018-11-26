@@ -11,30 +11,24 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 public class Controlador {
 
-    private final int TAMANIO_CASILLERO = 50;
-    private final int VGAP = TAMANIO_CASILLERO / 10;
-    private final int HGAP = TAMANIO_CASILLERO / 10;
+    private int tamanioCasillero;
+    private int VGAP;
+    private int HGAP;
     @FXML
     GridPane pane;
     @FXML
     TextArea textArea;
     private AlgoEmpires juego;
     @FXML
-    Text textoJugador1;
-    @FXML
-    Text textoJugador2;
-    @FXML
-    VBox vBox;
+    BorderPane panePadre;
 
     public void initialize() {
 
@@ -46,11 +40,21 @@ public class Controlador {
 
         textArea.centerShapeProperty();
 
-        vBox.setBackground(Background.EMPTY);
+        panePadre.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
+
+        textArea.setWrapText(true);
 
     }
 
     public void crearCasilleros() {
+
+        HGAP = 5;
+        VGAP = 5;
+
+        pane.setHgap(HGAP);
+        pane.setVgap(VGAP);
+
+        tamanioCasillero = (int)(panePadre.getCenter().getLayoutBounds().getHeight()/ juego.getTerreno().getTamVertical() - VGAP);
 
         for (int j = 0; j < juego.getTerreno().getTamVertical(); j++) {
             for (int i = 0; i < juego.getTerreno().getTamHorizontal(); i++) {
@@ -61,16 +65,11 @@ public class Controlador {
 
     private StackPane crearCasillero(int i, int j) {
 
-        Rectangle rectangulo = new Rectangle(TAMANIO_CASILLERO, TAMANIO_CASILLERO);
-        //Text text = new Text();
-        Text posicion = new Text(String.format("%d,%d", i + 1, j + 1));
+        Rectangle rectangulo = new Rectangle(tamanioCasillero, tamanioCasillero);
         StackPane stack = new StackPane();
-        stack.getChildren().addAll(rectangulo, posicion);
+        stack.getChildren().addAll(rectangulo);
 
         Jugador[] jugadores = juego.getJugadores();
-
-        textoJugador1.setText("Jugador 1 Oro: " + jugadores[0].getOro());
-        textoJugador2.setText("Jugador 2 Oro: " + jugadores[1].getOro());
 
         if (juego.getTerreno().estaOcupada(new Posicion(i + 1, j + 1))) {
             rectangulo.setStroke(Color.DARKRED);
@@ -87,11 +86,11 @@ public class Controlador {
                 Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i + 1, j + 1));
                 if (entidad != null) {
                     if (entidad.getClass() == Aldeano.class) {
-                        textArea.setText("Entidad: Aldeano (" + entidad + ")\nVida:" + entidad.getVida());
+                        textArea.setText("Entidad: Aldeano" + "\nVida:" + entidad.getVida());
                     } else if (entidad.getClass() == PlazaCentral.class) {
-                        textArea.setText("Entidad: Plaza Central(" + entidad + ")\nVida:" + entidad.getVida());
+                        textArea.setText("Entidad: Plaza Central"+ "\nVida:" + entidad.getVida());
                     } else {
-                        textArea.setText("Entidad: Castillo(" + entidad + ")\nVida:" + entidad.getVida());
+                        textArea.setText("Entidad: Castillo" + "\nVida:" + entidad.getVida());
                     }
                 } else {
                     textArea.setText("Este casillero está vacío!");
@@ -105,10 +104,6 @@ public class Controlador {
 
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
-        Jugador[] jugadores = juego.getJugadores();
-
-        textoJugador1.setText("Jugador 1 Oro: " + jugadores[0].getOro());
-        textoJugador2.setText("Jugador 2 Oro: " + jugadores[1].getOro());
     }
 
 }

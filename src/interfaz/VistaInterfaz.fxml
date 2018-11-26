@@ -1,40 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="interfaz.Controlador">
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.Controlador">
     <center>
-        <GridPane fx:id="pane" onScroll="#crearCasilleros">
+        <GridPane fx:id="pane">
         </GridPane>
     </center>
-    <bottom>
-        <TextArea fx:id="textArea" editable="false" prefHeight="50.0" prefWidth="100.0">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </TextArea>
-    </bottom>
-    <top>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Scroll actualiza el terreno, Click sobre un casillero proporciona info." BorderPane.alignment="CENTER">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Text>
-    </top>
-   <left>
-      <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Text fx:id="textoJugador1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-         </children>
-      </VBox>
-   </left>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="textoJugador2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+              <TextArea fx:id="textArea" editable="false" prefHeight="110.0" prefWidth="400.0">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </TextArea>
+            <Button mnemonicParsing="false" text="Terminar turno" />
          </children>
       </VBox>
    </right>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
