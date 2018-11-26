@@ -133,9 +133,8 @@ public class Controlador {
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
+            crearCasilleros();
         }
-
-        crearCasilleros();
 
 
     }
@@ -151,8 +150,8 @@ public class Controlador {
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
+            crearCasilleros();
         }
-        crearCasilleros();
 
 
     }
@@ -168,8 +167,8 @@ public class Controlador {
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
+            crearCasilleros();
         }
-        crearCasilleros();
 
     }
 
@@ -184,9 +183,9 @@ public class Controlador {
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
+            crearCasilleros();
         }
 
-        crearCasilleros();
 
     }
 }
