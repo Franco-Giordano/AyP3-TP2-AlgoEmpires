@@ -207,7 +207,7 @@ public class Terreno {
 
         mapa.forEach((k, v) -> {
             if (v.contieneA(entidad)) {
-                v.desocupar();
+                v.vaciar();
             }
         });
     }

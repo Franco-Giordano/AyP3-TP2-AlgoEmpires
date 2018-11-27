@@ -75,13 +75,13 @@ public class Interfaz extends Application {
 
         primaryStage.setMinWidth(Screen.getPrimary().getVisualBounds().getWidth());
 
-        Scene escena = new Scene(root);
+        Scene escena = new Scene(root, Screen.getPrimary().getVisualBounds().getHeight(), Screen.getPrimary().getVisualBounds().getWidth());
 
-        primaryStage.setScene(escena);
+        primaryStage.setMaximized(true);
 
         primaryStage.setResizable(false);
 
-        primaryStage.setMaximized(true);
+        primaryStage.setScene(escena);
 
         primaryStage.show();
 

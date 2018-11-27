@@ -51,10 +51,6 @@ public class Casillero {
         this.entidadContenida = entidadRecibida;
     }
 
-    public void desocupar() {
-
-        this.entidadContenida = null;
-    }
 
     public boolean estaOcupada() {
         return this.entidadContenida != null;
