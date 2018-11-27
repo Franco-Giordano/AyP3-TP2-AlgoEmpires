@@ -1,10 +1,10 @@
 package interfaz;
 
-import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
+import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
@@ -22,7 +22,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
-public class Controlador {
+public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
@@ -33,7 +33,7 @@ public class Controlador {
     GridPane pane;
     @FXML
     TextArea textArea;
-    private AlgoEmpires juego;
+    private Terreno terrenoDeJuego;
     @FXML
     BorderPane panePadre;
 
@@ -88,7 +88,7 @@ public class Controlador {
         pos.setMouseTransparent(true);
         stack.getChildren().addAll(rectangulo, pos);
 
-        if (juego.getTerreno().estaOcupada(new Posicion(i, j))) {
+        if (terrenoDeJuego.estaOcupada(new Posicion(i, j))) {
             rectangulo.setStroke(Color.DARKRED);
             rectangulo.setFill(Color.DARKRED);
 
@@ -99,7 +99,7 @@ public class Controlador {
 
 
         rectangulo.setOnMouseClicked(event -> {
-            Entidad entidad = juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(i, j));
+            Entidad entidad = terrenoDeJuego.obtenerEntidadEnPosicion(new Posicion(i, j));
             if (entidad != null) {
                 if (entidad.getClass() == Aldeano.class) {
                     textArea.setText("Entidad: Aldeano" + "\nVida:" + entidad.getVida());
@@ -117,11 +117,11 @@ public class Controlador {
         return stack;
     }
 
-    public void setJuego(AlgoEmpires juego) {
-        this.juego = juego;
+    public void setTerreno(Terreno terreno) {
+        this.terrenoDeJuego = terreno;
 
-        int coordVertical = (juego.getTerreno().getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
-        int coordHorizontal = (juego.getTerreno().getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
+        int coordVertical = (terrenoDeJuego.getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
+        int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
 
         posInfIzq = new Posicion(coordHorizontal, coordVertical);
     }
@@ -132,8 +132,8 @@ public class Controlador {
         Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
                 , nuevaPosicionInfIzq);
 
-        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
-                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
+                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
@@ -149,9 +149,8 @@ public class Controlador {
         Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
                 , nuevaPosicionInfIzq);
 
-        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
-                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
-
+        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
+                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
             crearCasilleros();
@@ -166,8 +165,8 @@ public class Controlador {
         Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
                 , nuevaPosicionInfIzq);
 
-        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
-                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
+        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
+                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
 
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
@@ -182,14 +181,11 @@ public class Controlador {
         Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
                 , nuevaPosicionInfIzq);
 
-        boolean esValido = juego.getTerreno().esPosicionValida(nuevaPosicionInfIzq)
-                && juego.getTerreno().esPosicionValida(nuevaPosicionSupDer);
-
+        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
+                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
             crearCasilleros();
         }
-
-
     }
 }

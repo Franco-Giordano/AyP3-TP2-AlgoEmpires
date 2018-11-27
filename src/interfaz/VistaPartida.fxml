@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="interfaz.Controlador">
+            fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
         </GridPane>
