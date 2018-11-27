@@ -19,12 +19,15 @@ public class AldeanoTest {
 
     private Terreno terreno;
     private Jugador jugadorDePrueba;
+    private Jugador jugadorEnemigo;
 
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
-        this.jugadorDePrueba = new Jugador(terreno);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
+        this.jugadorEnemigo= new Jugador("Juan", terreno);
         jugadorDePrueba.sumarOro(1000);
+        jugadorEnemigo.sumarOro(1000);
     }
 
     @Test
@@ -243,8 +246,6 @@ public class AldeanoTest {
     @Test
     public void testAldeanoNoSumaOroMientrasRepara() {
 
-        Jugador jugador = new Jugador(terreno);
-
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
         Cuartel cuartel = aldeano.construirCuartel();
@@ -257,7 +258,7 @@ public class AldeanoTest {
 
         aldeano.actualizarEntreTurnos();
 
-        assertEquals(jugador.getOro(), 100);
+        assertEquals(jugadorDePrueba.getOro(), 1025);
     }
 
     @Test
@@ -285,24 +286,22 @@ public class AldeanoTest {
     @Test
     public void testAldeanoLasAccionesSeHacenEnElPropioTurno() {
 
-        Jugador jugador1 = new Jugador(terreno);
-        Jugador jugador2 = new Jugador(terreno);
 
-        Aldeano aldeano1 = new Aldeano(jugador1);
-        Aldeano aldeano2 = new Aldeano(jugador2);
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
 
         terreno.ocupar(new Posicion(3, 4), aldeano1);
         terreno.ocupar(new Posicion(5, 6), aldeano2);
 
         aldeano1.actualizarEntreTurnos();
 
-        assertEquals(jugador1.getOro(), 95);
-        assertEquals(jugador2.getOro(), 75);
+        assertEquals(jugadorDePrueba.getOro(), 1095);
+        assertEquals(jugadorEnemigo.getOro(), 1075);
 
         aldeano2.actualizarEntreTurnos();
 
-        assertEquals(jugador1.getOro(), 95);
-        assertEquals(jugador2.getOro(), 95);
+        assertEquals(jugadorDePrueba.getOro(), 1095);
+        assertEquals(jugadorEnemigo.getOro(), 1095);
     }
 
 }

@@ -21,7 +21,7 @@ public class EspadachinTest {
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
-        this.jugadorDePrueba = new Jugador(terreno);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
     }
 
     @Test

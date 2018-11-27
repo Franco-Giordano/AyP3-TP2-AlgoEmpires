@@ -7,22 +7,32 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class CastilloTest {
 
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+    private Jugador jugadorEnemigo;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
+        this.jugadorEnemigo= new Jugador("Juan", terreno);
+    }
+
     @Test
     public void testCastilloCreaArmaDeAsedioCorrectamente() {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Jugador jugador = new Jugador(terreno);
+        jugadorDePrueba.sumarOro(1000);
 
-        jugador.sumarOro(1000);
-
-        Castillo castillo = new Castillo(jugador);
+        Castillo castillo = new Castillo(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), castillo.crearArmaDeAsedio());
 
@@ -32,15 +42,9 @@ public class CastilloTest {
     @Test
     public void testCastilloAtacaATodosEnRangoMenosAliados() {
 
-        Terreno terreno = new Terreno(10, 10);
-
-        Jugador jugador = new Jugador(terreno);
-        Jugador jugadorEnemigo = new Jugador(terreno);
-
         jugadorEnemigo.sumarOro(10000);
 
-        Castillo castillo = new Castillo(jugador);
-
+        Castillo castillo = new Castillo(jugadorDePrueba);
         terreno.ocupar(new Posicion(2, 2), castillo);
 
         Aldeano aldeano1 = new Aldeano(jugadorEnemigo);
@@ -55,7 +59,7 @@ public class CastilloTest {
         Cuartel cuartel = new Cuartel(jugadorEnemigo);
         terreno.ocupar(new Posicion(7, 7), cuartel);
 
-        Aldeano aldeanoAmigo = new Aldeano(jugador);
+        Aldeano aldeanoAmigo = new Aldeano(jugadorDePrueba);
         terreno.ocupar(new Posicion(1, 2), aldeanoAmigo);
 
         castillo.actualizarEntreTurnos();

@@ -23,8 +23,8 @@ public class AlgoEmpires {
 
         this.terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);
 
-        Jugador jugador1 = new Jugador(terrenoDeJuego);
-        Jugador jugador2 = new Jugador(terrenoDeJuego);
+        Jugador jugador1 = new Jugador("Carlos", terrenoDeJuego);
+        Jugador jugador2 = new Jugador("Juan", terrenoDeJuego);
 
         jugadores = new Jugador[]{jugador1, jugador2};
 

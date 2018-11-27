@@ -28,8 +28,8 @@ public class JugadorTest {
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
-        this.jugadorDePrueba = new Jugador(terreno);
-        this.jugadorEnemigo = new Jugador(terreno);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
+        this.jugadorEnemigo = new Jugador("Juan", terreno);
         jugadorDePrueba.sumarOro(10000);
         jugadorEnemigo.sumarOro(10000);
     }

@@ -4,22 +4,34 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class PlazaCentralTest {
 
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
+        jugadorDePrueba.sumarOro(1000);
+    }
+
+
     @Test
     public void testPlazaCentralCreaAldeanoCorrectamente() {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Jugador jugador = new Jugador(terreno);
+        jugadorDePrueba = new Jugador("Carlos", terreno);
 
-        jugador.sumarOro(1000);
+        jugadorDePrueba.sumarOro(1000);
 
-        PlazaCentral plazaCentral = new PlazaCentral(jugador);
+        PlazaCentral plazaCentral = new PlazaCentral(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), plazaCentral.crearAldeano());
 

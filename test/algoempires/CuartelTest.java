@@ -6,6 +6,7 @@ import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -13,12 +14,21 @@ import static org.junit.Assert.assertTrue;
 
 public class CuartelTest {
 
+    private Terreno terreno;
+    private Jugador jugadorDePrueba;
+
+    @Before
+    public void init() {
+        this.terreno = new Terreno(10, 10);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
+    }
+
     @Test
     public void testcreaEspadachinCorrectamente() throws DimensionesInvalidasException, PosicionInvalidaException {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Cuartel cuartel = new Cuartel(new Jugador(terreno));
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
 
@@ -31,11 +41,9 @@ public class CuartelTest {
 
         Terreno terreno = new Terreno(10, 10);
 
-        Jugador jugador = new Jugador(terreno);
+        jugadorDePrueba.sumarOro(1000);
 
-        jugador.sumarOro(1000);
-
-        Cuartel cuartel = new Cuartel(jugador);
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), cuartel.crearArquero());
 
