@@ -26,8 +26,6 @@ public class CuartelTest {
     @Test
     public void testcreaEspadachinCorrectamente() throws DimensionesInvalidasException, PosicionInvalidaException {
 
-        Terreno terreno = new Terreno(10, 10);
-
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
@@ -38,8 +36,6 @@ public class CuartelTest {
 
     @Test
     public void testcreaArqueroCorrectamente() throws DimensionesInvalidasException, PosicionInvalidaException {
-
-        Terreno terreno = new Terreno(10, 10);
 
         jugadorDePrueba.sumarOro(1000);
 

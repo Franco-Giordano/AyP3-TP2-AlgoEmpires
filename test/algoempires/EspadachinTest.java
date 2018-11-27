@@ -70,7 +70,6 @@ public class EspadachinTest {
 
         Espadachin unidad = new Espadachin(jugadorDePrueba);
 
-
         Direccion direccion = new DireccionIzquierda();
 
         terreno.ocupar(posicion, unidad);
@@ -109,7 +108,6 @@ public class EspadachinTest {
 
         Espadachin unidad = new Espadachin(jugadorDePrueba);
 
-
         Direccion direccion = new DireccionArribaIzquierda();
 
         terreno.ocupar(posicion, unidad);
@@ -129,7 +127,6 @@ public class EspadachinTest {
 
         Espadachin unidad = new Espadachin(jugadorDePrueba);
 
-
         Direccion direccion = new DireccionArribaDerecha();
 
         terreno.ocupar(posicion, unidad);
@@ -148,7 +145,6 @@ public class EspadachinTest {
         Posicion posicion = new Posicion(2, 2);
 
         Espadachin unidad = new Espadachin(jugadorDePrueba);
-
 
         Direccion direccion = new DireccionAbajoIzquierda();
 

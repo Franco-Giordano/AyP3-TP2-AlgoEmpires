@@ -25,8 +25,6 @@ public class PlazaCentralTest {
     @Test
     public void testPlazaCentralCreaAldeanoCorrectamente() {
 
-        Terreno terreno = new Terreno(10, 10);
-
         jugadorDePrueba = new Jugador("Carlos", terreno);
 
         jugadorDePrueba.sumarOro(1000);

@@ -45,7 +45,6 @@ public class TerrenoTest {
 
     @Test
     public void testColocarUnidadOcupaSoloUnCasillero() throws DimensionesInvalidasException, PosicionInvalidaException {
-        Terreno terreno = new Terreno(2, 2);
 
         terreno.ocupar(new Posicion(2, 2), new Aldeano(jugadorDePrueba));
 
@@ -59,9 +58,6 @@ public class TerrenoTest {
 
     @Test
     public void testColocarEdificioOcupaLoQueCorresponde() throws DimensionesInvalidasException, PosicionInvalidaException {
-
-        Terreno terreno = new Terreno(3, 3);
-
         terreno.ocupar(new Posicion(2, 2), new Cuartel(jugadorDePrueba));
 
         assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
@@ -79,17 +75,14 @@ public class TerrenoTest {
 
     @Test(expected = PosicionInvalidaException.class)
     public void testNoSePuedeUbicarUnidadFueraDelTerreno() throws PosicionInvalidaException {
-        Terreno terreno = new Terreno(5, 2);
 
-        terreno.ocupar(new Posicion(6, 2), new Aldeano(jugadorDePrueba));
-
+        terreno.ocupar(new Posicion(15, 2), new Aldeano(jugadorDePrueba));
     }
 
     @Test(expected = PosicionInvalidaException.class)
     public void testNoSePuedeUbicarEdificioFueraDeTerreno() {
-        Terreno terreno = new Terreno(3, 20);
 
-        terreno.ocupar(new Posicion(1, 5), new Castillo(jugadorDePrueba));
+        terreno.ocupar(new Posicion(15, 2), new Castillo(jugadorDePrueba));
 
     }
 
@@ -98,8 +91,6 @@ public class TerrenoTest {
 
         Posicion posicion = new Posicion(10, 10);
 
-        Terreno terreno = new Terreno(10, 10);
-
         Arquero unidad = new Arquero(jugadorDePrueba);
 
         terreno.ocupar(posicion, unidad);
@@ -107,9 +98,6 @@ public class TerrenoTest {
         Direccion direccion = new DireccionArriba();
 
         terreno.moverUnidad(posicion, direccion);
-
     }
-
-
 }
 

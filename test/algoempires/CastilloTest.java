@@ -28,8 +28,6 @@ public class CastilloTest {
     @Test
     public void testCastilloCreaArmaDeAsedioCorrectamente() {
 
-        Terreno terreno = new Terreno(10, 10);
-
         jugadorDePrueba.sumarOro(1000);
 
         Castillo castillo = new Castillo(jugadorDePrueba);

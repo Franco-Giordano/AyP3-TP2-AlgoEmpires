@@ -84,7 +84,6 @@ public class ArqueroTest {
 
         Posicion posicion = new Posicion(2, 2);
 
-
         Arquero unidad = new Arquero(jugadorDePrueba);
 
         Direccion direccion = new DireccionIzquierda();
