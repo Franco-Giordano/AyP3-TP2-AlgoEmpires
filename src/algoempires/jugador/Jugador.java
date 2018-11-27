@@ -20,12 +20,14 @@ import java.util.HashSet;
 
 public class Jugador {
 
+    private String nombre;
     private Poblacion poblacion;
     private HashSet<Edificio> edificiosPropios;
     private Terreno terrenoDeJuego;
     private Monedero monedero;
 
-    public Jugador(Terreno terrenoDeJuego) {
+    public Jugador(String nombreRecibido, Terreno terrenoDeJuego) {
+        this.nombre= nombreRecibido;
         this.poblacion = new Poblacion();
         this.edificiosPropios = new HashSet<>();
         this.terrenoDeJuego = terrenoDeJuego;
@@ -215,6 +217,10 @@ public class Jugador {
     }
 
     //METODO DE TESTEO
+    public String getNombre() {
+        return nombre;
+    }
+
     public int getOro() {
         return monedero.getOro();
     }
