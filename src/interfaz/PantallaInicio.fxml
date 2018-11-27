@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="interfaz.PantallaInicioController">
+    <children>
+        <ImageView fitHeight="445.0" fitWidth="721.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@inicio/fondo.jpg"/>
+            </image>
+        </ImageView>
+        <Button layoutX="311.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0"
+                text="Iniciar partida"/>
+        <Button layoutX="173.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0"
+                text="Salir"/>
+        <Label layoutX="172.0" layoutY="48.0" text="ALGOEMPIRES">
+            <font>
+                <Font name="Liberation Serif Bold" size="34.0"/>
+            </font>
+            <effect>
+                <DropShadow color="#ffffffd2" height="69.82" radius="35.927499999999995" width="75.89"/>
+            </effect>
+        </Label>
+        <TextField layoutX="109.0" layoutY="148.0">
+            <font>
+                <Font name="Liberation Serif" size="13.0"/>
+            </font>
+        </TextField>
+        <TextField layoutX="332.0" layoutY="148.0">
+            <font>
+                <Font name="Liberation Serif" size="13.0"/>
+            </font>
+        </TextField>
+        <Label layoutX="285.0" layoutY="144.0" text="vs.">
+            <font>
+                <Font name="Liberation Serif Italic" size="27.0"/>
+            </font>
+            <effect>
+                <DropShadow color="#ebebebf0" height="15.18" radius="7.85" spread="0.13" width="18.22"/>
+            </effect>
+        </Label>
+        <Label layoutX="151.0" layoutY="123.0" text="Jugador 1">
+            <font>
+                <Font name="Liberation Serif" size="20.0"/>
+            </font>
+            <effect>
+                <DropShadow color="#fffffff0" height="27.32" radius="12.4025" width="24.29"/>
+            </effect>
+        </Label>
+        <Label layoutX="368.0" layoutY="123.0" text="Jugador 2">
+            <font>
+                <Font name="Liberation Serif" size="20.0"/>
+            </font>
+            <effect>
+                <DropShadow color="#ffffffe7"/>
+            </effect>
+        </Label>
+        <ImageView fitHeight="260.0" fitWidth="126.0" layoutX="237.0" layoutY="120.0" pickOnBounds="true" rotate="90.0">
+            <image>
+                <Image url="@inicio/papiro.png"/>
+            </image>
+        </ImageView>
+        <Label layoutX="267.0" layoutY="192.0" text="Terreno">
+            <font>
+                <Font name="Liberation Serif Bold Italic" size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="191.0" layoutY="225.0" text="Tamaño horizontal:">
+            <font>
+                <Font name="Liberation Serif" size="14.0"/>
+            </font>
+        </Label>
+        <TextField alignment="CENTER_RIGHT" layoutX="335.0" layoutY="221.0" prefHeight="25.0" prefWidth="79.0"
+                   promptText="14"/>
+        <TextField alignment="CENTER_RIGHT" layoutX="335.0" layoutY="263.0" prefHeight="25.0" prefWidth="79.0"
+                   promptText="20"/>
+        <Label layoutX="191.0" layoutY="267.0" text="Tamaño vertical:">
+            <font>
+                <Font name="Liberation Serif" size="14.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

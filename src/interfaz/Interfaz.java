@@ -1,13 +1,10 @@
 package interfaz;
 
 import algoempires.AlgoEmpires;
-import algoempires.jugador.Jugador;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,6 +22,13 @@ public class Interfaz extends Application {
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PantallaInicio.fxml"));
+
+        Parent root = fxmlLoader.load();
+
+        PantallaInicioController controlador = fxmlLoader.getController();
+
+        /* --------------------------------------------- NO BORRAR -----------------------------------------------------
         this.juego = new AlgoEmpires(100, 100);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VistaInterfaz.fxml"));
@@ -33,7 +37,7 @@ public class Interfaz extends Application {
 
         Controlador controlador = fxmlLoader.getController();
 
-        controlador.setJuego(juego);
+        controlador.setTerreno(juego.getTerreno());
 
         //crear casilleros actualiza el terreno.
 
@@ -63,22 +67,26 @@ public class Interfaz extends Application {
             }
         });
 
+        */
 
-        primaryStage.setScene(escena);
+        primaryStage.setTitle("AlgoEmpires");
 
         primaryStage.setMinHeight(Screen.getPrimary().getVisualBounds().getHeight());
 
         primaryStage.setMinWidth(Screen.getPrimary().getVisualBounds().getWidth());
 
-        primaryStage.setResizable(true);
+        Scene escena = new Scene(root);
+
+        primaryStage.setScene(escena);
+
+        primaryStage.setResizable(false);
 
         primaryStage.setMaximized(true);
 
         primaryStage.show();
 
-        controlador.crearCasilleros();
+        //controlador.crearCasilleros();
 
-        Jugador[] jugadores = juego.getJugadores();
 
         /*jugadores[1].moverUnidad(new Posicion(7, 12), new DireccionAbajo());
         jugadores[0].moverUnidad(new Posicion(5, 7), new DireccionArriba());
