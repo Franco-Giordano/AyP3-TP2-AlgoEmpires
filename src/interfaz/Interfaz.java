@@ -49,7 +49,7 @@ public class Interfaz extends Application {
 
         primaryStage.show();
 
-        letterbox(escenaDeInicio, root);
+
 
         controlador.getBotonInicio().setOnMouseClicked(event -> {
 
@@ -63,7 +63,7 @@ public class Interfaz extends Application {
 
                 VistaPartidaController controladorJuego = loader.getController();
 
-                controladorJuego.setTerreno(juego.getTerreno());
+                controladorJuego.setJuego(juego);
 
                 escenaPartida = new Scene(pane);
 
@@ -88,8 +88,6 @@ public class Interfaz extends Application {
                 });
 
                 primaryStage.setScene(escenaPartida);
-
-                primaryStage.show();
 
                 controladorJuego.crearCasilleros();
 

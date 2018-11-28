@@ -55,4 +55,8 @@ public abstract class Unidad extends Entidad {
     public void actualizarEntreTurnos() {
         this.movioEsteTurno = false;
     }
+
+    public Casillero getCasillero() {
+        return casilleroQueLaContiene;
+    }
 }

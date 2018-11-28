@@ -1,12 +1,15 @@
 package interfaz;
 
+import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
+import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
+import interfaz.Botoneras.BotoneraAldeanoController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -40,9 +43,11 @@ public class VistaPartidaController {
     private int tamanioCasillero = 0;
     private int VGAP = 5;
     private int HGAP = 5;
+    private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
 
     public void initialize() {
+
 
         pane.setStyle("-fx-background-color: rgba(0, 0, 0, 255);");
         pane.setHgap(HGAP);
@@ -55,6 +60,7 @@ public class VistaPartidaController {
         panePadre.getCenter().setOnMouseClicked(event -> {
             panePadre.getCenter().requestFocus();
         });
+
 
     }
 
@@ -98,24 +104,42 @@ public class VistaPartidaController {
             Entidad entidad = terrenoDeJuego.obtenerEntidadEnPosicion(new Posicion(i, j));
             if (entidad != null) {
                 String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
+
                 textArea.setText(nombreEntidad);
 
-                if (!nombreEntidad.equals("Arquero") && !nombreEntidad.equals("Espadachin") && !nombreEntidad.equals("ArmaDeAsedio")) {
-                    try {
-                        VBox vbox = (VBox) panePadre.getRight();
-                        this.eliminarBotonera();
-                        vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/Botonera" + nombreEntidad + ".fxml")).load());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    try {
-                        VBox vbox = (VBox) panePadre.getRight();
-                        this.eliminarBotonera();
-                        vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerreros.fxml")).load());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                VBox vbox = (VBox) panePadre.getRight();
+                this.eliminarBotonera();
+
+                switch (nombreEntidad) {
+                    case "Aldeano":
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Botoneras/BotoneraAldeano.fxml"));
+                            vbox.getChildren().add(2, loader.load());
+
+                            BotoneraAldeanoController controller = loader.getController();
+                            Aldeano aldeano = (Aldeano) entidad;
+                            controller.setCasillero(aldeano.getCasillero());
+                            controller.setJugadorActual(juego.getJugadorActual());
+                            controller.setVistaController(this);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "Arquero":
+                    case "Espadachin":
+                    case "ArmaDeAsedio":
+                        try {
+                            vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerreros.fxml")).load());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    default:
+                        try {
+                            vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/Botonera" + nombreEntidad + ".fxml")).load());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                 }
             } else {
                 textArea.setText("Este casillero está vacío");
@@ -140,8 +164,9 @@ public class VistaPartidaController {
         }
     }
 
-    public void setTerreno(Terreno terreno) {
-        this.terrenoDeJuego = terreno;
+    public void setJuego(AlgoEmpires juego) {
+        this.juego = juego;
+        this.terrenoDeJuego = juego.getTerreno();
 
         int coordVertical = (terrenoDeJuego.getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
         int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;

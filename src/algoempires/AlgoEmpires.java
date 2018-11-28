@@ -14,6 +14,7 @@ public class AlgoEmpires {
 
     private Jugador[] jugadores;
     private Terreno terrenoDeJuego;
+    private int indiceJugadorActual;
 
     public AlgoEmpires(int tamHorizontal, int tamVertical, String nombre1, String nombre2) throws DimensionesInvalidasException {
 
@@ -69,15 +70,15 @@ public class AlgoEmpires {
 
     private void jugarPartida() {
 
-        int i = escogerJugadorAlAzar();
+        this.indiceJugadorActual = escogerJugadorAlAzar();
 
         //TODO Luego chequear condicion de perdida/victoria
         while (true) {
 
-            jugadores[i].jugarTurno();
+            jugadores[indiceJugadorActual].jugarTurno();
 
-            i++;
-            i = i % 2;
+            indiceJugadorActual++;
+            indiceJugadorActual = indiceJugadorActual % 2;
         }
 
     }
@@ -97,5 +98,9 @@ public class AlgoEmpires {
 
     public Terreno getTerreno() {
         return terrenoDeJuego;
+    }
+
+    public Jugador getJugadorActual() {
+        return jugadores[indiceJugadorActual];
     }
 }
