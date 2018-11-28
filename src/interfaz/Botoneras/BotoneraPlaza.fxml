@@ -8,7 +8,7 @@
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
               AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
             <children>
-                <Button mnemonicParsing="false" prefWidth="300.0" text="Crear Aldeano"/>
+                <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear Aldeano"/>
             </children>
         </VBox>
         <Button focusTraversable="false" layoutX="50.0" layoutY="109.0" mnemonicParsing="false" prefWidth="300"
