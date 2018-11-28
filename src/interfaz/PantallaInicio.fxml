@@ -78,7 +78,7 @@
             </image>
         </ImageView>
         <TextField fx:id="textoTamHorizontal" alignment="CENTER_RIGHT" layoutX="393.0" layoutY="220.0" prefHeight="25.0"
-                   prefWidth="79.0" promptText="14"/>
+                   prefWidth="79.0" promptText="20"/>
         <TextField fx:id="textoTamVertical" alignment="CENTER_RIGHT" layoutX="393.0" layoutY="262.0" prefHeight="25.0"
                    prefWidth="79.0" promptText="20"/>
         <Label layoutX="249.0" layoutY="266.0" text="Tamaño vertical:">
