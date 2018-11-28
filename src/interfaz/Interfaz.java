@@ -4,11 +4,14 @@ import algoempires.AlgoEmpires;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -16,8 +19,8 @@ public class Interfaz extends Application {
 
     AlgoEmpires juego;
 
-    Scene escenaDeInicio;
-    Scene escenaPartida;
+    private Scene escenaDeInicio;
+    private Scene escenaPartida;
 
     public static void main(String[] args) {
         launch(args);
@@ -26,61 +29,15 @@ public class Interfaz extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PantallaInicio.fxml"));
 
-        Pane root = (Pane) fxmlLoader.load();
+        Pane root = fxmlLoader.load();
 
         PantallaInicioController controlador = fxmlLoader.getController();
 
-        /* --------------------------------------------- NO BORRAR -----------------------------------------------------
-        this.juego = new AlgoEmpires(100, 100);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VistaPartida.fxml"));
-
-        Parent root = fxmlLoader.load();
-
-        VistaPartidaController controlador = fxmlLoader.getController();
-
-        controlador.setTerreno(juego.getTerreno());
-
-        //crear casilleros actualiza el terreno.
-
         primaryStage.setTitle("AlgoEmpires");
-
-        Scene escena = new Scene(root);
-
-        escena.getRoot().requestFocus();
-
-        escena.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                        controlador.renderizarArriba();
-                        break;
-                    case DOWN:
-                        controlador.renderizarAbajo();
-                        break;
-                    case LEFT:
-                        controlador.renderizarIzquierda();
-                        break;
-                    case RIGHT:
-                        controlador.renderizarDerecha();
-                        break;
-                }
-            }
-        });
-*/
-
-
-        primaryStage.setTitle("AlgoEmpires");
-
-        //primaryStage.setMinHeight(Screen.getPrimary().getVisualBounds().getHeight());
-
-        //primaryStage.setMinWidth(Screen.getPrimary().getVisualBounds().getWidth());
-
 
         escenaDeInicio = new Scene(root);
 
@@ -91,32 +48,55 @@ public class Interfaz extends Application {
         primaryStage.setMaximized(true);
 
         primaryStage.show();
+
         letterbox(escenaDeInicio, root);
 
-        controlador.getBotonInicio().setOnAction(event -> {
+        controlador.getBotonInicio().setOnMouseClicked(event -> {
+
+            this.juego = controlador.crearJuego();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaPartida.fxml"));
 
             try {
-                Pane pane = (Pane) loader.load();
 
-                VistaPartidaController juegoControllerJuego = loader.getController();
+                Pane pane = loader.load();
 
+                VistaPartidaController controladorJuego = loader.getController();
+
+                controladorJuego.setTerreno(juego.getTerreno());
+
+                escenaPartida = new Scene(pane);
+
+                escenaPartida.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    @Override
+                    public void handle(KeyEvent event) {
+                        switch (event.getCode()) {
+                            case UP:
+                                controladorJuego.renderizarArriba();
+                                break;
+                            case DOWN:
+                                controladorJuego.renderizarAbajo();
+                                break;
+                            case LEFT:
+                                controladorJuego.renderizarIzquierda();
+                                break;
+                            case RIGHT:
+                                controladorJuego.renderizarDerecha();
+                                break;
+                        }
+                    }
+                });
+
+                primaryStage.setScene(escenaPartida);
+
+                primaryStage.show();
+
+                controladorJuego.crearCasilleros();
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
-        //controlador.crearCasilleros();
-
-
-        /*jugadores[1].moverUnidad(new Posicion(7, 12), new DireccionAbajo());
-        jugadores[0].moverUnidad(new Posicion(5, 7), new DireccionArriba());
-        jugadores[0].moverUnidad(new Posicion(4,6),new DireccionDerecha());
-        jugadores[1].moverUnidad(new Posicion(8,13),new DireccionAbajoIzquierda());
-        jugadores[0].crearAldeano((PlazaCentral)juego.getTerreno().obtenerEntidadEnPosicion(new Posicion(3,8)),new Posicion(3,9));
-*/
     }
 
     private void letterbox(final Scene scene, final Pane contentPane) {
