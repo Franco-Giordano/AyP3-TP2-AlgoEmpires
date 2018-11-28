@@ -1,10 +1,6 @@
 package interfaz;
 
-import algoempires.AlgoEmpires;
 import algoempires.entidad.Entidad;
-import algoempires.entidad.edificio.Castillo;
-import algoempires.entidad.edificio.PlazaCentral;
-import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.DireccionAbajo;
@@ -19,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -31,21 +28,19 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
+    Posicion posInfIzq;
+    @FXML
+    GridPane pane;
+    @FXML
+    BorderPane panePadre;
+    @FXML
+    Button btnTerminarTurno;
+    @FXML
+    TextArea textArea;
     private int tamanioCasillero = 0;
     private int VGAP = 5;
     private int HGAP = 5;
     private Terreno terrenoDeJuego;
-
-    @FXML
-    GridPane pane;
-
-    @FXML
-    BorderPane panePadre;
-
-    @FXML
-    Button btnTerminarTurno;
-
-    Posicion posInfIzq;
 
     public void initialize() {
 
@@ -86,7 +81,7 @@ public class VistaPartidaController {
         Rectangle rectangulo = new Rectangle(tamanioCasillero, tamanioCasillero);
         StackPane stack = new StackPane();
         Text pos = new Text("(" + i + "," + j + ")");
-        pos.setFont(Font.font((float)tamanioCasillero / 5));
+        pos.setFont(Font.font((float) tamanioCasillero / 5));
         pos.setMouseTransparent(true);
         stack.getChildren().addAll(rectangulo, pos);
 
@@ -99,96 +94,50 @@ public class VistaPartidaController {
             rectangulo.setFill(Color.GREEN);
         }
 
-        //TODO Lean el comentario de abajo que mas o menos explico todo lo que está mal con esto.
-        /* Bueno, resulta que esto es un mega switch para ver que tipo de entidad es cuando hacemos click
-        Eso, mal o bien, supongo que de muchas otras formas no lo podemos hacer.
-
-        El problema es el de las botoneras.
-
-        Resulta que la idea era que hubiera una "plantilla" de botonera, y solamente cambiar la parte del medio, dejar
-        el TextArea y el boton de fin de turno siempre fijo en esa plantilla, y que cambie el VBox del medio (con los botones).
-        Bueno, no pude hacerlo, así que vamos a tener que buscar la manera de poder hacerlo, porque ahora mismo cada botonera
-        es una copia de la plantilla + su VBox con los respectivos botones que debería tener dependiendo de la unidad.
-
-        Entonces es como un terrible copy paste, está mega mal.
-
-        Vos te preguntarás "Federico, ¿por qué mierda no pudiste hacer andar lo que tenías que hacer andar?", bueno, mira,
-        te cuento...
-
-        Resulta que vos para poder cambiar la vista, tenés que agarrar el border pane, que viene a ser
-        nuestro pane padre, y a eso decirle "getRight" onda, dame la derecha, que es donde tiene que ir nuestra botonera.
-        Bueno, vos le decis "eh loco, getRight" y el chabón te dice, "ah si, tome buen señor, que tenga un buen día", y
-        vos decís, AH RE PIOLA LOCO, ya está, ahora agarro y me va a dejar tener los comandos del ANCHOR PANE (que es el
-        que está a la derecha en nuestro border pane) PERO NO, porque viene javafx y te dice: "vos querías que fuera fácil, no?"
-        y te mete TREMENDA CACHETADA (ALTO ZAPLAAAAA), y no, no es tan fácil, NO TENÉS UN SOLO PUTO COMANDO DEL ANCHOR PANE.
-        Entonces no me quedó otra que decile al border pane "CHE LOCO, setRight" y cambio toda la botonera.
-
-        UNA PORONGA.
-
-        Si leeiste esto, gracias por tu atención.
-
-        Si no lo leiste, te espero a la salida hijo de mil puta.
-         */
-
         rectangulo.setOnMouseClicked(event -> {
             Entidad entidad = terrenoDeJuego.obtenerEntidadEnPosicion(new Posicion(i, j));
             if (entidad != null) {
-                switch (entidad.getClass().toString()){
-                    case "class algoempires.entidad.unidad.utilero.Aldeano":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraAldeano.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
-                    case "class algoempires.entidad.edificio.PlazaCentral":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraPlaza.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
-                    case "class algoempires.entidad.edificio.Cuartel":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraCuartel.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
-                    case "class algoempires.unidad.guerrero.Arquero":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerrero.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
-                    case "class algoempires.unidad.guerrero.Espadachin":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerrero.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
-                    case "class algoempires.unidad.guerrero.armadeasedio.ArmaDeAsedio":{
-                        try {
-                            panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerrero.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }break;
+                String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
+                textArea.setText(nombreEntidad);
+
+                if (!nombreEntidad.equals("Arquero") && !nombreEntidad.equals("Espadachin") && !nombreEntidad.equals("ArmaDeAsedio")) {
+                    try {
+                        VBox vbox = (VBox) panePadre.getRight();
+                        this.eliminarBotonera();
+                        vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/Botonera" + nombreEntidad + ".fxml")).load());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        VBox vbox = (VBox) panePadre.getRight();
+                        this.eliminarBotonera();
+                        vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerreros.fxml")).load());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            else {
+            } else {
+                textArea.setText("Este casillero está vacío");
                 try {
-                    panePadre.setRight(new FXMLLoader(getClass().getResource("Botoneras/BotoneraVacia.fxml")).load());
+                    VBox vbox = (VBox) panePadre.getRight();
+                    this.eliminarBotonera();
+                    vbox.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraVacia.fxml")).load());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-
         });
 
         return stack;
+    }
+
+    private void eliminarBotonera() {
+        VBox vbox = (VBox) panePadre.getRight();
+        try {
+            vbox.getChildren().remove(2);
+        } catch (IndexOutOfBoundsException e) {
+        }
     }
 
     public void setTerreno(Terreno terreno) {
@@ -262,4 +211,5 @@ public class VistaPartidaController {
             crearCasilleros();
         }
     }
+
 }
