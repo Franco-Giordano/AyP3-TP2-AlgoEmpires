@@ -270,5 +270,8 @@ public class Terreno {
         return mapa.get(posicion).getEntidadContenida().getVida();
     }
 
+    public Casillero getCasillero(int i, int j) {
+        return mapa.get(new Posicion(i, j));
+    }
 }
 
