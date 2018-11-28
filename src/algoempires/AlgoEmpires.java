@@ -18,8 +18,8 @@ public class AlgoEmpires {
 
     public AlgoEmpires(int tamHorizontal, int tamVertical, String nombre1, String nombre2) throws DimensionesInvalidasException {
 
-        if (tamHorizontal < 13 || tamVertical < 13) {
-            throw new DimensionesInvalidasException("Para ubicar los bienes iniciales, el terreno debe ser de al menos 13x13 casilleros");
+        if (tamHorizontal < 20 || tamVertical < 20) {
+            throw new DimensionesInvalidasException("Para ubicar los bienes iniciales, el terreno debe ser de al menos 20x20 casilleros");
         }
 
         this.terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);
