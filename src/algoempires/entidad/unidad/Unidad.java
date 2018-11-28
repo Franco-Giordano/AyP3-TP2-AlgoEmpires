@@ -19,8 +19,9 @@ public abstract class Unidad extends Entidad {
         this.movioEsteTurno = false;
     }
 
-    public void seMovio() {
+    public void seMovioA(Casillero casilleroNuevo) {
         this.movioEsteTurno = true;
+        this.casilleroQueLaContiene = casilleroNuevo;
     }
 
     @Override

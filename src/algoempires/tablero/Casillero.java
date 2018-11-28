@@ -28,7 +28,7 @@ public class Casillero {
                 throw new UnidadNoPuedeMoverseException();
             }
 
-            unidadQueQuieroTrasladar.seMovio();
+            unidadQueQuieroTrasladar.seMovioA(casilleroQueQuieroOcupar);
 
             casilleroQueQuieroOcupar.ocupar(unidadQueQuieroTrasladar);
 

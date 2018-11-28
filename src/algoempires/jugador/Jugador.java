@@ -40,7 +40,7 @@ public class Jugador {
 
         try {
             terrenoDeJuego.moverUnidad(posicionRecibida, direccionRecibida);
-        } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException e) {
+        } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException | UnidadNoPuedeMoverseException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
