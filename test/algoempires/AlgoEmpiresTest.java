@@ -12,7 +12,7 @@ public class AlgoEmpiresTest {
 
     @Test
     public void testJuegoAsignaBienesIniciales() {
-        AlgoEmpires juego = new AlgoEmpires(30, 30);
+        AlgoEmpires juego = new AlgoEmpires(30, 30, "Carlos", "Juan");
 
         Jugador[] jugadores = juego.getJugadores();
 
@@ -37,6 +37,6 @@ public class AlgoEmpiresTest {
 
     @Test(expected = DimensionesInvalidasException.class)
     public void testNosePermitenDimensionesChicas() {
-        AlgoEmpires juego = new AlgoEmpires(13, 5);
+        AlgoEmpires juego = new AlgoEmpires(13, 5,"Carlos", "Juan");
     }
 }

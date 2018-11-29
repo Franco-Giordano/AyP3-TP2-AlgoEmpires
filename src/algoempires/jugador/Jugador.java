@@ -40,8 +40,8 @@ public class Jugador {
 
         try {
             terrenoDeJuego.moverUnidad(posicionRecibida, direccionRecibida);
-        } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+        } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException | UnidadNoPuedeMoverseException e) {
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
 
@@ -58,7 +58,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
     }
@@ -75,7 +75,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
     }
@@ -92,7 +92,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
 
@@ -107,7 +107,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
 
@@ -124,7 +124,7 @@ public class Jugador {
             aldeano.ordenarReparacion(edificio);
 
         } catch (ClassCastException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
 
@@ -140,7 +140,7 @@ public class Jugador {
             terrenoDeJuego.ocupar(posAConstruir, plaza);
 
         } catch (PosicionInvalidaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
     }
@@ -157,7 +157,7 @@ public class Jugador {
             terrenoDeJuego.ocupar(posAConstruir, cuartel);
 
         } catch (PosicionInvalidaException | OroInsuficienteException e) {
-            //TODO Avisar que fallo la operacion mediante el Controlador
+            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
     }

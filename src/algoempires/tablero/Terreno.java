@@ -207,7 +207,7 @@ public class Terreno {
 
         mapa.forEach((k, v) -> {
             if (v.contieneA(entidad)) {
-                v.desocupar();
+                v.vaciar();
             }
         });
     }
@@ -270,5 +270,8 @@ public class Terreno {
         return mapa.get(posicion).getEntidadContenida().getVida();
     }
 
+    public Casillero getCasillero(int i, int j) {
+        return mapa.get(new Posicion(i, j));
+    }
 }
 

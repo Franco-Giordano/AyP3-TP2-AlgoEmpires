@@ -28,7 +28,7 @@ public class Casillero {
                 throw new UnidadNoPuedeMoverseException();
             }
 
-            unidadQueQuieroTrasladar.seMovio();
+            unidadQueQuieroTrasladar.seMovioA(casilleroQueQuieroOcupar);
 
             casilleroQueQuieroOcupar.ocupar(unidadQueQuieroTrasladar);
 
@@ -51,10 +51,6 @@ public class Casillero {
         this.entidadContenida = entidadRecibida;
     }
 
-    public void desocupar() {
-
-        this.entidadContenida = null;
-    }
 
     public boolean estaOcupada() {
         return this.entidadContenida != null;

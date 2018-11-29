@@ -14,17 +14,18 @@ public class AlgoEmpires {
 
     private Jugador[] jugadores;
     private Terreno terrenoDeJuego;
+    private int indiceJugadorActual;
 
-    public AlgoEmpires(int tamHorizontal, int tamVertical) throws DimensionesInvalidasException {
+    public AlgoEmpires(int tamHorizontal, int tamVertical, String nombre1, String nombre2) throws DimensionesInvalidasException {
 
-        if (tamHorizontal < 13 || tamVertical < 13) {
-            throw new DimensionesInvalidasException("Para ubicar los bienes iniciales, el terreno debe ser de al menos 13x13 casilleros");
+        if (tamHorizontal < 20 || tamVertical < 20) {
+            throw new DimensionesInvalidasException("Para ubicar los bienes iniciales, el terreno debe ser de al menos 20x20 casilleros");
         }
 
         this.terrenoDeJuego = new Terreno(tamHorizontal, tamVertical);
 
-        Jugador jugador1 = new Jugador("Carlos", terrenoDeJuego);
-        Jugador jugador2 = new Jugador("Juan", terrenoDeJuego);
+        Jugador jugador1 = new Jugador(nombre1, terrenoDeJuego);
+        Jugador jugador2 = new Jugador(nombre2, terrenoDeJuego);
 
         jugadores = new Jugador[]{jugador1, jugador2};
 
@@ -69,15 +70,15 @@ public class AlgoEmpires {
 
     private void jugarPartida() {
 
-        int i = escogerJugadorAlAzar();
+        this.indiceJugadorActual = escogerJugadorAlAzar();
 
         //TODO Luego chequear condicion de perdida/victoria
         while (true) {
 
-            jugadores[i].jugarTurno();
+            jugadores[indiceJugadorActual].jugarTurno();
 
-            i++;
-            i = i % 2;
+            indiceJugadorActual++;
+            indiceJugadorActual = indiceJugadorActual % 2;
         }
 
     }
@@ -97,5 +98,9 @@ public class AlgoEmpires {
 
     public Terreno getTerreno() {
         return terrenoDeJuego;
+    }
+
+    public Jugador getJugadorActual() {
+        return jugadores[indiceJugadorActual];
     }
 }

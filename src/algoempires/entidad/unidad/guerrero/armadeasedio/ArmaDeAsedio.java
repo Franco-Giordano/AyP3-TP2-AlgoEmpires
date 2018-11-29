@@ -52,6 +52,7 @@ public class ArmaDeAsedio extends Guerrero {
     @Override
     public void atacar(Edificio edificio) {
 
+
         if (!estadoActual.puedeAtacar()) {
             throw new ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException("Se intento atacar sin haber montado antes");
         }
