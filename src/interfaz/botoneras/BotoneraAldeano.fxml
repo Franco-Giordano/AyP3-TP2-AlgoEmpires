@@ -113,21 +113,21 @@
             </children>
         </GridPane>
         <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" onAction="#reparar" prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;"
+                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
                 text="Reparar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirCuartel" prefHeight="60.0"
                 prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;"
+                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
                 text="Crear cuartel" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefHeight="60.0"
                 prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;"
+                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
                 text="Crear plaza" textFill="WHITE">
          <font>
             <Font size="20.0" />
