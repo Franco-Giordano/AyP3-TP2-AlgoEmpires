@@ -36,7 +36,6 @@ public class BotoneraUnidadController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverDerecha(MouseEvent mouseEvent) {
@@ -128,4 +127,5 @@ public class BotoneraUnidadController {
 
         vistaController.setHandlersEnEsperaConTarea(tareaReparar);
     }
+
 }

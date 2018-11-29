@@ -7,8 +7,13 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraUnidadController"
-      maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="50.0"
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="interfaz.botoneras.BotoneraUnidadController"
+      maxHeight="-Infinity"
+      maxWidth="-Infinity"
+      minHeight="-Infinity"
+      minWidth="-Infinity"
+      AnchorPane.leftAnchor="50.0"
       xmlns="http://javafx.com/javafx/8.0.172-ea">
     <children>
         <GridPane prefHeight="255.0" prefWidth="300.0">
@@ -23,7 +28,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Polygon fill="WHITE" onMouseClicked="#moverArriba" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverArriba"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.columnIndex="1">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -33,7 +44,14 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverIzquierda" rotate="270.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverIzquierda"
+                         rotate="270.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.rowIndex="1">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -46,7 +64,15 @@
                         <Insets />
                     </GridPane.margin>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverDerecha" rotate="90.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverDerecha"
+                         rotate="90.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.columnIndex="2"
+                         GridPane.rowIndex="1">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -59,7 +85,15 @@
                         <Insets />
                     </GridPane.margin>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverAbajo" rotate="180.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverAbajo"
+                         rotate="180.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.columnIndex="1"
+                         GridPane.rowIndex="2">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -69,7 +103,13 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverArribaIzquierda" rotate="315.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverArribaIzquierda"
+                         rotate="315.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -79,7 +119,14 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverArribaDerecha" rotate="45.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverArribaDerecha"
+                         rotate="45.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.columnIndex="2">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -89,7 +136,14 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverAbajoIzquierda" rotate="225.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverAbajoIzquierda"
+                         rotate="225.0"
+                         scaleX="0.5"
+                         scaleY="0.5"
+                         stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.rowIndex="2">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -99,7 +153,13 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Polygon fill="WHITE" onMouseClicked="#moverAbajoDerecha" rotate="135.0" scaleX="0.5" scaleY="0.5" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                <Polygon fill="WHITE"
+                         onMouseClicked="#moverAbajoDerecha"
+                         rotate="135.0" scaleX="0.5"
+                         scaleY="0.5" stroke="BLACK"
+                         strokeType="INSIDE"
+                         GridPane.columnIndex="2"
+                         GridPane.rowIndex="2">
                     <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />
@@ -109,26 +169,44 @@
                         <Double fx:value="-60.0" />
                     </points>
                 </Polygon>
-                <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Label text="MOVER"
+                       textFill="WHITE"
+                       GridPane.columnIndex="1"
+                       GridPane.halignment="CENTER"
+                       GridPane.rowIndex="1"
+                       GridPane.valignment="CENTER" />
             </children>
         </GridPane>
-        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" onAction="#reparar" prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
-                text="Reparar" textFill="WHITE">
+        <Button focusTraversable="false"
+                mnemonicParsing="false"
+                prefHeight="60.0"
+                onAction="#reparar"
+                prefWidth="300.0"
+                stylesheets="/interfaz/botoneras/estiloBoton.css"
+                text="Reparar"
+                textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirCuartel" prefHeight="60.0"
+        <Button focusTraversable="false"
+                mnemonicParsing="false"
+                onAction="#construirCuartel"
+                prefHeight="60.0"
                 prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
-                text="Crear cuartel" textFill="WHITE">
+                stylesheets="/interfaz/botoneras/estiloBoton.css"
+                text="Crear cuartel"
+                textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefHeight="60.0"
+        <Button focusTraversable="false"
+                mnemonicParsing="false"
+                onAction="#construirPlaza"
+                prefHeight="60.0"
                 prefWidth="300.0"
-                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;"
-                text="Crear plaza" textFill="WHITE">
+                stylesheets="/interfaz/botoneras/estiloBoton.css"
+                text="Crear plaza"
+                textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
