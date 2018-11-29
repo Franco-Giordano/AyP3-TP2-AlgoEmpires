@@ -11,6 +11,7 @@ import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
 import interfaz.botoneras.BotoneraAldeanoController;
 import interfaz.tareas.Tarea;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -28,15 +29,20 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
-    Posicion posInfIzq;
+    private Posicion posInfIzq;
+
     @FXML
     GridPane pane;
+
     @FXML
     BorderPane panePadre;
+
     @FXML
     Button btnTerminarTurno;
+
     @FXML
     TextArea textArea;
+
     private int tamanioCasillero = 0;
     private int VGAP = 5;
     private int HGAP = 5;
@@ -82,9 +88,15 @@ public class VistaPartidaController {
     }
 
     private void reiniciarBotonera() {
-        ((Pane) panePadre.getRight()).getChildren().remove(2);
+
+        ObservableList<Node> hijosBotonera = ((Pane) panePadre.getRight()).getChildren();
+
+        ((TextArea) hijosBotonera.get(1)).setText("");
+
+        hijosBotonera.remove(2);
+        
         try {
-            ((Pane) panePadre.getRight()).getChildren().add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+            hijosBotonera.add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
         } catch (IOException e) {
             e.printStackTrace();
         }
