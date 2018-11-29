@@ -9,7 +9,7 @@ public class TareaAtacar implements Tarea {
     private Casillero casilleroEmisor;
     private Jugador jugadorActual;
 
-    public TareaAtacar(Jugador jugadorActual, Casillero casillerEmisor) {
+    public TareaAtacar(Jugador jugadorActual, Casillero casilleroEmisor) {
         this.jugadorActual = jugadorActual;
         this.casilleroEmisor = casilleroEmisor;
     }

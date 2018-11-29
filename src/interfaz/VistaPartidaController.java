@@ -239,6 +239,8 @@ public class VistaPartidaController {
     }
 
     public void setControladorBotoneraEdificio(BotoneraEdificioController controller, Edificio edificio) {
-
+        controller.setRegion(edificio.getCasilleroPertenecienteAlEdificio());
+        controller.setJugadorActual(juego.getJugadorActual());
+        controller.setVistaController(this);
     }
 }

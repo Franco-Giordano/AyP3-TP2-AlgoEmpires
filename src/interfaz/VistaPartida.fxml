@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="interfaz.VistaPartidaController">
+
+<BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
         </GridPane>
@@ -16,12 +19,10 @@
          <children>
             <ImageView fitHeight="393.0" fitWidth="1140.0" layoutX="-397.0" layoutY="350.0" pickOnBounds="true" rotate="90.0" x="-20.0">
                <image>
-                   <Image url="@recursos/imagenes/maderaTextura.png"/>
+                   <Image url="@recursos/imagenes/maderaTextura.png" />
                </image></ImageView>
-             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="-5.0" layoutY="720.0"
-                     mnemonicParsing="false" prefWidth="300" text="Terminar turno"/>
-             <TextArea fx:id="textArea" focusTraversable="false" layoutX="-5.0" layoutY="600.0" prefHeight="100.0"
-                       prefWidth="300.0" wrapText="true"/>
+             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="-5.0" layoutY="653.0" mnemonicParsing="false" prefWidth="300" text="Terminar turno" />
+             <TextArea fx:id="textArea" focusTraversable="false" layoutX="-5.0" layoutY="547.0" prefHeight="100.0" prefWidth="300.0" wrapText="true" />
                 <VBox layoutY="136.0" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </Pane>
@@ -31,13 +32,13 @@
          <children>
             <ImageView fitHeight="300.0" fitWidth="2100.0" pickOnBounds="true" rotate="180.0" x="-50.0" y="-15.0">
                <image>
-                   <Image url="@recursos/imagenes/papiroOP.png"/>
+                   <Image url="@recursos/imagenes/papiroOP.png" />
                </image>
             </ImageView>
                 <Label fx:id="poblacionLbl" layoutX="357.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0" textFill="WHITE" />
                 <ImageView fitHeight="38.0" fitWidth="50.0" layoutX="164.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@recursos/imagenes/Oro.png"/>
+                        <Image url="@recursos/imagenes/Oro.png" />
                     </image>
                <effect>
                   <Glow level="1.0" />
@@ -51,7 +52,7 @@
                 <Label fx:id="oroLbl" layoutX="208.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0" textFill="WHITE" />
                 <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="309.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@recursos/imagenes/Poblacion.png"/>
+                        <Image url="@recursos/imagenes/Poblacion.png" />
                     </image>
                <effect>
                   <Glow level="1.0" />

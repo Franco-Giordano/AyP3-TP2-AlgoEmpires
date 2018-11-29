@@ -98,10 +98,6 @@ public abstract class Edificio extends Entidad {
         return turnosDeConstruccion == 0;
     }
 
-    public boolean estaEnReparacion() {
-        return estaEnReparacion;
-    }
-
     //  TODO ver si esto se puede hacer mejor, probablemente se pueda.
     public void informarRegionOcupada(Region regionOcupada) {
         this.regionQueLoContiene = regionOcupada;
@@ -134,4 +130,7 @@ public abstract class Edificio extends Entidad {
         return posiciones;
     }
 
+    public Casillero getCasilleroPertenecienteAlEdificio() {
+        return regionQueLoContiene.getUnCasillero();
+    }
 }

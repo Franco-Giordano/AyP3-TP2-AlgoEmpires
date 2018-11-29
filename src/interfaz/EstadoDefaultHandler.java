@@ -43,9 +43,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                     "\nVida: " + entidad.getVida() +
                     "\nJugador propietario: " + entidad.getNombreJugadorPropietario());
 
-
             layoutBotones.getChildren().remove(3);
-
 
             //TODO refactorizar para que no se repita codigo
             switch (nombreEntidad) {
@@ -68,7 +66,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                 case "Espadachin":
                 case "ArmaDeAsedio":
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerrero.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml"));
                         layoutBotones.getChildren().add(3, loader.load());
 
                         BotoneraUnidadController controller = loader.getController();
@@ -78,6 +76,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    break;
                 default:
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml"));
@@ -91,6 +90,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    break;
             }
         } else {
             ((TextArea) layoutBotones.getChildren().get(2)).setText("Este casillero está vacío");

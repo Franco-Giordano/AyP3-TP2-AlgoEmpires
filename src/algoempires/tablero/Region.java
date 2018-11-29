@@ -1,5 +1,6 @@
 package algoempires.tablero;
 
+import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.excepciones.PosicionInvalidaException;
 
@@ -91,8 +92,6 @@ public class Region {
         }
     }
 
-
-
     public int getHorizontalIzq() {
         return this.getPosicionInferiorIzquierda().getHorizontal();
     }
@@ -109,5 +108,9 @@ public class Region {
 
     public int getVerticalSup() {
         return this.getPosicionInferiorIzquierda().getVertical()+ this.getTamanioVertical();
+    }
+
+    public Casillero getUnCasillero() {
+        return casillerosQueContengo.get(1);
     }
 }
