@@ -37,7 +37,7 @@ public class CasilleroView extends StackPane {
             rectangulo.setFill(new ImagePattern(iconos.get("Pasto")));
         }
 
-        EstadoDefaultHandler handler = new EstadoDefaultHandler(layoutBotones, casillero, vistaPartidaController);
+        EstadoDefaultHandler handler = new EstadoDefaultHandler(layoutBotones, this, vistaPartidaController);
 
         this.setOnMouseClicked(handler);
 

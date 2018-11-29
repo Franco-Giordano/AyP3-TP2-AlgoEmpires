@@ -9,6 +9,8 @@ import interfaz.botoneras.BotoneraUnidadController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -17,10 +19,10 @@ import java.io.IOException;
 public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
     private final Pane layoutBotones;
-    private final Casillero casilleroAsignado;
+    private final CasilleroView casilleroAsignado;
     private final VistaPartidaController vistaPartidaController;
 
-    public EstadoDefaultHandler(Pane layoutBotones, Casillero casilleroAsignado, VistaPartidaController vistaPartidaController) {
+    public EstadoDefaultHandler(Pane layoutBotones, CasilleroView casilleroAsignado, VistaPartidaController vistaPartidaController) {
         this.layoutBotones = layoutBotones;
         this.casilleroAsignado = casilleroAsignado;
         this.vistaPartidaController = vistaPartidaController;
@@ -29,7 +31,9 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
 
-        Entidad entidad = casilleroAsignado.getEntidadContenida();
+        casilleroAsignado.setEffect(new Glow(1));
+
+        Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {
             String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
 
