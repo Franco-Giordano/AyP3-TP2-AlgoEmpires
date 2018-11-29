@@ -31,18 +31,18 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
         if (entidad != null) {
             String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
 
-            ((TextArea) layoutBotones.getChildren().get(1)).setText(nombreEntidad +
+            ((TextArea) layoutBotones.getChildren().get(2)).setText(nombreEntidad +
                     "\nVida: " + entidad.getVida() +
                     "\nJugador propietario: " + entidad.getNombreJugadorPropietario());
 
 
-            layoutBotones.getChildren().remove(2);
+            layoutBotones.getChildren().remove(3);
 
             switch (nombreEntidad) {
                 case "Aldeano":
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraAldeano.fxml"));
-                        layoutBotones.getChildren().add(2, loader.load());
+                        layoutBotones.getChildren().add(3, loader.load());
 
                         BotoneraAldeanoController controller = loader.getController();
                         Aldeano aldeano = (Aldeano) entidad;
@@ -58,24 +58,24 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                 case "Espadachin":
                 case "ArmaDeAsedio":
                     try {
-                        layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml")).load());
+                        layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml")).load());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 default:
                     try {
-                        layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml")).load());
+                        layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml")).load());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
             }
         } else {
-            ((TextArea) layoutBotones.getChildren().get(1)).setText("Este casillero está vacío");
+            ((TextArea) layoutBotones.getChildren().get(2)).setText("Este casillero está vacío");
             try {
 
-                layoutBotones.getChildren().remove(2);
+                layoutBotones.getChildren().remove(3);
 
-                layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+                layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
             } catch (IOException e) {
                 e.printStackTrace();
             }

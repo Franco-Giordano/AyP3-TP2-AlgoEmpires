@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -43,6 +44,15 @@ public class VistaPartidaController {
     @FXML
     TextArea textArea;
 
+    @FXML
+    Label nombreJugadorLbl;
+
+    @FXML
+    Label oroLbl;
+
+    @FXML
+    Label poblacionLbl;
+
     private int tamanioCasillero = 0;
     private int VGAP = 5;
     private int HGAP = 5;
@@ -67,9 +77,18 @@ public class VistaPartidaController {
 
     }
 
+    private void actualizarMarcador() {
+        nombreJugadorLbl.setText(juego.getJugadorActual().getNombre());
+        oroLbl.setText(Integer.toString(juego.getJugadorActual().getOro()));
+        poblacionLbl.setText(Integer.toString(juego.getJugadorActual().getCantidadDeHabitantes()));
+    }
+
+
     public void crearCasilleros() {
 
         reiniciarBotonera();
+
+        actualizarMarcador();
 
         panePadre.getCenter().requestFocus();
 
@@ -91,12 +110,12 @@ public class VistaPartidaController {
 
         ObservableList<Node> hijosBotonera = ((Pane) panePadre.getRight()).getChildren();
 
-        ((TextArea) hijosBotonera.get(1)).setText("");
+        ((TextArea) hijosBotonera.get(2)).setText("");
 
-        hijosBotonera.remove(2);
+        hijosBotonera.remove(3);
         
         try {
-            hijosBotonera.add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+            hijosBotonera.add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
         } catch (IOException e) {
             e.printStackTrace();
         }
