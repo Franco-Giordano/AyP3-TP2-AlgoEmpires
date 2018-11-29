@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
+<BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
         </GridPane>
@@ -21,7 +24,10 @@
                <image>
                    <Image url="@recursos/imagenes/maderaTextura.png" />
                </image></ImageView>
-             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="-5.0" layoutY="653.0" mnemonicParsing="false" prefWidth="300" text="Terminar turno" />
+             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="-5.0" layoutY="653.0" mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300" style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;" text="Terminar turno" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
              <TextArea fx:id="textArea" focusTraversable="false" layoutX="-5.0" layoutY="547.0" prefHeight="100.0" prefWidth="300.0" wrapText="true" />
                 <VBox layoutY="136.0" prefHeight="200.0" prefWidth="100.0" />
          </children>
@@ -44,7 +50,7 @@
                   <Glow level="1.0" />
                </effect>
                 </ImageView>
-                <Label fx:id="nombreJugadorLbl" layoutX="150.0" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER" textFill="WHITE">
+                <Label fx:id="nombreJugadorLbl" layoutX="150.0" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER" textFill="#1e1d1d">
                <font>
                   <Font size="22.0" />
                </font>

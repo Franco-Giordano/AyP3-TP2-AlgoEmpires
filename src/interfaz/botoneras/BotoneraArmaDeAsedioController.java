@@ -38,7 +38,6 @@ public class BotoneraArmaDeAsedioController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverDerecha(MouseEvent mouseEvent) {
@@ -51,12 +50,10 @@ public class BotoneraArmaDeAsedioController {
 
     public void moverAbajo(MouseEvent mouseEvent) {
 
-
         Direccion direccion = new DireccionAbajo();
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverArribaIzquierda(MouseEvent mouseEvent) {
@@ -65,7 +62,6 @@ public class BotoneraArmaDeAsedioController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverArribaDerecha(MouseEvent mouseEvent) {
@@ -74,7 +70,6 @@ public class BotoneraArmaDeAsedioController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverAbajoIzquierda(MouseEvent mouseEvent) {
@@ -83,7 +78,6 @@ public class BotoneraArmaDeAsedioController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void moverAbajoDerecha(MouseEvent mouseEvent) {
@@ -92,16 +86,15 @@ public class BotoneraArmaDeAsedioController {
         jugadorActual.moverUnidad(casillero.getPosicion(), direccion);
 
         vistaController.crearCasilleros();
-
     }
 
     public void desmontar(){
         jugadorActual.desmontarArmaDeAsedio((ArmaDeAsedio)casillero.getEntidadContenida());
-        vistaController.crearCasilleros();
+        vistaController.reiniciarBotonera();
     }
 
     public void montar(){
         jugadorActual.montarArmaDeAsedio((ArmaDeAsedio)casillero.getEntidadContenida());
-        vistaController.crearCasilleros();
+        vistaController.reiniciarBotonera();
     }
 }

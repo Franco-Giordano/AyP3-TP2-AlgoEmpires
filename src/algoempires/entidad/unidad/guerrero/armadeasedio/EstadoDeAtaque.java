@@ -16,4 +16,7 @@ public class EstadoDeAtaque extends EstadoArmaDeAsedio {
     public boolean puedeAtacar() {
         return true;
     }
+
+    @Override
+    public boolean estaMontada(){return true;}
 }

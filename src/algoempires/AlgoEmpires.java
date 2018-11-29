@@ -5,6 +5,7 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.excepciones.DimensionesInvalidasException;
 import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 
@@ -105,5 +106,14 @@ public class AlgoEmpires {
 
     public Jugador getJugadorActual() {
         return jugadores[indiceJugadorActual];
+    }
+
+    public void terminarTurno() {
+
+        jugadores[indiceJugadorActual].actualizarEntreTurnos();
+
+        indiceJugadorActual++;
+        indiceJugadorActual = indiceJugadorActual % 2;
+
     }
 }

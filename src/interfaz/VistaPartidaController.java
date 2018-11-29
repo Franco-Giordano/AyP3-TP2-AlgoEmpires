@@ -112,7 +112,7 @@ public class VistaPartidaController {
         }
     }
 
-    private void reiniciarBotonera() {
+    public void reiniciarBotonera() {
 
         ObservableList<Node> hijosBotonera = ((Pane) panePadre.getRight()).getChildren();
 
@@ -236,20 +236,32 @@ public class VistaPartidaController {
 
     public void setControladorBotoneraUnidad(BotoneraUnidadController controller, Unidad unidad) {
         controller.setCasillero(unidad.getCasillero());
+
         controller.setJugadorActual(juego.getJugadorActual());
+
         controller.setVistaController(this);
     }
 
     public void setControladorBotoneraEdificio(BotoneraEdificioController controller, Edificio edificio) {
         controller.setRegion(edificio.getCasilleroPertenecienteAlEdificio());
+
         controller.setJugadorActual(juego.getJugadorActual());
+
         controller.setVistaController(this);
     }
 
     public void setControladorBotoneraArmaDeAsedio(BotoneraArmaDeAsedioController controller, ArmaDeAsedio armaDeAsedio){
         controller.setCasillero(armaDeAsedio.getCasillero());
+
         controller.setJugadorActual(juego.getJugadorActual());
+
         controller.setVistaController(this);
+    }
+
+    public void terminarTurno(){
+
+        juego.terminarTurno();
+        crearCasilleros();
     }
 
 }

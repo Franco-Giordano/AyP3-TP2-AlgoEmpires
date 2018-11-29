@@ -8,4 +8,6 @@ public abstract class EstadoArmaDeAsedio {
     public abstract boolean sePuedeMover();
 
     public abstract boolean puedeAtacar();
+
+    public abstract boolean estaMontada();
 }
