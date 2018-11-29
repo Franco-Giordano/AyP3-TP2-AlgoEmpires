@@ -39,7 +39,7 @@ public class PantallaInicioController {
     }
 
 
-    AlgoEmpires crearJuego() {
+    AlgoEmpires crearModelo() {
 
         String tamH = textoTamHorizontal.getText();
         String tamV = textoTamVertical.getText();

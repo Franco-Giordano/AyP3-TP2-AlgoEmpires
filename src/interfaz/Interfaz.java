@@ -8,14 +8,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.IOException;
-
 public class Interfaz extends Application {
 
     AlgoEmpires juego;
 
     private Scene escenaDeInicio;
-    private Scene escenaPartida;
 
     public static void main(String[] args) {
         launch(args);
@@ -44,49 +41,9 @@ public class Interfaz extends Application {
 
         primaryStage.show();
 
+        BotonInicioHandler handlerInicio = new BotonInicioHandler(primaryStage, controlador);
 
-
-        controlador.getBotonInicio().setOnMouseClicked(event -> {
-
-            this.juego = controlador.crearJuego();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaPartida.fxml"));
-
-            try {
-
-                Pane pane = loader.load();
-
-                VistaPartidaController controladorJuego = loader.getController();
-
-                controladorJuego.setJuego(juego);
-
-                escenaPartida = new Scene(pane);
-
-                escenaPartida.setOnKeyPressed(event1 -> {
-                    switch (event1.getCode()) {
-                        case UP:
-                            controladorJuego.renderizarArriba();
-                            break;
-                        case DOWN:
-                            controladorJuego.renderizarAbajo();
-                            break;
-                        case LEFT:
-                            controladorJuego.renderizarIzquierda();
-                            break;
-                        case RIGHT:
-                            controladorJuego.renderizarDerecha();
-                            break;
-                    }
-                });
-
-                primaryStage.setScene(escenaPartida);
-
-                controladorJuego.crearCasilleros();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        controlador.getBotonInicio().setOnMouseClicked(handlerInicio);
     }
 
 }
