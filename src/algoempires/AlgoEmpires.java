@@ -27,6 +27,9 @@ public class AlgoEmpires {
         Jugador jugador1 = new Jugador(nombre1, terrenoDeJuego);
         Jugador jugador2 = new Jugador(nombre2, terrenoDeJuego);
 
+        jugador1.sumarOro(10000);
+        jugador2.sumarOro(10000);
+
         jugadores = new Jugador[]{jugador1, jugador2};
 
         this.prepararJugadoresParaBatalla(tamHorizontal, tamVertical);
