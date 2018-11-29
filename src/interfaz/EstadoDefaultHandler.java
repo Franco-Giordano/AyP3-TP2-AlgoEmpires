@@ -31,7 +31,9 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
 
-        casilleroAsignado.setEffect(new Glow(1));
+        vistaPartidaController.eliminarEfectosCasilleros();
+
+        casilleroAsignado.setEffect(new Glow(0.8));
 
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {

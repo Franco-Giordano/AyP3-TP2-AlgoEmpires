@@ -67,7 +67,6 @@ public class VistaPartidaController {
 
     public void initialize() {
 
-
         pane.setStyle("-fx-background-color: rgba(0, 0, 0, 255);");
         pane.setHgap(HGAP);
         pane.setVgap(VGAP);
@@ -79,7 +78,6 @@ public class VistaPartidaController {
         panePadre.getCenter().setOnMouseClicked(event -> {
             panePadre.getCenter().requestFocus();
         });
-
 
     }
 
@@ -215,27 +213,27 @@ public class VistaPartidaController {
         controller.setVistaController(this);
     }
 
+    public void eliminarEfectosCasilleros(){
+
+        for (Node casillero : pane.getChildren()) {
+            casillero.setEffect(null);
+        }
+
+    }
+
     public void setHandlersEnEsperaConTarea(Tarea tarea) {
 
         for (Node casillero : pane.getChildren()) {
 
             Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
 
-            casillero.setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    casillero.setEffect(new SepiaTone());
-                }
-            });
+            casillero.setOnMouseEntered(event -> casillero.setEffect(new SepiaTone()));
 
-            casillero.setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    casillero.setEffect(null);
-                }
-            });
+            casillero.setOnMouseExited(event -> casillero.setEffect(null));
 
             casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
+
+
         }
 
     }
