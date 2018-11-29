@@ -5,6 +5,8 @@ import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.direccion.*;
 import interfaz.VistaPartidaController;
+import interfaz.tareas.Tarea;
+import interfaz.tareas.TareaAtacar;
 import javafx.scene.input.MouseEvent;
 
 public class BotoneraArmaDeAsedioController {
@@ -96,5 +98,10 @@ public class BotoneraArmaDeAsedioController {
     public void montar(){
         jugadorActual.montarArmaDeAsedio((ArmaDeAsedio)casillero.getEntidadContenida());
         vistaController.reiniciarBotonera();
+    }
+
+    public void atacar(){
+        Tarea tareaAtacar = new TareaAtacar(jugadorActual, casillero);
+        vistaController.setHandlersEnEsperaConTarea(tareaAtacar);
     }
 }
