@@ -1,19 +1,12 @@
 package interfaz;
 
-import algoempires.entidad.Entidad;
-import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.tablero.Casillero;
-import interfaz.Botoneras.BotoneraAldeanoController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
-import java.io.IOException;
 
 public class CasilleroView extends StackPane {
 
@@ -40,61 +33,14 @@ public class CasilleroView extends StackPane {
             rectangulo.setFill(Color.GREEN);
         }
 
-        this.setOnMouseClicked(event -> {
-            Entidad entidad = casillero.getEntidadContenida();
-            if (entidad != null) {
-                String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
+        EstadoDefaultCasileroHandler handler = new EstadoDefaultCasileroHandler(layoutBotones, casillero, vistaPartidaController);
 
-                ((TextArea) layoutBotones.getChildren().get(1)).setText(nombreEntidad);
-
-
-                layoutBotones.getChildren().remove(2);
-
-                switch (nombreEntidad) {
-                    case "Aldeano":
-                        try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Botoneras/BotoneraAldeano.fxml"));
-                            layoutBotones.getChildren().add(2, loader.load());
-
-                            BotoneraAldeanoController controller = loader.getController();
-                            Aldeano aldeano = (Aldeano) entidad;
-
-                            vistaPartidaController.setControladorBotoneraAldeano(controller, aldeano);
-
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case "Arquero":
-                    case "Espadachin":
-                    case "ArmaDeAsedio":
-                        try {
-                            layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraGuerreros.fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    default:
-                        try {
-                            layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/Botonera" + nombreEntidad + ".fxml")).load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                }
-            } else {
-                ((TextArea) layoutBotones.getChildren().get(1)).setText("Este casillero está vacío");
-                try {
-
-                    layoutBotones.getChildren().remove(2);
-
-                    layoutBotones.getChildren().add(2, new FXMLLoader(getClass().getResource("Botoneras/BotoneraVacia.fxml")).load());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        this.setOnMouseClicked(handler);
 
     }
 
 
+    public Casillero getCasillero() {
+        return casillero;
+    }
 }

@@ -8,9 +8,11 @@ import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
-import interfaz.Botoneras.BotoneraAldeanoController;
+import interfaz.botoneras.BotoneraAldeanoController;
+import interfaz.tareas.Tarea;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
@@ -166,5 +168,12 @@ public class VistaPartidaController {
         controller.setCasillero(aldeano.getCasillero());
         controller.setJugadorActual(juego.getJugadorActual());
         controller.setVistaController(this);
+    }
+
+    public void setHandlersEnEspera(Tarea tarea) {
+        for (Node casillero : pane.getChildren()) {
+            tarea.setCasillero(((CasilleroView)casillero).getCasillero());
+            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea));
+        }
     }
 }

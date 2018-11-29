@@ -1,10 +1,15 @@
-package interfaz.Botoneras;
+package interfaz.botoneras;
 
 
+import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
+import algoempires.tablero.Posicion;
 import algoempires.tablero.direccion.*;
+import interfaz.EstadoEnEsperaDeClickHandler;
 import interfaz.VistaPartidaController;
+import interfaz.tareas.Tarea;
+import interfaz.tareas.TareaConstruirPlazaCentral;
 import javafx.scene.input.MouseEvent;
 
 public class BotoneraAldeanoController {
@@ -28,7 +33,6 @@ public class BotoneraAldeanoController {
 
         vistaController.crearCasilleros();
     }
-
 
     public void moverIzquierda(MouseEvent mouseEvent) {
 
@@ -92,6 +96,15 @@ public class BotoneraAldeanoController {
         vistaController.crearCasilleros();
 
     }
+
+    public void construirPlaza(MouseEvent mouseEvent) {
+
+        Tarea tareaConstruirPlaza = new TareaConstruirPlazaCentral(jugadorActual);
+
+        vistaController.setHandlersEnEspera(tareaConstruirPlaza);
+
+    }
+
 
     public void setVistaController(VistaPartidaController vistaController) {
         this.vistaController = vistaController;
