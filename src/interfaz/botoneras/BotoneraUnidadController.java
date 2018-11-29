@@ -11,7 +11,7 @@ import interfaz.tareas.TareaConstruirPlazaCentral;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
-public class BotoneraAldeanoController {
+public class BotoneraUnidadController {
 
     private Casillero casillero;
 

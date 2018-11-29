@@ -12,7 +12,7 @@
     <children>
         <ImageView fitWidth="721.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@inicio/fondo.jpg"/>
+                <Image url="@recursos/imagenes/fondo.jpg"/>
             </image>
             <viewport>
                 <Rectangle2D/>
@@ -74,7 +74,7 @@
         </TextField>
         <ImageView fitHeight="260.0" fitWidth="126.0" layoutX="295.0" layoutY="119.0" pickOnBounds="true" rotate="90.0">
             <image>
-                <Image url="@inicio/papiro.png"/>
+                <Image url="@recursos/imagenes/papiro.png"/>
             </image>
         </ImageView>
         <TextField fx:id="textoTamHorizontal" alignment="CENTER_RIGHT" layoutX="393.0" layoutY="220.0" prefHeight="25.0"

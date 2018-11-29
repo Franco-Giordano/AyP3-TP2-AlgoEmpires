@@ -1,9 +1,11 @@
 package interfaz;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.tablero.Casillero;
-import interfaz.botoneras.BotoneraAldeanoController;
+import interfaz.botoneras.BotoneraEdificioController;
+import interfaz.botoneras.BotoneraUnidadController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
@@ -38,16 +40,18 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
             layoutBotones.getChildren().remove(3);
 
+
+            //TODO refactorizar para que no se repita codigo
             switch (nombreEntidad) {
                 case "Aldeano":
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraAldeano.fxml"));
                         layoutBotones.getChildren().add(3, loader.load());
 
-                        BotoneraAldeanoController controller = loader.getController();
-                        Aldeano aldeano = (Aldeano) entidad;
+                        BotoneraUnidadController controller = loader.getController();
+                        Unidad unidad = (Unidad) entidad;
 
-                        vistaPartidaController.setControladorBotoneraAldeano(controller, aldeano);
+                        vistaPartidaController.setControladorBotoneraUnidad(controller, unidad);
 
 
                     } catch (IOException e) {
@@ -58,13 +62,26 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                 case "Espadachin":
                 case "ArmaDeAsedio":
                     try {
-                        layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml")).load());
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerrero.fxml"));
+                        layoutBotones.getChildren().add(3, loader.load());
+
+                        BotoneraUnidadController controller = loader.getController();
+                        Unidad unidad = (Unidad) entidad;
+
+                        vistaPartidaController.setControladorBotoneraUnidad(controller, unidad);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 default:
                     try {
-                        layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml")).load());
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml"));
+                        layoutBotones.getChildren().add(3, loader.load());
+
+                        BotoneraEdificioController controller = loader.getController();
+                        Edificio edificio = (Edificio) entidad;
+
+                        vistaPartidaController.setControladorBotoneraEdificio(controller, edificio);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

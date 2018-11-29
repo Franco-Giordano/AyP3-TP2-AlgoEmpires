@@ -2,7 +2,8 @@
 
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox focusTraversable="false" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraEdificioController"
+      focusTraversable="false" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8">
     <children>
         <VBox focusTraversable="false">
         </VBox>

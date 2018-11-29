@@ -1,7 +1,8 @@
 package interfaz;
 
 import algoempires.AlgoEmpires;
-import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.unidad.Unidad;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -9,7 +10,8 @@ import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
-import interfaz.botoneras.BotoneraAldeanoController;
+import interfaz.botoneras.BotoneraEdificioController;
+import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -203,8 +205,8 @@ public class VistaPartidaController {
         }
     }
 
-    public void setControladorBotoneraAldeano(BotoneraAldeanoController controller, Aldeano aldeano) {
-        controller.setCasillero(aldeano.getCasillero());
+    public void setControladorBotoneraUnidad(BotoneraUnidadController controller, Unidad unidad) {
+        controller.setCasillero(unidad.getCasillero());
         controller.setJugadorActual(juego.getJugadorActual());
         controller.setVistaController(this);
     }
@@ -217,6 +219,10 @@ public class VistaPartidaController {
 
             casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
         }
+
+    }
+
+    public void setControladorBotoneraEdificio(BotoneraEdificioController controller, Edificio edificio) {
 
     }
 }
