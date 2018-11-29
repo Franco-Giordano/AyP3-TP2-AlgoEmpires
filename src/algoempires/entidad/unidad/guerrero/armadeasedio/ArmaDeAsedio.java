@@ -76,5 +76,9 @@ public class ArmaDeAsedio extends Guerrero {
     public boolean sePuedeMover() {
         return this.estadoActual.sePuedeMover() && super.sePuedeMover();
     }
+
+    public boolean estaMontada() {
+        return !sePuedeMover();
+    }
 }
 

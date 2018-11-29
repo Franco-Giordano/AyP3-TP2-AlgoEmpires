@@ -3,6 +3,7 @@ package interfaz;
 import algoempires.AlgoEmpires;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -10,6 +11,7 @@ import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
+import interfaz.botoneras.BotoneraArmaDeAsedioController;
 import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
@@ -207,12 +209,6 @@ public class VistaPartidaController {
         }
     }
 
-    public void setControladorBotoneraUnidad(BotoneraUnidadController controller, Unidad unidad) {
-        controller.setCasillero(unidad.getCasillero());
-        controller.setJugadorActual(juego.getJugadorActual());
-        controller.setVistaController(this);
-    }
-
     public void eliminarEfectosCasilleros(){
 
         for (Node casillero : pane.getChildren()) {
@@ -238,9 +234,22 @@ public class VistaPartidaController {
 
     }
 
+    public void setControladorBotoneraUnidad(BotoneraUnidadController controller, Unidad unidad) {
+        controller.setCasillero(unidad.getCasillero());
+        controller.setJugadorActual(juego.getJugadorActual());
+        controller.setVistaController(this);
+    }
+
     public void setControladorBotoneraEdificio(BotoneraEdificioController controller, Edificio edificio) {
         controller.setRegion(edificio.getCasilleroPertenecienteAlEdificio());
         controller.setJugadorActual(juego.getJugadorActual());
         controller.setVistaController(this);
     }
+
+    public void setControladorBotoneraArmaDeAsedio(BotoneraArmaDeAsedioController controller, ArmaDeAsedio armaDeAsedio){
+        controller.setCasillero(armaDeAsedio.getCasillero());
+        controller.setJugadorActual(juego.getJugadorActual());
+        controller.setVistaController(this);
+    }
+
 }

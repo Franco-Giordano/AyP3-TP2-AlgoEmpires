@@ -3,7 +3,9 @@ package interfaz;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.tablero.Casillero;
+import interfaz.botoneras.BotoneraArmaDeAsedioController;
 import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import javafx.event.EventHandler;
@@ -64,7 +66,6 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                     break;
                 case "Arquero":
                 case "Espadachin":
-                case "ArmaDeAsedio":
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml"));
                         layoutBotones.getChildren().add(3, loader.load());
@@ -73,6 +74,28 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                         Unidad unidad = (Unidad) entidad;
 
                         vistaPartidaController.setControladorBotoneraUnidad(controller, unidad);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "ArmaDeAsedio":
+                    try {
+
+                        Unidad unidad = (Unidad) entidad;
+                        FXMLLoader loader;
+
+                        if (((ArmaDeAsedio)unidad).estaMontada()) {
+                            loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioMontada.fxml"));
+
+                        }
+                        else {
+                            loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioDesmontada.fxml"));
+                        }
+
+                        layoutBotones.getChildren().add(3, loader.load());
+                        BotoneraArmaDeAsedioController controller = loader.getController();
+                        vistaPartidaController.setControladorBotoneraArmaDeAsedio(controller, (ArmaDeAsedio) unidad);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

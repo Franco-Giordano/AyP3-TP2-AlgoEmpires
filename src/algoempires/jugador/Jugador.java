@@ -250,4 +250,11 @@ public class Jugador {
     }
 
 
+    public void desmontarArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
+        armaDeAsedio.desmontar();
+    }
+
+    public void montarArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
+        armaDeAsedio.montar();
+    }
 }
