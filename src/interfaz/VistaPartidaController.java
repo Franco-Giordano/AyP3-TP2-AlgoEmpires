@@ -2,6 +2,7 @@ package interfaz;
 
 import algoempires.AlgoEmpires;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.DireccionAbajo;
@@ -170,10 +171,14 @@ public class VistaPartidaController {
         controller.setVistaController(this);
     }
 
-    public void setHandlersEnEspera(Tarea tarea) {
+    public void setHandlersEnEsperaConTarea(Tarea tarea) {
+
         for (Node casillero : pane.getChildren()) {
-            tarea.setCasillero(((CasilleroView)casillero).getCasillero());
-            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea));
+
+            Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
+
+            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion()));
         }
+
     }
 }

@@ -1,12 +1,9 @@
 package interfaz.botoneras;
 
 
-import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
-import algoempires.tablero.Posicion;
 import algoempires.tablero.direccion.*;
-import interfaz.EstadoEnEsperaDeClickHandler;
 import interfaz.VistaPartidaController;
 import interfaz.tareas.Tarea;
 import interfaz.tareas.TareaConstruirPlazaCentral;
@@ -97,11 +94,11 @@ public class BotoneraAldeanoController {
 
     }
 
-    public void construirPlaza(MouseEvent mouseEvent) {
+    public void construirPlaza() {
 
-        Tarea tareaConstruirPlaza = new TareaConstruirPlazaCentral(jugadorActual);
+        Tarea tareaConstruirPlaza = new TareaConstruirPlazaCentral(jugadorActual, casillero);
 
-        vistaController.setHandlersEnEspera(tareaConstruirPlaza);
+        vistaController.setHandlersEnEsperaConTarea(tareaConstruirPlaza);
 
     }
 

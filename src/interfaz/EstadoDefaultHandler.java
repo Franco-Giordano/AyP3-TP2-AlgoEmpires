@@ -12,13 +12,13 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class EstadoDefaultCasileroHandler implements EventHandler<MouseEvent> {
+public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
     private final Pane layoutBotones;
     private final Casillero casilleroAsignado;
     private final VistaPartidaController vistaPartidaController;
 
-    public EstadoDefaultCasileroHandler(Pane layoutBotones, Casillero casilleroAsignado, VistaPartidaController vistaPartidaController){
+    public EstadoDefaultHandler(Pane layoutBotones, Casillero casilleroAsignado, VistaPartidaController vistaPartidaController) {
         this.layoutBotones = layoutBotones;
         this.casilleroAsignado = casilleroAsignado;
         this.vistaPartidaController = vistaPartidaController;

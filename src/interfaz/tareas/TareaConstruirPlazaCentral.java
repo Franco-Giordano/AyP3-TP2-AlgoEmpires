@@ -8,18 +8,15 @@ import algoempires.tablero.Posicion;
 public class TareaConstruirPlazaCentral implements Tarea{
 
     private Jugador jugadorActual;
-    private Casillero casillero;
+    private Casillero casilleroEmisor;
 
-    public TareaConstruirPlazaCentral(Jugador jugadorActual){
+    public TareaConstruirPlazaCentral(Jugador jugadorActual, Casillero casilleroEmisor) {
         this.jugadorActual = jugadorActual;
-    }
-
-    public void setCasillero(Casillero casillero){
-        this.casillero = casillero;
+        this.casilleroEmisor = casilleroEmisor;
     }
 
     @Override
     public void ejecutar(Posicion posicionAConstruir) {
-        jugadorActual.crearPlazaCentral((Aldeano) casillero.getEntidadContenida(), posicionAConstruir);
+        jugadorActual.crearPlazaCentral((Aldeano) casilleroEmisor.getEntidadContenida(), posicionAConstruir);
     }
 }

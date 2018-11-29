@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity"
-      fx:controller="interfaz.botoneras.BotoneraAldeanoController" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      fx:controller="interfaz.botoneras.BotoneraAldeanoController">
     <children>
         <GridPane prefHeight="255.0" prefWidth="300.0">
             <columnConstraints>
@@ -122,6 +122,7 @@
         </GridPane>
         <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Reparar"/>
         <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear cuartel"/>
-        <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear plaza"/>
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefWidth="300.0"
+                text="Crear plaza"/>
     </children>
 </VBox>

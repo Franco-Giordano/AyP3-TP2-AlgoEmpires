@@ -33,7 +33,7 @@ public class CasilleroView extends StackPane {
             rectangulo.setFill(Color.GREEN);
         }
 
-        EstadoDefaultCasileroHandler handler = new EstadoDefaultCasileroHandler(layoutBotones, casillero, vistaPartidaController);
+        EstadoDefaultHandler handler = new EstadoDefaultHandler(layoutBotones, casillero, vistaPartidaController);
 
         this.setOnMouseClicked(handler);
 
