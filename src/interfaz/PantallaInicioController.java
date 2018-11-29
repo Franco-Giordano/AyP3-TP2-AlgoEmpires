@@ -41,10 +41,14 @@ public class PantallaInicioController {
 
     AlgoEmpires crearJuego() {
 
-        int tamH = Integer.parseInt(textoTamHorizontal.getText());
-        int tamV = Integer.parseInt(textoTamVertical.getText());
+        String tamH = textoTamHorizontal.getText();
+        String tamV = textoTamVertical.getText();
 
-        return new AlgoEmpires(tamH, tamV, textoJugador1.getText(), textoJugador2.getText());
+        if (!tamH.equals("") && !tamV.equals(""))
+            return new AlgoEmpires(Integer.parseInt(tamH), Integer.parseInt(tamV), textoJugador1.getText(), textoJugador2.getText());
+
+        else
+            return new AlgoEmpires(20, 20, textoJugador1.getText(), textoJugador2.getText());
     }
 
     void iniciarJuego(Stage stage, Scene escenaDePartida) {
