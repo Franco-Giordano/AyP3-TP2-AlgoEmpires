@@ -5,6 +5,7 @@ import algoempires.tablero.Casillero;
 import interfaz.VistaPartidaController;
 import interfaz.tareas.Tarea;
 import interfaz.tareas.TareaCrearArquero;
+import interfaz.tareas.TareaCrearEspadachin;
 
 public class BotoneraEdificioController {
 
@@ -25,9 +26,13 @@ public class BotoneraEdificioController {
     }
 
     public void crearArquero() {
-        Tarea tareaCrearAldeano = new TareaCrearArquero(jugadorActual, casillero);
-        vistaController.setHandlersEnEsperaConTarea(tareaCrearAldeano);
+        Tarea tareaCrearArquero = new TareaCrearArquero(jugadorActual, casillero);
+        vistaController.setHandlersEnEsperaConTarea(tareaCrearArquero);
+    }
 
+    public void crearEspadachin() {
+        Tarea tareaCrearEspadachin = new TareaCrearEspadachin(jugadorActual, casillero);
+        vistaController.setHandlersEnEsperaConTarea(tareaCrearEspadachin);
     }
 
 
