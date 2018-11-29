@@ -6,7 +6,9 @@ import algoempires.tablero.Casillero;
 import algoempires.tablero.direccion.*;
 import interfaz.VistaPartidaController;
 import interfaz.tareas.Tarea;
+import interfaz.tareas.TareaConstruirCuartel;
 import interfaz.tareas.TareaConstruirPlazaCentral;
+import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
 public class BotoneraAldeanoController {
@@ -106,5 +108,12 @@ public class BotoneraAldeanoController {
     public void setVistaController(VistaPartidaController vistaController) {
         this.vistaController = vistaController;
 
+    }
+
+    public void construirCuartel(ActionEvent actionEvent) {
+
+        Tarea tareaConstruirCuartel = new TareaConstruirCuartel(jugadorActual, casillero);
+
+        vistaController.setHandlersEnEsperaConTarea(tareaConstruirCuartel);
     }
 }

@@ -44,4 +44,8 @@ public abstract class Entidad {
     public boolean esDelEquipo(Atacante atacante) {
         return atacante.esDelEquipo(jugadorPropietario);
     }
+
+    public String getNombreJugadorPropietario() {
+        return jugadorPropietario.getNombre();
+    }
 }

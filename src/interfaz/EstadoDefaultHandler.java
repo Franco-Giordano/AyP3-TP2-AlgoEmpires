@@ -31,7 +31,9 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
         if (entidad != null) {
             String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
 
-            ((TextArea) layoutBotones.getChildren().get(1)).setText(nombreEntidad);
+            ((TextArea) layoutBotones.getChildren().get(1)).setText(nombreEntidad +
+                    "\nVida: " + entidad.getVida() +
+                    "\nJugador propietario: " + entidad.getNombreJugadorPropietario());
 
 
             layoutBotones.getChildren().remove(2);

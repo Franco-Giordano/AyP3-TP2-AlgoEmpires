@@ -11,7 +11,9 @@ import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
 import interfaz.botoneras.BotoneraAldeanoController;
 import interfaz.tareas.Tarea;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -19,22 +21,28 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
+
+import java.io.IOException;
 
 public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
-    Posicion posInfIzq;
+    private Posicion posInfIzq;
+
     @FXML
     GridPane pane;
+
     @FXML
     BorderPane panePadre;
+
     @FXML
     Button btnTerminarTurno;
+
     @FXML
     TextArea textArea;
+
     private int tamanioCasillero = 0;
     private int VGAP = 5;
     private int HGAP = 5;
@@ -61,6 +69,8 @@ public class VistaPartidaController {
 
     public void crearCasilleros() {
 
+        reiniciarBotonera();
+
         panePadre.getCenter().requestFocus();
 
         pane.getChildren().clear();
@@ -77,20 +87,29 @@ public class VistaPartidaController {
         }
     }
 
+    private void reiniciarBotonera() {
+
+        ObservableList<Node> hijosBotonera = ((Pane) panePadre.getRight()).getChildren();
+
+        ((TextArea) hijosBotonera.get(1)).setText("");
+
+        hijosBotonera.remove(2);
+        
+        try {
+            hijosBotonera.add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private CasilleroView crearCasillero(int i, int j) {
+
 
         CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j), tamanioCasillero, (Pane) panePadre.getRight(), this);
 
         return casilleroView;
     }
 
-    private void eliminarBotonera() {
-        VBox vbox = (VBox) panePadre.getRight();
-        try {
-            vbox.getChildren().remove(2);
-        } catch (IndexOutOfBoundsException e) {
-        }
-    }
 
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
@@ -177,7 +196,7 @@ public class VistaPartidaController {
 
             Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
 
-            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion()));
+            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
         }
 
     }

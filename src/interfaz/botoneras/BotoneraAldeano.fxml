@@ -121,7 +121,8 @@
             </children>
         </GridPane>
         <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Reparar"/>
-        <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear cuartel"/>
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirCuartel" prefWidth="300.0"
+                text="Crear cuartel"/>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefWidth="300.0"
                 text="Crear plaza"/>
     </children>
