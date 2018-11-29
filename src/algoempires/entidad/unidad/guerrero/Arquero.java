@@ -5,7 +5,7 @@ import algoempires.jugador.Jugador;
 public class Arquero extends Guerrero {
 
     private final int VIDA_INICIAL = 50;
-    private final int COSTO = 10;
+    private final int COSTO = 75;
 
     public Arquero(Jugador jugador) {
         super(jugador);
