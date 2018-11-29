@@ -115,12 +115,12 @@
                 <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
-        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;" text="Atacar" textFill="WHITE">
+        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;" text="Atacar" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button focusTraversable="false" mnemonicParsing="false" onAction="#montar" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;" text="Montar" textFill="WHITE">
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#montar" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch; -fx-background-radius: 20 20 20 20;" text="Montar" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
