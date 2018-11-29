@@ -12,6 +12,7 @@ import algoempires.tablero.direccion.DireccionIzquierda;
 import interfaz.botoneras.BotoneraAldeanoController;
 import interfaz.tareas.Tarea;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -19,8 +20,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
+
+import java.io.IOException;
 
 public class VistaPartidaController {
 
@@ -61,6 +63,8 @@ public class VistaPartidaController {
 
     public void crearCasilleros() {
 
+        reiniciarBotonera();
+
         panePadre.getCenter().requestFocus();
 
         pane.getChildren().clear();
@@ -77,20 +81,23 @@ public class VistaPartidaController {
         }
     }
 
+    private void reiniciarBotonera() {
+        ((Pane) panePadre.getRight()).getChildren().remove(2);
+        try {
+            ((Pane) panePadre.getRight()).getChildren().add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private CasilleroView crearCasillero(int i, int j) {
+
 
         CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j), tamanioCasillero, (Pane) panePadre.getRight(), this);
 
         return casilleroView;
     }
 
-    private void eliminarBotonera() {
-        VBox vbox = (VBox) panePadre.getRight();
-        try {
-            vbox.getChildren().remove(2);
-        } catch (IndexOutOfBoundsException e) {
-        }
-    }
 
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
@@ -177,7 +184,7 @@ public class VistaPartidaController {
 
             Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
 
-            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion()));
+            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
         }
 
     }

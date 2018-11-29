@@ -22,7 +22,7 @@ public class Monedero {
     public void restarOro(int oroARestar) {
 
         if (!puedoDebitarElValor(oroARestar) || oroARestar < 0) {
-            throw new OroInsuficienteException("Se intento crear una unidad pero no se tenía el oro suficiente.");
+            throw new OroInsuficienteException("Se intento crear una entidad pero no se tenía el oro suficiente.");
         }
 
         cantidadOro -= oroARestar;
