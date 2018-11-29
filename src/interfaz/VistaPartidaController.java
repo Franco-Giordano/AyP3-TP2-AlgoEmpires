@@ -56,8 +56,8 @@ public class VistaPartidaController {
     Label poblacionLbl;
 
     private int tamanioCasillero = 0;
-    private int VGAP = 5;
-    private int HGAP = 5;
+    private int VGAP = 3;
+    private int HGAP = 3;
     private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
 
