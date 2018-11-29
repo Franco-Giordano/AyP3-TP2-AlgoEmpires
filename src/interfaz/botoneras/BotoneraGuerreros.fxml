@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraUnidadController"
-      maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="50.0"
-      xmlns="http://javafx.com/javafx/8">
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      fx:controller="interfaz.botoneras.BotoneraUnidadController">
    <children>
        <GridPane prefHeight="255.0" prefWidth="300.0">
            <columnConstraints>
@@ -119,7 +119,7 @@
                <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
            </children>
        </GridPane>
-       <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0"
+       <Button focusTraversable="false" mnemonicParsing="false" onAction="#atacar" prefWidth="300.0"
                style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;"
                text="Atacar"/>
    </children>

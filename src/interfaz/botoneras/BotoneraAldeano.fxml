@@ -112,7 +112,7 @@
                 <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
-        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0"
+        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" onAction="#reparar" prefWidth="300.0"
                 style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;"
                 text="Reparar" textFill="WHITE">
          <font>

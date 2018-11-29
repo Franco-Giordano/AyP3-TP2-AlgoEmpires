@@ -5,16 +5,13 @@ import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.direccion.*;
 import interfaz.VistaPartidaController;
-import interfaz.tareas.Tarea;
-import interfaz.tareas.TareaConstruirCuartel;
-import interfaz.tareas.TareaConstruirPlazaCentral;
+import interfaz.tareas.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
 public class BotoneraUnidadController {
 
     private Casillero casillero;
-
     private Jugador jugadorActual;
     private VistaPartidaController vistaController;
 
@@ -115,5 +112,20 @@ public class BotoneraUnidadController {
         Tarea tareaConstruirCuartel = new TareaConstruirCuartel(jugadorActual, casillero);
 
         vistaController.setHandlersEnEsperaConTarea(tareaConstruirCuartel);
+    }
+
+
+    public void atacar(ActionEvent actionEvent) {
+
+        Tarea tareaAtacar = new TareaAtacar(jugadorActual, casillero);
+
+        vistaController.setHandlersEnEsperaConTarea(tareaAtacar);
+    }
+
+    public void reparar(ActionEvent actionEvent) {
+
+        Tarea tareaReparar = new TareaRepararEdificio(jugadorActual, casillero);
+
+        vistaController.setHandlersEnEsperaConTarea(tareaReparar);
     }
 }
