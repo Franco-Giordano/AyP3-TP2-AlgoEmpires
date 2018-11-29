@@ -49,6 +49,10 @@ public abstract class Entidad {
         return atacante.esDelEquipo(jugadorPropietario);
     }
 
+    public boolean esDelEquipo(Jugador jugador) {
+        return jugador == this.jugadorPropietario;
+    }
+
     public String getNombreJugadorPropietario() {
         return jugadorPropietario.getNombre();
     }

@@ -1,6 +1,5 @@
 package interfaz.tareas;
 
-import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;

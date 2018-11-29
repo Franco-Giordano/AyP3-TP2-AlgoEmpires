@@ -366,7 +366,7 @@ public class JugadorTest {
 
         espadachinEnemigo.restarVida(99);
 
-        jugadorEnemigo.atacar(arqueroAliado, new Posicion(3, 3));
+        jugadorDePrueba.atacar(arqueroAliado, new Posicion(3, 3));
 
         assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
 
