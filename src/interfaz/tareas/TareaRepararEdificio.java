@@ -10,7 +10,7 @@ public class TareaRepararEdificio implements Tarea {
     private Casillero casilleroEmisor;
     private Jugador jugadorActual;
 
-    public TareaRepararEdificio(Jugador jugadorActual, Casillero casillerEmisor) {
+    public TareaRepararEdificio(Jugador jugadorActual, Casillero casilleroEmisor) {
         this.jugadorActual = jugadorActual;
         this.casilleroEmisor = casilleroEmisor;
     }

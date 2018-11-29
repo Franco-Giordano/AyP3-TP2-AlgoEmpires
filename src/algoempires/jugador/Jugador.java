@@ -118,14 +118,11 @@ public class Jugador {
 
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
-            if (edificio.estaEnReparacion()) {
-                throw new SoloUnAldeanoReparaALaVezException("No puede haber mas de un aldeano reparando a un edificio!");
-            }
-
             aldeano.ordenarReparacion(edificio);
 
-        } catch (ClassCastException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
+        } catch (SoloUnAldeanoReparaALaVezException e) {
+
+            e.printStackTrace();
         }
     }
 
