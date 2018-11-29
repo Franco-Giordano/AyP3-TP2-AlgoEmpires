@@ -29,10 +29,17 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     @Override
+    public void restarVida(int vidaARestar) {
+        super.restarVida(vidaARestar);
+        if (getVida() <= 0) {
+            jugadorPropietario.informarDestruccionDeCastillo();
+        }
+    }
+
+    @Override
     protected int getTurnosDeConstruccionInicial() {
         return 0;
     }
-
 
     @Override
     protected int getVidaInicial() {
@@ -47,7 +54,6 @@ public class Castillo extends Edificio implements Atacante {
     public ArmaDeAsedio crearArmaDeAsedio() {
         return new ArmaDeAsedio(jugadorPropietario);
     }
-
 
     public void atacar(Unidad unidad) {
         unidad.restarVida(DANIO_A_TODO);
@@ -73,6 +79,7 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     public void actualizarEntreTurnos() {
+
         cercanos = jugadorPropietario.calcularCercanosA(this);
 
         this.atacarCercanos();

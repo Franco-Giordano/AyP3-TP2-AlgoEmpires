@@ -115,5 +115,18 @@ public class AlgoEmpires {
         indiceJugadorActual++;
         indiceJugadorActual = indiceJugadorActual % 2;
 
+        if(!jugadores[0].tieneCastilloConVida() || !jugadores[1].tieneCastilloConVida()){
+            indiceJugadorActual++;
+            indiceJugadorActual = indiceJugadorActual % 2;
+            this.ganarJuegoCon(jugadores[indiceJugadorActual]);
+        }
+    }
+
+    public void ganarJuegoCon(Jugador jugadorGanador){
+
+        System.out.println("El ganador es:" + jugadorGanador.getNombre());
+
+        System.exit(1);
+
     }
 }

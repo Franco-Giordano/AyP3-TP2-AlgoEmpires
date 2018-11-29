@@ -26,6 +26,7 @@ public class Jugador {
     private HashSet<Edificio> edificiosPropios;
     private Terreno terrenoDeJuego;
     private Monedero monedero;
+    private boolean castilloConVida;
 
     public Jugador(String nombreRecibido, Terreno terrenoDeJuego) {
         this.nombre= nombreRecibido;
@@ -33,6 +34,7 @@ public class Jugador {
         this.edificiosPropios = new HashSet<>();
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
+        this.castilloConVida = true;
     }
 
     //TODO de momento se asume que TODAS las posiciones de entidades recibidas son propietarias de este jugador, habra que chequearlo
@@ -258,4 +260,11 @@ public class Jugador {
         armaDeAsedio.montar();
     }
 
+    public boolean tieneCastilloConVida() {
+        return castilloConVida;
+    }
+
+    public void informarDestruccionDeCastillo() {
+        this.castilloConVida = false;
+    }
 }
