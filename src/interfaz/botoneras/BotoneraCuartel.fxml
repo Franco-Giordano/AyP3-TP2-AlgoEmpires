@@ -8,8 +8,8 @@
       xmlns:fx="http://javafx.com/fxml/1" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="interfaz.botoneras.BotoneraEdificioController">
     <children>
-        <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear Arquero"/>
-        <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear Espadachin"/>
+        <Button style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;" focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear Arquero"/>
+        <Button style="-fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png'); -fx-background-size: stretch;" focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Crear Espadachin"/>
     </children>
 </VBox>
 
