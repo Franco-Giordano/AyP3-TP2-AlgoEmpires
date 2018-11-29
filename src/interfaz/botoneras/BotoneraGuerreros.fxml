@@ -112,7 +112,7 @@
                <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
            </children>
        </GridPane>
-       <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Atacar" />
+       <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-image: url('/interfaz/inicio/fondoBoton.png'); -fx-background-size: stretch;" text="Atacar" />
    </children>
 
 </VBox>

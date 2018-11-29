@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import java.lang.Double?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraAldeanoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraAldeanoController">
     <children>
         <GridPane prefHeight="255.0" prefWidth="300.0">
             <columnConstraints>
@@ -112,8 +115,17 @@
                 <Label text="MOVER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
-        <Button focusTraversable="false" mnemonicParsing="false" prefWidth="300.0" text="Reparar" />
-        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirCuartel" prefWidth="300.0" text="Crear cuartel" />
-        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefWidth="300.0" text="Crear plaza" />
+        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/inicio/fondoBoton.png'); -fx-background-size: stretch;" text="Reparar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirCuartel" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/inicio/fondoBoton.png'); -fx-background-size: stretch;" text="Crear cuartel" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefHeight="60.0" prefWidth="300.0" style="-fx-background-image: url('/interfaz/inicio/fondoBoton.png'); -fx-background-size: stretch;" text="Crear plaza" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
     </children>
 </VBox>
