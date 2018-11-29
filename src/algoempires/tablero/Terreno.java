@@ -107,6 +107,8 @@ public class Terreno {
 
         ArrayList <Posicion> posiciones = generarPosicionesContenidas(edificio,posicionInfIzq);
 
+
+
         edificio.informarRegionOcupada(region);
     }
 
@@ -136,6 +138,21 @@ public class Terreno {
 
         return Rango.generarPosicionesVisiblesPor(posicionUnidad, unidad).contains(posicionQueQuieroVer);
 
+    }
+
+    public boolean puedeUnidadVerA(Unidad unidad, ArrayList<Posicion> posicionesDelEdificio) {
+
+        Posicion posicionUnidad = this.encontrarUnaPosDeEntidad(unidad);
+
+        ArrayList<Posicion> posicionesVisibles= Rango.generarPosicionesVisiblesPor(posicionUnidad, unidad);
+
+        for(Posicion posicionActual: posicionesVisibles){
+              if(posicionesDelEdificio.contains(posicionActual)){
+                  return true;
+              }
+            }
+
+        return false;
     }
 
     private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {

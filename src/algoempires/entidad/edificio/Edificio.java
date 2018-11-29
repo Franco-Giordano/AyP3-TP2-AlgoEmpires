@@ -29,6 +29,10 @@ public abstract class Edificio extends Entidad {
         this.estaEnReparacion = true;
     }
 
+    public Edificio(){
+        super();
+    }
+
     protected abstract int getVidaMaxima();
 
     protected abstract int getTurnosDeConstruccionInicial();
@@ -114,4 +118,20 @@ public abstract class Edificio extends Entidad {
     public Region getRegionQueLoContiene() {
         return regionQueLoContiene;
     }
+
+    public ArrayList<Posicion> calcularPosicionesAOcupar(Posicion posInfIzquierda) {
+
+        ArrayList<Posicion> posiciones = new ArrayList<>();
+        for (int i = 0; i < getTamanioHorizontal(); i++) {
+            for (int j = 0; j < getTamanioVertical(); j++) {
+
+                Posicion posicion = new Posicion(i, j, posInfIzquierda);
+                posiciones.add(posicion);
+
+            }
+        }
+
+        return posiciones;
+    }
+
 }

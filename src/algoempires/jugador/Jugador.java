@@ -16,6 +16,7 @@ import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Jugador {
@@ -130,7 +131,10 @@ public class Jugador {
 
     public void crearPlazaCentral(Aldeano aldeano, Posicion posAConstruir) {
 
-        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
+        PlazaCentral plazaCentral= new PlazaCentral();
+        ArrayList<Posicion> posiciones= plazaCentral.calcularPosicionesAOcupar(posAConstruir);
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posiciones)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 
@@ -147,7 +151,10 @@ public class Jugador {
 
     public void crearCuartel(Aldeano aldeano, Posicion posAConstruir) {
 
-        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
+        Cuartel cuartelGenerico= new Cuartel();
+        ArrayList<Posicion> posiciones= cuartelGenerico.calcularPosicionesAOcupar(posAConstruir);
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posiciones)) {
             throw new PosicionDeCreacionFueraDeRangoException();
         }
 

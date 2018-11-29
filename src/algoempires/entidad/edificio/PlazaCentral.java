@@ -20,6 +20,13 @@ public class PlazaCentral extends Edificio {
 
     }
 
+    public PlazaCentral(){
+        super();
+        TAMANIO_HORIZONTAL = 2;
+        TAMANIO_VERTICAL = 2;
+        RANGO_VISION = 1;
+    }
+
     @Override
     protected int getTurnosDeConstruccionInicial() {
         return TURNOS_DE_CONSTRUCCION_INICIAL;

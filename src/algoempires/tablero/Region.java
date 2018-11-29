@@ -1,6 +1,7 @@
 package algoempires.tablero;
 
 import algoempires.entidad.edificio.Edificio;
+import algoempires.excepciones.PosicionInvalidaException;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ public class Region {
     private ArrayList<Casillero> casillerosQueContengo;
 
     public Region(Edificio edificio, ArrayList<Casillero> casillerosContenidos) {
+        levantarExcepcionSiAlgunaOcupada(casillerosContenidos);
 
         this.casillerosQueContengo = casillerosContenidos;
 
@@ -17,6 +19,15 @@ public class Region {
             casillero.ocupar(edificio);
         }
 
+    }
+
+    private void levantarExcepcionSiAlgunaOcupada(ArrayList<Casillero> casillerosTentativos) {
+
+        for (Casillero casillero : casillerosTentativos){
+            if (casillero.estaOcupada()) {
+                throw new PosicionInvalidaException("Se intento construir en una region ya ocupada");
+            }
+        }
     }
 
     public Posicion getPosicionSuperiorDerecha(){
