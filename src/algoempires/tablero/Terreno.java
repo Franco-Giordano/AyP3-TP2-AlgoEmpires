@@ -4,7 +4,9 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
+import algoempires.excepciones.AlMenosUnCasilleroEstaOcupadoException;
 import algoempires.excepciones.DimensionesInvalidasException;
+import algoempires.excepciones.PosicionDeCreacionFueraDeRangoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
@@ -152,7 +154,7 @@ public class Terreno {
               }
             }
 
-        return false;
+        throw new PosicionDeCreacionFueraDeRangoException();
     }
 
     private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {
@@ -258,12 +260,18 @@ public class Terreno {
 
         ArrayList<Posicion> posicionesContenidas = this.generarPosicionesContenidas(edificio, posicion);
 
+        ArrayList<Casillero> casillerosContenidos = crearCasillerosAPartirDe(posicionesContenidas);
+
+        return casillerosContenidos;
+    }
+
+    private ArrayList<Casillero> crearCasillerosAPartirDe(ArrayList<Posicion> posicionesContenidas) {
+
         ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
 
         for (Posicion posActual : posicionesContenidas){
             casillerosContenidos.add(this.mapa.get(posActual));
         }
-
         return casillerosContenidos;
     }
 
@@ -289,6 +297,17 @@ public class Terreno {
 
     public Casillero getCasillero(int i, int j) {
         return mapa.get(new Posicion(i, j));
+    }
+
+    public boolean todasLasPosicionesEstanDisponibles(ArrayList<Posicion> posiciones) {
+        ArrayList<Casillero> casilleros= this.crearCasillerosAPartirDe(posiciones);
+
+        for (Casillero casilleroActual: casilleros) {
+            if(casilleroActual.estaOcupada()){
+                throw new AlMenosUnCasilleroEstaOcupadoException("No se puede construir porque hay al menos uno ocupado");
+            }
+        }
+        return true;
     }
 }
 

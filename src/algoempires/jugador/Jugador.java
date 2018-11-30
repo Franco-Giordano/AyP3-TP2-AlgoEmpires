@@ -164,14 +164,17 @@ public class Jugador {
         }
 
         try {
-            this.lanzarExcepcionSiNoEsDeMiPropiedad(aldeano);
 
+            terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
+
+            this.lanzarExcepcionSiNoEsDeMiPropiedad(aldeano);
 
             PlazaCentral plaza = aldeano.construirPlazaCentral();
 
             terrenoDeJuego.ocupar(posAConstruir, plaza);
 
-        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | AldeanoOcupadoException e) {
+        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
+                AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
@@ -187,6 +190,7 @@ public class Jugador {
         }
 
         try {
+            terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
             this.lanzarExcepcionSiNoEsDeMiPropiedad(aldeano);
 
@@ -194,11 +198,13 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posAConstruir, cuartel);
 
-        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | AldeanoOcupadoException e) {
+        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
+                AldeanoOcupadoException| AlMenosUnCasilleroEstaOcupadoException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
     }
+
 
     public void atacar(Atacante atacante, Posicion posicionDeLaVictima) {
 

@@ -29,9 +29,7 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
+        cuartel.terminarConstruccion();
 
         terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
 
@@ -46,10 +44,7 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
-
+        cuartel.terminarConstruccion();
         terreno.ocupar(new Posicion(1, 1), cuartel.crearArquero());
 
         assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
