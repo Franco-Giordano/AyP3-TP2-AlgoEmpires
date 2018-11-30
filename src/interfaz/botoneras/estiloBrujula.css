@@ -1,0 +1,4 @@
+.grid: {
+    -fx-background-image: url('/interfaz/recursos/imagenes/brujula.png');
+    -fx-background-size: stretch;
+}

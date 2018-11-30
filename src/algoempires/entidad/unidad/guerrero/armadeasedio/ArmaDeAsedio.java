@@ -27,7 +27,7 @@ public class ArmaDeAsedio extends Guerrero {
     }
 
     @Override
-    protected int getVidaInicial() {
+    public int getVidaInicial() {
         return VIDA_INICIAL;
     }
 

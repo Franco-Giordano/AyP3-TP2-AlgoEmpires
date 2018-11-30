@@ -62,4 +62,8 @@ public class CasilleroView extends StackPane {
 
         return mapa;
     }
+
+    public Image getImagen(String nombreEntidad) {
+        return iconos.get(nombreEntidad);
+    }
 }

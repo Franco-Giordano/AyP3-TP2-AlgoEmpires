@@ -17,7 +17,7 @@ public class Arquero extends Guerrero {
     }
 
     @Override
-    protected int getVidaInicial() {
+    public int getVidaInicial() {
         return VIDA_INICIAL;
     }
 

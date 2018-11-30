@@ -11,9 +11,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 
 import java.io.IOException;
 
@@ -38,13 +40,15 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {
-            String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
+            String claseEntidad = entidad.getClass().toString();
+            String nombreEntidad = claseEntidad.substring(entidad.getClass().toString().lastIndexOf(".") + 1);
 
             vistaPartidaController.entidadSeleccionadaLbl.setText(nombreEntidad.toUpperCase());
             vistaPartidaController.deJugadorLbl.setText(" de " + entidad.getNombreJugadorPropietario());
             vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida());
 
             vistaPartidaController.circuloIcono.setVisible(true);
+            vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(claseEntidad))));
 
             layoutBotones.getChildren().remove(2);
 
