@@ -4,16 +4,15 @@ import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
-import algoempires.tablero.Casillero;
 import interfaz.botoneras.BotoneraArmaDeAsedioController;
 import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextArea;
-import javafx.scene.effect.Effect;
+import javafx.scene.Node;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -41,18 +40,23 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
         if (entidad != null) {
             String nombreEntidad = entidad.getClass().toString().substring(entidad.getClass().toString().lastIndexOf(".") + 1);
 
-            ((TextArea) layoutBotones.getChildren().get(2)).setText(nombreEntidad +
-                    "\nVida: " + entidad.getVida() +
-                    "\nJugador propietario: " + entidad.getNombreJugadorPropietario());
+            vistaPartidaController.entidadSeleccionadaLbl.setText(nombreEntidad.toUpperCase());
+            vistaPartidaController.deJugadorLbl.setText(" de " + entidad.getNombreJugadorPropietario());
+            vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida());
 
-            layoutBotones.getChildren().remove(3);
+            vistaPartidaController.circuloIcono.setVisible(true);
+
+            layoutBotones.getChildren().remove(2);
 
             //TODO refactorizar para que no se repita codigo
             switch (nombreEntidad) {
                 case "Aldeano":
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraAldeano.fxml"));
-                        layoutBotones.getChildren().add(3, loader.load());
+                        Node botonera = loader.load();
+                        layoutBotones.getChildren().add(2, botonera);
+                        AnchorPane.setTopAnchor(botonera, 150.0);
+                        AnchorPane.setLeftAnchor(botonera, -5.0);
 
                         BotoneraUnidadController controller = loader.getController();
                         Unidad unidad = (Unidad) entidad;
@@ -68,7 +72,10 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                 case "Espadachin":
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml"));
-                        layoutBotones.getChildren().add(3, loader.load());
+                        Node botonera = loader.load();
+                        layoutBotones.getChildren().add(2, botonera);
+                        AnchorPane.setTopAnchor(botonera, 150.0);
+                        AnchorPane.setLeftAnchor(botonera, -5.0);
 
                         BotoneraUnidadController controller = loader.getController();
                         Unidad unidad = (Unidad) entidad;
@@ -92,7 +99,12 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                             loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioDesmontada.fxml"));
                         }
 
-                        layoutBotones.getChildren().add(3, loader.load());
+                        Node botonera = loader.load();
+                        layoutBotones.getChildren().add(2, botonera);
+                        AnchorPane.setTopAnchor(botonera, 150.0);
+                        AnchorPane.setLeftAnchor(botonera, -5.0);
+
+
                         BotoneraArmaDeAsedioController controller = loader.getController();
                         vistaPartidaController.setControladorBotoneraArmaDeAsedio(controller, (ArmaDeAsedio) unidad);
 
@@ -103,7 +115,10 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                 default:
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml"));
-                        layoutBotones.getChildren().add(3, loader.load());
+                        Node botonera = loader.load();
+                        layoutBotones.getChildren().add(2, botonera);
+                        AnchorPane.setTopAnchor(botonera, 270.0);
+                        AnchorPane.setLeftAnchor(botonera, -5.0);
 
                         BotoneraEdificioController controller = loader.getController();
                         Edificio edificio = (Edificio) entidad;
@@ -116,15 +131,8 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                     break;
             }
         } else {
-            ((TextArea) layoutBotones.getChildren().get(2)).setText("Este casillero está vacío");
-            try {
+            vistaPartidaController.reiniciarBotonera();
 
-                layoutBotones.getChildren().remove(3);
-
-                layoutBotones.getChildren().add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

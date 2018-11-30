@@ -4,32 +4,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox focusTraversable="false"
-      BorderPane.alignment="CENTER"
-      xmlns="http://javafx.com/javafx/8.0.172-ea"
-      xmlns:fx="http://javafx.com/fxml/1"
+<VBox xmlns:fx="http://javafx.com/fxml/1" focusTraversable="false" scaleX="0.8" scaleY="0.8"
+      BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea"
       fx:controller="interfaz.botoneras.BotoneraArmaDeAsedioController">
     <children>
-        <Button focusTraversable="false"
-                mnemonicParsing="false"
-                onAction="#atacar"
-                prefHeight="60.0"
-                prefWidth="300.0"
-                text="Atacar"
-                stylesheets="/interfaz/botoneras/estiloBoton.css"
-                textFill="WHITE">
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#atacar" prefHeight="60.0" prefWidth="300.0"
+                stylesheets="/interfaz/botoneras/estiloBoton.css" text="Atacar" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button focusTraversable="false"
-                mnemonicParsing="false"
-                onAction="#desmontar"
-                prefHeight="60.0"
-                prefWidth="300.0"
-                stylesheets="/interfaz/botoneras/estiloBoton.css"
-                text="Desmontar"
-                textFill="WHITE">
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#desmontar" prefHeight="60.0"
+                prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Desmontar" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>

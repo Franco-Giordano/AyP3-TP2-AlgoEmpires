@@ -4,34 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
-      AnchorPane.leftAnchor="50.0"
-      xmlns="http://javafx.com/javafx/8.0.172-ea"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="interfaz.botoneras.BotoneraEdificioController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" scaleX="0.8" scaleY="0.8" AnchorPane.leftAnchor="50.0"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="interfaz.botoneras.BotoneraEdificioController">
     <children>
-        <Button focusTraversable="false"
-                mnemonicParsing="false"
-                onAction="#crearArquero"
-                prefHeight="60.0"
-                prefWidth="300.0"
-                stylesheets="/interfaz/botoneras/estiloBoton.css"
-                text="Crear Arquero"
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#crearArquero" prefHeight="60.0"
+                prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Crear Arquero"
                 textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
-        <Button focusTraversable="false"
-                mnemonicParsing="false"
-                onAction="#crearEspadachin"
-                prefHeight="60.0"
-                prefWidth="300.0"
-                stylesheets="/interfaz/botoneras/estiloBoton.css"
-                text="Crear Espadachin"
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#crearEspadachin" prefHeight="60.0"
+                prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Crear Espadachin"
                 textFill="WHITE">
          <font>
             <Font size="20.0" />

@@ -1,124 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-
 <BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
         </GridPane>
     </center>
-    <right>
-      <Pane prefWidth="300.0">
-         <children>
-            <ImageView fitHeight="393.0"
-                       fitWidth="1140.0"
-                       layoutX="-397.0"
-                       layoutY="350.0"
-                       pickOnBounds="true"
-                       rotate="90.0"
-                       x="-20.0">
-               <image>
-                   <Image url="@recursos/imagenes/maderaTextura.png" />
-               </image></ImageView>
-             <Button fx:id="btnTerminarTurno"
-                     focusTraversable="false"
-                     layoutX="-5.0"
-                     layoutY="653.0"
-                     mnemonicParsing="false"
-                     onAction="#terminarTurno"
-                     prefHeight="60.0"
-                     prefWidth="300"
-                     stylesheets="/interfaz/botoneras/estiloBoton.css"
-                     text="Terminar turno"
-                     textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
-             <TextArea fx:id="textArea"
-                       focusTraversable="false"
-                       layoutX="-5.0"
-                       layoutY="547.0"
-                       prefHeight="100.0"
-                       prefWidth="300.0"
-                       wrapText="true" />
-                <VBox layoutY="136.0"
-                      prefHeight="200.0"
-                      prefWidth="100.0" />
-         </children>
-      </Pane>
-    </right>
     <bottom>
-      <Pane prefHeight="100.0" prefWidth="300.0">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0">
          <children>
-            <ImageView fitHeight="300.0"
-                       fitWidth="2100.0"
-                       pickOnBounds="true"
-                       rotate="180.0"
-                       x="-50.0"
-                       y="-15.0">
+             <ImageView fitHeight="300.0" fitWidth="2100.0" layoutX="50.0" layoutY="15.0" pickOnBounds="true"
+                        rotate="180.0" translateX="-50.0" translateY="-23.0" x="-50.0" y="-15.0">
                <image>
                    <Image url="@recursos/imagenes/papiroOP.png" />
                </image>
             </ImageView>
-                <Label fx:id="poblacionLbl"
-                       layoutX="357.0"
-                       layoutY="53.0"
-                       prefHeight="15.0"
-                       prefWidth="53.0"
-                       textFill="WHITE" />
-                <ImageView fitHeight="38.0"
-                           fitWidth="50.0"
-                           layoutX="164.0"
-                           layoutY="41.0"
-                           pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@recursos/imagenes/Oro.png" />
-                    </image>
-               <effect>
-                  <Glow level="1.0" />
-               </effect>
-                </ImageView>
-                <Label fx:id="nombreJugadorLbl"
-                       layoutX="150.0"
-                       prefHeight="37.0"
-                       prefWidth="223.0"
-                       textAlignment="CENTER"
-                       textFill="#1e1d1d">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-                <Label fx:id="oroLbl"
-                       layoutX="208.0"
-                       layoutY="53.0"
-                       prefHeight="15.0"
-                       prefWidth="61.0"
-                       textFill="WHITE" />
-                <ImageView fitHeight="42.0"
-                           fitWidth="41.0"
-                           layoutX="309.0"
-                           layoutY="39.0"
-                           pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@recursos/imagenes/Poblacion.png" />
-                    </image>
-               <effect>
-                  <Glow level="1.0" />
-               </effect>
-                </ImageView>
+             <Group AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0">
+                 <children>
+                     <Label fx:id="poblacionLbl" layoutX="207.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0"
+                            translateX="-50.0" translateY="-23.0"/>
+                     <ImageView fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true"
+                                preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                         <image>
+                             <Image url="@recursos/imagenes/Oro.png"/>
+                         </image>
+                         <effect>
+                             <Glow level="1.0"/>
+                         </effect>
+                     </ImageView>
+                     <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0"
+                            translateX="-50.0" translateY="-23.0"/>
+                     <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER"
+                            textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
+                         <font>
+                             <Font size="22.0"/>
+                         </font>
+                     </Label>
+                     <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="159.0" layoutY="39.0" pickOnBounds="true"
+                                preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                         <image>
+                             <Image url="@recursos/imagenes/Poblacion.png"/>
+                         </image>
+                         <effect>
+                             <Glow level="1.0"/>
+                         </effect>
+                     </ImageView>
+                 </children>
+             </Group>
+             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="50.0" layoutY="15.0"
+                     mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300"
+                     stylesheets="/interfaz/botoneras/estiloBoton.css" text="Terminar turno" textFill="WHITE"
+                     AnchorPane.rightAnchor="350.0">
+                 <font>
+                     <Font size="20.0"/>
+                 </font>
+             </Button>
          </children>
-      </Pane>
+        </AnchorPane>
     </bottom>
+    <right>
+        <AnchorPane fx:id="anchorDerecho" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
+                    prefWidth="300.0">
+            <children>
+                <ImageView fitHeight="393.0" fitWidth="850.0" layoutX="-261.0" layoutY="205.0" pickOnBounds="true"
+                           rotate="90.0">
+                    <image>
+                        <Image url="@recursos/imagenes/maderaTextura.png"/>
+                    </image>
+                    <effect>
+                        <DropShadow height="75.89" radius="38.205" spread="0.09" width="78.93"/>
+                    </effect>
+                </ImageView>
+                <Circle fx:id="circuloIcono" layoutX="55.0" layoutY="77.0" radius="55.0" stroke="BLACK"
+                        strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0"
+                        AnchorPane.topAnchor="22.0">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="0.2692307692307692" startX="0.033653846153846145" startY="1.0">
+                            <stops>
+                                <Stop color="BLACK"/>
+                                <Stop color="#404040" offset="1.0"/>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Circle>
+                <VBox layoutX="43.5" layoutY="159.5" prefHeight="200.0" prefWidth="100.0"/>
+                <Label fx:id="entidadSeleccionadaLbl" layoutX="120.0" layoutY="34.0" text="ARMADEASEDIO"
+                       textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="34.0"
+                       StackPane.alignment="TOP_CENTER">
+                    <font>
+                        <Font size="19.0"/>
+                    </font>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Label>
+                <Label fx:id="deJugadorLbl" layoutX="144.0" layoutY="58.0" text="de Carlos" textAlignment="CENTER"
+                       textFill="#dddddd" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="58.0"
+                       StackPane.alignment="TOP_CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Label>
+                <Label fx:id="vidaEntidadLbl" layoutX="145.0" layoutY="92.0" text="Vida: " textAlignment="CENTER"
+                       textFill="WHITE" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="92.0"
+                       StackPane.alignment="TOP_CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Label>
+            </children>
+        </AnchorPane>
+    </right>
 </BorderPane>

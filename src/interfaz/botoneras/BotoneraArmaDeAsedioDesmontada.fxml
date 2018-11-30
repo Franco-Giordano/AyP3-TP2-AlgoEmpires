@@ -7,9 +7,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
-<VBox focusTraversable="false" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraArmaDeAsedioController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" focusTraversable="false" scaleX="0.8" scaleY="0.8"
+      BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      fx:controller="interfaz.botoneras.BotoneraArmaDeAsedioController">
     <children>
-        <GridPane prefHeight="255.0" prefWidth="300.0">
+        <GridPane prefHeight="300.0" prefWidth="300.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

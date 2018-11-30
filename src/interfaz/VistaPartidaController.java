@@ -16,20 +16,17 @@ import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.effect.SepiaTone;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 
 import java.io.IOException;
@@ -50,16 +47,17 @@ public class VistaPartidaController {
     Button btnTerminarTurno;
 
     @FXML
-    TextArea textArea;
+    Label nombreJugadorLbl, oroLbl, poblacionLbl;
 
     @FXML
-    Label nombreJugadorLbl;
+    Label entidadSeleccionadaLbl, deJugadorLbl, vidaEntidadLbl;
 
     @FXML
-    Label oroLbl;
+    AnchorPane anchorDerecho;
 
     @FXML
-    Label poblacionLbl;
+    Circle circuloIcono;
+
 
     private int tamanioCasillero = 0;
     private int VGAP = 3;
@@ -114,14 +112,19 @@ public class VistaPartidaController {
 
     public void reiniciarBotonera() {
 
-        ObservableList<Node> hijosBotonera = ((Pane) panePadre.getRight()).getChildren();
+        ObservableList<Node> hijosBotonera = anchorDerecho.getChildren();
 
-        ((TextArea) hijosBotonera.get(2)).setText("");
+        //((TextArea) hijosBotonera.get(2)).setText("");
+        entidadSeleccionadaLbl.setText("");
+        deJugadorLbl.setText("");
+        vidaEntidadLbl.setText("");
 
-        hijosBotonera.remove(3);
+        circuloIcono.setVisible(false);
+
+        hijosBotonera.remove(2);
         
         try {
-            hijosBotonera.add(3, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
+            hijosBotonera.add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,7 +133,7 @@ public class VistaPartidaController {
     private CasilleroView crearCasillero(int i, int j) {
 
 
-        CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j), tamanioCasillero, (Pane) panePadre.getRight(), this);
+        CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j), tamanioCasillero, anchorDerecho, this);
 
         return casilleroView;
     }
