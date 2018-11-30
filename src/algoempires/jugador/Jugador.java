@@ -82,7 +82,7 @@ public class Jugador {
             Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
@@ -99,7 +99,7 @@ public class Jugador {
             Espadachin espadachinCreado = cuartel.crearEspadachin();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
@@ -118,7 +118,7 @@ public class Jugador {
             Arquero arqueroCreado = cuartel.crearArquero();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
@@ -133,7 +133,7 @@ public class Jugador {
             ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException| EdificioNoFuncionalException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
     }
@@ -171,7 +171,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posAConstruir, plaza);
 
-        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | AldeanoOcupadoException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 
@@ -194,7 +194,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posAConstruir, cuartel);
 
-        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | AldeanoOcupadoException e) {
             //TODO Avisar que fallo la operacion mediante el VistaPartidaController
         }
 

@@ -37,8 +37,6 @@ public class Interfaz extends Application {
 
         primaryStage.setResizable(false);
 
-        primaryStage.setMaximized(true);
-
         primaryStage.show();
 
         BotonInicioHandler handlerInicio = new BotonInicioHandler(primaryStage, controlador);

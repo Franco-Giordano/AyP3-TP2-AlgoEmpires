@@ -2,6 +2,7 @@ package algoempires;
 
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.excepciones.DimensionesInvalidasException;
+import algoempires.excepciones.EdificioNoFuncionalException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -28,6 +29,10 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+
         terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
 
         assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
@@ -41,9 +46,38 @@ public class CuartelTest {
 
         Cuartel cuartel = new Cuartel(jugadorDePrueba);
 
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+
         terreno.ocupar(new Posicion(1, 1), cuartel.crearArquero());
 
         assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
 
     }
+
+
+    @Test (expected = EdificioNoFuncionalException.class)
+    public void testNoSePuedeCrearEspadachinSiElEdificioNoEsFuncional() throws DimensionesInvalidasException,
+            PosicionInvalidaException, EdificioNoFuncionalException {
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), cuartel.crearEspadachin());
+
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
+    }
+
+    @Test (expected = EdificioNoFuncionalException.class)
+    public void testNoSePuedeCrearArqueroSiElEdificioNoEsFuncional() throws DimensionesInvalidasException,
+            PosicionInvalidaException, EdificioNoFuncionalException {
+
+        Cuartel cuartel = new Cuartel(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), cuartel.crearArquero());
+
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
+    }
+
+
 }

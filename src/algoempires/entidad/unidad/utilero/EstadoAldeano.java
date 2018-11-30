@@ -11,4 +11,6 @@ public abstract class EstadoAldeano {
     protected abstract EstadoAldeano actualizarEntreTurnos();
 
     public abstract boolean sePuedeMover();
+
+    public abstract void chequearQueAldeanoEsteDisponible( );
 }

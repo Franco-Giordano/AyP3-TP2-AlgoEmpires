@@ -1,6 +1,7 @@
 package algoempires.entidad.edificio;
 
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.EdificioNoFuncionalException;
 import algoempires.jugador.Jugador;
 
 public class PlazaCentral extends Edificio {
@@ -49,6 +50,7 @@ public class PlazaCentral extends Edificio {
     }
 
     public Aldeano crearAldeano() {
+        this.esFuncional();
         return new Aldeano(jugadorPropietario);
     }
 

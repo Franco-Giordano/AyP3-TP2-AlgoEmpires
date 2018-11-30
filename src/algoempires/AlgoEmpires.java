@@ -53,6 +53,7 @@ public class AlgoEmpires {
 
         Posicion posPlaza = new Posicion(1, 6, desplazamiento);
         PlazaCentral plaza = new PlazaCentral(jugador);
+        plaza.terminarConstruccion();
         plaza.sumarVida(300);
 
 

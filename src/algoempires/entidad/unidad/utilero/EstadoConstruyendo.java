@@ -1,6 +1,7 @@
 package algoempires.entidad.unidad.utilero;
 
 import algoempires.entidad.edificio.Edificio;
+import algoempires.excepciones.AldeanoOcupadoException;
 
 public class EstadoConstruyendo extends EstadoAldeano {
 
@@ -26,5 +27,10 @@ public class EstadoConstruyendo extends EstadoAldeano {
     @Override
     public boolean sePuedeMover() {
         return false;
+    }
+
+    @Override
+    public void chequearQueAldeanoEsteDisponible(){
+        throw new AldeanoOcupadoException("El aldeano se encuentra construyendo o reparando un edificio.");
     }
 }

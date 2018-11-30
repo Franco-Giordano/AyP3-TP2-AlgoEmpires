@@ -28,6 +28,8 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
         AlgoEmpires modelo = controladorActual.crearModelo();
 
+        primaryStage.setMaximized(true);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("VistaPartida.fxml"));
 
         try {

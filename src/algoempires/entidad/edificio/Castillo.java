@@ -26,6 +26,7 @@ public class Castillo extends Edificio implements Atacante {
         VELOCIDAD_DE_REPARACION = 15;
         RANGO_VISION = 3;
 
+        this.terminarConstruccion();
     }
 
     @Override
@@ -35,6 +36,7 @@ public class Castillo extends Edificio implements Atacante {
             jugadorPropietario.informarDestruccionDeCastillo();
         }
     }
+
 
     @Override
     protected int getTurnosDeConstruccionInicial() {
@@ -52,6 +54,7 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     public ArmaDeAsedio crearArmaDeAsedio() {
+        this.esFuncional();
         return new ArmaDeAsedio(jugadorPropietario);
     }
 

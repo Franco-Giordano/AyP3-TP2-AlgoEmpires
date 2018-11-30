@@ -50,10 +50,13 @@ public class Cuartel extends Edificio {
     }
 
     public Espadachin crearEspadachin() throws PosicionInvalidaException {
+
+        this.esFuncional();
         return new Espadachin(jugadorPropietario);
     }
 
     public Arquero crearArquero() throws PosicionInvalidaException {
+        this.esFuncional();
         return new Arquero(jugadorPropietario);
     }
 

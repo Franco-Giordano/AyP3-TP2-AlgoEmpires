@@ -7,6 +7,7 @@ import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.excepciones.AldeanoOcupadoException;
 import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
 import algoempires.excepciones.EntidadFueraDeRangoException;
 import algoempires.excepciones.NoSeToleraFuegoAmigoException;
@@ -186,6 +187,10 @@ public class JugadorTest {
 
         Posicion posicion = new Posicion(3, 3);
 
+        plazaCentral.continuarConstruccion();
+        plazaCentral.continuarConstruccion();
+        plazaCentral.continuarConstruccion();
+
         jugadorDePrueba.crearAldeano(plazaCentral, posicion);
 
         assertEquals(jugadorDePrueba.getCantidadDeHabitantes(), 1);
@@ -336,6 +341,49 @@ public class JugadorTest {
         assertTrue(terreno.estaOcupada(new Posicion(5, 5)));
     }
 
+
+    public void testAldeanoNoPuedeConstruirORepararDosEdificiosALaVez(){
+        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(4,4), aldeano);
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5,5));
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2,2) );
+
+        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+
+        assertFalse(terreno.estaOcupada(new Posicion(2,2)));
+        assertFalse(terreno.estaOcupada(new Posicion(3,2)));
+        assertFalse(terreno.estaOcupada(new Posicion(2,3)));
+        assertFalse(terreno.estaOcupada(new Posicion(3,3)));
+
+    }
+
+    @Test
+    public void testAldeanoPuedeConstruirOtroEdificioUnaVezQueTerminoSuTarea(){
+        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(4,4), aldeano);
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5,5));
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.actualizarEntreTurnos();
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2,2) );
+
+        assertTrue(terreno.estaOcupada(new Posicion(2,2)));
+        assertTrue(terreno.estaOcupada(new Posicion(3,2)));
+        assertTrue(terreno.estaOcupada(new Posicion(2,3)));
+        assertTrue(terreno.estaOcupada(new Posicion(3,3)));
+
+        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6,5)));
+        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+
+    }
+
     @Test
     public void testSeQuitaUnidadMuertaDelaPoblacion() {
 
@@ -354,6 +402,15 @@ public class JugadorTest {
         terreno.ocupar(new Posicion(1, 1), cuartelEnemigo);
 
         assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
+
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+        cuartel.continuarConstruccion();
+
+        cuartelEnemigo.continuarConstruccion();
+        cuartelEnemigo.continuarConstruccion();
+        cuartelEnemigo.continuarConstruccion();
+
 
         jugadorDePrueba.crearArquero(cuartel, new Posicion(5, 5));
         jugadorEnemigo.crearEspadachin(cuartelEnemigo, new Posicion(3, 3));

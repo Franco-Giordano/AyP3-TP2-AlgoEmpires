@@ -2,6 +2,7 @@ package algoempires.entidad.edificio;
 
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
+import algoempires.excepciones.EdificioNoFuncionalException;
 import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
@@ -94,6 +95,15 @@ public abstract class Edificio extends Entidad {
         }
     }
 
+
+    public void esFuncional() throws EdificioNoFuncionalException {
+        if(this.estaEnReparacion){
+            throw new EdificioNoFuncionalException("No se pudo realizar la accion porque el " +
+                "edificio no esta funcional en este momento");
+    }
+    }
+
+
     public boolean terminoConstruccion() {
         return turnosDeConstruccion == 0;
     }
@@ -132,5 +142,11 @@ public abstract class Edificio extends Entidad {
 
     public Casillero getCasilleroPertenecienteAlEdificio() {
         return regionQueLoContiene.getUnCasillero();
+    }
+
+    public void terminarConstruccion(){
+        while(estaEnReparacion){
+            this.continuarConstruccion();
+        }
     }
 }

@@ -22,7 +22,7 @@ public class AlgoEmpiresTest {
         assertTrue(jugadores[0].tieneAldeanoEn(new Posicion(4, 6)));
         assertTrue(jugadores[0].tieneAldeanoEn(new Posicion(5, 7)));
         assertTrue(jugadores[0].tieneEstaCantidadDePropiedades(3, 2));
-        assertEquals(jugadores[0].getOro(), 100);
+        assertEquals(jugadores[0].getOro(), 10100);
 
 
         assertTrue(jugadores[1].tieneCastilloEn(new Posicion(27, 24)));
@@ -31,7 +31,7 @@ public class AlgoEmpiresTest {
         assertTrue(jugadores[1].tieneAldeanoEn(new Posicion(26, 28)));
         assertTrue(jugadores[1].tieneAldeanoEn(new Posicion(24, 26)));
         assertTrue(jugadores[1].tieneEstaCantidadDePropiedades(3, 2));
-        assertEquals(jugadores[1].getOro(), 100);
+        assertEquals(jugadores[1].getOro(), 10100);
 
     }
 

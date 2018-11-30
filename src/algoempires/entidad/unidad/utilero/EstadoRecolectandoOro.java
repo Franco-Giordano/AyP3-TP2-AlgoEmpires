@@ -17,4 +17,8 @@ public class EstadoRecolectandoOro extends EstadoAldeano {
     public boolean sePuedeMover() {
         return true;
     }
+
+    @Override
+    public void chequearQueAldeanoEsteDisponible( ) {
+    }
 }

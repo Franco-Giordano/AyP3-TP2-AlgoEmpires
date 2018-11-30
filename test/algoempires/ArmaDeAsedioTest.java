@@ -1,6 +1,8 @@
 package algoempires;
 
+import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
+import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -17,12 +19,15 @@ public class ArmaDeAsedioTest {
 
     private Terreno terreno;
     private Jugador jugadorDePrueba;
+    private Jugador jugadorEnemigo;
 
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador("Carlos", terreno);
+        this.jugadorEnemigo= new Jugador("Juan", terreno);
         jugadorDePrueba.sumarOro(10000);
+        jugadorEnemigo.sumarOro(10000);
     }
 
 
@@ -244,6 +249,32 @@ public class ArmaDeAsedioTest {
 
         terreno.moverUnidad(new Posicion(1, 1), new DireccionArriba());
         terreno.moverUnidad(new Posicion(1, 2), new DireccionArriba());
+    }
+
+    @Test
+    public void testArmaDeAsedioAtacaBien(){
+
+        ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
+
+        Aldeano aldeanoEnemigo= new Aldeano(jugadorEnemigo);
+        terreno.ocupar(new Posicion(5,5), aldeanoEnemigo);
+        jugadorEnemigo.crearCuartel(aldeanoEnemigo, new Posicion(3,3));
+
+        Cuartel cuartelEnemigo= (Cuartel) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+        cuartelEnemigo.terminarConstruccion();
+
+        assertTrue(cuartelEnemigo.tieneVidaLlena());
+        armaDeAsedio.montar();
+
+        jugadorDePrueba.actualizarEntreTurnos();
+
+        armaDeAsedio.atacar(cuartelEnemigo);
+
+        assertFalse(cuartelEnemigo.tieneVidaLlena());
+
+
     }
 
 }

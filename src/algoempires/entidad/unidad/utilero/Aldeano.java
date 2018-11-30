@@ -6,7 +6,6 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
 
 public class Aldeano extends Unidad {
 
@@ -39,6 +38,8 @@ public class Aldeano extends Unidad {
 
     public PlazaCentral construirPlazaCentral() throws PosicionInvalidaException {
 
+        estadoActual.chequearQueAldeanoEsteDisponible();
+
         PlazaCentral plazaCentral = new PlazaCentral(jugadorPropietario);
 
         this.estadoActual = new EstadoConstruyendo(this, plazaCentral);
@@ -46,7 +47,10 @@ public class Aldeano extends Unidad {
         return plazaCentral;
     }
 
+
     public Cuartel construirCuartel() throws PosicionInvalidaException {
+
+        estadoActual.chequearQueAldeanoEsteDisponible();
 
         Cuartel cuartel = new Cuartel(jugadorPropietario);
 
