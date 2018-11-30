@@ -99,5 +99,16 @@ public class TerrenoTest {
 
         terreno.moverUnidad(posicion, direccion);
     }
+
+    @Test
+    public void removerUnaEntidadDelTerreno(){
+        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(5,5), aldeano);
+
+        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
+        terreno.remover(aldeano);
+
+        assertFalse(terreno.estaOcupada(new Posicion(5,5)));
+    }
 }
 

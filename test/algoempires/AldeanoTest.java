@@ -4,6 +4,9 @@ package algoempires;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
+import algoempires.entidad.unidad.utilero.EstadoAldeano;
+import algoempires.entidad.unidad.utilero.EstadoConstruyendo;
+import algoempires.entidad.unidad.utilero.EstadoRecolectandoOro;
 import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -303,5 +306,53 @@ public class AldeanoTest {
         assertEquals(jugadorDePrueba.getOro(), 1095);
         assertEquals(jugadorEnemigo.getOro(), 1095);
     }
+
+    @Test
+    public void testAldeanoSeCreaRecolectandoOro(){
+
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
+        Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
+
+        EstadoRecolectandoOro estado= new EstadoRecolectandoOro(aldeano2);
+        assertEquals(aldeano1.getEstadoActual().getClass(), estado.getClass());
+    }
+
+    @Test
+    public void testAldeanoNoSePoneEnEstadoDeConstruccionSiNoEstanDadasLasCondiciones(){
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(1,1), aldeano1);
+
+        Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
+        terreno.ocupar(new Posicion(2,2), aldeano2);
+
+        EstadoRecolectandoOro estado= new EstadoRecolectandoOro(aldeano2);
+        assertEquals(aldeano1.getEstadoActual().getClass(), estado.getClass());
+
+        jugadorDePrueba.crearCuartel(aldeano1, new Posicion(1,1));
+
+        assertEquals(aldeano1.getEstadoActual().getClass(), estado.getClass());
+    }
+
+    @Test
+    public void testAldeanoSePoneEnEstadoDeConstruccionSiEstanDadasLasCondiciones(){
+        Aldeano aldeano1 = new Aldeano(jugadorDePrueba);
+        terreno.ocupar(new Posicion(1,1), aldeano1);
+
+        Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
+        terreno.ocupar(new Posicion(9,9), aldeano2);
+
+        Cuartel cuartelGenerico= new Cuartel();
+
+        EstadoRecolectandoOro estado1= new EstadoRecolectandoOro(aldeano2);
+
+        assertEquals(aldeano1.getEstadoActual().getClass(), estado1.getClass());
+
+        EstadoConstruyendo estado2= new EstadoConstruyendo(aldeano2, cuartelGenerico);
+
+        jugadorDePrueba.crearCuartel(aldeano1, new Posicion(2,2));
+
+        assertEquals(aldeano1.getEstadoActual().getClass(), estado2.getClass());
+    }
+
 
 }

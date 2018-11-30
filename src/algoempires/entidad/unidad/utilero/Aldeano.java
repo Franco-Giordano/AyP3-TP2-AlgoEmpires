@@ -79,4 +79,10 @@ public class Aldeano extends Unidad {
     public void generarOro() {
         jugadorPropietario.sumarOro(ORO_GENERADO);
     }
+
+    //METODOS DE TESTEO
+
+    public EstadoAldeano getEstadoActual() {
+        return estadoActual;
+    }
 }

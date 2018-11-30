@@ -7,10 +7,7 @@ import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.excepciones.AldeanoOcupadoException;
-import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
-import algoempires.excepciones.EntidadFueraDeRangoException;
-import algoempires.excepciones.NoSeToleraFuegoAmigoException;
+import algoempires.excepciones.*;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -403,14 +400,9 @@ public class JugadorTest {
 
         assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
 
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
-        cuartel.continuarConstruccion();
+        cuartel.terminarConstruccion();
 
-        cuartelEnemigo.continuarConstruccion();
-        cuartelEnemigo.continuarConstruccion();
-        cuartelEnemigo.continuarConstruccion();
-
+        cuartelEnemigo.terminarConstruccion();
 
         jugadorDePrueba.crearArquero(cuartel, new Posicion(5, 5));
         jugadorEnemigo.crearEspadachin(cuartelEnemigo, new Posicion(3, 3));
@@ -428,5 +420,28 @@ public class JugadorTest {
         assertEquals(jugadorEnemigo.getCantidadDeHabitantes(), 1);
 
 
+    }
+
+    @Test
+    public void sePuedeVolverACrearUnEdificioLuegoDeHaberFalladoLaPrimeraVez() {
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
+
+        terreno.ocupar(new Posicion(1, 1), aldeano);
+
+        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(1, 1));
+
+        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+        assertFalse(terreno.estaOcupada(new Posicion(2, 1)));
+        assertFalse(terreno.estaOcupada(new Posicion(1, 2)));
+        assertFalse(terreno.estaOcupada(new Posicion(2, 2)));
+
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(2,2));
+
+        assertTrue(terreno.estaOcupada(new Posicion(2,2)));
+        assertTrue(terreno.estaOcupada(new Posicion(2,3)));
+        assertTrue(terreno.estaOcupada(new Posicion(3,2)));
+        assertTrue(terreno.estaOcupada(new Posicion(3,3)));
     }
 }
