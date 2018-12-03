@@ -103,6 +103,12 @@
                         <DropShadow />
                     </effect>
                 </Label>
+            <TextArea fx:id="areaMensajes" editable="false" layoutX="-5.0" layoutY="947.0" prefHeight="100.0" prefWidth="300.0"
+                      style="-fx-control-inner-background:#442107; -fx-font-family: Consolas; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #ffffff; -fx-text-fill: #ffffff;"
+                      text="asd" wrapText="true" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="947.0">
+               <font>
+                  <Font size="14.0" />
+               </font></TextArea>
             </children>
         </AnchorPane>
     </right>

@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -35,35 +36,30 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
+
     private Posicion posInfIzq;
-
-    @FXML
-    GridPane pane;
-
-    @FXML
-    BorderPane panePadre;
-
-    @FXML
-    Button btnTerminarTurno;
-
-    @FXML
-    Label nombreJugadorLbl, oroLbl, poblacionLbl;
-
-    @FXML
-    Label entidadSeleccionadaLbl, deJugadorLbl, vidaEntidadLbl;
-
-    @FXML
-    AnchorPane anchorDerecho;
-
-    @FXML
-    Circle circuloIcono;
-
-
     private int tamanioCasillero = 0;
     private int VGAP = 3;
     private int HGAP = 3;
     private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
+
+    @FXML
+    GridPane pane;
+    @FXML
+    BorderPane panePadre;
+    @FXML
+    Button btnTerminarTurno;
+    @FXML
+    Label nombreJugadorLbl, oroLbl, poblacionLbl;
+    @FXML
+    Label entidadSeleccionadaLbl, deJugadorLbl, vidaEntidadLbl;
+    @FXML
+    AnchorPane anchorDerecho;
+    @FXML
+    Circle circuloIcono;
+    @FXML
+    TextArea areaMensajes;
 
     public void initialize() {
 
@@ -122,7 +118,7 @@ public class VistaPartidaController {
         circuloIcono.setVisible(false);
 
         hijosBotonera.remove(2);
-        
+
         try {
             hijosBotonera.add(2, new FXMLLoader(getClass().getResource("botoneras/BotoneraVacia.fxml")).load());
         } catch (IOException e) {
@@ -142,6 +138,9 @@ public class VistaPartidaController {
     public void setJuego(AlgoEmpires juego) {
         this.juego = juego;
         this.terrenoDeJuego = juego.getTerreno();
+
+        juego.getJugadores()[0].getInformadorDeExcepciones().setVistaPartidaController(this);
+        juego.getJugadores()[1].getInformadorDeExcepciones().setVistaPartidaController(this);
 
         int coordVertical = (terrenoDeJuego.getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
         int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
@@ -212,7 +211,7 @@ public class VistaPartidaController {
         }
     }
 
-    public void eliminarEfectosCasilleros(){
+    public void eliminarEfectosCasilleros() {
 
         for (Node casillero : pane.getChildren()) {
             casillero.setEffect(null);
@@ -253,7 +252,7 @@ public class VistaPartidaController {
         controller.setVistaController(this);
     }
 
-    public void setControladorBotoneraArmaDeAsedio(BotoneraArmaDeAsedioController controller, ArmaDeAsedio armaDeAsedio){
+    public void setControladorBotoneraArmaDeAsedio(BotoneraArmaDeAsedioController controller, ArmaDeAsedio armaDeAsedio) {
         controller.setCasillero(armaDeAsedio.getCasillero());
 
         controller.setJugadorActual(juego.getJugadorActual());
@@ -261,10 +260,15 @@ public class VistaPartidaController {
         controller.setVistaController(this);
     }
 
-    public void terminarTurno(){
+    public void terminarTurno() {
 
         juego.terminarTurno();
         crearCasilleros();
+    }
+
+    public void mostrarMensaje(String mensaje) {
+
+        areaMensajes.setText(mensaje);
     }
 
 }

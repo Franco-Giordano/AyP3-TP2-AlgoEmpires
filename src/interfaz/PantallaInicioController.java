@@ -52,6 +52,7 @@ public class PantallaInicioController {
     }
 
     void iniciarJuego(Stage stage, Scene escenaDePartida) {
+
         stage.setScene(escenaDePartida);
     }
 
