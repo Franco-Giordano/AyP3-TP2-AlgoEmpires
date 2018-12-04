@@ -18,7 +18,13 @@ public abstract class Entidad {
         this.vida = getVidaInicial();
     }
 
+    public int getVida() {
+        return vida;
+    }
+
     protected abstract int getVidaInicial();
+
+    protected abstract int getVidaMaxima();
 
     protected abstract int getCosto();
 
@@ -33,17 +39,12 @@ public abstract class Entidad {
     public int getRango() {
         return RANGO_VISION;
     }
-    //Metodo de testeo
 
     public boolean tieneEstaVida(int vidaRecibida) {
         return this.vida == vidaRecibida;
     }
 
     public abstract void recibirAtaqueDe(Atacante atacante);
-
-    public int getVida() {
-        return vida;
-    }
 
     public boolean esDelEquipo(Atacante atacante) {
         return atacante.esDelEquipo(jugadorPropietario);
@@ -55,5 +56,9 @@ public abstract class Entidad {
 
     public String getNombreJugadorPropietario() {
         return jugadorPropietario.getNombre();
+    }
+
+    public double getPorcentajeDeVida() {
+        return ((double)getVida() / getVidaMaxima());
     }
 }

@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.layout.AnchorPane;
@@ -60,6 +61,8 @@ public class VistaPartidaController {
     Circle circuloIcono;
     @FXML
     TextArea areaMensajes;
+    @FXML
+    ProgressBar barraDeVida;
 
     public void initialize() {
 
@@ -110,12 +113,12 @@ public class VistaPartidaController {
 
         ObservableList<Node> hijosBotonera = anchorDerecho.getChildren();
 
-        //((TextArea) hijosBotonera.get(2)).setText("");
         entidadSeleccionadaLbl.setText("");
         deJugadorLbl.setText("");
         vidaEntidadLbl.setText("");
 
         circuloIcono.setVisible(false);
+        barraDeVida.setVisible(false);
 
         hijosBotonera.remove(2);
 

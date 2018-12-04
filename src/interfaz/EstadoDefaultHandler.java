@@ -38,6 +38,8 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
         casilleroAsignado.setEffect(new Glow(0.8));
 
+
+
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {
             String claseEntidad = entidad.getClass().toString();
@@ -49,6 +51,9 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
             vistaPartidaController.circuloIcono.setVisible(true);
             vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(claseEntidad))));
+
+            vistaPartidaController.barraDeVida.setVisible(true);
+            vistaPartidaController.barraDeVida.setProgress(entidad.getPorcentajeDeVida());
 
             layoutBotones.getChildren().remove(2);
 

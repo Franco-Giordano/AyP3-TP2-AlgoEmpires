@@ -34,8 +34,6 @@ public abstract class Edificio extends Entidad {
         super();
     }
 
-    protected abstract int getVidaMaxima();
-
     protected abstract int getTurnosDeConstruccionInicial();
 
     public Region generarRegion(ArrayList<Casillero> casillerosAOcupar) {
@@ -148,5 +146,10 @@ public abstract class Edificio extends Entidad {
         while(estaEnReparacion){
             this.continuarConstruccion();
         }
+    }
+
+    @Override
+    protected int getVidaMaxima(){
+        return getVidaInicial() * getTurnosDeConstruccionInicial();
     }
 }

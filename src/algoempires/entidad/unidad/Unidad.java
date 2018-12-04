@@ -36,6 +36,11 @@ public abstract class Unidad extends Entidad {
 
     }
 
+    @Override
+    protected int getVidaMaxima(){
+        return getVidaInicial();
+    }
+
     public void recibirAtaqueDe(Atacante atacante) {
 
         if (atacante.esDelEquipo(jugadorPropietario)) {
