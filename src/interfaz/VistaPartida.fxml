@@ -148,10 +148,9 @@
         </AnchorPane>
     </right>
     <top>
-
-        <MenuBar opacity="0.7" style="-fx-background-color: #442107;" BorderPane.alignment="CENTER">
+        <MenuBar focusTraversable="false" opacity="0.7" style="-fx-background-color: #442107;" BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Opciones">
+                <Menu mnemonicParsing="false" text="Opciones" style="-fx-text-fill: white">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Cerrar Juego" onAction="#cerrarJuego"/>
                     </items>

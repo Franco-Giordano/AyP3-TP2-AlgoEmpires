@@ -64,6 +64,12 @@ public class Jugador {
         }
     }
 
+    private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null || terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar).getClass() != Edificio.class){
+            throw new SoloSePuedeRepararEdificiosException();
+        }
+    }
+
     public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir) {
 
         if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
@@ -168,16 +174,20 @@ public class Jugador {
 
             this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAReparar);
 
+            this.lanzarExcepcionSiNoSePuedeReparar(aldeano, posAReparar);
+
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
             aldeano.ordenarReparacion(edificio);
 
         } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException
-                | PosicionFueraDeRangoException e) {
+                | PosicionFueraDeRangoException | SoloSePuedeRepararEdificiosException e) {
 
             informanteDeExcepciones.informar(e);
         }
     }
+
+
 
     public void crearPlazaCentral(Aldeano aldeano, Posicion posAConstruir) {
 
