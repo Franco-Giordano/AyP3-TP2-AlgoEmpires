@@ -39,7 +39,7 @@ public class VistaPartidaController {
     ImageView imgOro, imgPoblacion;
 
     @FXML
-    GridPane pane;
+    GridPane gridPane;
 
     @FXML
     BorderPane panePadre;
@@ -65,6 +65,9 @@ public class VistaPartidaController {
     @FXML
     ProgressBar barraDeVida;
 
+    @FXML
+    MenuBar menuSuperior;
+
     private Posicion posInfIzq;
     private int tamanioCasillero = 0;
     private int VGAP = 3;
@@ -74,11 +77,11 @@ public class VistaPartidaController {
 
     public void initialize() {
 
-        pane.setStyle("-fx-background-color: rgba(0, 0, 0, 255);");
-        pane.setHgap(HGAP);
-        pane.setVgap(VGAP);
+        gridPane.setStyle("-fx-background-color: rgba(0, 0, 0, 255);");
+        gridPane.setHgap(HGAP);
+        gridPane.setVgap(VGAP);
 
-        pane.setAlignment(Pos.CENTER);
+        gridPane.setAlignment(Pos.CENTER);
 
         panePadre.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
 
@@ -106,7 +109,7 @@ public class VistaPartidaController {
 
         panePadre.getCenter().requestFocus();
 
-        pane.getChildren().clear();
+        gridPane.getChildren().clear();
 
         if (tamanioCasillero == 0) {
             tamanioCasillero = (int) (panePadre.getCenter().getLayoutBounds().getHeight() / RENDERIZAR_VERTICAL - VGAP);
@@ -114,7 +117,7 @@ public class VistaPartidaController {
 
         for (int j = 0; j < RENDERIZAR_VERTICAL; j++) {
             for (int i = 0; i < RENDERIZAR_HORIZONTAL; i++) {
-                pane.add(crearCasillero(i + posInfIzq.getHorizontal(), j + posInfIzq.getVertical()),
+                gridPane.add(crearCasillero(i + posInfIzq.getHorizontal(), j + posInfIzq.getVertical()),
                         i, RENDERIZAR_VERTICAL - j);
             }
         }
@@ -179,7 +182,7 @@ public class VistaPartidaController {
 
     public void eliminarEfectosCasilleros() {
 
-        for (Node casillero : pane.getChildren()) {
+        for (Node casillero : gridPane.getChildren()) {
             casillero.setEffect(null);
         }
 
@@ -187,7 +190,7 @@ public class VistaPartidaController {
 
     public void setHandlersEnEsperaConTarea(Tarea tarea) {
 
-        for (Node casillero : pane.getChildren()) {
+        for (Node casillero : gridPane.getChildren()) {
 
             Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
 
@@ -236,7 +239,7 @@ public class VistaPartidaController {
 
         areaMensajes.setText(mensaje);
 
-        FadeTransition ft = new FadeTransition(Duration.millis(5000), areaMensajes);
+        FadeTransition ft = new FadeTransition(Duration.millis(6500), areaMensajes);
         ft.setFromValue(1.0);
         ft.setToValue(0.0);
         ft.play();
@@ -249,7 +252,7 @@ public class VistaPartidaController {
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
-            System.exit(1);
+            System.exit(0);
         }
 
     }

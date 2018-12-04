@@ -37,6 +37,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
         casilleroAsignado.setEffect(new Glow(0.8));
 
+        casilleroAsignado.textoPosicion.setVisible(true);
 
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {
