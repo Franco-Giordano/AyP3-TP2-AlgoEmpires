@@ -243,4 +243,24 @@ public class VistaPartidaController {
 
     }
 
+    public void cerrarJuego() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Está seguro que desea cerrar el juego?",
+                ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            System.exit(1);
+        }
+
+    }
+
+    public void acercaDelJuego() {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "AlgoEmpires V4.0\n\n" +
+                        "Esperamos que los disfrutes!\n\n" +
+                        "Con amor,\n\n" +
+                        "El equipo de desarrollo de AlgoEmpires <3");
+        alert.showAndWait();
+    }
 }

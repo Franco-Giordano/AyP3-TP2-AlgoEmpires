@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8"
             fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
@@ -147,4 +147,21 @@
             </children>
         </AnchorPane>
     </right>
+    <top>
+
+        <MenuBar opacity="0.7" style="-fx-background-color: #442107;" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Opciones">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Cerrar Juego" onAction="#cerrarJuego"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Acerca del juego" onAction="#acercaDelJuego"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
 </BorderPane>
