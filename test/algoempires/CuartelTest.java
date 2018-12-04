@@ -52,7 +52,7 @@ public class CuartelTest {
     }
 
 
-    @Test (expected = EdificioNoFuncionalException.class)
+    @Test(expected = EdificioNoFuncionalException.class)
     public void testNoSePuedeCrearEspadachinSiElEdificioNoEsFuncional() throws DimensionesInvalidasException,
             PosicionInvalidaException, EdificioNoFuncionalException {
 
@@ -63,7 +63,7 @@ public class CuartelTest {
         assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
     }
 
-    @Test (expected = EdificioNoFuncionalException.class)
+    @Test(expected = EdificioNoFuncionalException.class)
     public void testNoSePuedeCrearArqueroSiElEdificioNoEsFuncional() throws DimensionesInvalidasException,
             PosicionInvalidaException, EdificioNoFuncionalException {
 

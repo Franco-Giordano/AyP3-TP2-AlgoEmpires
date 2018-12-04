@@ -7,7 +7,9 @@ import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.excepciones.*;
+import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
+import algoempires.excepciones.EntidadFueraDeRangoException;
+import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -339,45 +341,45 @@ public class JugadorTest {
     }
 
 
-    public void testAldeanoNoPuedeConstruirORepararDosEdificiosALaVez(){
-        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+    public void testAldeanoNoPuedeConstruirORepararDosEdificiosALaVez() {
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(4,4), aldeano);
-        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5,5));
-        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2,2) );
+        terreno.ocupar(new Posicion(4, 4), aldeano);
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5, 5));
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2, 2));
 
-        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
-        assertTrue(terreno.estaOcupada(new Posicion(6,5)));
-        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
-        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 5)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 6)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 6)));
 
-        assertFalse(terreno.estaOcupada(new Posicion(2,2)));
-        assertFalse(terreno.estaOcupada(new Posicion(3,2)));
-        assertFalse(terreno.estaOcupada(new Posicion(2,3)));
-        assertFalse(terreno.estaOcupada(new Posicion(3,3)));
+        assertFalse(terreno.estaOcupada(new Posicion(2, 2)));
+        assertFalse(terreno.estaOcupada(new Posicion(3, 2)));
+        assertFalse(terreno.estaOcupada(new Posicion(2, 3)));
+        assertFalse(terreno.estaOcupada(new Posicion(3, 3)));
 
     }
 
     @Test
-    public void testAldeanoPuedeConstruirOtroEdificioUnaVezQueTerminoSuTarea(){
-        Aldeano aldeano= new Aldeano(jugadorDePrueba);
+    public void testAldeanoPuedeConstruirOtroEdificioUnaVezQueTerminoSuTarea() {
+        Aldeano aldeano = new Aldeano(jugadorDePrueba);
 
-        terreno.ocupar(new Posicion(4,4), aldeano);
-        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5,5));
+        terreno.ocupar(new Posicion(4, 4), aldeano);
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(5, 5));
         jugadorDePrueba.actualizarEntreTurnos();
         jugadorDePrueba.actualizarEntreTurnos();
         jugadorDePrueba.actualizarEntreTurnos();
-        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2,2) );
+        jugadorDePrueba.crearCuartel(aldeano, new Posicion(2, 2));
 
-        assertTrue(terreno.estaOcupada(new Posicion(2,2)));
-        assertTrue(terreno.estaOcupada(new Posicion(3,2)));
-        assertTrue(terreno.estaOcupada(new Posicion(2,3)));
-        assertTrue(terreno.estaOcupada(new Posicion(3,3)));
+        assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
+        assertTrue(terreno.estaOcupada(new Posicion(3, 2)));
+        assertTrue(terreno.estaOcupada(new Posicion(2, 3)));
+        assertTrue(terreno.estaOcupada(new Posicion(3, 3)));
 
-        assertTrue(terreno.estaOcupada(new Posicion(5,5)));
-        assertTrue(terreno.estaOcupada(new Posicion(6,5)));
-        assertTrue(terreno.estaOcupada(new Posicion(5,6)));
-        assertTrue(terreno.estaOcupada(new Posicion(6,6)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 5)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 5)));
+        assertTrue(terreno.estaOcupada(new Posicion(5, 6)));
+        assertTrue(terreno.estaOcupada(new Posicion(6, 6)));
 
     }
 
@@ -428,20 +430,20 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(1, 1), aldeano);
 
-        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
 
         jugadorDePrueba.crearCuartel(aldeano, new Posicion(1, 1));
 
-        assertTrue(terreno.estaOcupada(new Posicion(1,1)));
+        assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
         assertFalse(terreno.estaOcupada(new Posicion(2, 1)));
         assertFalse(terreno.estaOcupada(new Posicion(1, 2)));
         assertFalse(terreno.estaOcupada(new Posicion(2, 2)));
 
-        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(2,2));
+        jugadorDePrueba.crearPlazaCentral(aldeano, new Posicion(2, 2));
 
-        assertTrue(terreno.estaOcupada(new Posicion(2,2)));
-        assertTrue(terreno.estaOcupada(new Posicion(2,3)));
-        assertTrue(terreno.estaOcupada(new Posicion(3,2)));
-        assertTrue(terreno.estaOcupada(new Posicion(3,3)));
+        assertTrue(terreno.estaOcupada(new Posicion(2, 2)));
+        assertTrue(terreno.estaOcupada(new Posicion(2, 3)));
+        assertTrue(terreno.estaOcupada(new Posicion(3, 2)));
+        assertTrue(terreno.estaOcupada(new Posicion(3, 3)));
     }
 }

@@ -2,6 +2,10 @@ package interfaz;
 
 
 import algoempires.AlgoEmpires;
+import algoempires.tablero.direccion.DireccionAbajo;
+import algoempires.tablero.direccion.DireccionArriba;
+import algoempires.tablero.direccion.DireccionDerecha;
+import algoempires.tablero.direccion.DireccionIzquierda;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,16 +49,16 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
             escenaPartida.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
                     case UP:
-                        controladorJuego.renderizarArriba();
+                        controladorJuego.renderizarHacia(new DireccionArriba());
                         break;
                     case DOWN:
-                        controladorJuego.renderizarAbajo();
+                        controladorJuego.renderizarHacia(new DireccionAbajo());
                         break;
                     case LEFT:
-                        controladorJuego.renderizarIzquierda();
+                        controladorJuego.renderizarHacia(new DireccionIzquierda());
                         break;
                     case RIGHT:
-                        controladorJuego.renderizarDerecha();
+                        controladorJuego.renderizarHacia(new DireccionDerecha());
                         break;
                 }
             });

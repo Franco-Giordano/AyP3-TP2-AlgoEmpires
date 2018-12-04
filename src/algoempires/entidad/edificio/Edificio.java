@@ -149,7 +149,7 @@ public abstract class Edificio extends Entidad {
     }
 
     @Override
-    protected int getVidaMaxima() {
+    public int getVidaMaxima() {
         return getVidaInicial() * getTurnosDeConstruccionInicial();
     }
 }

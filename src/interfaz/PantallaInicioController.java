@@ -4,10 +4,8 @@ import algoempires.AlgoEmpires;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class PantallaInicioController {
 
@@ -50,11 +48,5 @@ public class PantallaInicioController {
         else
             return new AlgoEmpires(20, 20, textoJugador1.getText(), textoJugador2.getText());
     }
-
-    void iniciarJuego(Stage stage, Scene escenaDePartida) {
-
-        stage.setScene(escenaDePartida);
-    }
-
 
 }

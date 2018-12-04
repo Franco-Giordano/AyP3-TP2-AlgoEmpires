@@ -37,6 +37,6 @@ public class AlgoEmpiresTest {
 
     @Test(expected = DimensionesInvalidasException.class)
     public void testNosePermitenDimensionesChicas() {
-        AlgoEmpires juego = new AlgoEmpires(13, 5,"Carlos", "Juan");
+        AlgoEmpires juego = new AlgoEmpires(13, 5, "Carlos", "Juan");
     }
 }

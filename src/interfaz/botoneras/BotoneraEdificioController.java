@@ -34,12 +34,12 @@ public class BotoneraEdificioController {
     }
 
     public void crearArmaDeAsedio() {
-        Tarea tareaCrearArmaDeAsedio = new TareaCrearArmaDeAsedio(jugadorActual,casillero);
+        Tarea tareaCrearArmaDeAsedio = new TareaCrearArmaDeAsedio(jugadorActual, casillero);
         vistaController.setHandlersEnEsperaConTarea(tareaCrearArmaDeAsedio);
     }
 
     public void crearAldeano() {
-        Tarea tareaCrearAldeano = new TareaCrearAldeano(jugadorActual,casillero);
+        Tarea tareaCrearAldeano = new TareaCrearAldeano(jugadorActual, casillero);
         vistaController.setHandlersEnEsperaConTarea(tareaCrearAldeano);
     }
 

@@ -22,7 +22,7 @@ public class CastilloTest {
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador("Carlos", terreno);
-        this.jugadorEnemigo= new Jugador("Juan", terreno);
+        this.jugadorEnemigo = new Jugador("Juan", terreno);
     }
 
     @Test

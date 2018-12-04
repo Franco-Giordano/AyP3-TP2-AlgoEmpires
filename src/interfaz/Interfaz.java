@@ -1,6 +1,5 @@
 package interfaz;
 
-import algoempires.AlgoEmpires;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,8 +8,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Interfaz extends Application {
-
-    AlgoEmpires juego;
 
     private Scene escenaDeInicio;
 
@@ -42,6 +39,8 @@ public class Interfaz extends Application {
         BotonInicioHandler handlerInicio = new BotonInicioHandler(primaryStage, controlador);
 
         controlador.getBotonInicio().setOnMouseClicked(handlerInicio);
+
+
     }
 
 }

@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox focusTraversable="false" scaleX="0.8" scaleY="0.8" spacing="10.0" BorderPane.alignment="CENTER"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<VBox xmlns:fx="http://javafx.com/fxml/1" focusTraversable="false" scaleX="0.8" scaleY="0.8" spacing="10.0"
+      BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8"
       fx:controller="interfaz.botoneras.BotoneraArmaDeAsedioController">
     <children>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#atacar" prefHeight="60.0" prefWidth="300.0"
                 stylesheets="/interfaz/botoneras/estiloBoton.css" text="Atacar" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font name="Liberation Serif" size="26.0"/>
             </font>
         </Button>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#desmontar" prefHeight="60.0"
                 prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Desmontar" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font name="Liberation Serif" size="26.0"/>
             </font>
             <VBox.margin>
                 <Insets/>

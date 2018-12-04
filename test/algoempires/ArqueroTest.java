@@ -22,7 +22,7 @@ public class ArqueroTest {
     @Before
     public void init() {
         this.terreno = new Terreno(10, 10);
-        this.jugadorDePrueba = new Jugador("Carlos" , terreno);
+        this.jugadorDePrueba = new Jugador("Carlos", terreno);
         jugadorDePrueba.sumarOro(10000);
     }
 

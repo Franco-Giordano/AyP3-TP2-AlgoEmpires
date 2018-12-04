@@ -25,7 +25,7 @@ public class ArmaDeAsedioTest {
     public void init() {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador("Carlos", terreno);
-        this.jugadorEnemigo= new Jugador("Juan", terreno);
+        this.jugadorEnemigo = new Jugador("Juan", terreno);
         jugadorDePrueba.sumarOro(10000);
         jugadorEnemigo.sumarOro(10000);
     }
@@ -252,17 +252,17 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioAtacaBien(){
+    public void testArmaDeAsedioAtacaBien() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
 
         terreno.ocupar(new Posicion(1, 1), armaDeAsedio);
 
-        Aldeano aldeanoEnemigo= new Aldeano(jugadorEnemigo);
-        terreno.ocupar(new Posicion(5,5), aldeanoEnemigo);
-        jugadorEnemigo.crearCuartel(aldeanoEnemigo, new Posicion(3,3));
+        Aldeano aldeanoEnemigo = new Aldeano(jugadorEnemigo);
+        terreno.ocupar(new Posicion(5, 5), aldeanoEnemigo);
+        jugadorEnemigo.crearCuartel(aldeanoEnemigo, new Posicion(3, 3));
 
-        Cuartel cuartelEnemigo= (Cuartel) terreno.obtenerEntidadEnPosicion(new Posicion(3,3));
+        Cuartel cuartelEnemigo = (Cuartel) terreno.obtenerEntidadEnPosicion(new Posicion(3, 3));
         cuartelEnemigo.terminarConstruccion();
 
         assertTrue(cuartelEnemigo.tieneVidaLlena());

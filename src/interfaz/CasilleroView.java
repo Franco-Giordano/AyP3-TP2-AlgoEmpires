@@ -14,8 +14,8 @@ import java.util.HashMap;
 
 public class CasilleroView extends StackPane {
 
-    private final Casillero casillero;
     private static HashMap<String, Image> iconos = crearMapaDeIconos();
+    private final Casillero casillero;
 
     public CasilleroView(Casillero casillero, int tamCasillero, Pane layoutBotones, VistaPartidaController vistaPartidaController) {
 
@@ -43,11 +43,6 @@ public class CasilleroView extends StackPane {
 
     }
 
-
-    public Casillero getCasillero() {
-        return casillero;
-    }
-
     private static HashMap<String, Image> crearMapaDeIconos() {
         HashMap<String, Image> mapa = new HashMap<>();
 
@@ -61,6 +56,10 @@ public class CasilleroView extends StackPane {
         mapa.put("class algoempires.entidad.edificio.PlazaCentral", new Image("/interfaz/recursos/imagenes/iconoPlazaCentral.bmp"));
 
         return mapa;
+    }
+
+    public Casillero getCasillero() {
+        return casillero;
     }
 
     public Image getImagen(String nombreEntidad) {

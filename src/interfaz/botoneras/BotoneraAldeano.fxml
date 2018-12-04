@@ -6,8 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
-<VBox scaleX="0.8" scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraUnidadController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" scaleX="0.8" scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="interfaz.botoneras.BotoneraUnidadController">
     <children>
         <GridPane prefHeight="300.0" prefWidth="300.0"
                   style="-fx-background-image:url('/interfaz/recursos/imagenes/brujula.png'); -fx-background-size:stretch;">
@@ -121,7 +121,7 @@
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#reparar" prefHeight="60.0" prefWidth="300.0"
                 stylesheets="/interfaz/botoneras/estiloBoton.css" text="Reparar" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font name="Liberation Serif" size="26.0"/>
             </font>
             <VBox.margin>
                 <Insets top="40.0"/>
@@ -131,7 +131,7 @@
                 prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Crear cuartel"
                 textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font name="Liberation Serif" size="26.0"/>
             </font>
             <VBox.margin>
                 <Insets/>
@@ -140,7 +140,7 @@
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#construirPlaza" prefHeight="60.0"
                 prefWidth="300.0" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Crear plaza" textFill="WHITE">
             <font>
-                <Font size="20.0"/>
+                <Font name="Liberation Serif" size="26.0"/>
             </font>
             <VBox.margin>
                 <Insets/>

@@ -7,29 +7,26 @@ import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
-import algoempires.tablero.direccion.DireccionAbajo;
-import algoempires.tablero.direccion.DireccionArriba;
-import algoempires.tablero.direccion.DireccionDerecha;
-import algoempires.tablero.direccion.DireccionIzquierda;
+import algoempires.tablero.direccion.Direccion;
 import interfaz.botoneras.BotoneraArmaDeAsedioController;
 import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
+import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -37,24 +34,37 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
+
+    @FXML
+    ImageView imgOro, imgPoblacion;
+
     @FXML
     GridPane pane;
+
     @FXML
     BorderPane panePadre;
+
     @FXML
     Button btnTerminarTurno;
+
     @FXML
     Label nombreJugadorLbl, oroLbl, poblacionLbl;
+
     @FXML
     Label entidadSeleccionadaLbl, deJugadorLbl, vidaEntidadLbl;
+
     @FXML
     AnchorPane anchorDerecho;
+
     @FXML
     Circle circuloIcono;
+
     @FXML
     TextArea areaMensajes;
+
     @FXML
     ProgressBar barraDeVida;
+
     private Posicion posInfIzq;
     private int tamanioCasillero = 0;
     private int VGAP = 3;
@@ -75,6 +85,9 @@ public class VistaPartidaController {
         panePadre.getCenter().setOnMouseClicked(event -> {
             panePadre.getCenter().requestFocus();
         });
+
+        Tooltip.install(imgOro, new Tooltip("Oro"));
+        Tooltip.install(imgPoblacion, new Tooltip("Poblacion"));
 
     }
 
@@ -149,63 +162,15 @@ public class VistaPartidaController {
         posInfIzq = new Posicion(coordHorizontal, coordVertical);
     }
 
-    public void renderizarArriba() {
+    public void renderizarHacia(Direccion direccion) {
 
-        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionArriba());
+        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(direccion);
         Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
                 , nuevaPosicionInfIzq);
 
         boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
                 && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
 
-        if (esValido) {
-            posInfIzq = nuevaPosicionInfIzq;
-            crearCasilleros();
-        }
-
-
-    }
-
-    public void renderizarAbajo() {
-
-        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionAbajo());
-        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
-                , nuevaPosicionInfIzq);
-
-        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
-                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
-        if (esValido) {
-            posInfIzq = nuevaPosicionInfIzq;
-            crearCasilleros();
-        }
-
-
-    }
-
-    public void renderizarIzquierda() {
-
-        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionIzquierda());
-        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
-                , nuevaPosicionInfIzq);
-
-        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
-                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
-
-        if (esValido) {
-            posInfIzq = nuevaPosicionInfIzq;
-            crearCasilleros();
-        }
-
-    }
-
-    public void renderizarDerecha() {
-
-        Posicion nuevaPosicionInfIzq = posInfIzq.generarMovimientoHacia(new DireccionDerecha());
-        Posicion nuevaPosicionSupDer = new Posicion(RENDERIZAR_HORIZONTAL - 1, RENDERIZAR_VERTICAL - 1
-                , nuevaPosicionInfIzq);
-
-        boolean esValido = terrenoDeJuego.esPosicionValida(nuevaPosicionInfIzq)
-                && terrenoDeJuego.esPosicionValida(nuevaPosicionSupDer);
         if (esValido) {
             posInfIzq = nuevaPosicionInfIzq;
             crearCasilleros();
@@ -270,6 +235,12 @@ public class VistaPartidaController {
     public void mostrarMensaje(String mensaje) {
 
         areaMensajes.setText(mensaje);
+
+        FadeTransition ft = new FadeTransition(Duration.millis(5000), areaMensajes);
+        ft.setFromValue(1.0);
+        ft.setToValue(0.0);
+        ft.play();
+
     }
 
 }

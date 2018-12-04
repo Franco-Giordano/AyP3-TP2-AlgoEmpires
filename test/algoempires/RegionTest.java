@@ -25,48 +25,48 @@ public class RegionTest {
         this.terreno = new Terreno(10, 10);
         this.jugadorDePrueba = new Jugador("Carlos", terreno);
 
-        this.castillo= new Castillo(jugadorDePrueba);
-        terreno.ocupar(new Posicion(2,2), castillo);
-        this.regionOcupada= castillo.getRegionQueLoContiene();
+        this.castillo = new Castillo(jugadorDePrueba);
+        terreno.ocupar(new Posicion(2, 2), castillo);
+        this.regionOcupada = castillo.getRegionQueLoContiene();
     }
 
     @Test
-    public void testPosicionInferiorIzquierdaSeCalculaBien(){
-        Posicion posInfIzq= regionOcupada.getPosicionInferiorIzquierda();
-        assertEquals(new Posicion(2,2), posInfIzq);
+    public void testPosicionInferiorIzquierdaSeCalculaBien() {
+        Posicion posInfIzq = regionOcupada.getPosicionInferiorIzquierda();
+        assertEquals(new Posicion(2, 2), posInfIzq);
     }
 
     @Test
-    public void testPosicionSuperiorDerechaSeCalculaBien(){
-        Posicion posSupDer= regionOcupada.getPosicionSuperiorDerecha();
-        assertEquals(new Posicion(5,5), posSupDer);
+    public void testPosicionSuperiorDerechaSeCalculaBien() {
+        Posicion posSupDer = regionOcupada.getPosicionSuperiorDerecha();
+        assertEquals(new Posicion(5, 5), posSupDer);
     }
 
     @Test
-    public void testRegionSeVaciaCorrectamente(){
+    public void testRegionSeVaciaCorrectamente() {
         regionOcupada.vaciar();
-        Posicion posInfIzq= regionOcupada.getPosicionInferiorIzquierda();
+        Posicion posInfIzq = regionOcupada.getPosicionInferiorIzquierda();
 
-        for (int i = 0; i < regionOcupada.getTamanioHorizontal() ; i++) {
+        for (int i = 0; i < regionOcupada.getTamanioHorizontal(); i++) {
             for (int j = 0; j < regionOcupada.getTamanioVertical(); j++) {
-                assertFalse(terreno.estaOcupada(new Posicion(i,j, posInfIzq)));
+                assertFalse(terreno.estaOcupada(new Posicion(i, j, posInfIzq)));
             }
         }
     }
 
 
     @Test
-    public void testRegionSeCreaBien(){
-        Posicion posInfIzq= regionOcupada.getPosicionInferiorIzquierda();
+    public void testRegionSeCreaBien() {
+        Posicion posInfIzq = regionOcupada.getPosicionInferiorIzquierda();
 
-        for (int i = 0; i < regionOcupada.getTamanioHorizontal() ; i++) {
+        for (int i = 0; i < regionOcupada.getTamanioHorizontal(); i++) {
             for (int j = 0; j < regionOcupada.getTamanioVertical(); j++) {
-                assertTrue(regionOcupada.contiene(new Posicion(i,j, posInfIzq)));
+                assertTrue(regionOcupada.contiene(new Posicion(i, j, posInfIzq)));
             }
         }
 
-        assertFalse(regionOcupada.contiene(new Posicion(1,1)));
-        assertFalse(regionOcupada.contiene(new Posicion(10,10)));
+        assertFalse(regionOcupada.contiene(new Posicion(1, 1)));
+        assertFalse(regionOcupada.contiene(new Posicion(10, 10)));
 
     }
 }
