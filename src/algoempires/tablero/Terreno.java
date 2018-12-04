@@ -6,7 +6,7 @@ import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.excepciones.AlMenosUnCasilleroEstaOcupadoException;
 import algoempires.excepciones.DimensionesInvalidasException;
-import algoempires.excepciones.PosicionDeCreacionFueraDeRangoException;
+import algoempires.excepciones.PosicionFueraDeRangoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.tablero.direccion.Direccion;
 import algoempires.tablero.direccion.DireccionAbajo;
@@ -153,7 +153,7 @@ public class Terreno {
               }
             }
 
-        throw new PosicionDeCreacionFueraDeRangoException();
+        throw new PosicionFueraDeRangoException();
     }
 
     private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {

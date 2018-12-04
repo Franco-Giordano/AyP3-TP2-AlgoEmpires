@@ -60,14 +60,14 @@ public class Jugador {
 
     private void lanzarExcepcionSiPosicionFueraDeRango(Edificio edificio, Posicion posicion) {
         if (!terrenoDeJuego.puedeEdificioVerA(edificio, posicion)) {
-            throw new PosicionDeCreacionFueraDeRangoException();
+            throw new PosicionFueraDeRangoException();
         }
     }
 
     public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir){
 
         if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
-            throw new PosicionDeCreacionFueraDeRangoException();
+            throw new PosicionFueraDeRangoException();
         }
     }
 
@@ -97,7 +97,9 @@ public class Jugador {
             Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
+                NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
+                PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
 
@@ -114,7 +116,9 @@ public class Jugador {
             Espadachin espadachinCreado = cuartel.crearEspadachin();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
+                NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
+                PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
 
@@ -132,7 +136,9 @@ public class Jugador {
             Arquero arqueroCreado = cuartel.crearArquero();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
+                NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
+                PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
     }
@@ -148,7 +154,8 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
-                NoSePuedeInteractuarConEntidadesEnemigasException| EdificioNoFuncionalException e) {
+                NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
+                PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
     }
@@ -159,11 +166,14 @@ public class Jugador {
 
             this.lanzarExcepcionSiNoEsDeMiPropiedad(aldeano);
 
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAReparar);
+
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
             aldeano.ordenarReparacion(edificio);
 
-        } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
+        } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException
+                | PosicionFueraDeRangoException e) {
 
             informanteDeExcepciones.informar(e);
         }
@@ -174,9 +184,9 @@ public class Jugador {
         PlazaCentral plazaCentral= new PlazaCentral();
         ArrayList<Posicion> posiciones= plazaCentral.calcularPosicionesAOcupar(posAConstruir);
 
-        this.lanzarExcepcionSiPosicionFueraDeRango(aldeano,posAConstruir);
 
         try {
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
 
             this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
 
@@ -189,7 +199,7 @@ public class Jugador {
             terrenoDeJuego.ocupar(posAConstruir, plaza);
 
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
-                AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException e) {
+                AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException | PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
 
@@ -213,7 +223,7 @@ public class Jugador {
             terrenoDeJuego.ocupar(posAConstruir, cuartel);
 
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
-                AldeanoOcupadoException| AlMenosUnCasilleroEstaOcupadoException e) {
+                AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException | PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
         }
 

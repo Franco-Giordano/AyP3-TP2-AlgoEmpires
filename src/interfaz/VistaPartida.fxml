@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.Group?>
@@ -14,7 +10,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-
 <BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="pane">
@@ -22,45 +17,63 @@
     </center>
     <bottom>
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0">
-         <children>
-             <ImageView fitHeight="300.0" fitWidth="2100.0" layoutX="50.0" layoutY="15.0" pickOnBounds="true" rotate="180.0" translateX="-50.0" translateY="-23.0" x="-50.0" y="-15.0">
-               <image>
-                   <Image url="@recursos/imagenes/papiroOP.png" />
-               </image>
-            </ImageView>
-             <Group AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0">
-                 <children>
-                     <Label fx:id="poblacionLbl" layoutX="207.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0" translateX="-50.0" translateY="-23.0" />
-                     <ImageView fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
-                         <image>
-                             <Image url="@recursos/imagenes/Oro.png" />
-                         </image>
-                         <effect>
-                             <Glow level="1.0" />
-                         </effect>
-                     </ImageView>
-                     <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0" translateX="-50.0" translateY="-23.0" />
-                     <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER" textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
-                         <font>
-                             <Font size="22.0" />
-                         </font>
-                     </Label>
-                     <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="159.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
-                         <image>
-                             <Image url="@recursos/imagenes/Poblacion.png" />
-                         </image>
-                         <effect>
-                             <Glow level="1.0" />
-                         </effect>
-                     </ImageView>
-                 </children>
-             </Group>
-             <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="50.0" layoutY="15.0" mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Terminar turno" textFill="WHITE" AnchorPane.rightAnchor="350.0">
-                 <font>
-                     <Font size="20.0" />
-                 </font>
-             </Button>
-         </children>
+            <children>
+                <ImageView fitHeight="300.0" fitWidth="2100.0" layoutX="50.0" layoutY="15.0" pickOnBounds="true"
+                           rotate="180.0" translateX="-50.0" translateY="-23.0" x="-50.0" y="-15.0">
+                    <image>
+                        <Image url="@recursos/imagenes/papiroOP.png"/>
+                    </image>
+                </ImageView>
+                <Group AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label fx:id="poblacionLbl" layoutX="192.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0"
+                               translateX="-50.0" translateY="-23.0"/>
+                        <ImageView fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true"
+                                   preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                            <image>
+                                <Image url="@recursos/imagenes/Oro.png"/>
+                            </image>
+                            <effect>
+                                <Glow level="1.0"/>
+                            </effect>
+                        </ImageView>
+                        <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0"
+                               translateX="-50.0" translateY="-23.0"/>
+                        <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER"
+                               textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
+                            <font>
+                                <Font size="22.0"/>
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="144.0" layoutY="39.0" pickOnBounds="true"
+                                   preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                            <image>
+                                <Image url="@recursos/imagenes/Poblacion.png"/>
+                            </image>
+                            <effect>
+                                <Glow level="1.0"/>
+                            </effect>
+                        </ImageView>
+                    </children>
+                </Group>
+                <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="50.0" layoutY="15.0"
+                        mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300"
+                        stylesheets="/interfaz/botoneras/estiloBoton.css" text="Terminar turno" textFill="WHITE"
+                        AnchorPane.rightAnchor="360.0">
+                    <font>
+                        <Font size="20.0"/>
+                    </font>
+                </Button>
+                <TextArea fx:id="areaMensajes" focusTraversable="false" editable="false" prefHeight="60.0"
+                          prefWidth="270.0"
+                          style="-fx-control-inner-background:#442107; -fx-font-family: Consolas; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #ffffff; -fx-text-fill: #ffffff;"
+                          text="&lt;Aqui se mostraran los mensajes de alerta futuros&gt;" wrapText="true"
+                          AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="10.0">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </TextArea>
+            </children>
         </AnchorPane>
     </bottom>
     <right>
@@ -103,12 +116,6 @@
                         <DropShadow />
                     </effect>
                 </Label>
-            <TextArea fx:id="areaMensajes" focusTraversable="false" editable="false" layoutX="-5.0" layoutY="947.0" prefHeight="100.0" prefWidth="300.0"
-                      style="-fx-control-inner-background:#442107; -fx-font-family: Consolas; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #ffffff; -fx-text-fill: #ffffff;"
-                      text="" wrapText="true" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="947.0">
-               <font>
-                  <Font size="14.0" />
-               </font></TextArea>
             </children>
         </AnchorPane>
     </right>
