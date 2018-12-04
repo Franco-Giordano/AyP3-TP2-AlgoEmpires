@@ -114,7 +114,6 @@ public class Terreno {
         edificio.informarRegionOcupada(region);
     }
 
-
     public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
         return Rango.generarPosicionesVisiblesPor(edificio.getRegionQueLoContiene(), edificio).contains(posicionQueQuieroVer);
 

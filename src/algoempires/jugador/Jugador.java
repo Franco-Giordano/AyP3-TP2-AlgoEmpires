@@ -16,7 +16,6 @@ import algoempires.excepciones.*;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
-import interfaz.VistaPartidaController;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,7 +28,7 @@ public class Jugador {
     private Terreno terrenoDeJuego;
     private Monedero monedero;
     private boolean castilloConVida;
-    private InformadorDeExcepciones informadorDeExcepciones;
+    private InformadorDeExcepciones informanteDeExcepciones;
 
     public Jugador(String nombreRecibido, Terreno terrenoDeJuego) {
         this.nombre= nombreRecibido;
@@ -38,7 +37,7 @@ public class Jugador {
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
         this.castilloConVida = true;
-        this.informadorDeExcepciones = new InformadorDeExcepciones();
+        this.informanteDeExcepciones = new InformadorDeExcepciones();
     }
 
     private void lanzarExcepcionSiNoEsDeMiPropiedad(Posicion posicionRecibida) {
@@ -53,7 +52,7 @@ public class Jugador {
 
             if (!entidad.esDelEquipo(this)) {
                 NoSePuedeInteractuarConEntidadesEnemigasException e = new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
-                informadorDeExcepciones.informar(e);
+                informanteDeExcepciones.informar(e);
                 throw e;
             }
 
@@ -61,11 +60,17 @@ public class Jugador {
 
     private void lanzarExcepcionSiPosicionFueraDeRango(Edificio edificio, Posicion posicion) {
         if (!terrenoDeJuego.puedeEdificioVerA(edificio, posicion)) {
-            PosicionDeCreacionFueraDeRangoException e = new PosicionDeCreacionFueraDeRangoException();
-            informadorDeExcepciones.informar(e);
-            throw e;
+            throw new PosicionDeCreacionFueraDeRangoException();
         }
     }
+
+    public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir){
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
+            throw new PosicionDeCreacionFueraDeRangoException();
+        }
+    }
+
     public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) {
 
         try {
@@ -75,12 +80,10 @@ public class Jugador {
             terrenoDeJuego.moverUnidad(posicionRecibida, direccionRecibida);
         } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException | UnidadNoPuedeMoverseException |
                 NoSePuedeInteractuarConEntidadesEnemigasException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
     }
 
-    //TODO buscar manera (si la hay) de hacer un metodo general de crear unidades.
 
     public void crearAldeano(PlazaCentral plazaCentral, Posicion posicionDeCreacion) {
 
@@ -95,8 +98,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
 
     }
@@ -113,14 +115,12 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
 
     }
 
     public void crearArquero(Cuartel cuartel, Posicion posicionDeCreacion) {
-
 
 
         try {
@@ -133,8 +133,7 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
     }
 
@@ -148,9 +147,9 @@ public class Jugador {
             ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
-        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException| EdificioNoFuncionalException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+        } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
+                NoSePuedeInteractuarConEntidadesEnemigasException| EdificioNoFuncionalException e) {
+            informanteDeExcepciones.informar(e);
         }
     }
 
@@ -166,7 +165,7 @@ public class Jugador {
 
         } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException e) {
 
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
     }
 
@@ -175,13 +174,11 @@ public class Jugador {
         PlazaCentral plazaCentral= new PlazaCentral();
         ArrayList<Posicion> posiciones= plazaCentral.calcularPosicionesAOcupar(posAConstruir);
 
-        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posiciones)) {
-            PosicionDeCreacionFueraDeRangoException e = new PosicionDeCreacionFueraDeRangoException();
-            informadorDeExcepciones.informar(e);
-            throw e;
-        }
+        this.lanzarExcepcionSiPosicionFueraDeRango(aldeano,posAConstruir);
 
         try {
+
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
 
             terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
@@ -193,8 +190,7 @@ public class Jugador {
 
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
                 AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
 
     }
@@ -204,13 +200,10 @@ public class Jugador {
         Cuartel cuartelGenerico= new Cuartel();
         ArrayList<Posicion> posiciones= cuartelGenerico.calcularPosicionesAOcupar(posAConstruir);
 
-        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posiciones)) {
-            PosicionDeCreacionFueraDeRangoException e = new PosicionDeCreacionFueraDeRangoException();
-            informadorDeExcepciones.informar(e);
-            throw e;
-        }
-
         try {
+
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano,posAConstruir);
+
             terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
             this.lanzarExcepcionSiNoEsDeMiPropiedad(aldeano);
@@ -221,8 +214,7 @@ public class Jugador {
 
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
                 AldeanoOcupadoException| AlMenosUnCasilleroEstaOcupadoException e) {
-            //TODO Avisar que fallo la operacion mediante el VistaPartidaController
-            informadorDeExcepciones.informar(e);
+            informanteDeExcepciones.informar(e);
         }
 
     }
@@ -230,16 +222,20 @@ public class Jugador {
 
     public void atacar(Atacante atacante, Posicion posicionDeLaVictima) {
 
-        this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
+        try{
 
+            this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
 
-        if (!atacante.puedeVerA(terrenoDeJuego, posicionDeLaVictima)) {
-            EntidadFueraDeRangoException e = new EntidadFueraDeRangoException();
-            informadorDeExcepciones.informar(e);
-            throw e;
+            if (!atacante.puedeVerA(terrenoDeJuego, posicionDeLaVictima)) {
+                throw new EntidadFueraDeRangoException();
+            }
+
+            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
+
+        }catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e){
+            informanteDeExcepciones.informar(e);
         }
 
-        terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
     }
 
     public void desmontarArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
@@ -257,53 +253,57 @@ public class Jugador {
     }
 
     public void agregar(Edificio edificio) {
+
         edificiosPropios.add(edificio);
     }
 
     public void agregar(Unidad unidad) {
+
         poblacion.agregar(unidad);
     }
 
     public void quitarDePoblacion(Unidad unidad) {
+
         poblacion.quitar(unidad);
     }
 
     public void jugarTurno() {
 
-        //El controlador/view ejecuta las elecciones que hace el jugador
-
         this.actualizarEntreTurnos();
-
     }
 
-
     public void actualizarEntreTurnos() {
+
         poblacion.actualizarUnidades();
         edificiosPropios.forEach((e) -> e.actualizarEntreTurnos());
     }
 
 
     public void sumarOro(int oro) {
+
         monedero.sumarOro(oro);
     }
 
     public void cobrar(int costo) {
+
         this.monedero.restarOro(costo);
     }
 
     public HashSet<Entidad> calcularCercanosA(Castillo castillo) {
+
         return terrenoDeJuego.calcularCercanosA(castillo);
     }
 
     public void posicionarLaEntidad(Posicion posicion, Edificio entidad) {
+
         terrenoDeJuego.ocupar(posicion, entidad);
     }
 
     public void posicionarLaEntidad(Posicion posicion, Unidad entidad) {
+
         terrenoDeJuego.ocupar(posicion, entidad);
     }
 
-    //METODO DE TESTEO
     public String getNombre() {
         return nombre;
     }
@@ -329,19 +329,23 @@ public class Jugador {
     }
 
     public int getCantidadDeHabitantes(){
+
         return poblacion.getCantidadDeHabitantes();
     }
 
 
     public boolean tieneCastilloConVida() {
+
         return castilloConVida;
     }
 
     public void informarDestruccionDeCastillo() {
+
         this.castilloConVida = false;
     }
 
-    public InformadorDeExcepciones getInformadorDeExcepciones(){
-        return this.informadorDeExcepciones;
+    public InformadorDeExcepciones getInformanteDeExcepciones() {
+        return this.informanteDeExcepciones;
+
     }
 }

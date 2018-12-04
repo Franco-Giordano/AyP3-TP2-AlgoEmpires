@@ -139,8 +139,8 @@ public class VistaPartidaController {
         this.juego = juego;
         this.terrenoDeJuego = juego.getTerreno();
 
-        juego.getJugadores()[0].getInformadorDeExcepciones().setVistaPartidaController(this);
-        juego.getJugadores()[1].getInformadorDeExcepciones().setVistaPartidaController(this);
+        juego.getJugadores()[0].getInformanteDeExcepciones().setVistaPartidaController(this);
+        juego.getJugadores()[1].getInformanteDeExcepciones().setVistaPartidaController(this);
 
         int coordVertical = (terrenoDeJuego.getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
         int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
