@@ -1,6 +1,5 @@
 package algoempires.tablero;
 
-import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.excepciones.PosicionInvalidaException;
 
@@ -16,7 +15,7 @@ public class Region {
 
         this.casillerosQueContengo = casillerosContenidos;
 
-        for (Casillero casillero : casillerosContenidos){
+        for (Casillero casillero : casillerosContenidos) {
             casillero.ocupar(edificio);
         }
 
@@ -24,60 +23,59 @@ public class Region {
 
     private void levantarExcepcionSiAlgunaOcupada(ArrayList<Casillero> casillerosTentativos) {
 
-        for (Casillero casillero : casillerosTentativos){
+        for (Casillero casillero : casillerosTentativos) {
             if (casillero.estaOcupada()) {
                 throw new PosicionInvalidaException("Se intento construir en una region ya ocupada");
             }
         }
     }
 
-    public Posicion getPosicionSuperiorDerecha(){
+    public Posicion getPosicionSuperiorDerecha() {
 
-        Posicion maximoBuscado= new Posicion(0,0);
-        for(Casillero casilleroActual: casillerosQueContengo){
-            if(casilleroActual.tieneCoordenadasMayoresA(maximoBuscado)){
-                maximoBuscado=casilleroActual.getPosicion();
+        Posicion maximoBuscado = new Posicion(0, 0);
+        for (Casillero casilleroActual : casillerosQueContengo) {
+            if (casilleroActual.tieneCoordenadasMayoresA(maximoBuscado)) {
+                maximoBuscado = casilleroActual.getPosicion();
             }
         }
 
         return maximoBuscado;
     }
 
-    public Posicion getPosicionInferiorIzquierda(){
+    public Posicion getPosicionInferiorIzquierda() {
 
-        Posicion minimoBuscado= this.getPosicionSuperiorDerecha();
+        Posicion minimoBuscado = this.getPosicionSuperiorDerecha();
 
-        for(Casillero casilleroActual: casillerosQueContengo){
-            if(casilleroActual.tieneCoordenadasMenoresA(minimoBuscado)){
-                minimoBuscado=casilleroActual.getPosicion();
+        for (Casillero casilleroActual : casillerosQueContengo) {
+            if (casilleroActual.tieneCoordenadasMenoresA(minimoBuscado)) {
+                minimoBuscado = casilleroActual.getPosicion();
             }
         }
         return minimoBuscado;
     }
 
-    public int getTamanioHorizontal(){
-        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
-        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+    public int getTamanioHorizontal() {
+        Posicion infIzquierdo = this.getPosicionInferiorIzquierda();
+        Posicion supDerecho = this.getPosicionSuperiorDerecha();
 
-        return supDerecho.getHorizontal()-infIzquierdo.getHorizontal();
+        return supDerecho.getHorizontal() - infIzquierdo.getHorizontal();
     }
 
-    public int getTamanioVertical(){
-        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
-        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+    public int getTamanioVertical() {
+        Posicion infIzquierdo = this.getPosicionInferiorIzquierda();
+        Posicion supDerecho = this.getPosicionSuperiorDerecha();
 
-        return supDerecho.getVertical()-infIzquierdo.getVertical();
+        return supDerecho.getVertical() - infIzquierdo.getVertical();
     }
-
 
 
     public boolean contiene(Posicion posicion) {
 
-        Posicion infIzquierdo= this.getPosicionInferiorIzquierda();
-        Posicion supDerecho= this.getPosicionSuperiorDerecha();
+        Posicion infIzquierdo = this.getPosicionInferiorIzquierda();
+        Posicion supDerecho = this.getPosicionSuperiorDerecha();
 
-        int tamanioHorizontal= this.getTamanioHorizontal();
-        int tamanioVertical= this.getTamanioVertical();
+        int tamanioHorizontal = this.getTamanioHorizontal();
+        int tamanioVertical = this.getTamanioVertical();
 
         supDerecho = new Posicion(infIzquierdo.getHorizontal() + tamanioHorizontal - 1,
                 infIzquierdo.getVertical() + tamanioVertical - 1);
@@ -87,7 +85,7 @@ public class Region {
 
 
     public void vaciar() {
-        for(Casillero casilleroActual : casillerosQueContengo){
+        for (Casillero casilleroActual : casillerosQueContengo) {
             casilleroActual.vaciar();
         }
     }
@@ -97,7 +95,7 @@ public class Region {
     }
 
     public int getHorizontalDer() {
-        return this.getPosicionInferiorIzquierda().getHorizontal()+ this.getTamanioHorizontal();
+        return this.getPosicionInferiorIzquierda().getHorizontal() + this.getTamanioHorizontal();
     }
 
 
@@ -107,7 +105,7 @@ public class Region {
 
 
     public int getVerticalSup() {
-        return this.getPosicionInferiorIzquierda().getVertical()+ this.getTamanioVertical();
+        return this.getPosicionInferiorIzquierda().getVertical() + this.getTamanioVertical();
     }
 
     public Casillero getUnCasillero() {

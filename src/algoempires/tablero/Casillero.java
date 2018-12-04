@@ -65,10 +65,10 @@ public class Casillero {
     }
 
     public void vaciar() {
-        this.entidadContenida=null;
+        this.entidadContenida = null;
     }
 
-    public boolean tieneCoordenadasMayoresA(Posicion maximoBuscado){
+    public boolean tieneCoordenadasMayoresA(Posicion maximoBuscado) {
         return this.posicion.esMayorQue(maximoBuscado);
     }
 

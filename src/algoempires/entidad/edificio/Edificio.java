@@ -30,7 +30,7 @@ public abstract class Edificio extends Entidad {
         this.estaEnReparacion = true;
     }
 
-    public Edificio(){
+    public Edificio() {
         super();
     }
 
@@ -95,10 +95,10 @@ public abstract class Edificio extends Entidad {
 
 
     public void esFuncional() throws EdificioNoFuncionalException {
-        if(this.estaEnReparacion){
+        if (this.estaEnReparacion) {
             throw new EdificioNoFuncionalException("No se pudo realizar la accion porque el " +
-                "edificio no esta funcional en este momento");
-    }
+                    "edificio no esta funcional en este momento");
+        }
     }
 
 
@@ -111,11 +111,11 @@ public abstract class Edificio extends Entidad {
         this.regionQueLoContiene = regionOcupada;
     }
 
-    public int getTamanioHorizontal(){
+    public int getTamanioHorizontal() {
         return TAMANIO_HORIZONTAL;
     }
 
-    public int getTamanioVertical(){
+    public int getTamanioVertical() {
         return TAMANIO_VERTICAL;
     }
 
@@ -142,14 +142,14 @@ public abstract class Edificio extends Entidad {
         return regionQueLoContiene.getUnCasillero();
     }
 
-    public void terminarConstruccion(){
-        while(estaEnReparacion){
+    public void terminarConstruccion() {
+        while (estaEnReparacion) {
             this.continuarConstruccion();
         }
     }
 
     @Override
-    protected int getVidaMaxima(){
+    protected int getVidaMaxima() {
         return getVidaInicial() * getTurnosDeConstruccionInicial();
     }
 }

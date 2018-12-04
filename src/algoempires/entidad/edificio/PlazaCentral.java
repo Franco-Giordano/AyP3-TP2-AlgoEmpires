@@ -1,7 +1,6 @@
 package algoempires.entidad.edificio;
 
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.excepciones.EdificioNoFuncionalException;
 import algoempires.jugador.Jugador;
 
 public class PlazaCentral extends Edificio {
@@ -21,7 +20,7 @@ public class PlazaCentral extends Edificio {
 
     }
 
-    public PlazaCentral(){
+    public PlazaCentral() {
         super();
         TAMANIO_HORIZONTAL = 2;
         TAMANIO_VERTICAL = 2;

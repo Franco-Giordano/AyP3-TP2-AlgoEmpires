@@ -22,7 +22,7 @@ public class Cuartel extends Edificio {
 
     }
 
-    public Cuartel(){
+    public Cuartel() {
         TAMANIO_HORIZONTAL = 2;
         TAMANIO_VERTICAL = 2;
         RANGO_VISION = 1;

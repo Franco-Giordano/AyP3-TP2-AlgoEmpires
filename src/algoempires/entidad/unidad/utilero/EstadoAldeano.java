@@ -12,5 +12,5 @@ public abstract class EstadoAldeano {
 
     public abstract boolean sePuedeMover();
 
-    public abstract void chequearQueAldeanoEsteDisponible( );
+    public abstract void chequearQueAldeanoEsteDisponible();
 }

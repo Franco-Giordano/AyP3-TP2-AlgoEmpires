@@ -71,10 +71,10 @@ public class Posicion {
     }
 
     public boolean esMayorQue(Posicion maximoBuscado) {
-        return (this.posHorizontal>maximoBuscado.getHorizontal() && this.posVertical>maximoBuscado.getVertical());
+        return (this.posHorizontal > maximoBuscado.getHorizontal() && this.posVertical > maximoBuscado.getVertical());
     }
 
     public boolean esMenorQue(Posicion minimoBuscado) {
-        return (this.posHorizontal<minimoBuscado.getHorizontal() && this.posVertical<minimoBuscado.getVertical());
+        return (this.posHorizontal < minimoBuscado.getHorizontal() && this.posVertical < minimoBuscado.getVertical());
     }
 }

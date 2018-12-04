@@ -1,8 +1,8 @@
 package algoempires.excepciones;
 
-public class EdificioNoFuncionalException extends RuntimeException{
+public class EdificioNoFuncionalException extends RuntimeException {
 
-    public EdificioNoFuncionalException(String msj){
+    public EdificioNoFuncionalException(String msj) {
         super(msj);
     }
 }

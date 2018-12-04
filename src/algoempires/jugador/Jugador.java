@@ -31,7 +31,7 @@ public class Jugador {
     private InformadorDeExcepciones informanteDeExcepciones;
 
     public Jugador(String nombreRecibido, Terreno terrenoDeJuego) {
-        this.nombre= nombreRecibido;
+        this.nombre = nombreRecibido;
         this.poblacion = new Poblacion();
         this.edificiosPropios = new HashSet<>();
         this.terrenoDeJuego = terrenoDeJuego;
@@ -50,11 +50,11 @@ public class Jugador {
     private void lanzarExcepcionSiNoEsDeMiPropiedad(Entidad entidad) {
 
 
-            if (!entidad.esDelEquipo(this)) {
-                NoSePuedeInteractuarConEntidadesEnemigasException e = new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
-                informanteDeExcepciones.informar(e);
-                throw e;
-            }
+        if (!entidad.esDelEquipo(this)) {
+            NoSePuedeInteractuarConEntidadesEnemigasException e = new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
+            informanteDeExcepciones.informar(e);
+            throw e;
+        }
 
     }
 
@@ -64,7 +64,7 @@ public class Jugador {
         }
     }
 
-    public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir){
+    public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir) {
 
         if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posAConstruir)) {
             throw new PosicionFueraDeRangoException();
@@ -181,8 +181,8 @@ public class Jugador {
 
     public void crearPlazaCentral(Aldeano aldeano, Posicion posAConstruir) {
 
-        PlazaCentral plazaCentral= new PlazaCentral();
-        ArrayList<Posicion> posiciones= plazaCentral.calcularPosicionesAOcupar(posAConstruir);
+        PlazaCentral plazaCentral = new PlazaCentral();
+        ArrayList<Posicion> posiciones = plazaCentral.calcularPosicionesAOcupar(posAConstruir);
 
 
         try {
@@ -207,12 +207,12 @@ public class Jugador {
 
     public void crearCuartel(Aldeano aldeano, Posicion posAConstruir) {
 
-        Cuartel cuartelGenerico= new Cuartel();
-        ArrayList<Posicion> posiciones= cuartelGenerico.calcularPosicionesAOcupar(posAConstruir);
+        Cuartel cuartelGenerico = new Cuartel();
+        ArrayList<Posicion> posiciones = cuartelGenerico.calcularPosicionesAOcupar(posAConstruir);
 
         try {
 
-            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano,posAConstruir);
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
 
             terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
@@ -232,7 +232,7 @@ public class Jugador {
 
     public void atacar(Atacante atacante, Posicion posicionDeLaVictima) {
 
-        try{
+        try {
 
             this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
 
@@ -242,7 +242,7 @@ public class Jugador {
 
             terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
-        }catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e){
+        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e) {
             informanteDeExcepciones.informar(e);
         }
 
@@ -338,7 +338,7 @@ public class Jugador {
         return poblacion.getCantidadDeHabitantes() == cantPobladores && edificiosPropios.size() == cantEdificios;
     }
 
-    public int getCantidadDeHabitantes(){
+    public int getCantidadDeHabitantes() {
 
         return poblacion.getCantidadDeHabitantes();
     }

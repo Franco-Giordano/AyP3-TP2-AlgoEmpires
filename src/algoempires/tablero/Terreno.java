@@ -107,8 +107,7 @@ public class Terreno {
 
         Region region = edificio.generarRegion(this.generarCasillerosOcupadosPor(edificio, posicionInfIzq));
 
-        ArrayList <Posicion> posiciones = generarPosicionesContenidas(edificio,posicionInfIzq);
-
+        ArrayList<Posicion> posiciones = generarPosicionesContenidas(edificio, posicionInfIzq);
 
 
         edificio.informarRegionOcupada(region);
@@ -145,13 +144,13 @@ public class Terreno {
 
         Posicion posicionUnidad = this.encontrarUnaPosDeEntidad(unidad);
 
-        ArrayList<Posicion> posicionesVisibles= Rango.generarPosicionesVisiblesPor(posicionUnidad, unidad);
+        ArrayList<Posicion> posicionesVisibles = Rango.generarPosicionesVisiblesPor(posicionUnidad, unidad);
 
-        for(Posicion posicionActual: posicionesVisibles){
-              if(posicionesDelEdificio.contains(posicionActual)){
-                  return true;
-              }
+        for (Posicion posicionActual : posicionesVisibles) {
+            if (posicionesDelEdificio.contains(posicionActual)) {
+                return true;
             }
+        }
 
         throw new PosicionFueraDeRangoException();
     }
@@ -234,11 +233,11 @@ public class Terreno {
         return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
     }
 
-    public ArrayList<Posicion> generarPosicionesContenidas(Edificio edificio, Posicion infIzquierdo) throws PosicionInvalidaException{
+    public ArrayList<Posicion> generarPosicionesContenidas(Edificio edificio, Posicion infIzquierdo) throws PosicionInvalidaException {
 
-        int tamanioHorizontal= edificio.getTamanioHorizontal();
+        int tamanioHorizontal = edificio.getTamanioHorizontal();
 
-        int tamanioVertical= edificio.getTamanioVertical();
+        int tamanioVertical = edificio.getTamanioVertical();
 
         ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
 
@@ -268,7 +267,7 @@ public class Terreno {
 
         ArrayList<Casillero> casillerosContenidos = new ArrayList<>();
 
-        for (Posicion posActual : posicionesContenidas){
+        for (Posicion posActual : posicionesContenidas) {
             casillerosContenidos.add(this.mapa.get(posActual));
         }
         return casillerosContenidos;
@@ -299,10 +298,10 @@ public class Terreno {
     }
 
     public boolean todasLasPosicionesEstanDisponibles(ArrayList<Posicion> posiciones) {
-        ArrayList<Casillero> casilleros= this.crearCasillerosAPartirDe(posiciones);
+        ArrayList<Casillero> casilleros = this.crearCasillerosAPartirDe(posiciones);
 
-        for (Casillero casilleroActual: casilleros) {
-            if(casilleroActual.estaOcupada()){
+        for (Casillero casilleroActual : casilleros) {
+            if (casilleroActual.estaOcupada()) {
                 throw new AlMenosUnCasilleroEstaOcupadoException("No se puede construir porque hay al menos uno ocupado");
             }
         }

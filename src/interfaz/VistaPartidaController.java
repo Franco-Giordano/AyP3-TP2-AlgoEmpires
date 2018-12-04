@@ -37,14 +37,6 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
-
-    private Posicion posInfIzq;
-    private int tamanioCasillero = 0;
-    private int VGAP = 3;
-    private int HGAP = 3;
-    private AlgoEmpires juego;
-    private Terreno terrenoDeJuego;
-
     @FXML
     GridPane pane;
     @FXML
@@ -63,6 +55,12 @@ public class VistaPartidaController {
     TextArea areaMensajes;
     @FXML
     ProgressBar barraDeVida;
+    private Posicion posInfIzq;
+    private int tamanioCasillero = 0;
+    private int VGAP = 3;
+    private int HGAP = 3;
+    private AlgoEmpires juego;
+    private Terreno terrenoDeJuego;
 
     public void initialize() {
 

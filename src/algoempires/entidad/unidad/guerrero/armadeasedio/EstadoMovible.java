@@ -17,5 +17,7 @@ public class EstadoMovible extends EstadoArmaDeAsedio {
     }
 
     @Override
-    public boolean estaMontada(){ return false; }
+    public boolean estaMontada() {
+        return false;
+    }
 }

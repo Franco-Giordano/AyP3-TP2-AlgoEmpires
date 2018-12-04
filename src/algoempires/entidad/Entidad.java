@@ -14,7 +14,7 @@ public abstract class Entidad {
         this.jugadorPropietario.cobrar(this.getCosto());
     }
 
-    public Entidad(){
+    public Entidad() {
         this.vida = getVidaInicial();
     }
 
@@ -32,7 +32,7 @@ public abstract class Entidad {
 
     public abstract void restarVida(int vidaARestar);
 
-    public boolean seMurioAlRecibirAtaque(){
+    public boolean seMurioAlRecibirAtaque() {
         return vida <= 0;
     }
 
@@ -59,6 +59,6 @@ public abstract class Entidad {
     }
 
     public double getPorcentajeDeVida() {
-        return ((double)getVida() / getVidaMaxima());
+        return ((double) getVida() / getVidaMaxima());
     }
 }

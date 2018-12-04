@@ -19,6 +19,6 @@ public class EstadoRecolectandoOro extends EstadoAldeano {
     }
 
     @Override
-    public void chequearQueAldeanoEsteDisponible( ) {
+    public void chequearQueAldeanoEsteDisponible() {
     }
 }

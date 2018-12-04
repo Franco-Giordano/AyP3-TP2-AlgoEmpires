@@ -6,7 +6,7 @@ public class InformadorDeExcepciones {
 
     private VistaPartidaController vistaPartidaController;
 
-    public void setVistaPartidaController(VistaPartidaController vista){
+    public void setVistaPartidaController(VistaPartidaController vista) {
         this.vistaPartidaController = vista;
     }
 

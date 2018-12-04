@@ -10,8 +10,8 @@ import algoempires.tablero.Casillero;
 
 public abstract class Unidad extends Entidad {
 
-    private boolean movioEsteTurno;
     protected Casillero casilleroQueLaContiene;
+    private boolean movioEsteTurno;
 
     public Unidad(Jugador jugador) throws PosicionInvalidaException {
         super(jugador);
@@ -37,7 +37,7 @@ public abstract class Unidad extends Entidad {
     }
 
     @Override
-    protected int getVidaMaxima(){
+    protected int getVidaMaxima() {
         return getVidaInicial();
     }
 
@@ -50,7 +50,7 @@ public abstract class Unidad extends Entidad {
         atacante.atacar(this);
     }
 
-    public void informarDeCasilleroOcupado(Casillero casillero){
+    public void informarDeCasilleroOcupado(Casillero casillero) {
         this.casilleroQueLaContiene = casillero;
     }
 

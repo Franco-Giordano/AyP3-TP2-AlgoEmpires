@@ -5,7 +5,6 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.excepciones.DimensionesInvalidasException;
 import algoempires.jugador.Jugador;
-import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 
@@ -116,14 +115,14 @@ public class AlgoEmpires {
         indiceJugadorActual++;
         indiceJugadorActual = indiceJugadorActual % 2;
 
-        if(!jugadores[0].tieneCastilloConVida() || !jugadores[1].tieneCastilloConVida()){
+        if (!jugadores[0].tieneCastilloConVida() || !jugadores[1].tieneCastilloConVida()) {
             indiceJugadorActual++;
             indiceJugadorActual = indiceJugadorActual % 2;
             this.ganarJuegoCon(jugadores[indiceJugadorActual]);
         }
     }
 
-    public void ganarJuegoCon(Jugador jugadorGanador){
+    public void ganarJuegoCon(Jugador jugadorGanador) {
 
         System.out.println("El ganador es:" + jugadorGanador.getNombre());
 

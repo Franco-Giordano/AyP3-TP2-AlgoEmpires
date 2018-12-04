@@ -5,7 +5,7 @@ import algoempires.entidad.unidad.Unidad;
 
 import java.util.ArrayList;
 
-public class Rango{
+public class Rango {
 
     public static ArrayList<Posicion> generarPosicionesVisiblesPor(Posicion posicionCentral, Unidad unidadConRango) {
 

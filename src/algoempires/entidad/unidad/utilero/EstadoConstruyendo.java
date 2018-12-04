@@ -30,7 +30,7 @@ public class EstadoConstruyendo extends EstadoAldeano {
     }
 
     @Override
-    public void chequearQueAldeanoEsteDisponible(){
+    public void chequearQueAldeanoEsteDisponible() {
         throw new AldeanoOcupadoException("El aldeano se encuentra construyendo o reparando un edificio.");
     }
 }
