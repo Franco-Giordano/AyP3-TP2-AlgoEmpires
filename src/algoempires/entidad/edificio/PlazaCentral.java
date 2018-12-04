@@ -39,7 +39,7 @@ public class PlazaCentral extends Edificio {
     }
 
     @Override
-    protected int getVidaMaxima() {
+    public int getVidaMaxima() {
         return VIDA_MAXIMA;
     }
 

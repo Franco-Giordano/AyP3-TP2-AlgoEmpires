@@ -5,7 +5,7 @@ import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 
-public class TareaConstruirPlazaCentral implements Tarea{
+public class TareaConstruirPlazaCentral implements Tarea {
 
     private Jugador jugadorActual;
     private Casillero casilleroEmisor;

@@ -6,8 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
-<VBox scaleX="0.8" scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.botoneras.BotoneraUnidadController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" scaleX="0.8" scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="interfaz.botoneras.BotoneraUnidadController">
     <children>
         <GridPane prefHeight="300.0" prefWidth="300.0"
                   style="-fx-background-image:url('/interfaz/recursos/imagenes/brujula.png'); -fx-background-size:stretch;">

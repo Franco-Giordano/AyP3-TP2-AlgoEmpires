@@ -41,8 +41,8 @@ public class PlazaCentralTest {
         assertTrue(terreno.estaOcupada(new Posicion(1, 1)));
     }
 
-    @Test (expected = EdificioNoFuncionalException.class)
-    public void testNoSePuedeCrearAldeanoEnUnaPlazaNoFuncional(){
+    @Test(expected = EdificioNoFuncionalException.class)
+    public void testNoSePuedeCrearAldeanoEnUnaPlazaNoFuncional() {
         jugadorDePrueba = new Jugador("Carlos", terreno);
 
         jugadorDePrueba.sumarOro(1000);

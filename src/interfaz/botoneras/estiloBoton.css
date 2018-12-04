@@ -1,6 +1,6 @@
 .button {
-    -fx-background-image:url('/interfaz/recursos/imagenes/fondoBoton.png');
-    -fx-background-size:stretch;
+    -fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png');
+    -fx-background-size: stretch;
     -fx-background-radius: 20 20 20 20;
 }
 

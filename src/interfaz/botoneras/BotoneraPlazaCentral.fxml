@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="0.8" scaleY="0.8"
-      spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleX="0.8"
+      scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="interfaz.botoneras.BotoneraEdificioController">
     <children>
         <Button focusTraversable="false" mnemonicParsing="false" onAction="#crearAldeano" prefHeight="60.0"

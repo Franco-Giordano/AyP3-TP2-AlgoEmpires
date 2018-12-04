@@ -37,7 +37,7 @@ public abstract class Unidad extends Entidad {
     }
 
     @Override
-    protected int getVidaMaxima() {
+    public int getVidaMaxima() {
         return getVidaInicial();
     }
 

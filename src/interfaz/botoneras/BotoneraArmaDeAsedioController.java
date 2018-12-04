@@ -15,15 +15,15 @@ public class BotoneraArmaDeAsedioController {
     private Casillero casillero;
     private VistaPartidaController vistaController;
 
-    public void setJugadorActual(Jugador jugadorActual){
+    public void setJugadorActual(Jugador jugadorActual) {
         this.jugadorActual = jugadorActual;
     }
 
-    public void setCasillero(Casillero casillero){
+    public void setCasillero(Casillero casillero) {
         this.casillero = casillero;
     }
 
-    public void setVistaController(VistaPartidaController vistaController){
+    public void setVistaController(VistaPartidaController vistaController) {
         this.vistaController = vistaController;
     }
 
@@ -90,17 +90,17 @@ public class BotoneraArmaDeAsedioController {
         vistaController.crearCasilleros();
     }
 
-    public void desmontar(){
-        jugadorActual.desmontarArmaDeAsedio((ArmaDeAsedio)casillero.getEntidadContenida());
+    public void desmontar() {
+        jugadorActual.desmontarArmaDeAsedio((ArmaDeAsedio) casillero.getEntidadContenida());
         vistaController.reiniciarBotonera();
     }
 
-    public void montar(){
-        jugadorActual.montarArmaDeAsedio((ArmaDeAsedio)casillero.getEntidadContenida());
+    public void montar() {
+        jugadorActual.montarArmaDeAsedio((ArmaDeAsedio) casillero.getEntidadContenida());
         vistaController.reiniciarBotonera();
     }
 
-    public void atacar(){
+    public void atacar() {
         Tarea tareaAtacar = new TareaAtacar(jugadorActual, casillero);
         vistaController.setHandlersEnEsperaConTarea(tareaAtacar);
     }

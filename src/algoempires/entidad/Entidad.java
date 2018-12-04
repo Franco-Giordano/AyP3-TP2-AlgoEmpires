@@ -24,7 +24,7 @@ public abstract class Entidad {
 
     protected abstract int getVidaInicial();
 
-    protected abstract int getVidaMaxima();
+    public abstract int getVidaMaxima();
 
     protected abstract int getCosto();
 

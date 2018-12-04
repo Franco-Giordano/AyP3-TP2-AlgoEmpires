@@ -11,7 +11,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.effect.Glow;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -39,7 +38,6 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
         casilleroAsignado.setEffect(new Glow(0.8));
 
 
-
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
         if (entidad != null) {
             String claseEntidad = entidad.getClass().toString();
@@ -47,7 +45,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
 
             vistaPartidaController.entidadSeleccionadaLbl.setText(nombreEntidad.toUpperCase());
             vistaPartidaController.deJugadorLbl.setText(" de " + entidad.getNombreJugadorPropietario());
-            vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida());
+            vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida() + "/" + entidad.getVidaMaxima());
 
             vistaPartidaController.circuloIcono.setVisible(true);
             vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(claseEntidad))));
@@ -100,11 +98,10 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
                         Unidad unidad = (Unidad) entidad;
                         FXMLLoader loader;
 
-                        if (((ArmaDeAsedio)unidad).estaMontada()) {
+                        if (((ArmaDeAsedio) unidad).estaMontada()) {
                             loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioMontada.fxml"));
 
-                        }
-                        else {
+                        } else {
                             loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioDesmontada.fxml"));
                         }
 
