@@ -32,7 +32,6 @@ public class CasilleroView extends StackPane {
         if (casillero.estaOcupada()) {
             String nombreEntidad = casillero.getEntidadContenida().getClass().toString();
             rectangulo.setFill(new ImagePattern(iconos.get(nombreEntidad)));
-
         } else {
             rectangulo.setFill(new ImagePattern(iconos.get("Pasto")));
         }
