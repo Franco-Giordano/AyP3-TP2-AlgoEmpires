@@ -153,7 +153,7 @@ public abstract class Edificio extends Entidad {
         return getVidaInicial() * getTurnosDeConstruccionInicial();
     }
 
-    public boolean estaConstruido(){
+    public boolean estaConstruido() {
         return tieneVidaLlena();
     }
 

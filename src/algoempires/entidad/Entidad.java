@@ -61,5 +61,5 @@ public abstract class Entidad {
     public double getPorcentajeDeVida() {
         return ((double) getVida() / getVidaMaxima());
     }
-    
+
 }

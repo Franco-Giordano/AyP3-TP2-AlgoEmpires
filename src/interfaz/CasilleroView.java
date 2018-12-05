@@ -47,15 +47,13 @@ public class CasilleroView extends StackPane {
         if (casillero.estaOcupada()) {
             Entidad entidadContenida = casillero.getEntidadContenida();
             String nombreEntidad = entidadContenida.getClass().toString();
-            if (entidadContenida.getClass() == PlazaCentral.class || entidadContenida.getClass() == Cuartel.class){
-                if (((Edificio)entidadContenida).estaConstruido()){
+            if (entidadContenida.getClass() == PlazaCentral.class || entidadContenida.getClass() == Cuartel.class) {
+                if (((Edificio) entidadContenida).estaConstruido()) {
                     rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
-                }
-                else{
+                } else {
                     rectanguloEntidad.setFill(new ImagePattern(iconos.get("enConstruccion")));
                 }
-            }
-            else {
+            } else {
                 rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
             }
         }
