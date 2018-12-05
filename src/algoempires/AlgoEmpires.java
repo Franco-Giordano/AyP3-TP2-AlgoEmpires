@@ -33,6 +33,8 @@ public class AlgoEmpires {
         jugadores = new Jugador[]{jugador1, jugador2};
 
         this.prepararJugadoresParaBatalla(tamHorizontal, tamVertical);
+
+        indiceJugadorActual = this.escogerJugadorAlAzar();
     }
 
     private void prepararJugadoresParaBatalla(int tamHoriz, int tamVert) {
@@ -72,20 +74,6 @@ public class AlgoEmpires {
         jugador.posicionarLaEntidad(posAld3, ald3);
     }
 
-    private void jugarPartida() {
-
-        this.indiceJugadorActual = escogerJugadorAlAzar();
-
-        //TODO Luego chequear condicion de perdida/victoria
-        while (true) {
-
-            jugadores[indiceJugadorActual].jugarTurno();
-
-            indiceJugadorActual++;
-            indiceJugadorActual = indiceJugadorActual % 2;
-        }
-
-    }
 
     private int escogerJugadorAlAzar() {
 

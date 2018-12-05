@@ -9,25 +9,26 @@ import algoempires.tablero.direccion.DireccionIzquierda;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import static javafx.scene.input.KeyCode.ESCAPE;
+import java.nio.file.Paths;
 
 public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
     private final PantallaInicioController controladorActual;
     private final Stage primaryStage;
+    private MediaPlayer musicaDeFondo;
 
 
-    public BotonInicioHandler(Stage stage, PantallaInicioController controladorActual) {
+    public BotonInicioHandler(Stage stage, PantallaInicioController controladorActual, MediaPlayer musicaDeFondo) {
         this.primaryStage = stage;
         this.controladorActual = controladorActual;
+        this.musicaDeFondo = musicaDeFondo;
     }
 
 
@@ -76,6 +77,13 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
             primaryStage.setScene(escenaPartida);
 
             controladorJuego.crearCasilleros();
+
+            musicaDeFondo.stop();
+            Media media = new Media(Paths.get("src/interfaz/recursos/musicaEnPartida.mp3").toUri().toString());
+            musicaDeFondo = new MediaPlayer(media);
+
+            musicaDeFondo.setVolume(0.3);
+            musicaDeFondo.play();
 
         } catch (IOException e) {
             e.printStackTrace();
