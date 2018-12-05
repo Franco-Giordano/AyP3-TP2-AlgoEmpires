@@ -16,7 +16,10 @@ import algoempires.excepciones.*;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -252,6 +255,20 @@ public class Jugador {
 
             terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
+            AudioClip sonidoAtaque;
+
+            if (atacante.getClass() == Arquero.class){
+                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoArco.mp3").toUri().toString());
+            }
+            else if (atacante.getClass() == Espadachin.class){
+                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
+            }
+            else {
+                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
+            }
+
+            sonidoAtaque.play();
+
         } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e) {
             informanteDeExcepciones.informar(e);
         }
@@ -280,11 +297,6 @@ public class Jugador {
     public void agregar(Unidad unidad) {
 
         poblacion.agregar(unidad);
-    }
-
-    public void quitarDePoblacion(Unidad unidad) {
-
-        poblacion.quitar(unidad);
     }
 
     public void jugarTurno() {
@@ -367,5 +379,11 @@ public class Jugador {
     public InformadorDeExcepciones getInformanteDeExcepciones() {
         return this.informanteDeExcepciones;
 
+    }
+
+    public void murio(Unidad unidad) {
+        poblacion.quitar(unidad);
+        AudioClip sonidoDeMuerte = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoMuerte.mp3").toUri().toString());
+        sonidoDeMuerte.play();
     }
 }

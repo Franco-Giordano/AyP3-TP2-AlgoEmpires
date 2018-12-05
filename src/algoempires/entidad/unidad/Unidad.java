@@ -6,6 +6,7 @@ import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
+import javafx.scene.media.MediaPlayer;
 
 
 public abstract class Unidad extends Entidad {
@@ -31,7 +32,7 @@ public abstract class Unidad extends Entidad {
 
         if (this.seMurioAlRecibirAtaque()) {
             casilleroQueLaContiene.vaciar();
-            jugadorPropietario.quitarDePoblacion(this);
+            jugadorPropietario.murio(this);
         }
 
     }
