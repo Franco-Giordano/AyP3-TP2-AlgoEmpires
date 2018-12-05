@@ -344,7 +344,7 @@ public class VistaPartidaController {
 
     }
 
-    public void togglearMusica(ActionEvent actionEvent) {
+    public void togglearMusica() {
         if (opcionesMusica.isSelected()) {
             musicaDeFondo.setMute(false);
         } else {
