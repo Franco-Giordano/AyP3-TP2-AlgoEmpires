@@ -86,6 +86,8 @@ public class Jugador {
             this.lanzarExcepcionSiNoEsDeMiPropiedad(posicionRecibida);
 
             terrenoDeJuego.moverUnidad(posicionRecibida, direccionRecibida);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoCaminar.mp3");
         } catch (PosicionInvalidaException | SoloUnidadesSePuedenDesplazarException | UnidadNoPuedeMoverseException |
                 NoSePuedeInteractuarConEntidadesEnemigasException e) {
             informanteDeExcepciones.informar(e);
@@ -105,6 +107,8 @@ public class Jugador {
             Aldeano aldeanoCreado = plazaCentral.crearAldeano();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, aldeanoCreado);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoSuccess.mp3");
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
                 NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
                 PosicionFueraDeRangoException e) {
@@ -124,6 +128,8 @@ public class Jugador {
             Espadachin espadachinCreado = cuartel.crearEspadachin();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, espadachinCreado);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoSuccess.mp3");
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
                 NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
                 PosicionFueraDeRangoException e) {
@@ -144,6 +150,9 @@ public class Jugador {
             Arquero arqueroCreado = cuartel.crearArquero();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, arqueroCreado);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoSuccess.mp3");
+
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
                 NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
                 PosicionFueraDeRangoException e) {
@@ -161,6 +170,8 @@ public class Jugador {
             ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoSuccess.mp3");
         } catch (SeIntentoSuperarPoblacionMaximaException | OroInsuficienteException |
                 NoSePuedeInteractuarConEntidadesEnemigasException | EdificioNoFuncionalException |
                 PosicionFueraDeRangoException e) {
@@ -181,6 +192,8 @@ public class Jugador {
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
             aldeano.ordenarReparacion(edificio);
+
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoReparacion.mp3");
 
         } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException
                 | PosicionFueraDeRangoException | SoloSePuedeRepararEdificiosException e) {
@@ -209,6 +222,8 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posAConstruir, plaza);
 
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoReparacion.mp3");
+
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
                 AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException | PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
@@ -233,6 +248,9 @@ public class Jugador {
 
             terrenoDeJuego.ocupar(posAConstruir, cuartel);
 
+            reproducirSonido("src/interfaz/recursos/sonidos/sonidoReparacion.mp3");
+
+
         } catch (PosicionInvalidaException | OroInsuficienteException | NoSePuedeInteractuarConEntidadesEnemigasException |
                 AldeanoOcupadoException | AlMenosUnCasilleroEstaOcupadoException | PosicionFueraDeRangoException e) {
             informanteDeExcepciones.informar(e);
@@ -251,17 +269,17 @@ public class Jugador {
                 throw new EntidadFueraDeRangoException();
             }
 
-            AudioClip sonidoAtaque;
+            String rutaSonido;
 
             if (atacante.getClass() == Arquero.class) {
-                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoArco.mp3").toUri().toString());
+                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoArco.mp3");
             } else if (atacante.getClass() == Espadachin.class) {
-                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
+                rutaSonido =("src/interfaz/recursos/sonidos/sonidoEspada.mp3");
             } else {
-                sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
+                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoCatapulta.mp3");
             }
 
-            sonidoAtaque.play();
+            reproducirSonido(rutaSonido);
 
             terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
@@ -379,7 +397,11 @@ public class Jugador {
 
     public void murio(Unidad unidad) {
         poblacion.quitar(unidad);
-        AudioClip sonidoDeMuerte = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoMuerte.mp3").toUri().toString());
-        sonidoDeMuerte.play();
+       reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
+    }
+
+    public void reproducirSonido(String ruta){
+        AudioClip sonidoAReproducir = new AudioClip(Paths.get(ruta).toUri().toString());
+        sonidoAReproducir.play();
     }
 }
