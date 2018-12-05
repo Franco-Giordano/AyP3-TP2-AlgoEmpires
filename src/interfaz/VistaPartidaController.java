@@ -15,7 +15,6 @@ import interfaz.tareas.Tarea;
 import javafx.animation.FadeTransition;
 import javafx.application.HostServices;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -24,10 +23,7 @@ import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
@@ -40,6 +36,9 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
+
+    @FXML
+    StackPane stackPaneIcono;
 
     @FXML
     CheckMenuItem opcionesMusica;
@@ -142,7 +141,7 @@ public class VistaPartidaController {
         deJugadorLbl.setText("");
         vidaEntidadLbl.setText("");
 
-        circuloIcono.setVisible(false);
+        stackPaneIcono.setVisible(false);
         barraDeVida.setVisible(false);
 
         hijosBotonera.remove(2);

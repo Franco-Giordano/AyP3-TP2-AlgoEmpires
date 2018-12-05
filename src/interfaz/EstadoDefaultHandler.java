@@ -48,7 +48,7 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
             vistaPartidaController.deJugadorLbl.setText(" de " + entidad.getNombreJugadorPropietario());
             vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida() + "/" + entidad.getVidaMaxima());
 
-            vistaPartidaController.circuloIcono.setVisible(true);
+            vistaPartidaController.stackPaneIcono.setVisible(true);
             vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(claseEntidad))));
 
             vistaPartidaController.barraDeVida.setVisible(true);
