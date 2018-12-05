@@ -71,6 +71,8 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
                         controladorJuego.reiniciarBotonera();
                         controladorJuego.crearCasilleros();
                         break;
+                    case SPACE:
+                        controladorJuego.terminarTurno();
                 }
             });
 

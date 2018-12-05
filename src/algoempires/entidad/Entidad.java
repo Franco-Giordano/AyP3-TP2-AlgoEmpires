@@ -62,4 +62,5 @@ public abstract class Entidad {
         return ((double) getVida() / getVidaMaxima());
     }
 
+
 }

@@ -57,7 +57,19 @@ public class CasilleroView extends StackPane {
 
             String nombreEntidad = entidadContenida.getClass().toString();
 
-            rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+            if (entidadContenida.getClass() == PlazaCentral.class || entidadContenida.getClass() == Cuartel.class){
+
+                if (((Edificio)entidadContenida).estaEnconstruccion()) {
+                    rectanguloEntidad.setFill(new ImagePattern(iconos.get("enConstruccion")));
+                }
+                else {
+                    rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+                }
+            }
+            else {
+                rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+            }
+
 
         }
 
@@ -75,7 +87,7 @@ public class CasilleroView extends StackPane {
         HashMap<String, Image> mapa = new HashMap<>();
 
         mapa.put("Pasto", new Image("/interfaz/recursos/imagenes/fondoPasto.png"));
-        mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.png"));
+        mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.jpg"));
         mapa.put("animacionDanioUnidad", new Image("/interfaz/recursos/animaciones/animacionDanioUnidad.gif"));
         mapa.put("animacionDanioEdificio", new Image("/interfaz/recursos/animaciones/animacionDanioEdificio.gif"));
         mapa.put("class algoempires.entidad.unidad.utilero.Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
