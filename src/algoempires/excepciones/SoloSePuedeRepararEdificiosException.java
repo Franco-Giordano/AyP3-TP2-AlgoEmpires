@@ -2,7 +2,7 @@ package algoempires.excepciones;
 
 public class SoloSePuedeRepararEdificiosException extends RuntimeException {
 
-    public SoloSePuedeRepararEdificiosException(){
+    public SoloSePuedeRepararEdificiosException() {
         super("Solo se pueden reparar Edificios.");
     }
 }

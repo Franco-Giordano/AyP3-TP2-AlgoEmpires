@@ -17,7 +17,6 @@ import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -68,7 +67,7 @@ public class Jugador {
     }
 
     private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
-        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null || terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar).getClass() != Edificio.class){
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null || terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar).getClass() != Edificio.class) {
             throw new SoloSePuedeRepararEdificiosException();
         }
     }
@@ -191,7 +190,6 @@ public class Jugador {
     }
 
 
-
     public void crearPlazaCentral(Aldeano aldeano, Posicion posAConstruir) {
 
         PlazaCentral plazaCentral = new PlazaCentral();
@@ -257,13 +255,11 @@ public class Jugador {
 
             AudioClip sonidoAtaque;
 
-            if (atacante.getClass() == Arquero.class){
+            if (atacante.getClass() == Arquero.class) {
                 sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoArco.mp3").toUri().toString());
-            }
-            else if (atacante.getClass() == Espadachin.class){
+            } else if (atacante.getClass() == Espadachin.class) {
                 sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
-            }
-            else {
+            } else {
                 sonidoAtaque = new AudioClip(Paths.get("src/interfaz/recursos/sonidos/sonidoEspada.mp3").toUri().toString());
             }
 
