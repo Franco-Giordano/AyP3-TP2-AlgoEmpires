@@ -153,6 +153,9 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Opciones">
                     <items>
+                        <CheckMenuItem fx:id="opcionesMusica" mnemonicParsing="false" onAction="#togglearMusica"
+                                       selected="true" style="-fx-text-fill: black;" text="Activar musica"/>
+                        <SeparatorMenuItem/>
                         <MenuItem mnemonicParsing="false" onAction="#cerrarJuego" style="-fx-text-fill: black;"
                                   text="Cerrar Juego"/>
                     </items>

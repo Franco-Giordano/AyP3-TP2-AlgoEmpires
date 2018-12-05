@@ -13,6 +13,7 @@ import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
 import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -23,6 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.util.Duration;
@@ -33,6 +35,9 @@ public class VistaPartidaController {
 
     private static final int RENDERIZAR_VERTICAL = 14;
     private static final int RENDERIZAR_HORIZONTAL = 20;
+
+    @FXML
+    CheckMenuItem opcionesMusica;
 
     @FXML
     ImageView imgOro, imgPoblacion;
@@ -73,6 +78,7 @@ public class VistaPartidaController {
     private int HGAP = 3;
     private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
+    private MediaPlayer musicaDeFondo;
 
     public void initialize() {
 
@@ -162,6 +168,11 @@ public class VistaPartidaController {
         int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
 
         posInfIzq = new Posicion(coordHorizontal, coordVertical);
+    }
+
+
+    public void setMusicaDeFondo(MediaPlayer musicaDeFondo) {
+        this.musicaDeFondo = musicaDeFondo;
     }
 
     public void renderizarHacia(Direccion direccion) {
@@ -256,10 +267,19 @@ public class VistaPartidaController {
     public void acercaDelJuego() {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                "AlgoEmpires V4.0\n\n" +
-                        "Esperamos que los disfrutes!\n\n" +
+                "AlgoEmpires v4.0\n\n" +
+                        "Esperamos que lo disfrutes!\n\n" +
                         "Con amor,\n\n" +
                         "El equipo de desarrollo de AlgoEmpires <3");
         alert.showAndWait();
     }
+
+    public void togglearMusica(ActionEvent actionEvent) {
+        if (opcionesMusica.isSelected()) {
+            musicaDeFondo.setMute(false);
+        } else {
+            musicaDeFondo.setMute(true);
+        }
+    }
+
 }

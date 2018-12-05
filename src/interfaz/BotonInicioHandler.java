@@ -50,8 +50,8 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
             controladorJuego.setJuego(modelo);
 
-            Scene escenaPartida = new Scene(pane);
 
+            Scene escenaPartida = new Scene(pane);
 
             escenaPartida.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
@@ -84,6 +84,8 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
             musicaDeFondo.setVolume(0.3);
             musicaDeFondo.play();
+
+            controladorJuego.setMusicaDeFondo(musicaDeFondo);
 
         } catch (IOException e) {
             e.printStackTrace();
