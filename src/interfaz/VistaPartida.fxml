@@ -151,7 +151,7 @@
         <MenuBar fx:id="menuSuperior" focusTraversable="false" opacity="0.7" style="-fx-background-color: #190e03;"
                  stylesheets="@estiloMenuSuperior.css" BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Opciones">
+                <Menu  mnemonicParsing="false" text="Opciones">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#cerrarJuego" style="-fx-text-fill: black;"
                                   text="Cerrar Juego"/>

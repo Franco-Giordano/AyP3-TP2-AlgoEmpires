@@ -1,5 +1,9 @@
 package interfaz;
 
+import algoempires.entidad.Entidad;
+import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.edificio.Edificio;
+import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.tablero.Casillero;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -41,8 +45,19 @@ public class CasilleroView extends StackPane {
         this.getChildren().addAll(rectanguloFondoPasto, rectanguloEntidad, textoPosicion);
 
         if (casillero.estaOcupada()) {
-            String nombreEntidad = casillero.getEntidadContenida().getClass().toString();
-            rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+            Entidad entidadContenida = casillero.getEntidadContenida();
+            String nombreEntidad = entidadContenida.getClass().toString();
+            if (entidadContenida.getClass() == PlazaCentral.class || entidadContenida.getClass() == Cuartel.class){
+                if (((Edificio)entidadContenida).estaConstruido()){
+                    rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+                }
+                else{
+                    rectanguloEntidad.setFill(new ImagePattern(iconos.get("enConstruccion")));
+                }
+            }
+            else {
+                rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
+            }
         }
 
         EstadoDefaultHandler handler = new EstadoDefaultHandler(layoutBotones, this, vistaPartidaController);
@@ -59,6 +74,7 @@ public class CasilleroView extends StackPane {
         HashMap<String, Image> mapa = new HashMap<>();
 
         mapa.put("Pasto", new Image("/interfaz/recursos/imagenes/fondoPasto.png"));
+        mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.png"));
         mapa.put("class algoempires.entidad.unidad.utilero.Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Arquero", new Image("/interfaz/recursos/imagenes/iconoArquero.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Espadachin", new Image("/interfaz/recursos/imagenes/iconoEspadachin.png"));

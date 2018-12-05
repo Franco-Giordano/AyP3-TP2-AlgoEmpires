@@ -152,4 +152,9 @@ public abstract class Edificio extends Entidad {
     public int getVidaMaxima() {
         return getVidaInicial() * getTurnosDeConstruccionInicial();
     }
+
+    public boolean estaConstruido(){
+        return tieneVidaLlena();
+    }
+
 }
