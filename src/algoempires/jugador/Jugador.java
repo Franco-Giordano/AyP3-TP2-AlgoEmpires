@@ -251,8 +251,6 @@ public class Jugador {
                 throw new EntidadFueraDeRangoException();
             }
 
-            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
-
             AudioClip sonidoAtaque;
 
             if (atacante.getClass() == Arquero.class) {
@@ -264,6 +262,8 @@ public class Jugador {
             }
 
             sonidoAtaque.play();
+
+            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
         } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e) {
             informanteDeExcepciones.informar(e);
