@@ -11,6 +11,8 @@ public class InformadorDeExcepciones {
     }
 
     public void informar(RuntimeException e) {
-        vistaPartidaController.mostrarMensaje(e.getMessage());
+        if( vistaPartidaController != null) {
+            vistaPartidaController.mostrarMensaje(e.getMessage());
+        }
     }
 }

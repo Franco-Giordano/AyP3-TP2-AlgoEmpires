@@ -6,6 +6,7 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.entidad.unidad.utilero.EstadoConstruyendo;
 import algoempires.entidad.unidad.utilero.EstadoRecolectandoOro;
+import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -322,7 +323,7 @@ public class AldeanoTest {
         terreno.ocupar(new Posicion(1, 1), aldeano1);
 
         Aldeano aldeano2 = new Aldeano(jugadorEnemigo);
-        terreno.ocupar(new Posicion(2, 2), aldeano2);
+        terreno.ocupar(new Posicion(9, 9), aldeano2);
 
         EstadoRecolectandoOro estado = new EstadoRecolectandoOro(aldeano2);
         assertEquals(aldeano1.getEstadoActual().getClass(), estado.getClass());

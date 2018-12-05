@@ -66,7 +66,7 @@ public class JugadorTest {
         assertTrue(aldeano.tieneEstaVida(35));
     }
 
-    @Test(expected = EntidadFueraDeRangoException.class)
+    @Test
     public void jugadorNoPuedeAtacarConArqueroPorDistanciaDeLaUnidadTest() {
 
         Arquero arquero = new Arquero(jugadorDePrueba);
@@ -77,7 +77,11 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(9, 9), aldeano);
 
+        assertTrue(aldeano.tieneEstaVida(50));
+
         jugadorDePrueba.atacar(arquero, new Posicion(9, 9));
+
+        assertTrue(aldeano.tieneEstaVida(50));
 
     }
 
@@ -113,7 +117,7 @@ public class JugadorTest {
         assertTrue(aldeano.tieneEstaVida(25));
     }
 
-    @Test(expected = EntidadFueraDeRangoException.class)
+    @Test
     public void jugadorNoPuedeAtacarConEspadachinPorDistanciaDeLaUnidadTest() {
 
         Espadachin espadachin = new Espadachin(jugadorDePrueba);
@@ -124,7 +128,11 @@ public class JugadorTest {
 
         terreno.ocupar(new Posicion(3, 3), aldeano);
 
+        assertTrue(aldeano.tieneEstaVida(50));
+
         jugadorDePrueba.atacar(espadachin, new Posicion(3, 3));
+
+        assertTrue(aldeano.tieneEstaVida(50));
 
     }
 
@@ -148,7 +156,7 @@ public class JugadorTest {
         assertTrue(cuartel.tieneEstaVida(8));
     }
 
-    @Test(expected = EntidadFueraDeRangoException.class)
+    @Test
     public void jugadorNoPuedeAtacarConArmaDeAsedioPorDistanciaDeLEdificioTest() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
@@ -157,10 +165,15 @@ public class JugadorTest {
 
         Cuartel cuartel = new Cuartel(jugadorEnemigo);
 
+        cuartel.terminarConstruccion();
+
         terreno.ocupar(new Posicion(7, 7), cuartel);
+
+        assertTrue(cuartel.tieneVidaLlena());
 
         jugadorDePrueba.atacar(armaDeAsedio, new Posicion(7, 7));
 
+        assertTrue(cuartel.tieneVidaLlena());
     }
 
     @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidadesException.class)

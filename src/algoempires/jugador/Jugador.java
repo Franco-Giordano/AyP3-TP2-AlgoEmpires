@@ -67,7 +67,7 @@ public class Jugador {
     }
 
     private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
-        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null || terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar).getClass() != Edificio.class) {
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null ) {
             throw new SoloSePuedeRepararEdificiosException();
         }
     }
@@ -79,6 +79,12 @@ public class Jugador {
         }
     }
 
+    public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, ArrayList<Posicion> posiciones) {
+
+        if (!terrenoDeJuego.puedeUnidadVerA(aldeano, posiciones)) {
+            throw new PosicionFueraDeRangoException();
+        }
+    }
     public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) {
 
         try {
@@ -143,7 +149,6 @@ public class Jugador {
 
         try {
             this.lanzarExcepcionSiNoEsDeMiPropiedad(cuartel);
-
 
             this.lanzarExcepcionSiPosicionFueraDeRango(cuartel, posicionDeCreacion);
 
@@ -210,9 +215,7 @@ public class Jugador {
 
 
         try {
-            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
-
-            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posiciones);
 
             terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
@@ -238,7 +241,7 @@ public class Jugador {
 
         try {
 
-            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAConstruir);
+            this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posiciones);
 
             terrenoDeJuego.todasLasPosicionesEstanDisponibles(posiciones);
 
