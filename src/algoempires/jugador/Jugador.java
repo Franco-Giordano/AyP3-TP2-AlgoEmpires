@@ -409,6 +409,10 @@ public class Jugador {
         reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
     }
 
+    public void murio(Edificio edificio){
+        reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerteEdificio.mp3");
+    }
+
     public void reproducirSonido(String ruta) {
         AudioClip sonidoAReproducir = new AudioClip(Paths.get(ruta).toUri().toString());
         sonidoAReproducir.play();

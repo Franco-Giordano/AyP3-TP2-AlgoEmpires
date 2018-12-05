@@ -66,6 +66,7 @@ public abstract class Edificio extends Entidad {
 
         if (vida <= 0) {
             regionQueLoContiene.vaciar();
+            jugadorPropietario.murio(this);
         }
 
     }
