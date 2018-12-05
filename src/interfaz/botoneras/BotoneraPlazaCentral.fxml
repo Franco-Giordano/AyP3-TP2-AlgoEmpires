@@ -2,6 +2,7 @@
 
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,6 +17,9 @@
             <font>
                 <Font size="26.0"/>
             </font>
+            <tooltip>
+                <Tooltip text="Costo: 25"/>
+            </tooltip>
         </Button>
     </children>
 </VBox>

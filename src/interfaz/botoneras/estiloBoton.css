@@ -13,3 +13,8 @@
 .button:pressed {
     -fx-effect: innershadow(gaussian, black, 50, 0.4, 0, 0);
 }
+
+.tooltip {
+    -fx-font: 13px "Liberation Serif";
+    -fx-background-color: linear-gradient(#845d40, #42312c);
+}
