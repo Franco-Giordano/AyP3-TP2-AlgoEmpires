@@ -9,11 +9,15 @@ import algoempires.tablero.direccion.DireccionIzquierda;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static javafx.scene.input.KeyCode.ESCAPE;
 
 public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
@@ -42,9 +46,11 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
             VistaPartidaController controladorJuego = loader.getController();
 
+
             controladorJuego.setJuego(modelo);
 
             Scene escenaPartida = new Scene(pane);
+
 
             escenaPartida.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
@@ -59,6 +65,10 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
                         break;
                     case RIGHT:
                         controladorJuego.renderizarHacia(new DireccionDerecha());
+                        break;
+                    case ESCAPE:
+                        controladorJuego.reiniciarBotonera();
+                        controladorJuego.crearCasilleros();
                         break;
                 }
             });
