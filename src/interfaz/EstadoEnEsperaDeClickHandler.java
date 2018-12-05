@@ -1,5 +1,6 @@
 package interfaz;
 
+import algoempires.tablero.Posicion;
 import interfaz.tareas.Tarea;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +19,9 @@ public class EstadoEnEsperaDeClickHandler implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent event) {
-        tarea.ejecutar(casilleroViewReceptor.getCasillero().getPosicion());
+        Posicion posicion = casilleroViewReceptor.getCasillero().getPosicion();
+        tarea.ejecutar(posicion);
         vistaController.crearCasilleros();
-        tarea.realizarTareasOpcionales(casilleroViewReceptor);
+        tarea.realizarTareasOpcionales(vistaController.getCasilleroViewEnPosicion(posicion));
     }
 }

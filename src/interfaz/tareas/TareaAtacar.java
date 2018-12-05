@@ -1,6 +1,9 @@
 package interfaz.tareas;
 
 import algoempires.entidad.Atacante;
+import algoempires.entidad.edificio.Castillo;
+import algoempires.entidad.edificio.Cuartel;
+import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
@@ -23,8 +26,16 @@ public class TareaAtacar implements Tarea {
 
     @Override
     public void realizarTareasOpcionales(CasilleroView casilleroViewReceptor) {
-        if (ataqueExitoso) {
-            casilleroViewReceptor.reproducirAnimacion("animacionDanioUnidad");
+        Class clase = casilleroViewReceptor.getCasillero().getEntidadContenida().getClass();
+        if (clase == PlazaCentral.class || clase == Cuartel.class || clase == Castillo.class) {
+            if (ataqueExitoso) {
+                casilleroViewReceptor.reproducirAnimacion("animacionDanioEdificio");
+            }
+        } else {
+            if (ataqueExitoso) {
+                casilleroViewReceptor.reproducirAnimacion("animacionDanioUnidad");
+            }
         }
+
     }
 }

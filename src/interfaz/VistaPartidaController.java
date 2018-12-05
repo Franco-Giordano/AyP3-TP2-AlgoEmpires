@@ -282,4 +282,12 @@ public class VistaPartidaController {
         }
     }
 
+    public CasilleroView getCasilleroViewEnPosicion(Posicion posicion) {
+        for (Node casillero : gridPane.getChildren()) {
+            if (((CasilleroView) casillero).getCasillero().getPosicion() == posicion) {
+                return (CasilleroView) casillero;
+            }
+        }
+        return null;
+    }
 }

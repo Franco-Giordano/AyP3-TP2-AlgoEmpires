@@ -5,6 +5,7 @@ import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.tablero.Casillero;
+import javafx.animation.FadeTransition;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -14,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 
@@ -79,6 +81,7 @@ public class CasilleroView extends StackPane {
         mapa.put("Pasto", new Image("/interfaz/recursos/imagenes/fondoPasto.png"));
         mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.png"));
         mapa.put("animacionDanioUnidad", new Image("/interfaz/recursos/animaciones/animacionDanioUnidad.gif"));
+        mapa.put("animacionDanioEdificio", new Image("/interfaz/recursos/animaciones/animacionDanioEdificio.gif"));
         mapa.put("class algoempires.entidad.unidad.utilero.Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Arquero", new Image("/interfaz/recursos/imagenes/iconoArquero.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Espadachin", new Image("/interfaz/recursos/imagenes/iconoEspadachin.png"));
@@ -100,5 +103,10 @@ public class CasilleroView extends StackPane {
 
     public void reproducirAnimacion(String claveDeAnimacion) {
         rectanguloAnimaciones.setFill(new ImagePattern(iconos.get(claveDeAnimacion)));
+
+        FadeTransition ft = new FadeTransition(Duration.millis(2000), rectanguloAnimaciones);
+        ft.setFromValue(1.0);
+        ft.setToValue(0.0);
+        ft.play();
     }
 }
