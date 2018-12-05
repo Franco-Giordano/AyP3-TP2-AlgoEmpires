@@ -50,14 +50,9 @@ public class Jugador {
     }
 
     private void lanzarExcepcionSiNoEsDeMiPropiedad(Entidad entidad) {
-
-
         if (!entidad.esDelEquipo(this)) {
-            NoSePuedeInteractuarConEntidadesEnemigasException e = new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
-            informanteDeExcepciones.informar(e);
-            throw e;
+            throw new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
         }
-
     }
 
     private void lanzarExcepcionSiPosicionFueraDeRango(Edificio edificio, Posicion posicion) {
@@ -66,8 +61,15 @@ public class Jugador {
         }
     }
 
-    private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
-        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null || terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar).getClass() != Edificio.class) {
+    private void lanzarExcepcionSiNoEsReparable(Posicion posAReparar) {
+
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null) {
+            throw new SoloSePuedeRepararEdificiosException();
+        }
+
+        try {
+            Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
+        } catch (ClassCastException e) {
             throw new SoloSePuedeRepararEdificiosException();
         }
     }
@@ -187,7 +189,7 @@ public class Jugador {
 
             this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAReparar);
 
-            this.lanzarExcepcionSiNoSePuedeReparar(aldeano, posAReparar);
+            this.lanzarExcepcionSiNoEsReparable(posAReparar);
 
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
@@ -283,7 +285,8 @@ public class Jugador {
 
             terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
-        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e) {
+        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException
+                | ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException | ArmaDeAsedioNoPuedeAtacarUnidadesException e) {
             informanteDeExcepciones.informar(e);
         }
 
@@ -291,16 +294,29 @@ public class Jugador {
 
     public void desmontarArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
 
-        this.lanzarExcepcionSiNoEsDeMiPropiedad(armaDeAsedio);
+        try {
 
-        armaDeAsedio.desmontar();
+            this.lanzarExcepcionSiNoEsDeMiPropiedad(armaDeAsedio);
+
+            armaDeAsedio.desmontar();
+
+        } catch (NoSePuedeInteractuarConEntidadesEnemigasException e) {
+            informanteDeExcepciones.informar(e);
+        }
     }
 
     public void montarArmaDeAsedio(ArmaDeAsedio armaDeAsedio) {
 
-        this.lanzarExcepcionSiNoEsDeMiPropiedad(armaDeAsedio);
+        try {
 
-        armaDeAsedio.montar();
+            this.lanzarExcepcionSiNoEsDeMiPropiedad(armaDeAsedio);
+
+            armaDeAsedio.montar();
+
+        } catch (NoSePuedeInteractuarConEntidadesEnemigasException e) {
+            informanteDeExcepciones.informar(e);
+        }
+
     }
 
     public void agregar(Edificio edificio) {
