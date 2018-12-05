@@ -335,8 +335,10 @@ public class VistaPartidaController {
 
         Optional<ButtonType> resultado = alert.showAndWait();
 
-        if (resultado.get() == abrirRepositorio) {
-            this.abrirURL("https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires");
+        if (resultado.isPresent()) {
+            if (resultado.get() == abrirRepositorio) {
+                this.abrirURL("https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires");
+            }
         }
 
 
