@@ -39,7 +39,7 @@ public class CasilleroView extends StackPane {
 
         textoPosicion = new Text("(" + casillero.getPosicion().getHorizontal() + "," + casillero.getPosicion().getVertical() + ")");
 
-        textoPosicion.setFont(Font.font("Liberation Serif", FontWeight.EXTRA_BOLD, (float) tamCasillero / 4));
+        textoPosicion.setFont(Font.font("Liberation Serif", FontWeight.EXTRA_BOLD, (float) tamCasillero / 3.5));
         textoPosicion.setFill(Color.BLACK);
         textoPosicion.setVisible(false);
 

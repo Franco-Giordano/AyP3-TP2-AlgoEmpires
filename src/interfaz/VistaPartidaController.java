@@ -34,6 +34,7 @@ import javafx.stage.Screen;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class VistaPartidaController {
 
@@ -303,15 +304,44 @@ public class VistaPartidaController {
 
     }
 
+    public void controles(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Click: Interactuar.\n\n" +
+                        "Escape: Cancelar acción.\n\n"+
+                        "Espacio: Terminar el turno.\n\n"+
+                        "Flechas: Desplazarse por el terreno.\n");
+        alert.setTitle("Controles");
+        alert.setHeaderText("Controles:");
+        alert.showAndWait();
+    }
+
     public void acercaDelJuego() {
+
+        ButtonType abrirRepositorio = new ButtonType("Ver repositorio en GitHub", ButtonBar.ButtonData.YES);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "AlgoEmpires v4.0\n\n" +
-                        "Esperamos que lo disfrutes!\n\n" +
-                        "Con amor,\n\n" +
-                        "El equipo de desarrollo de AlgoEmpires <3");
+                        "Trabajo práctico realizado en el marco de la materia Algoritmos y Programación III.\n\n"+
+                        "Realizado por: \n\n"+
+                        "#Giordano, Franco.\n\n"+
+                        "#Iribarren, Alvaro.\n\n"+
+                        "#Isola, Federico.\n\n"+
+                        "Que lo disfrutes!\n\n"+
+                        "El equipo de desarrollo de AlgoEmpires <3", abrirRepositorio);
 
-        alert.showAndWait();
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+
+        alert.setTitle("Acerca del juego");
+        alert.setHeaderText("Acerca del juego: ");
+
+        Optional<ButtonType> resultado = alert.showAndWait();
+
+        if (resultado.get() == abrirRepositorio) {
+            this.abrirURL("https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires");
+        }
+
+
+
     }
 
     public void togglearMusica(ActionEvent actionEvent) {

@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="interfaz.VistaPartidaController">
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="panePadre" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="gridPane">
         </GridPane>
@@ -18,152 +41,124 @@
     <bottom>
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0">
             <children>
-                <ImageView fitHeight="300.0" fitWidth="2100.0" layoutX="50.0" layoutY="15.0" pickOnBounds="true"
-                           rotate="180.0" translateX="-50.0" translateY="-23.0" x="-50.0" y="-15.0">
+                <ImageView fitHeight="300.0" fitWidth="2100.0" layoutX="50.0" layoutY="15.0" pickOnBounds="true" rotate="180.0" translateX="-50.0" translateY="-23.0" x="-50.0" y="-15.0">
                     <image>
-                        <Image url="@recursos/imagenes/papiroOP.png"/>
+                        <Image url="@recursos/imagenes/papiroOP.png" />
                     </image>
                 </ImageView>
                 <Group AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label fx:id="poblacionLbl" layoutX="192.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0"
-                               translateX="-50.0" translateY="-23.0">
+                        <Label fx:id="poblacionLbl" layoutX="192.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0" translateX="-50.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Serif" size="13.0"/>
+                                <Font name="Liberation Serif" size="13.0" />
                             </font>
                         </Label>
-                        <ImageView fx:id="imgOro" fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0"
-                                   pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                        <ImageView fx:id="imgOro" fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
                             <image>
-                                <Image url="@recursos/imagenes/Oro.png"/>
+                                <Image url="@recursos/imagenes/Oro.png" />
                             </image>
                             <effect>
-                                <Glow level="1.0"/>
+                                <Glow level="1.0" />
                             </effect>
                         </ImageView>
-                        <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0"
-                               translateX="-50.0" translateY="-23.0">
+                        <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0" translateX="-50.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Sans" size="13.0"/>
+                                <Font name="Liberation Sans" size="13.0" />
                             </font>
                         </Label>
-                        <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER"
-                               textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
+                        <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER" textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Serif Bold" size="22.0"/>
+                                <Font name="Liberation Serif Bold" size="22.0" />
                             </font>
                         </Label>
-                        <ImageView fx:id="imgPoblacion" fitHeight="42.0" fitWidth="41.0" layoutX="144.0" layoutY="39.0"
-                                   pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
+                        <ImageView fx:id="imgPoblacion" fitHeight="42.0" fitWidth="41.0" layoutX="144.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">
                             <image>
-                                <Image url="@recursos/imagenes/Poblacion.png"/>
+                                <Image url="@recursos/imagenes/Poblacion.png" />
                             </image>
                             <effect>
-                                <Glow level="1.0"/>
+                                <Glow level="1.0" />
                             </effect>
 
                         </ImageView>
                     </children>
                 </Group>
-                <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="50.0" layoutY="15.0"
-                        mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300"
-                        stylesheets="/interfaz/botoneras/estiloBoton.css" text="Terminar turno" textFill="WHITE"
-                        AnchorPane.rightAnchor="360.0">
+                <Button fx:id="btnTerminarTurno" focusTraversable="false" layoutX="50.0" layoutY="15.0" mnemonicParsing="false" onAction="#terminarTurno" prefHeight="60.0" prefWidth="300" stylesheets="/interfaz/botoneras/estiloBoton.css" text="Terminar turno" textFill="WHITE" AnchorPane.rightAnchor="360.0">
                     <font>
-                        <Font name="Liberation Serif" size="26.0"/>
+                        <Font name="Liberation Serif" size="26.0" />
                     </font>
                 </Button>
-                <TextArea fx:id="areaMensajes" editable="false" focusTraversable="false" opacity="0.71"
-                          prefHeight="60.0" prefWidth="270.0"
-                          style="-fx-control-inner-background:#442107; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #ffffff; -fx-text-fill: #ffffff;"
-                          text="&lt;Aqui se mostraran los mensajes de alerta futuros&gt;" wrapText="true"
-                          AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="10.0">
+                <TextArea fx:id="areaMensajes" editable="false" focusTraversable="false" opacity="0.71" prefHeight="60.0" prefWidth="270.0" style="-fx-control-inner-background:#442107; -fx-highlight-fill: #000000; -fx-highlight-text-fill: #ffffff; -fx-text-fill: #ffffff;" text="&lt;Aqui se mostraran los mensajes de alerta futuros&gt;" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="10.0">
                     <font>
-                        <Font name="Liberation Serif" size="16.0"/>
+                        <Font name="Liberation Serif" size="16.0" />
                     </font>
                 </TextArea>
             </children>
         </AnchorPane>
     </bottom>
     <right>
-        <AnchorPane fx:id="anchorDerecho" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
-                    prefWidth="300.0">
+        <AnchorPane fx:id="anchorDerecho" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0">
             <children>
-                <ImageView fitHeight="393.0" fitWidth="1100.0" layoutX="-400.0" layoutY="354.0" pickOnBounds="true"
-                           rotate="90.0">
+                <ImageView fitHeight="393.0" fitWidth="1100.0" layoutX="-400.0" layoutY="354.0" pickOnBounds="true" rotate="90.0">
                     <image>
-                        <Image url="@recursos/imagenes/maderaTextura.png"/>
+                        <Image url="@recursos/imagenes/maderaTextura.png" />
                     </image>
                     <effect>
-                        <DropShadow height="75.89" radius="38.205" spread="0.09" width="78.93"/>
+                        <DropShadow height="75.89" radius="38.205" spread="0.09" width="78.93" />
                     </effect>
                 </ImageView>
-                <Circle fx:id="circuloIcono" layoutX="55.0" layoutY="77.0" radius="55.0" stroke="BLACK"
-                        strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0"
-                        AnchorPane.topAnchor="22.0">
+                <Circle fx:id="circuloIcono" layoutX="55.0" layoutY="77.0" radius="55.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="22.0">
                     <fill>
                         <LinearGradient endX="1.0" endY="0.2692307692307692" startX="0.033653846153846145" startY="1.0">
                             <stops>
-                                <Stop color="BLACK"/>
-                                <Stop color="#404040" offset="1.0"/>
+                                <Stop color="BLACK" />
+                                <Stop color="#404040" offset="1.0" />
                             </stops>
                         </LinearGradient>
                     </fill>
                 </Circle>
-                <VBox layoutX="43.5" layoutY="159.5" prefHeight="200.0" prefWidth="100.0"/>
-                <ProgressBar fx:id="barraDeVida" layoutY="140.0" minHeight="-Infinity" prefHeight="10.0"
-                             prefWidth="111.0" style="-fx-focus-traversable: false; -fx-accent: green;"
-                             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="140.0"/>
-                <Label fx:id="entidadSeleccionadaLbl" layoutX="120.0" layoutY="34.0" text="ARMADEASEDIO"
-                       textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="34.0"
-                       StackPane.alignment="TOP_CENTER">
+                <VBox layoutX="43.5" layoutY="159.5" prefHeight="200.0" prefWidth="100.0" />
+                <ProgressBar fx:id="barraDeVida" layoutY="140.0" minHeight="-Infinity" prefHeight="10.0" prefWidth="111.0" style="-fx-focus-traversable: false; -fx-accent: green;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="140.0" />
+                <Label fx:id="entidadSeleccionadaLbl" layoutX="120.0" layoutY="34.0" text="ARMADEASEDIO" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="34.0" StackPane.alignment="TOP_CENTER">
                     <font>
-                        <Font name="Liberation Serif" size="20.0"/>
+                        <Font name="Liberation Serif" size="20.0" />
                     </font>
                     <effect>
-                        <DropShadow/>
+                        <DropShadow />
                     </effect>
                 </Label>
-                <Label fx:id="deJugadorLbl" layoutX="144.0" layoutY="58.0" text="de Carlos" textAlignment="CENTER"
-                       textFill="#dddddd" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="58.0"
-                       StackPane.alignment="TOP_CENTER">
+                <Label fx:id="deJugadorLbl" layoutX="144.0" layoutY="58.0" text="de Carlos" textAlignment="CENTER" textFill="#dddddd" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="58.0" StackPane.alignment="TOP_CENTER">
                     <effect>
-                        <DropShadow/>
+                        <DropShadow />
                     </effect>
                     <font>
-                        <Font name="Liberation Serif" size="16.0"/>
+                        <Font name="Liberation Serif" size="16.0" />
                     </font>
                 </Label>
-                <Label fx:id="vidaEntidadLbl" layoutX="145.0" layoutY="92.0" text="Vida: " textAlignment="CENTER"
-                       textFill="WHITE" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="92.0"
-                       StackPane.alignment="TOP_CENTER">
+                <Label fx:id="vidaEntidadLbl" layoutX="145.0" layoutY="92.0" text="Vida: " textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="92.0" StackPane.alignment="TOP_CENTER">
                     <effect>
-                        <DropShadow/>
+                        <DropShadow />
                     </effect>
                     <font>
-                        <Font name="Liberation Serif" size="16.0"/>
+                        <Font name="Liberation Serif" size="16.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
     </right>
     <top>
-        <MenuBar fx:id="menuSuperior" focusTraversable="false" opacity="0.7" style="-fx-background-color: #190e03;"
-                 stylesheets="@estiloMenuSuperior.css" BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuSuperior" focusTraversable="false" opacity="0.7" style="-fx-background-color: #190e03;" stylesheets="@estiloMenuSuperior.css" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Opciones">
                     <items>
-                        <CheckMenuItem fx:id="opcionesMusica" mnemonicParsing="false" onAction="#togglearMusica"
-                                       selected="true" style="-fx-text-fill: black;" text="Activar musica"/>
-                        <SeparatorMenuItem/>
-                        <MenuItem mnemonicParsing="false" onAction="#cerrarJuego" style="-fx-text-fill: black;"
-                                  text="Cerrar Juego"/>
+                        <CheckMenuItem fx:id="opcionesMusica" mnemonicParsing="false" onAction="#togglearMusica" selected="true" style="-fx-text-fill: black;" text="Activar musica" />
+                        <SeparatorMenuItem />
+                        <MenuItem mnemonicParsing="false" onAction="#cerrarJuego" style="-fx-text-fill: black;" text="Cerrar Juego" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Ayuda">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#acercaDelJuego" style="-fx-text-fill: black;"
-                                  text="Acerca del juego"/>
+                        <MenuItem mnemonicParsing="false" onAction="#acercaDelJuego" style="-fx-text-fill: black;" text="Acerca del juego" />
+                  <MenuItem mnemonicParsing="false" onAction="#controles" style="-fx-text-fill: black;" text="Controles" />
                     </items>
                 </Menu>
             </menus>
