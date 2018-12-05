@@ -66,10 +66,25 @@ public class Jugador {
         }
     }
 
-    private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
-        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null) {
+    private void lanzarExcepcionSiNoSePuedeReparar(Posicion posAReparar) {
+
+        this.lanzarExcepcionSiEntidadNulaEnPosicion(posAReparar);
+
+        try {
+
+            Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
+
+        } catch (ClassCastException e) {
             throw new SoloSePuedeRepararEdificiosException();
         }
+    }
+
+    private void lanzarExcepcionSiEntidadNulaEnPosicion(Posicion pos) {
+
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(pos) == null) {
+            throw new PosicionInvalidaException("Alli no se encuentra ninguna entidad con la cual interactuar");
+        }
+
     }
 
     public void lanzarExcepcionSiPosicionFueraDeRango(Aldeano aldeano, Posicion posAConstruir) {
@@ -193,7 +208,7 @@ public class Jugador {
 
             this.lanzarExcepcionSiPosicionFueraDeRango(aldeano, posAReparar);
 
-            this.lanzarExcepcionSiNoSePuedeReparar(aldeano, posAReparar);
+            this.lanzarExcepcionSiNoSePuedeReparar(posAReparar);
 
             Edificio edificio = (Edificio) terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar);
 
@@ -202,7 +217,8 @@ public class Jugador {
             reproducirSonido("src/interfaz/recursos/sonidos/sonidoReparacion.mp3");
 
         } catch (SoloUnAldeanoReparaALaVezException | NoSePuedeInteractuarConEntidadesEnemigasException
-                | PosicionFueraDeRangoException | SoloSePuedeRepararEdificiosException e) {
+                | PosicionFueraDeRangoException | SoloSePuedeRepararEdificiosException
+                | PosicionInvalidaException e) {
 
             informanteDeExcepciones.informar(e);
         }
@@ -273,24 +289,20 @@ public class Jugador {
 
             this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
 
+            this.lanzarExcepcionSiEntidadNulaEnPosicion(posicionDeLaVictima);
+
             terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
-            String rutaSonido;
-
-            if (atacante.getClass() == Arquero.class) {
-                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoArco.mp3");
-            } else if (atacante.getClass() == Espadachin.class) {
-                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoEspada.mp3");
-            } else {
-                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoCatapulta.mp3");
-            }
-
+            String rutaSonido = "src/interfaz/recursos/sonidos/sonido" + atacante.getClass().getSimpleName() + ".mp3";
             reproducirSonido(rutaSonido);
 
             return true;
 
-        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException
-                | ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException | ArmaDeAsedioNoPuedeAtacarUnidadesException e) {
+        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException
+                | GuerreroYaAtacoEsteTurnoException | ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException
+                | ArmaDeAsedioNoPuedeAtacarUnidadesException | PosicionInvalidaException
+                | NoSeToleraFuegoAmigoException e) {
+
             informanteDeExcepciones.informar(e);
 
             return false;

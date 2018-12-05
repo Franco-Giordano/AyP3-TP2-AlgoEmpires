@@ -2,14 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" scaleX="0.8"
-      scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
-      fx:controller="interfaz.botoneras.BotoneraUnidadController">
+      minWidth="-Infinity" scaleX="0.8" scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0"
+      xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="interfaz.botoneras.BotoneraUnidadController">
     <children>
         <GridPane prefHeight="300.0" prefWidth="300.0"
                   style="-fx-background-image:url('/interfaz/recursos/imagenes/brujula.png'); -fx-background-size:stretch;">
@@ -34,6 +35,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverIzquierda" rotate="270.0" scaleX="0.4" scaleY="1.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1">
@@ -48,6 +55,12 @@
                     <GridPane.margin>
                         <Insets/>
                     </GridPane.margin>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverDerecha" rotate="90.0" scaleX="0.4" scaleY="1.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -62,6 +75,12 @@
                     <GridPane.margin>
                         <Insets/>
                     </GridPane.margin>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverAbajo" rotate="180.0" scaleX="0.4" scaleY="1.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -73,6 +92,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverArribaIzquierda" rotate="315.0" scaleX="0.4" scaleY="0.5"
                          stroke="BLACK" strokeType="INSIDE">
@@ -84,6 +109,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverArribaDerecha" rotate="45.0" scaleX="0.4" scaleY="0.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2">
@@ -95,6 +126,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverAbajoIzquierda" rotate="225.0" scaleX="0.4" scaleY="0.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2">
@@ -106,6 +143,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
                 <Polygon fill="#fbefdd" onMouseClicked="#moverAbajoDerecha" rotate="135.0" scaleX="0.4" scaleY="0.5"
                          stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -117,6 +160,12 @@
                         <Double fx:value="0.0"/>
                         <Double fx:value="-60.0"/>
                     </points>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND"/>
+                    </cursor>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Polygon>
             </children>
         </GridPane>

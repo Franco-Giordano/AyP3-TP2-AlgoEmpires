@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
@@ -78,8 +79,8 @@ public class VistaPartidaController {
 
     private Posicion posInfIzq;
     private int tamanioCasillero = 0;
-    private int VGAP = 3;
-    private int HGAP = 3;
+    private double VGAP = 1.5;
+    private double HGAP = 1.5;
     private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
     private MediaPlayer musicaDeFondo;
@@ -113,6 +114,8 @@ public class VistaPartidaController {
 
     public void crearCasilleros() {
 
+        cambiarCursorPor("/interfaz/recursos/cursores/cursorPrincipal.png");
+
         reiniciarBotonera();
 
         actualizarMarcador();
@@ -130,6 +133,14 @@ public class VistaPartidaController {
                 gridPane.add(crearCasillero(i + posInfIzq.getHorizontal(), j + posInfIzq.getVertical()),
                         i, RENDERIZAR_VERTICAL - j);
             }
+        }
+    }
+
+    private void cambiarCursorPor(String rutaCursor) {
+        try {
+            panePadre.setCursor(new ImageCursor(new Image(rutaCursor)));
+        } catch (IllegalArgumentException e) {
+            panePadre.setCursor(new ImageCursor(new Image("/interfaz/recursos/cursores/cursorPrincipal.png")));
         }
     }
 
@@ -204,6 +215,9 @@ public class VistaPartidaController {
     }
 
     public void setHandlersEnEsperaConTarea(Tarea tarea) {
+
+        String rutaCursor = "/interfaz/recursos/cursores/cursor" + tarea.getClass().getSimpleName() + ".png";
+        this.cambiarCursorPor(rutaCursor);
 
         for (Node casillero : gridPane.getChildren()) {
 
