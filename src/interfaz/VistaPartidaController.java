@@ -14,6 +14,7 @@ import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
 import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -21,6 +22,8 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -199,7 +202,6 @@ public class VistaPartidaController {
             casillero.setOnMouseExited(event -> casillero.setEffect(null));
 
             casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
-
 
         }
 
