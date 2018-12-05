@@ -28,14 +28,16 @@ public class TareaAtacar implements Tarea {
     public void realizarTareasOpcionales(CasilleroView casilleroViewReceptor) {
 
         //TODO esto me tiró NullPointerException. No rompe nada del tp, pero no se por que lo tira.
-        Class clase = casilleroViewReceptor.getCasillero().getEntidadContenida().getClass();
-        if (clase == PlazaCentral.class || clase == Cuartel.class || clase == Castillo.class) {
-            if (ataqueExitoso) {
-                casilleroViewReceptor.reproducirAnimacion("animacionDanioEdificio");
-            }
-        } else {
-            if (ataqueExitoso) {
-                casilleroViewReceptor.reproducirAnimacion("animacionDanioUnidad");
+        if (casilleroViewReceptor.getCasillero().estaOcupada()) {
+            Class clase = casilleroViewReceptor.getCasillero().getEntidadContenida().getClass();
+            if (clase == PlazaCentral.class || clase == Cuartel.class || clase == Castillo.class) {
+                if (ataqueExitoso) {
+                    casilleroViewReceptor.reproducirAnimacion("animacionDanioEdificio");
+                }
+            } else {
+                if (ataqueExitoso) {
+                    casilleroViewReceptor.reproducirAnimacion("animacionDanioUnidad");
+                }
             }
         }
 
