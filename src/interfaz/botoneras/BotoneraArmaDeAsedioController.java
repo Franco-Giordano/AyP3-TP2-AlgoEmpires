@@ -9,7 +9,7 @@ import interfaz.tareas.Tarea;
 import interfaz.tareas.TareaAtacar;
 import javafx.scene.input.MouseEvent;
 
-public class BotoneraArmaDeAsedioController {
+public class BotoneraArmaDeAsedioController implements BotoneraController {
 
     private Jugador jugadorActual;
     private Casillero casillero;

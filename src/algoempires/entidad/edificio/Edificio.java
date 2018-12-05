@@ -139,7 +139,8 @@ public abstract class Edificio extends Entidad {
         return posiciones;
     }
 
-    public Casillero getCasilleroPertenecienteAlEdificio() {
+    @Override
+    public Casillero getUnCasilleroOcupado() {
         return regionQueLoContiene.getUnCasillero();
     }
 

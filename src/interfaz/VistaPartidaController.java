@@ -1,16 +1,12 @@
 package interfaz;
 
 import algoempires.AlgoEmpires;
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
-import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
+import algoempires.entidad.Entidad;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
-import interfaz.botoneras.BotoneraArmaDeAsedioController;
-import interfaz.botoneras.BotoneraEdificioController;
-import interfaz.botoneras.BotoneraUnidadController;
+import interfaz.botoneras.BotoneraController;
 import interfaz.tareas.Tarea;
 import javafx.animation.FadeTransition;
 import javafx.application.HostServices;
@@ -231,30 +227,6 @@ public class VistaPartidaController {
 
     }
 
-    public void setControladorBotoneraUnidad(BotoneraUnidadController controller, Unidad unidad) {
-        controller.setCasillero(unidad.getCasillero());
-
-        controller.setJugadorActual(juego.getJugadorActual());
-
-        controller.setVistaController(this);
-    }
-
-    public void setControladorBotoneraEdificio(BotoneraEdificioController controller, Edificio edificio) {
-        controller.setRegion(edificio.getCasilleroPertenecienteAlEdificio());
-
-        controller.setJugadorActual(juego.getJugadorActual());
-
-        controller.setVistaController(this);
-    }
-
-    public void setControladorBotoneraArmaDeAsedio(BotoneraArmaDeAsedioController controller, ArmaDeAsedio armaDeAsedio) {
-        controller.setCasillero(armaDeAsedio.getCasillero());
-
-        controller.setJugadorActual(juego.getJugadorActual());
-
-        controller.setVistaController(this);
-    }
-
     public void terminarTurno() {
 
         boolean ganoElJugadorActual = juego.terminarTurnoYChequearSiHayAlgunGanador();
@@ -317,11 +289,11 @@ public class VistaPartidaController {
 
     }
 
-    public void controles(){
+    public void controles() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Click: Interactuar.\n\n" +
-                        "Escape: Cancelar acción.\n\n"+
-                        "Espacio: Terminar el turno.\n\n"+
+                        "Escape: Cancelar acción.\n\n" +
+                        "Espacio: Terminar el turno.\n\n" +
                         "Flechas: Desplazarse por el terreno.\n");
         alert.setTitle("Controles");
         alert.setHeaderText("Controles:");
@@ -334,12 +306,12 @@ public class VistaPartidaController {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "AlgoEmpires v4.0\n\n" +
-                        "Trabajo práctico realizado en el marco de la materia Algoritmos y Programación III.\n\n"+
-                        "Realizado por: \n\n"+
-                        "#Giordano, Franco.\n\n"+
-                        "#Iribarren, Alvaro.\n\n"+
-                        "#Isola, Federico.\n\n"+
-                        "Que lo disfrutes!\n\n"+
+                        "Trabajo práctico realizado en el marco de la materia Algoritmos y Programación III.\n\n" +
+                        "Realizado por: \n\n" +
+                        "#Giordano, Franco.\n\n" +
+                        "#Iribarren, Alvaro.\n\n" +
+                        "#Isola, Federico.\n\n" +
+                        "Que lo disfrutes!\n\n" +
                         "El equipo de desarrollo de AlgoEmpires <3", abrirRepositorio);
 
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -354,7 +326,6 @@ public class VistaPartidaController {
                 this.abrirURL("https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires");
             }
         }
-
 
 
     }
@@ -378,5 +349,16 @@ public class VistaPartidaController {
 
     public void setNavegador(HostServices navegadorWeb) {
         this.navegadorWEB = navegadorWeb;
+    }
+
+
+    public void setControladorBotonera(BotoneraController controller, Entidad entidad) {
+
+        controller.setCasillero(entidad.getUnCasilleroOcupado());
+
+        controller.setJugadorActual(juego.getJugadorActual());
+
+        controller.setVistaController(this);
+
     }
 }

@@ -1,6 +1,7 @@
 package algoempires.entidad;
 
 import algoempires.jugador.Jugador;
+import algoempires.tablero.Casillero;
 
 public abstract class Entidad {
 
@@ -23,6 +24,8 @@ public abstract class Entidad {
     }
 
     protected abstract int getVidaInicial();
+
+    public abstract Casillero getUnCasilleroOcupado();
 
     public abstract int getVidaMaxima();
 

@@ -55,7 +55,7 @@ public class CasilleroView extends StackPane {
 
             Entidad entidadContenida = casillero.getEntidadContenida();
 
-            String nombreEntidad = entidadContenida.getClass().toString();
+            String nombreEntidad = entidadContenida.getClass().getSimpleName();
 
             if (entidadContenida.getClass() == PlazaCentral.class || entidadContenida.getClass() == Cuartel.class) {
 
@@ -88,13 +88,13 @@ public class CasilleroView extends StackPane {
         mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.jpg"));
         mapa.put("animacionDanioUnidad", new Image("/interfaz/recursos/animaciones/animacionDanioUnidad.gif"));
         mapa.put("animacionDanioEdificio", new Image("/interfaz/recursos/animaciones/animacionDanioEdificio.gif"));
-        mapa.put("class algoempires.entidad.unidad.utilero.Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
-        mapa.put("class algoempires.entidad.unidad.guerrero.Arquero", new Image("/interfaz/recursos/imagenes/iconoArquero.png"));
-        mapa.put("class algoempires.entidad.unidad.guerrero.Espadachin", new Image("/interfaz/recursos/imagenes/iconoEspadachin.png"));
-        mapa.put("class algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio", new Image("/interfaz/recursos/imagenes/iconoArmaDeAsedio.png"));
-        mapa.put("class algoempires.entidad.edificio.Castillo", new Image("/interfaz/recursos/imagenes/iconoCastillo.png"));
-        mapa.put("class algoempires.entidad.edificio.Cuartel", new Image("/interfaz/recursos/imagenes/iconoCuartel.png"));
-        mapa.put("class algoempires.entidad.edificio.PlazaCentral", new Image("/interfaz/recursos/imagenes/iconoPlazaCentral.png"));
+        mapa.put("Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
+        mapa.put("Arquero", new Image("/interfaz/recursos/imagenes/iconoArquero.png"));
+        mapa.put("Espadachin", new Image("/interfaz/recursos/imagenes/iconoEspadachin.png"));
+        mapa.put("ArmaDeAsedio", new Image("/interfaz/recursos/imagenes/iconoArmaDeAsedio.png"));
+        mapa.put("Castillo", new Image("/interfaz/recursos/imagenes/iconoCastillo.png"));
+        mapa.put("Cuartel", new Image("/interfaz/recursos/imagenes/iconoCuartel.png"));
+        mapa.put("PlazaCentral", new Image("/interfaz/recursos/imagenes/iconoPlazaCentral.png"));
 
         return mapa;
     }

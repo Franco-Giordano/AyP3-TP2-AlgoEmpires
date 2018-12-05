@@ -1,12 +1,8 @@
 package interfaz;
 
 import algoempires.entidad.Entidad;
-import algoempires.entidad.edificio.Edificio;
-import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
-import interfaz.botoneras.BotoneraArmaDeAsedioController;
-import interfaz.botoneras.BotoneraEdificioController;
-import interfaz.botoneras.BotoneraUnidadController;
+import interfaz.botoneras.BotoneraController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -40,103 +36,51 @@ public class EstadoDefaultHandler implements EventHandler<MouseEvent> {
         casilleroAsignado.textoPosicion.setVisible(true);
 
         Entidad entidad = casilleroAsignado.getCasillero().getEntidadContenida();
+
         if (entidad != null) {
-            String claseEntidad = entidad.getClass().toString();
-            String nombreEntidad = claseEntidad.substring(entidad.getClass().toString().lastIndexOf(".") + 1);
+            String nombreEntidad = entidad.getClass().getSimpleName();
 
             vistaPartidaController.entidadSeleccionadaLbl.setText(nombreEntidad.toUpperCase());
             vistaPartidaController.deJugadorLbl.setText(" de " + entidad.getNombreJugadorPropietario());
             vistaPartidaController.vidaEntidadLbl.setText("Vida: " + entidad.getVida() + "/" + entidad.getVidaMaxima());
 
             vistaPartidaController.stackPaneIcono.setVisible(true);
-            vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(claseEntidad))));
+            vistaPartidaController.circuloIcono.setFill(new ImagePattern((casilleroAsignado.getImagen(nombreEntidad))));
 
             vistaPartidaController.barraDeVida.setVisible(true);
             vistaPartidaController.barraDeVida.setProgress(entidad.getPorcentajeDeVida());
 
             layoutBotones.getChildren().remove(2);
 
-            //TODO refactorizar para que no se repita codigo
-            switch (nombreEntidad) {
-                case "Aldeano":
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraAldeano.fxml"));
-                        Node botonera = loader.load();
-                        layoutBotones.getChildren().add(2, botonera);
-                        AnchorPane.setTopAnchor(botonera, 150.0);
-                        AnchorPane.setLeftAnchor(botonera, -5.0);
+            String rutaBotonera = "botoneras/Botonera" + nombreEntidad + ".fxml";
+            FXMLLoader loader = null;
+            Node botonera = null;
 
-                        BotoneraUnidadController controller = loader.getController();
-                        Unidad unidad = (Unidad) entidad;
-
-                        vistaPartidaController.setControladorBotoneraUnidad(controller, unidad);
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "Arquero":
-                case "Espadachin":
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraGuerreros.fxml"));
-                        Node botonera = loader.load();
-                        layoutBotones.getChildren().add(2, botonera);
-                        AnchorPane.setTopAnchor(botonera, 150.0);
-                        AnchorPane.setLeftAnchor(botonera, -5.0);
-
-                        BotoneraUnidadController controller = loader.getController();
-                        Unidad unidad = (Unidad) entidad;
-
-                        vistaPartidaController.setControladorBotoneraUnidad(controller, unidad);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case "ArmaDeAsedio":
-                    try {
-
-                        Unidad unidad = (Unidad) entidad;
-                        FXMLLoader loader;
-
-                        if (((ArmaDeAsedio) unidad).estaMontada()) {
-                            loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioMontada.fxml"));
-
-                        } else {
-                            loader = new FXMLLoader(getClass().getResource("botoneras/BotoneraArmaDeAsedioDesmontada.fxml"));
-                        }
-
-                        Node botonera = loader.load();
-                        layoutBotones.getChildren().add(2, botonera);
-                        AnchorPane.setTopAnchor(botonera, 150.0);
-                        AnchorPane.setLeftAnchor(botonera, -5.0);
-
-
-                        BotoneraArmaDeAsedioController controller = loader.getController();
-                        vistaPartidaController.setControladorBotoneraArmaDeAsedio(controller, (ArmaDeAsedio) unidad);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                default:
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("botoneras/Botonera" + nombreEntidad + ".fxml"));
-                        Node botonera = loader.load();
-                        layoutBotones.getChildren().add(2, botonera);
-                        AnchorPane.setTopAnchor(botonera, 270.0);
-                        AnchorPane.setLeftAnchor(botonera, -5.0);
-
-                        BotoneraEdificioController controller = loader.getController();
-                        Edificio edificio = (Edificio) entidad;
-
-                        vistaPartidaController.setControladorBotoneraEdificio(controller, edificio);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    break;
+            if ("Arquero".equals(nombreEntidad) || "Espadachin".equals(nombreEntidad)) {
+                rutaBotonera = "botoneras/BotoneraGuerreros.fxml";
+            } else if ("ArmaDeAsedio".equals(nombreEntidad)) {
+                if (((ArmaDeAsedio) entidad).estaMontada()) {
+                    rutaBotonera = "botoneras/BotoneraArmaDeAsedioMontada.fxml";
+                } else {
+                    rutaBotonera = "botoneras/BotoneraArmaDeAsedioDesmontada.fxml";
+                }
             }
+
+            try {
+                loader = new FXMLLoader(getClass().getResource(rutaBotonera));
+                botonera = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            layoutBotones.getChildren().add(2, botonera);
+            AnchorPane.setTopAnchor(botonera, 200.0);
+            AnchorPane.setLeftAnchor(botonera, -5.0);
+
+            BotoneraController controller = loader.getController();
+
+            vistaPartidaController.setControladorBotonera(controller, entidad);
+
         } else {
             vistaPartidaController.reiniciarBotonera();
 

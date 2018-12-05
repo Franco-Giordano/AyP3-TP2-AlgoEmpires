@@ -62,7 +62,8 @@ public abstract class Unidad extends Entidad {
         this.movioEsteTurno = false;
     }
 
-    public Casillero getCasillero() {
+    @Override
+    public Casillero getUnCasilleroOcupado() {
         return casilleroQueLaContiene;
     }
 }

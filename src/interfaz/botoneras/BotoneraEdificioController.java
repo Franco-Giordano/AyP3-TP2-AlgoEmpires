@@ -5,7 +5,7 @@ import algoempires.tablero.Casillero;
 import interfaz.VistaPartidaController;
 import interfaz.tareas.*;
 
-public class BotoneraEdificioController {
+public class BotoneraEdificioController implements BotoneraController {
 
     private Casillero casillero;
     private Jugador jugadorActual;
@@ -15,7 +15,7 @@ public class BotoneraEdificioController {
         this.vistaController = vistaController;
     }
 
-    public void setRegion(Casillero casillero) {
+    public void setCasillero(Casillero casillero) {
         this.casillero = casillero;
     }
 
