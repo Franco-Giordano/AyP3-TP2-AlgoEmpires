@@ -4,10 +4,12 @@ import algoempires.entidad.Atacante;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
+import interfaz.CasilleroView;
 
 public class TareaAtacar implements Tarea {
     private Casillero casilleroEmisor;
     private Jugador jugadorActual;
+    private boolean ataqueExitoso;
 
     public TareaAtacar(Jugador jugadorActual, Casillero casilleroEmisor) {
         this.jugadorActual = jugadorActual;
@@ -16,6 +18,13 @@ public class TareaAtacar implements Tarea {
 
     @Override
     public void ejecutar(Posicion posicion) {
-        jugadorActual.atacar((Atacante) casilleroEmisor.getEntidadContenida(), posicion);
+        ataqueExitoso = jugadorActual.atacar((Atacante) casilleroEmisor.getEntidadContenida(), posicion);
+    }
+
+    @Override
+    public void realizarTareasOpcionales(CasilleroView casilleroViewReceptor) {
+        if (ataqueExitoso) {
+            casilleroViewReceptor.reproducirAnimacion("animacionDanioUnidad");
+        }
     }
 }

@@ -4,6 +4,7 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
+import interfaz.CasilleroView;
 
 public class TareaRepararEdificio implements Tarea {
 
@@ -18,5 +19,10 @@ public class TareaRepararEdificio implements Tarea {
     @Override
     public void ejecutar(Posicion posicion) {
         jugadorActual.reparar((Aldeano) casilleroEmisor.getEntidadContenida(), posicion);
+    }
+
+    @Override
+    public void realizarTareasOpcionales(CasilleroView casilleroView) {
+
     }
 }

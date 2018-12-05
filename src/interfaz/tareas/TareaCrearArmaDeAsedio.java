@@ -4,6 +4,7 @@ import algoempires.entidad.edificio.Castillo;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
+import interfaz.CasilleroView;
 
 public class TareaCrearArmaDeAsedio implements Tarea {
     private Jugador jugadorActual;
@@ -17,5 +18,10 @@ public class TareaCrearArmaDeAsedio implements Tarea {
     @Override
     public void ejecutar(Posicion posicionACrear) {
         jugadorActual.crearArmaDeAsedio((Castillo) casilleroEmisor.getEntidadContenida(), posicionACrear);
+    }
+
+    @Override
+    public void realizarTareasOpcionales(CasilleroView casilleroView) {
+
     }
 }

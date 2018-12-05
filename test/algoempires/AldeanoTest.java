@@ -6,7 +6,6 @@ import algoempires.entidad.edificio.PlazaCentral;
 import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.entidad.unidad.utilero.EstadoConstruyendo;
 import algoempires.entidad.unidad.utilero.EstadoRecolectandoOro;
-import algoempires.excepciones.PosicionInvalidaException;
 import algoempires.excepciones.UnidadNoPuedeMoverseException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;

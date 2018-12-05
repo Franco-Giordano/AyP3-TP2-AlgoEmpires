@@ -4,7 +4,6 @@ import algoempires.AlgoEmpires;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
-import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
@@ -145,8 +144,8 @@ public class VistaPartidaController {
 
     private CasilleroView crearCasillero(int i, int j) {
 
-
-        CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j), tamanioCasillero, anchorDerecho, this);
+        CasilleroView casilleroView = new CasilleroView(terrenoDeJuego.getCasillero(i, j),
+                tamanioCasillero, anchorDerecho, this);
 
         return casilleroView;
     }
@@ -192,13 +191,11 @@ public class VistaPartidaController {
 
         for (Node casillero : gridPane.getChildren()) {
 
-            Casillero casilleroActual = ((CasilleroView) casillero).getCasillero();
-
             casillero.setOnMouseEntered(event -> casillero.setEffect(new SepiaTone()));
 
             casillero.setOnMouseExited(event -> casillero.setEffect(null));
 
-            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, casilleroActual.getPosicion(), this));
+            casillero.setOnMouseClicked(new EstadoEnEsperaDeClickHandler(tarea, (CasilleroView) casillero, this));
 
         }
 

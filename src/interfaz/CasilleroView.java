@@ -22,13 +22,16 @@ import static javafx.scene.paint.Color.TRANSPARENT;
 public class CasilleroView extends StackPane {
 
     private static HashMap<String, Image> iconos = crearMapaDeIconos();
+
     private final Casillero casillero;
+    private final Rectangle rectanguloAnimaciones;
     Text textoPosicion;
 
     public CasilleroView(Casillero casillero, int tamCasillero, Pane layoutBotones, VistaPartidaController vistaPartidaController) {
 
         this.casillero = casillero;
 
+        rectanguloAnimaciones = new Rectangle(tamCasillero, tamCasillero);
         Rectangle rectanguloEntidad = new Rectangle(tamCasillero, tamCasillero);
         Rectangle rectanguloFondoPasto = new Rectangle(tamCasillero, tamCasillero);
 
@@ -42,7 +45,9 @@ public class CasilleroView extends StackPane {
 
         rectanguloEntidad.setFill(TRANSPARENT);
 
-        this.getChildren().addAll(rectanguloFondoPasto, rectanguloEntidad, textoPosicion);
+        rectanguloAnimaciones.setFill(TRANSPARENT);
+
+        this.getChildren().addAll(rectanguloFondoPasto, rectanguloEntidad, rectanguloAnimaciones, textoPosicion);
 
         if (casillero.estaOcupada()) {
             Entidad entidadContenida = casillero.getEntidadContenida();
@@ -73,6 +78,7 @@ public class CasilleroView extends StackPane {
 
         mapa.put("Pasto", new Image("/interfaz/recursos/imagenes/fondoPasto.png"));
         mapa.put("enConstruccion", new Image("/interfaz/recursos/imagenes/enConstruccion.png"));
+        mapa.put("animacionDanioUnidad", new Image("/interfaz/recursos/animaciones/animacionDanioUnidad.gif"));
         mapa.put("class algoempires.entidad.unidad.utilero.Aldeano", new Image("/interfaz/recursos/imagenes/iconoAldeano.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Arquero", new Image("/interfaz/recursos/imagenes/iconoArquero.png"));
         mapa.put("class algoempires.entidad.unidad.guerrero.Espadachin", new Image("/interfaz/recursos/imagenes/iconoEspadachin.png"));
@@ -90,5 +96,9 @@ public class CasilleroView extends StackPane {
 
     public Image getImagen(String nombreEntidad) {
         return iconos.get(nombreEntidad);
+    }
+
+    public void reproducirAnimacion(String claveDeAnimacion) {
+        rectanguloAnimaciones.setFill(new ImagePattern(iconos.get(claveDeAnimacion)));
     }
 }

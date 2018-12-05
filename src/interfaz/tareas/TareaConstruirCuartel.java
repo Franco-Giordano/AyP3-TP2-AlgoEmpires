@@ -4,6 +4,7 @@ import algoempires.entidad.unidad.utilero.Aldeano;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Casillero;
 import algoempires.tablero.Posicion;
+import interfaz.CasilleroView;
 
 public class TareaConstruirCuartel implements Tarea {
 
@@ -18,5 +19,10 @@ public class TareaConstruirCuartel implements Tarea {
     @Override
     public void ejecutar(Posicion posicionAConstruir) {
         jugadorActual.crearCuartel((Aldeano) casilleroEmisor.getEntidadContenida(), posicionAConstruir);
+    }
+
+    @Override
+    public void realizarTareasOpcionales(CasilleroView casilleroView) {
+
     }
 }

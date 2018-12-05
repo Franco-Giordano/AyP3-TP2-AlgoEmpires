@@ -7,8 +7,6 @@ import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.excepciones.ArmaDeAsedioNoPuedeAtacarUnidadesException;
-import algoempires.excepciones.EntidadFueraDeRangoException;
 import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
@@ -176,7 +174,7 @@ public class JugadorTest {
         assertTrue(cuartel.tieneVidaLlena());
     }
 
-    @Test(expected = ArmaDeAsedioNoPuedeAtacarUnidadesException.class)
+    @Test
     public void jugadorConArmaDeAsedioNoPuedeAtacarUnidades() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);

@@ -67,7 +67,7 @@ public class Jugador {
     }
 
     private void lanzarExcepcionSiNoSePuedeReparar(Aldeano aldeano, Posicion posAReparar) {
-        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null ) {
+        if (terrenoDeJuego.obtenerEntidadEnPosicion(posAReparar) == null) {
             throw new SoloSePuedeRepararEdificiosException();
         }
     }
@@ -85,6 +85,7 @@ public class Jugador {
             throw new PosicionFueraDeRangoException();
         }
     }
+
     public void moverUnidad(Posicion posicionRecibida, Direccion direccionRecibida) {
 
         try {
@@ -262,32 +263,37 @@ public class Jugador {
     }
 
 
-    public void atacar(Atacante atacante, Posicion posicionDeLaVictima) {
+    public boolean atacar(Atacante atacante, Posicion posicionDeLaVictima) {
 
         try {
-
-            this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
 
             if (!atacante.puedeVerA(terrenoDeJuego, posicionDeLaVictima)) {
                 throw new EntidadFueraDeRangoException();
             }
+
+            this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
+
+            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
             String rutaSonido;
 
             if (atacante.getClass() == Arquero.class) {
                 rutaSonido = ("src/interfaz/recursos/sonidos/sonidoArco.mp3");
             } else if (atacante.getClass() == Espadachin.class) {
-                rutaSonido =("src/interfaz/recursos/sonidos/sonidoEspada.mp3");
+                rutaSonido = ("src/interfaz/recursos/sonidos/sonidoEspada.mp3");
             } else {
                 rutaSonido = ("src/interfaz/recursos/sonidos/sonidoCatapulta.mp3");
             }
 
             reproducirSonido(rutaSonido);
 
-            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
+            return true;
 
-        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException e) {
+        } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException
+                | ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException | ArmaDeAsedioNoPuedeAtacarUnidadesException e) {
             informanteDeExcepciones.informar(e);
+
+            return false;
         }
 
     }
@@ -400,10 +406,10 @@ public class Jugador {
 
     public void murio(Unidad unidad) {
         poblacion.quitar(unidad);
-       reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
+        reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
     }
 
-    public void reproducirSonido(String ruta){
+    public void reproducirSonido(String ruta) {
         AudioClip sonidoAReproducir = new AudioClip(Paths.get(ruta).toUri().toString());
         sonidoAReproducir.play();
     }
