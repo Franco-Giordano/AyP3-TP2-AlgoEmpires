@@ -265,11 +265,13 @@ public class Jugador {
 
         try {
 
-            this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
-
             if (!atacante.puedeVerA(terrenoDeJuego, posicionDeLaVictima)) {
                 throw new EntidadFueraDeRangoException();
             }
+
+            this.lanzarExcepcionSiNoEsDeMiPropiedad((Entidad) atacante);
+
+            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
             String rutaSonido;
 
@@ -282,8 +284,6 @@ public class Jugador {
             }
 
             reproducirSonido(rutaSonido);
-
-            terrenoDeJuego.obtenerEntidadEnPosicion(posicionDeLaVictima).recibirAtaqueDe(atacante);
 
         } catch (EntidadFueraDeRangoException | NoSePuedeInteractuarConEntidadesEnemigasException | GuerreroYaAtacoEsteTurnoException
                 | ArmaDeAsedioNoPuedeAtacarSinEstarMontadaException | ArmaDeAsedioNoPuedeAtacarUnidadesException e) {
