@@ -46,7 +46,7 @@ public class Interfaz extends Application {
 
         primaryStage.show();
 
-        BotonInicioHandler handlerInicio = new BotonInicioHandler(primaryStage, controlador, musicaDeFondo);
+        BotonInicioHandler handlerInicio = new BotonInicioHandler(primaryStage, controlador, musicaDeFondo, getHostServices());
 
         controlador.getBotonInicio().setOnMouseClicked(handlerInicio);
 

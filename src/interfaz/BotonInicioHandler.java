@@ -6,6 +6,7 @@ import algoempires.tablero.direccion.DireccionAbajo;
 import algoempires.tablero.direccion.DireccionArriba;
 import algoempires.tablero.direccion.DireccionDerecha;
 import algoempires.tablero.direccion.DireccionIzquierda;
+import javafx.application.HostServices;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,13 +23,15 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
     private final PantallaInicioController controladorActual;
     private final Stage primaryStage;
+    private final HostServices navegadorWeb;
     private MediaPlayer musicaDeFondo;
 
 
-    public BotonInicioHandler(Stage stage, PantallaInicioController controladorActual, MediaPlayer musicaDeFondo) {
+    public BotonInicioHandler(Stage stage, PantallaInicioController controladorActual, MediaPlayer musicaDeFondo, HostServices navegadorWeb) {
         this.primaryStage = stage;
         this.controladorActual = controladorActual;
         this.musicaDeFondo = musicaDeFondo;
+        this.navegadorWeb = navegadorWeb;
     }
 
 
@@ -47,9 +50,7 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
 
             VistaPartidaController controladorJuego = loader.getController();
 
-
             controladorJuego.setJuego(modelo);
-
 
             Scene escenaPartida = new Scene(pane);
 
@@ -88,6 +89,7 @@ public class BotonInicioHandler implements EventHandler<MouseEvent> {
             musicaDeFondo.play();
 
             controladorJuego.setMusicaDeFondo(musicaDeFondo);
+            controladorJuego.setNavegador(navegadorWeb);
 
         } catch (IOException e) {
             e.printStackTrace();

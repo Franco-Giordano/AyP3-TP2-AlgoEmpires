@@ -409,7 +409,7 @@ public class Jugador {
         reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
     }
 
-    public void murio(Edificio edificio){
+    public void murio(Edificio edificio) {
         reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerteEdificio.mp3");
     }
 

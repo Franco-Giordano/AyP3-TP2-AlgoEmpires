@@ -4,6 +4,7 @@ import algoempires.AlgoEmpires;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
+import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
@@ -12,6 +13,7 @@ import interfaz.botoneras.BotoneraEdificioController;
 import interfaz.botoneras.BotoneraUnidadController;
 import interfaz.tareas.Tarea;
 import javafx.animation.FadeTransition;
+import javafx.application.HostServices;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,10 +22,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.SepiaTone;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
@@ -79,6 +83,7 @@ public class VistaPartidaController {
     private AlgoEmpires juego;
     private Terreno terrenoDeJuego;
     private MediaPlayer musicaDeFondo;
+    private HostServices navegadorWEB; //para abrir URLs
 
     public void initialize() {
 
@@ -238,8 +243,42 @@ public class VistaPartidaController {
 
     public void terminarTurno() {
 
-        juego.terminarTurno();
+        boolean ganoElJugadorActual = juego.terminarTurnoYChequearSiHayAlgunGanador();
         crearCasilleros();
+
+        if (ganoElJugadorActual) {
+            this.mostrarAlertaDeVictoriaConGanador(juego.getJugadorActual());
+        }
+
+    }
+
+    private void mostrarAlertaDeVictoriaConGanador(Jugador jugadorActual) {
+
+        ButtonType botonVerGit = new ButtonType("Ver en GitHub", ButtonBar.ButtonData.OTHER);
+        ButtonType botonSalir = new ButtonType("Salir", ButtonBar.ButtonData.FINISH);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "\n\nOro final: " + jugadorActual.getOro() +
+                        "\nPoblacion final: " + jugadorActual.getCantidadDeHabitantes(), botonVerGit, botonSalir);
+
+        alert.setTitle("- VICTORIA -");
+        alert.setHeaderText("Victoria de " + jugadorActual.getNombre());
+        alert.setGraphic(new ImageView(new Image("/interfaz/recursos/iconoJuego.png")));
+
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+
+        alert.showAndWait();
+
+        if (alert.getResult() == botonVerGit) {
+            this.abrirURL("https://github.com/Franco-Giordano/AyP3-TP2-AlgoEmpires");
+        }
+
+        System.exit(0);
+    }
+
+    private void abrirURL(String url) {
+        final Hyperlink hyperlink = new Hyperlink(url);
+        navegadorWEB.showDocument(hyperlink.getText());
     }
 
     public void mostrarMensaje(String mensaje) {
@@ -271,6 +310,7 @@ public class VistaPartidaController {
                         "Esperamos que lo disfrutes!\n\n" +
                         "Con amor,\n\n" +
                         "El equipo de desarrollo de AlgoEmpires <3");
+
         alert.showAndWait();
     }
 
@@ -289,5 +329,9 @@ public class VistaPartidaController {
             }
         }
         return null;
+    }
+
+    public void setNavegador(HostServices navegadorWeb) {
+        this.navegadorWEB = navegadorWeb;
     }
 }

@@ -27,7 +27,7 @@ public class AlgoEmpires {
         Jugador jugador1 = new Jugador(nombre1, terrenoDeJuego);
         Jugador jugador2 = new Jugador(nombre2, terrenoDeJuego);
 
-        jugador1.sumarOro(10000);
+        jugador1.sumarOro(10000); //TODO REMOVER AAAAAAAAAAAAAAAAAAAAAAAAAAAA
         jugador2.sumarOro(10000);
 
         jugadores = new Jugador[]{jugador1, jugador2};
@@ -96,25 +96,19 @@ public class AlgoEmpires {
         return jugadores[indiceJugadorActual];
     }
 
-    public void terminarTurno() {
+    public boolean terminarTurnoYChequearSiHayAlgunGanador() {
 
         jugadores[indiceJugadorActual].actualizarEntreTurnos();
+
+
+        if (!jugadores[0].tieneCastilloConVida() || !jugadores[1].tieneCastilloConVida()) {
+            return true;
+        }
 
         indiceJugadorActual++;
         indiceJugadorActual = indiceJugadorActual % 2;
 
-        if (!jugadores[0].tieneCastilloConVida() || !jugadores[1].tieneCastilloConVida()) {
-            indiceJugadorActual++;
-            indiceJugadorActual = indiceJugadorActual % 2;
-            this.ganarJuegoCon(jugadores[indiceJugadorActual]);
-        }
+        return false;
     }
 
-    public void ganarJuegoCon(Jugador jugadorGanador) {
-
-        System.out.println("El ganador es:" + jugadorGanador.getNombre());
-
-        System.exit(1);
-
-    }
 }
