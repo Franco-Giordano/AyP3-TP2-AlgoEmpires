@@ -113,7 +113,7 @@ public class AlgoEmpires {
 
     public Jugador getJugadorAnterior() {
         int i = indiceJugadorActual;
-        i ++;
+        i++;
         return jugadores[i % 2];
 
     }

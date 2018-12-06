@@ -7,7 +7,6 @@ import algoempires.entidad.unidad.guerrero.Arquero;
 import algoempires.entidad.unidad.guerrero.Espadachin;
 import algoempires.entidad.unidad.guerrero.armadeasedio.ArmaDeAsedio;
 import algoempires.entidad.unidad.utilero.Aldeano;
-import algoempires.excepciones.NoSeToleraFuegoAmigoException;
 import algoempires.jugador.Jugador;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
@@ -220,7 +219,7 @@ public class JugadorTest {
 
     }
 
-    @Test(expected = NoSeToleraFuegoAmigoException.class)
+    @Test
     public void testNoSePuedenAtacarEdificiosAliados() {
 
         ArmaDeAsedio armaDeAsedio = new ArmaDeAsedio(jugadorDePrueba);
@@ -236,7 +235,7 @@ public class JugadorTest {
     }
 
 
-    @Test(expected = NoSeToleraFuegoAmigoException.class)
+    @Test
     public void testNoSePuedenAtacarUnidadesAliadas() {
 
         Espadachin espadachin = new Espadachin(jugadorDePrueba);
@@ -352,6 +351,7 @@ public class JugadorTest {
     }
 
 
+    @Test
     public void testAldeanoNoPuedeConstruirORepararDosEdificiosALaVez() {
         Aldeano aldeano = new Aldeano(jugadorDePrueba);
 

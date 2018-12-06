@@ -69,6 +69,12 @@ public class Jugador {
         }
     }
 
+    private void lanzarExcepcionSiCastilloNoPuedeCrear(Castillo castillo, Posicion posicion){
+        if (!terrenoDeJuego.puedeCastilloConstruirEn(castillo,posicion)){
+            throw new PosicionFueraDeRangoException();
+        }
+    }
+
     private void lanzarExcepcionSiNoSePuedeReparar(Posicion posAReparar) {
 
         this.lanzarExcepcionSiEntidadNulaEnPosicion(posAReparar);
@@ -186,11 +192,11 @@ public class Jugador {
 
     public void crearArmaDeAsedio(Castillo castillo, Posicion posicionDeCreacion) {
 
-
         try {
             this.lanzarExcepcionSiNoEsDeMiPropiedad(castillo);
 
-            this.lanzarExcepcionSiPosicionFueraDeRango(castillo, posicionDeCreacion);
+            this.lanzarExcepcionSiCastilloNoPuedeCrear(castillo, posicionDeCreacion);
+
             ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio();
 
             terrenoDeJuego.ocupar(posicionDeCreacion, armaDeAsedio);
@@ -434,10 +440,10 @@ public class Jugador {
         informanteDeExcepciones.setVistaPartidaController(vistaPartidaController);
     }
 
-    public Castillo getCastillo(){
-        for (Edificio edificioActual: edificiosPropios){
-            if (edificioActual.getClass() == Castillo.class){
-                return (Castillo)edificioActual;
+    public Castillo getCastillo() {
+        for (Edificio edificioActual : edificiosPropios) {
+            if (edificioActual.getClass() == Castillo.class) {
+                return (Castillo) edificioActual;
             }
         }
 

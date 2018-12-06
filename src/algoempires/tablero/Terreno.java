@@ -113,11 +113,6 @@ public class Terreno {
         edificio.informarRegionOcupada(region);
     }
 
-    public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
-        return Rango.generarPosicionesVisiblesPor(edificio.getRegionQueLoContiene(), edificio).contains(posicionQueQuieroVer);
-
-    }
-
     public Posicion encontrarUnaPosDeEntidad(Entidad entidad) {
 
         for (HashMap.Entry<Posicion, Casillero> entry : mapa.entrySet()) {
@@ -155,6 +150,13 @@ public class Terreno {
         throw new PosicionFueraDeRangoException();
     }
 
+    public boolean puedeEdificioVerA(Edificio edificio, Posicion posicionQueQuieroVer) {
+
+        return Rango.generarPosicionesVisiblesPor(edificio.getRegionQueLoContiene(), edificio).contains(posicionQueQuieroVer);
+
+    }
+
+    //TODO esto no lo usamos. EStoy 90 % seguro de que se puede borrar este metodo junto con los otros 2 de abajo.
     private Posicion encontrarInfIzqDeEntidad(Posicion unaPosicionDeLaEntidad) {
 
         Entidad entidad = mapa.get(unaPosicionDeLaEntidad).getEntidadContenida();
@@ -229,10 +231,6 @@ public class Terreno {
         });
     }
 
-    public Posicion encontrarInfIzq(Castillo castillo) {
-        return this.encontrarInfIzqDeEntidad(this.encontrarUnaPosDeEntidad(castillo));
-    }
-
     public ArrayList<Posicion> generarPosicionesContenidas(Edificio edificio, Posicion infIzquierdo) throws PosicionInvalidaException {
 
         int tamanioHorizontal = edificio.getTamanioHorizontal();
@@ -273,8 +271,6 @@ public class Terreno {
         return casillerosContenidos;
     }
 
-    //METODOS DE TESTEO
-
     public int getTamHorizontal() {
         return limiteSupDer.getHorizontal();
     }
@@ -306,6 +302,10 @@ public class Terreno {
             }
         }
         return true;
+    }
+
+    public boolean puedeCastilloConstruirEn(Castillo castillo, Posicion posicionQueQuieroVer) {
+        return Rango.generarPosicionConstruiblesPorCastillo(castillo.getRegionQueLoContiene(),castillo).contains(posicionQueQuieroVer);
     }
 }
 

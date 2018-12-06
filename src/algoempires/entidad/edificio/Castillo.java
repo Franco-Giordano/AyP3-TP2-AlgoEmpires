@@ -37,7 +37,6 @@ public class Castillo extends Edificio implements Atacante {
         }
     }
 
-
     @Override
     protected int getTurnosDeConstruccionInicial() {
         return 0;
@@ -51,6 +50,26 @@ public class Castillo extends Edificio implements Atacante {
     @Override
     protected int getCosto() {
         return COSTO;
+    }
+
+    @Override
+    public boolean esDelEquipo(Jugador jugador) {
+        return jugador == jugadorPropietario;
+    }
+
+    @Override
+    public int getVidaMaxima() {
+        return VIDA_MAXIMA;
+    }
+
+    @Override
+    public void actualizarEntreTurnos() {
+        cercanos = jugadorPropietario.calcularCercanosA(this);
+        this.atacarCercanos();
+    }
+
+    public int getRangoContruccion(){
+        return RANGO_CONSTRUCCION;
     }
 
     public ArmaDeAsedio crearArmaDeAsedio() {
@@ -70,22 +89,6 @@ public class Castillo extends Edificio implements Atacante {
         return terreno.puedeEdificioVerA(this, posicionDeLaVictima);
     }
 
-    @Override
-    public boolean esDelEquipo(Jugador jugador) {
-        return jugador == jugadorPropietario;
-    }
-
-    @Override
-    public int getVidaMaxima() {
-        return VIDA_MAXIMA;
-    }
-
-    @Override
-    public void actualizarEntreTurnos() {
-        cercanos = jugadorPropietario.calcularCercanosA(this);
-        this.atacarCercanos();
-    }
-
     private void atacarCercanos() {
 
         for (Entidad entidad : cercanos) {
@@ -94,11 +97,11 @@ public class Castillo extends Edificio implements Atacante {
         }
     }
 
-    public void informarDeAtaque(){
+    public void informarDeAtaque() {
         cercanos = jugadorPropietario.calcularCercanosA(this);
         if (cercanos.size() > 0) {
 
-            jugadorPropietario.reproducirSonido("src/interfaz/recursos/sonidos/sonidoArmaDeAsedio.mp3");
+            jugadorPropietario.reproducirSonido("src/interfaz/recursos/sonidos/sonidoCastillo.mp3");
 
             for (Entidad entidad : cercanos) {
                 jugadorPropietario.informarAtaque(entidad);

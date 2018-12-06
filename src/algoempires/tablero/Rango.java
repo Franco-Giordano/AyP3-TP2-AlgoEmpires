@@ -1,5 +1,6 @@
 package algoempires.tablero;
 
+import algoempires.entidad.edificio.Castillo;
 import algoempires.entidad.edificio.Edificio;
 import algoempires.entidad.unidad.Unidad;
 
@@ -57,5 +58,32 @@ public class Rango {
         }
 
         return posicionesContenidas;
+    }
+
+
+    public static ArrayList<Posicion> generarPosicionConstruiblesPorCastillo(Region regionQueLoContiene, Castillo castillo) {
+
+        ArrayList<Posicion> posicionesContenidas = new ArrayList<>();
+
+        int minRangoHorizontal = regionQueLoContiene.getHorizontalIzq() - castillo.getRangoContruccion();
+        int maxRangoHorizontal = regionQueLoContiene.getHorizontalDer() + castillo.getRangoContruccion();
+        int minRangoVertical = regionQueLoContiene.getVerticalInf() - castillo.getRangoContruccion();
+        int maxRangoVertical = regionQueLoContiene.getVerticalSup() + castillo.getRangoContruccion();
+
+        for (int i = minRangoHorizontal; i <= maxRangoHorizontal; i++) {
+
+            for (int j = minRangoVertical; j <= maxRangoVertical; j++) {
+
+                Posicion posicion = new Posicion(i, j);
+
+                if (!regionQueLoContiene.contiene(posicion)) {
+                    posicionesContenidas.add(posicion);
+                }
+            }
+
+        }
+
+        return posicionesContenidas;
+
     }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="panePadre" xmlns="http://javafx.com/javafx/8"
             fx:controller="interfaz.VistaPartidaController">
     <center>
         <GridPane fx:id="gridPane">
@@ -28,7 +28,7 @@
                         <Label fx:id="poblacionLbl" layoutX="192.0" layoutY="53.0" prefHeight="15.0" prefWidth="53.0"
                                translateX="-50.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Serif" size="13.0"/>
+                                <Font name="Liberation Sans Bold" size="15.0"/>
                             </font>
                         </Label>
                         <ImageView fx:id="imgOro" fitHeight="38.0" fitWidth="50.0" layoutX="14.0" layoutY="41.0"
@@ -43,14 +43,25 @@
                         <Label fx:id="oroLbl" layoutX="58.0" layoutY="53.0" prefHeight="15.0" prefWidth="61.0"
                                translateX="-50.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Sans" size="13.0"/>
+                                <Font name="Liberation Sans Bold" size="15.0"/>
                             </font>
                         </Label>
                         <Label fx:id="nombreJugadorLbl" prefHeight="37.0" prefWidth="223.0" textAlignment="CENTER"
-                               textFill="#1e1d1d" translateX="-50.0" translateY="-23.0">
+                               translateX="-30.0" translateY="-23.0">
                             <font>
-                                <Font name="Liberation Serif Bold" size="22.0"/>
+                                <Font name="Liberation Sans Bold" size="26.0"/>
                             </font>
+                            <textFill>
+                                <LinearGradient endX="0.48076923076923084" endY="1.0" startX="0.49038461538461536">
+                                    <stops>
+                                        <Stop color="#904100"/>
+                                        <Stop color="#4a4747" offset="1.0"/>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
+                            <effect>
+                                <Glow/>
+                            </effect>
                         </Label>
                         <ImageView fx:id="imgPoblacion" fitHeight="42.0" fitWidth="41.0" layoutX="144.0" layoutY="39.0"
                                    pickOnBounds="true" preserveRatio="true" translateX="-50.0" translateY="-23.0">

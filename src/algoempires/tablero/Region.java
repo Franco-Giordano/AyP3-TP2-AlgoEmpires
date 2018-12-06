@@ -21,6 +21,8 @@ public class Region {
 
     }
 
+
+
     private void levantarExcepcionSiAlgunaOcupada(ArrayList<Casillero> casillerosTentativos) {
 
         for (Casillero casillero : casillerosTentativos) {
