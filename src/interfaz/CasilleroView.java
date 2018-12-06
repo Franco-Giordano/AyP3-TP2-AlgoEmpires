@@ -67,8 +67,6 @@ public class CasilleroView extends StackPane {
             } else {
                 rectanguloEntidad.setFill(new ImagePattern(iconos.get(nombreEntidad)));
             }
-
-
         }
 
         EstadoDefaultHandler handler = new EstadoDefaultHandler(layoutBotones, this, vistaPartidaController);

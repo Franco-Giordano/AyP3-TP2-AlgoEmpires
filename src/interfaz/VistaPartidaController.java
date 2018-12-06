@@ -300,13 +300,13 @@ public class VistaPartidaController {
                         "Espacio: Terminar el turno.\n\n" +
                         "Flechas: Desplazarse por el terreno.\n");
         alert.setTitle("Controles");
-        alert.setHeaderText("Controles:");
+        alert.setHeaderText("Controles");
         alert.showAndWait();
     }
 
     public void acercaDelJuego() {
 
-        ButtonType abrirRepositorio = new ButtonType("Ver repositorio en GitHub", ButtonBar.ButtonData.YES);
+        ButtonType abrirRepositorio = new ButtonType("Ver en GitHub", ButtonBar.ButtonData.OTHER);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "AlgoEmpires v4.0\n\n" +
@@ -316,12 +316,13 @@ public class VistaPartidaController {
                         "#Iribarren, Alvaro.\n\n" +
                         "#Isola, Federico.\n\n" +
                         "Que lo disfrutes!\n\n" +
-                        "El equipo de desarrollo de AlgoEmpires <3", abrirRepositorio);
+                        "El equipo de desarrollo de AlgoEmpires <3", abrirRepositorio, ButtonType.OK);
 
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         alert.setTitle("Acerca del juego");
-        alert.setHeaderText("Acerca del juego: ");
+        alert.setHeaderText("Acerca del juego");
+        alert.setGraphic(new ImageView(new Image("/interfaz/recursos/iconoJuego.png")));
 
         Optional<ButtonType> resultado = alert.showAndWait();
 
