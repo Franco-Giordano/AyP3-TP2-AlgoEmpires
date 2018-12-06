@@ -3,8 +3,8 @@ package algoempires;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Cuartel;
 import algoempires.entidad.edificio.PlazaCentral;
-import interfaz.CasilleroView;
-import interfaz.VistaPartidaController;
+import interfaz.controller.VistaPartidaController;
+import interfaz.view.CasilleroView;
 
 public class InformanteDeAtaque {
 

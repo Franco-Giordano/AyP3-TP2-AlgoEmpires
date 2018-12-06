@@ -1,6 +1,6 @@
 package algoempires;
 
-import interfaz.VistaPartidaController;
+import interfaz.controller.VistaPartidaController;
 
 public class InformanteDeExcepciones {
 

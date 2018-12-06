@@ -1,0 +1,24 @@
+.button {
+    -fx-background-image: url('/interfaz/recursos/imagenes/fondoBoton.png');
+    -fx-background-size: stretch;
+    -fx-background-radius: 20 20 20 20;
+    -fx-font-family: "Liberation Serif";
+    -fx-font-size: 26.0;
+}
+
+.button:hover {
+    -fx-effect: innershadow(gaussian, whitesmoke, 13, 0.25, 0, 0);
+}
+
+.button:pressed {
+    -fx-effect: innershadow(gaussian, black, 50, 0.4, 0, 0);
+}
+
+
+.tooltip {
+    -fx-font: 13px "Liberation Serif";
+    -fx-background-color: linear-gradient(#845d40, #42312c);
+    -fx-pref-width: 75;
+    -fx-wrap-text: true;
+}
+

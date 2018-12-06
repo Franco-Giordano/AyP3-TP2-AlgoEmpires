@@ -205,15 +205,41 @@
     </target>
 
 
-    <target name="empaquetar.con.imagenes" depends="compilar.paquete">
-        <copydir src="src/gui/imagess"
-                 dest="${build}/classes/gui/imagess"
-                 includes="**/*.png"/>
+    <target name="empaquetar.con.recursos" depends="compilar.paquete">
+        <copydir src="src/interfaz/recursos"
+                 dest="${build}/classes/interfaz/recursos"
+                 includes="**/*.*"/>
         <jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
     </target>
 
-    <target name="ejecutar.aplicacion" depends="empaquetar">
-        <java classname="fiuba.algo3.ejemplo1.Foo" fork="true">
+    <target name="empaquetar.con.fuentes" depends="empaquetar.con.recursos">
+        <copydir
+                src="src/recursos/fonts"
+                dest="${build}/classes/fiuba/algo3/algomones/interfaz/fonts"
+                includes="*"/>
+        <jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+    </target>
+
+    <target name="empaquetar.con.fxml" depends="empaquetar.con.recursos">
+        <copydir
+                src="src/interfaz/view"
+                dest="${build}/classes/interfaz/view"
+                includes="**/*.fxml"/>
+        <jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+    </target>
+
+
+    <target name="empaquetar.con.css" depends="empaquetar.con.fxml">
+        <copydir
+                src="src/interfaz/view"
+                dest="${build}/classes/view"
+                includes="*.css"/>
+        <jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+    </target>
+
+
+    <target name="ejecutar.aplicacion" depends="empaquetar.con.css">
+        <java classname="interfaz.view.Interfaz" fork="true">
             <classpath refid="classpath"/>
             <classpath location="${build}/dist/algo3.jar"/>
         </java>

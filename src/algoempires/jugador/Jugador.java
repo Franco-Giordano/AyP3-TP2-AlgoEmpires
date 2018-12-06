@@ -17,7 +17,7 @@ import algoempires.excepciones.*;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
-import interfaz.VistaPartidaController;
+import interfaz.controller.VistaPartidaController;
 import javafx.scene.media.AudioClip;
 
 import java.nio.file.Paths;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" scaleX="0.8"
+      scaleY="0.8" spacing="10.0" AnchorPane.leftAnchor="50.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="interfaz.controller.botoneras.BotoneraEdificioController">
+    <children>
+        <Button focusTraversable="false" mnemonicParsing="false" onAction="#crearAldeano" prefHeight="60.0"
+                prefWidth="300.0" stylesheets="/interfaz/view/estiloBoton.css" text="Crear Aldeano"
+                textFill="WHITE">
+            <font>
+                <Font size="26.0"/>
+            </font>
+            <tooltip>
+                <Tooltip text="Costo: 25"/>
+            </tooltip>
+        </Button>
+    </children>
+</VBox>
