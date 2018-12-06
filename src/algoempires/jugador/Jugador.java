@@ -1,6 +1,7 @@
 package algoempires.jugador;
 
-import algoempires.InformadorDeExcepciones;
+import algoempires.InformanteDeAtaque;
+import algoempires.InformanteDeExcepciones;
 import algoempires.entidad.Atacante;
 import algoempires.entidad.Entidad;
 import algoempires.entidad.edificio.Castillo;
@@ -16,6 +17,7 @@ import algoempires.excepciones.*;
 import algoempires.tablero.Posicion;
 import algoempires.tablero.Terreno;
 import algoempires.tablero.direccion.Direccion;
+import interfaz.VistaPartidaController;
 import javafx.scene.media.AudioClip;
 
 import java.nio.file.Paths;
@@ -30,7 +32,8 @@ public class Jugador {
     private Terreno terrenoDeJuego;
     private Monedero monedero;
     private boolean castilloConVida;
-    private InformadorDeExcepciones informanteDeExcepciones;
+    private InformanteDeExcepciones informanteDeExcepciones;
+    private InformanteDeAtaque informanteDeAtaque;
 
     public Jugador(String nombreRecibido, Terreno terrenoDeJuego) {
         this.nombre = nombreRecibido;
@@ -39,7 +42,8 @@ public class Jugador {
         this.terrenoDeJuego = terrenoDeJuego;
         this.monedero = new Monedero();
         this.castilloConVida = true;
-        this.informanteDeExcepciones = new InformadorDeExcepciones();
+        this.informanteDeExcepciones = new InformanteDeExcepciones();
+        this.informanteDeAtaque = new InformanteDeAtaque();
     }
 
     private void lanzarExcepcionSiNoEsDeMiPropiedad(Posicion posicionRecibida) {
@@ -334,10 +338,6 @@ public class Jugador {
         poblacion.agregar(unidad);
     }
 
-    public void jugarTurno() {
-
-        this.actualizarEntreTurnos();
-    }
 
     public void actualizarEntreTurnos() {
 
@@ -411,11 +411,6 @@ public class Jugador {
         this.castilloConVida = false;
     }
 
-    public InformadorDeExcepciones getInformanteDeExcepciones() {
-        return this.informanteDeExcepciones;
-
-    }
-
     public void murio(Unidad unidad) {
         poblacion.quitar(unidad);
         reproducirSonido("src/interfaz/recursos/sonidos/sonidoMuerte.mp3");
@@ -428,5 +423,26 @@ public class Jugador {
     public void reproducirSonido(String ruta) {
         AudioClip sonidoAReproducir = new AudioClip(Paths.get(ruta).toUri().toString());
         sonidoAReproducir.play();
+    }
+
+    public void informarAtaque(Entidad entidad) {
+
+        this.informanteDeAtaque.seAtaco(entidad);
+    }
+
+    public void setVistaAInformantes(VistaPartidaController vistaPartidaController) {
+        informanteDeAtaque.setVistaPartidaController(vistaPartidaController);
+        informanteDeExcepciones.setVistaPartidaController(vistaPartidaController);
+    }
+
+    public Castillo getCastillo(){
+        for (Edificio edificioActual: edificiosPropios){
+            if (edificioActual.getClass() == Castillo.class){
+                return (Castillo)edificioActual;
+            }
+        }
+
+        return null;
+
     }
 }

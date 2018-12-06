@@ -173,8 +173,8 @@ public class VistaPartidaController {
         this.juego = juego;
         this.terrenoDeJuego = juego.getTerreno();
 
-        juego.getJugadores()[0].getInformanteDeExcepciones().setVistaPartidaController(this);
-        juego.getJugadores()[1].getInformanteDeExcepciones().setVistaPartidaController(this);
+        juego.getJugadores()[0].setVistaAInformantes(this);
+        juego.getJugadores()[1].setVistaAInformantes(this);
 
         int coordVertical = (terrenoDeJuego.getTamVertical() - RENDERIZAR_VERTICAL) / 2 + 1;
         int coordHorizontal = (terrenoDeJuego.getTamHorizontal() - RENDERIZAR_HORIZONTAL) / 2 + 1;
@@ -230,11 +230,15 @@ public class VistaPartidaController {
     public void terminarTurno() {
 
         boolean ganoElJugadorActual = juego.terminarTurnoYChequearSiHayAlgunGanador();
+
         crearCasilleros();
+
+        juego.getJugadorAnterior().getCastillo().informarDeAtaque();
 
         if (ganoElJugadorActual) {
             this.mostrarAlertaDeVictoriaConGanador(juego.getJugadorActual());
         }
+
 
     }
 
@@ -359,6 +363,18 @@ public class VistaPartidaController {
         controller.setJugadorActual(juego.getJugadorActual());
 
         controller.setVistaController(this);
+
+    }
+
+    public CasilleroView getCasilleroViewDeEntidad(Entidad entidad) {
+
+        for (Node casillero : gridPane.getChildren()) {
+            if (((CasilleroView) casillero).getCasillero().getEntidadContenida() == entidad) {
+                return (CasilleroView) casillero;
+            }
+        }
+
+        return null;
 
     }
 }

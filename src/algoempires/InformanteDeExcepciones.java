@@ -2,7 +2,7 @@ package algoempires;
 
 import interfaz.VistaPartidaController;
 
-public class InformadorDeExcepciones {
+public class InformanteDeExcepciones {
 
     private VistaPartidaController vistaPartidaController;
 

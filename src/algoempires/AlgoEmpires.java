@@ -111,4 +111,10 @@ public class AlgoEmpires {
         return false;
     }
 
+    public Jugador getJugadorAnterior() {
+        int i = indiceJugadorActual;
+        i ++;
+        return jugadores[i % 2];
+
+    }
 }

@@ -82,15 +82,23 @@ public class Castillo extends Edificio implements Atacante {
 
     @Override
     public void actualizarEntreTurnos() {
-
         cercanos = jugadorPropietario.calcularCercanosA(this);
-
         this.atacarCercanos();
     }
 
     private void atacarCercanos() {
         for (Entidad entidad : cercanos) {
             entidad.recibirAtaqueDe(this);
+
+        }
+    }
+
+    public void informarDeAtaque(){
+        cercanos = jugadorPropietario.calcularCercanosA(this);
+        if (cercanos != null) {
+            for (Entidad entidad : cercanos) {
+                jugadorPropietario.informarAtaque(entidad);
+            }
         }
     }
 }

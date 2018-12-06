@@ -27,7 +27,6 @@ public class TareaAtacar implements Tarea {
     @Override
     public void realizarTareasOpcionales(CasilleroView casilleroViewReceptor) {
 
-        //TODO esto me tiró NullPointerException. No rompe nada del tp, pero no se por que lo tira.
         if (casilleroViewReceptor.getCasillero().estaOcupada()) {
             Class clase = casilleroViewReceptor.getCasillero().getEntidadContenida().getClass();
             if (clase == PlazaCentral.class || clase == Cuartel.class || clase == Castillo.class) {
