@@ -15,6 +15,7 @@ public class Castillo extends Edificio implements Atacante {
     private final int VIDA_MAXIMA = 450;
     private final int COSTO = 0;
     private final int DANIO_A_TODO = 20;
+    private final int RANGO_CONSTRUCCION = 1;
 
     private HashSet<Entidad> cercanos = new HashSet<>();
 
@@ -25,7 +26,6 @@ public class Castillo extends Edificio implements Atacante {
         TAMANIO_VERTICAL = 4;
         VELOCIDAD_DE_REPARACION = 15;
         RANGO_VISION = 3;
-
         this.terminarConstruccion();
     }
 

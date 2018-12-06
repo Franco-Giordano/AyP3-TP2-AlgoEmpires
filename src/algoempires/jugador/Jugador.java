@@ -55,7 +55,6 @@ public class Jugador {
 
     private void lanzarExcepcionSiNoEsDeMiPropiedad(Entidad entidad) {
 
-
         if (!entidad.esDelEquipo(this)) {
             NoSePuedeInteractuarConEntidadesEnemigasException e = new NoSePuedeInteractuarConEntidadesEnemigasException("Se intento emitir una orden a una entidad enemiga");
             informanteDeExcepciones.informar(e);
