@@ -16,7 +16,7 @@ public class Castillo extends Edificio implements Atacante {
     private final int COSTO = 0;
     private final int DANIO_A_TODO = 20;
 
-    private HashSet<Entidad> cercanos;
+    private HashSet<Entidad> cercanos = new HashSet<>();
 
     public Castillo(Jugador jugador) {
         super(jugador);
@@ -87,6 +87,7 @@ public class Castillo extends Edificio implements Atacante {
     }
 
     private void atacarCercanos() {
+
         for (Entidad entidad : cercanos) {
             entidad.recibirAtaqueDe(this);
 
@@ -95,7 +96,10 @@ public class Castillo extends Edificio implements Atacante {
 
     public void informarDeAtaque(){
         cercanos = jugadorPropietario.calcularCercanosA(this);
-        if (cercanos != null) {
+        if (cercanos.size() > 0) {
+
+            jugadorPropietario.reproducirSonido("src/interfaz/recursos/sonidos/sonidoArmaDeAsedio.mp3");
+
             for (Entidad entidad : cercanos) {
                 jugadorPropietario.informarAtaque(entidad);
             }
